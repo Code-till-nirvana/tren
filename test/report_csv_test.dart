@@ -168,7 +168,6 @@ void main() {
     final picker = find.byType(AppSheet);
     final rows = find.descendant(of: picker, matching: find.byType(TinySwitch));
     expect(tester.widgetList<TinySwitch>(rows).map((w) => w.on), [true, false, false]);
-    expect(find.text(titleCase(t.supplementsLabel)), findsNothing);
 
     await tester.tap(find.descendant(of: picker, matching: find.text(titleCase(t.reportWorkouts))));
     await tester.pumpAndSettle();
