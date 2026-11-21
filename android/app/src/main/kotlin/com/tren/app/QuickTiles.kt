@@ -52,7 +52,7 @@ object QuickTiles {
         }
         val pass = tile == "pass"
         val service = if (pass) PassTileService::class.java else TodayTileService::class.java
-        val label = text(activity, if (pass) "passLabel" else "todayLabel").ifEmpty { "GymMane" }
+        val label = text(activity, if (pass) "passLabel" else "todayLabel").ifEmpty { "TREN" }
         val icon = Icon.createWithResource(activity, if (pass) R.drawable.ic_qs_pass else R.drawable.ic_qs_today)
         val manager = activity.getSystemService(StatusBarManager::class.java)
         if (manager == null) {
