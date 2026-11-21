@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.app.Activity
 import android.content.ComponentName
@@ -21,7 +21,7 @@ object NfcBridge {
     const val CHANNEL = "gymmane/nfc"
     private const val SCHEME = "gymmane"
     private const val HOST = "today"
-    private const val ALIAS = "com.gymmane.app.NfcToday"
+    private const val ALIAS = "com.tren.app.NfcToday"
     private var channel: MethodChannel? = null
     @Volatile private var writing = false
     private val main = Handler(Looper.getMainLooper())
