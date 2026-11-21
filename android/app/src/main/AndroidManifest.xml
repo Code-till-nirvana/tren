@@ -38,7 +38,7 @@
     <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
 
     <application
-        android:label="GymMane"
+        android:label="TREN"
         android:name=".GymManeApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
