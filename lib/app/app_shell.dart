@@ -20,7 +20,6 @@ import '../screens/home_screen.dart';
 import '../screens/measures_screen.dart';
 import '../screens/note_edit_screen.dart';
 import '../screens/notes_screen.dart';
-import '../screens/nutrition_screen.dart';
 import '../screens/onboarding_screen.dart';
 import '../screens/places_screen.dart';
 import '../screens/plan_import_sheet.dart';
@@ -43,8 +42,6 @@ import '../services/auto_backup.dart';
 import '../services/device_kind.dart';
 import '../services/health_steps.dart';
 import '../services/incoming_share.dart';
-import '../services/meal_ai.dart';
-import '../services/nutrition_widgets.dart';
 import '../services/local_store.dart';
 import '../services/server/server_link.dart';
 import '../services/supplement_reminder.dart';
@@ -84,7 +81,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     'tools',
     'tools-detail',
     'health',
-    'nutrition',
   };
 
   static const _pillSpace = 68.0;
@@ -123,7 +119,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     fit.addListener(_restOver);
     _queueCelebration();
     IncomingShare.listen(_receive);
-    NutritionWidgets.listenOpen(_openFromWidget);
     SupplementReminder.instance.onOpen = _openSupplements;
     SupplementReminder.instance.listenTaken(fit.takeSupplementsOn);
     if (kIsWeb) {
@@ -136,9 +131,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final text = await IncomingShare.take();
       if (text != null) _receive(text);
-      await NutritionWidgets.takePending();
-      final open = await NutritionWidgets.takeOpen();
-      if (open != null) _openFromWidget(open);
       final launched = await SupplementReminder.instance.launchIds();
       if (launched != null) _openSupplements(launched);
       await SupplementReminder.instance.takePending();
@@ -166,8 +158,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     if (!mounted || !fit.onboarded || fit.isSessionActive) return;
     if (route == 'play') {
       playWorkout(context);
-    } else if (route == 'nutrition' && fit.route != 'nutrition') {
-      fit.goNutrition();
     }
   }
 
@@ -200,22 +190,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     _incoming = null;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      final food = text.contains(kFoodAiTag) ? parseFoodAi(text) : null;
-      if (food != null) {
-        fit.setNutritionBeta(true);
-        if (fit.route != 'nutrition') fit.goNutrition();
-        showFoodEditor(context, pick: food);
-        return;
-      }
-      if (fit.isMealPlanText(text)) {
-        final n = fit.importMealPlans(text);
-        if (n > 0) {
-          fit.setNutritionBeta(true);
-          fit.goNutrition();
-        }
-        showMealPlanImportResult(context, n);
-        return;
-      }
       showPlanImportSheet(context, text: text);
     });
   }
@@ -403,8 +377,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     }
     if (state == AppLifecycleState.paused) AutoBackup.instance.onLeave();
     if (state == AppLifecycleState.resumed) {
-      fit.rollNutritionDay();
-      NutritionWidgets.takePending();
       SupplementReminder.instance.takePending();
       fit.refreshAlarmPermission();
       fit.syncRest();
@@ -675,7 +647,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         'awards' => t.awardsTitle,
         'about' => t.about,
         'health' => t.healthTitle,
-        'nutrition' => t.nutrition,
         'recovery' => t.recoveryTitle,
         _ when fit.route.startsWith('preferences/') => SettingsScreen.sectionTitleOf(fit.route.substring(12)),
         _ => null,
@@ -729,8 +700,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         return HistoryScreen();
       case 'workout':
         return const WorkoutViewScreen();
-      case 'nutrition':
-        return NutritionScreen();
       case 'recovery':
         return RecoveryScreen();
       case 'health':
@@ -1297,7 +1266,6 @@ class _Sidebar extends StatelessWidget {
         'routines' => titleCase(t.routines),
         'notes' => titleCase(t.journal),
         'tools' => titleCase(t.tools),
-        'nutrition' => sentenceCase(t.nutrition),
         'recovery' => sentenceCase(t.recoveryTitle),
         _ => titleCase(t.settings),
       };
@@ -1321,9 +1289,6 @@ class _Sidebar extends StatelessWidget {
       case 'tools':
         fit.goHome();
         fit.goTools();
-      case 'nutrition':
-        fit.goHome();
-        fit.goNutrition();
       case 'recovery':
         fit.goHome();
         fit.goRecovery();
@@ -1393,7 +1358,6 @@ class _Sidebar extends StatelessWidget {
           ('routines', PhosphorIconsRegular.listChecks, PhosphorIconsFill.listChecks),
           ('notes', PhosphorIconsRegular.notebook, PhosphorIconsFill.notebook),
           ('tools', PhosphorIconsRegular.calculator, PhosphorIconsFill.calculator),
-          if (fit.nutritionBeta) ('nutrition', PhosphorIconsRegular.forkKnife, PhosphorIconsFill.forkKnife),
           if (fit.recoveryOn) ('recovery', PhosphorIconsRegular.thermometerSimple, PhosphorIconsFill.thermometerSimple),
         ]) ...[
           _SideItem(
@@ -1563,7 +1527,7 @@ class _DesktopPage extends StatelessWidget {
 
   static const _sheets = {'history', 'awards'};
 
-  static const _flow = {'home', 'progress', 'settings', 'tools', 'nutrition', 'preferences', 'notes', 'routines', 'exercises', 'history', 'workout', 'awards', 'exercise-detail', 'recovery'};
+  static const _flow = {'home', 'progress', 'settings', 'tools', 'preferences', 'notes', 'routines', 'exercises', 'history', 'workout', 'awards', 'exercise-detail', 'recovery'};
 
   @override
   Widget build(BuildContext context) {
