@@ -761,11 +761,6 @@ class SettingsScreen extends StatelessWidget {
           _card(gc, [
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
-                    onTap: () => fit.setNutritionBeta(!fit.nutritionBeta),
-                    child: _prefRow(gc, PhosphorIconsRegular.forkKnife, t.nutritionBeta,
-                        TinySwitch(on: fit.nutritionBeta),
-                        hint: t.nutritionBetaHint,
-                        badge: BetaTag(t.sectionBeta, small: true)),
                   ),
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
@@ -777,43 +772,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
           ]),
-          const SizedBox(height: 28),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(4, 0, 0, 12),
-            child: Text(t.nutritionAboutTitle.toUpperCase(),
-                style: AppTheme.f(10.5, weight: FontWeight.w700, color: gc.textTertiary, letterSpacing: 1.4)),
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 18),
-            decoration: BoxDecoration(color: gc.bgRaised, borderRadius: BorderRadius.circular(26)),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              for (final (icon, title, body) in [
-                (PhosphorIconsRegular.barbell, t.nutritionAboutWhatTitle, t.nutritionAboutWhat),
-                (PhosphorIconsRegular.shieldCheck, t.nutritionAboutScanTitle, t.nutritionAboutScan),
-                (PhosphorIconsRegular.deviceMobile, t.nutritionAboutLocalTitle, t.nutritionAboutLocal),
-                (PhosphorIconsRegular.flask, t.nutritionAboutBetaTitle, t.nutritionAboutBeta),
-              ])
-                Padding(
-                  padding: const EdgeInsets.only(top: 14),
-                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    _rowIcon(gc, icon),
-                    Expanded(
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        const SizedBox(height: 2),
-                        Text(title, style: AppTheme.f(14.5, weight: FontWeight.w700, color: gc.text)),
-                        const SizedBox(height: 3),
-                        Text(body,
-                            style: AppTheme.f(13, weight: FontWeight.w500, color: gc.textSecondary, height: 1.45)),
-                      ]),
-                    ),
-                  ]),
-                ),
-            ]),
-          ),
-          const SizedBox(height: 12),
-          _linkGroup(gc, [
-            (PhosphorIconsRegular.githubLogo, t.nutritionAboutSuggest, () => _open(context, '$_kRepoUrl/issues')),
-          ]),
+
         ];
       case 'widgets':
         return [
@@ -980,7 +939,6 @@ class SettingsScreen extends StatelessWidget {
           (t.addWeekWidget, PhosphorIconsRegular.calendarCheck),
         ]),
       _Category('beta', PhosphorIconsRegular.flask, _sectionTitle('beta'), [
-        (t.nutritionBeta, PhosphorIconsRegular.forkKnife),
         (t.recoveryTitle, PhosphorIconsRegular.thermometerSimple),
       ]),
       _Category('data', PhosphorIconsRegular.database, _sectionTitle('data'), [
@@ -2097,10 +2055,6 @@ class _NotifSoundSheet extends StatelessWidget {
             SheetTitle(t.notifSoundSetting, subtitle: t.notifSoundHint),
             const SizedBox(height: 16),
             _group(context, gc, SoundGroup.train, PhosphorIconsRegular.barbell, t.notifSoundTrain),
-            if (fit.nutritionBeta) ...[
-              const SizedBox(height: 10),
-              _group(context, gc, SoundGroup.food, PhosphorIconsRegular.forkKnife, t.notifSoundFood),
-            ],
             const SizedBox(height: 10),
             _group(context, gc, SoundGroup.other, PhosphorIconsRegular.camera, t.notifSoundOther),
           ]),
