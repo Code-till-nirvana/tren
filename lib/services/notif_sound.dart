@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-enum SoundGroup { train, food, other }
+enum SoundGroup { train, other }
 
 class NotifSound {
   NotifSound._();
