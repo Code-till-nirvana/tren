@@ -269,7 +269,6 @@ class _ReportCsvSheetState extends State<_ReportCsvSheet> {
 
   String _label(ReportSection section) => switch (section) {
     ReportSection.workouts => titleCase(t.reportWorkouts),
-    ReportSection.supplements => titleCase(t.supplementsLabel),
     ReportSection.weighIns => t.reportWeighIns,
     ReportSection.sessions => t.reportSessionDetails,
   };
