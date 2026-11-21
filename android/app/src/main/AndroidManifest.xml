@@ -39,7 +39,7 @@
 
     <application
         android:label="TREN"
-        android:name=".GymManeApplication"
+        android:name=".TrenApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
