@@ -102,15 +102,12 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
   final _appKey = GlobalKey();
   ui.Image? _blurred;
   bool _blurQueued = false;
-  bool _changedUnder = false;
 
   @override
   void initState() {
     super.initState();
     _collapse = AnimationController(vsync: this, duration: const Duration(milliseconds: 520));
     WidgetsBinding.instance.addObserver(this);
-    glassOpen.addListener(_syncSnap);
-    glassShown.addListener(_syncSnap);
     sheetRecede.addListener(_syncBlurSnap);
     fit.addListener(_fitChanged);
     fit.refreshAlarmPermission();
@@ -238,8 +235,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
   }
 
   void _fitChanged() {
-    if (_snap.allowSnapshotting) _changedUnder = true;
-    _syncSnap();
     if (_blurred != null) {
       _blurAgain?.cancel();
       _blurAgain = Timer(Duration(milliseconds: fineEffects ? 160 : 350), _queueBlur);
@@ -248,30 +243,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
 
   Timer? _blurAgain;
 
-  Timer? _snapLater;
-
-  void _syncSnap() => scheduleMicrotask(() {
-        if (!mounted) return;
-        final on = fit.route == 'nutrition' && (glassOpen.value > 0 || (glassShown.value > 0 && !_changedUnder));
-        if (on == _snap.allowSnapshotting) {
-          if (!on) _snapLater?.cancel();
-          return;
-        }
-        if (on) {
-          if (_snapLater?.isActive ?? false) return;
-          _snapLater = Timer(const Duration(milliseconds: 420), () {
-            if (!mounted) return;
-            final still = fit.route == 'nutrition' && glassOpen.value > 0;
-            if (!still || _snap.allowSnapshotting) return;
-            _changedUnder = false;
-            _snap.allowSnapshotting = true;
-          });
-          return;
-        }
-        _snapLater?.cancel();
-        _changedUnder = false;
-        _snap.allowSnapshotting = false;
-      });
 
   void _syncBlurSnap() {
     final p = sheetRecede.value;
@@ -332,8 +303,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     _blurAgain?.cancel();
     _snapLater?.cancel();
     _blurred?.dispose();
-    glassOpen.removeListener(_syncSnap);
-    glassShown.removeListener(_syncSnap);
     fit.removeListener(_fitChanged);
     _snap.dispose();
     _collapse.dispose();
