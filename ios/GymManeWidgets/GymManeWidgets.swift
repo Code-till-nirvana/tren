@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-private let appGroup = "group.com.gymmane.app"
+private let appGroup = "group.com.tren.app"
 private let darkKey = "widget_dark"
 private let themeKey = "widget_theme"
 
@@ -328,7 +328,7 @@ struct WeekWidget: Widget {
 }
 
 @main
-struct GymManeWidgetBundle: WidgetBundle {
+struct TrenWidgetBundle: WidgetBundle {
   var body: some Widget {
     widgets()
   }
