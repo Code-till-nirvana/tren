@@ -119,12 +119,10 @@ class _ReportSheetState extends State<ReportSheet> {
     final gc = context.gc;
     final used = _used;
     final r = fit.rangeReport(used.start, used.end);
-    final food0 = fit.nutritionBeta;
     final kinds = [
       (ReportKind.summary, PhosphorIconsRegular.chartBar, t.reportKindSummary, t.reportKindSummaryHint),
       (ReportKind.training, PhosphorIconsRegular.barbell, t.reportKindTraining, t.reportKindTrainingHint),
-      if (food0) (ReportKind.nutrition, PhosphorIconsRegular.forkKnife, t.reportKindNutrition, t.reportKindNutritionHint),
-      (ReportKind.full, PhosphorIconsRegular.files, t.reportKindFull, food0 ? t.reportKindFullHint : t.reportKindFullNoFoodHint),
+      (ReportKind.full, PhosphorIconsRegular.files, t.reportKindFull, t.reportKindFullNoFoodHint),
     ];
     Widget stat(String label, String value) => Expanded(
           child: Container(
@@ -150,8 +148,7 @@ class _ReportSheetState extends State<ReportSheet> {
             ),
           ]),
         );
-    final food = r.food;
-    final lifting = _kind != ReportKind.nutrition;
+    final lifting = true;
     final sections = fit.reportCsvSections(r);
     return Container(
       padding: sheetPad(context),
@@ -228,9 +225,6 @@ class _ReportSheetState extends State<ReportSheet> {
             if (lifting && r.lifts.isNotEmpty) line(PhosphorIconsRegular.barbell, t.reportLiftsLine(r.lifts.length)),
             if (r.weightFrom != null && r.weightTo != null)
               line(PhosphorIconsRegular.scales, '${fit.weightLabel(r.weightFrom!)} → ${fit.weightLabel(r.weightTo!)}'),
-            if (food != null && _kind != ReportKind.training)
-              line(PhosphorIconsRegular.forkKnife,
-                  t.reportFoodLine('${fit.energyOf(food.kcal)} ${fit.energyUnit}', food.protein.round(), food.days)),
             if (lifting && (r.sleep != null || r.energy != null))
               line(PhosphorIconsRegular.moon, [
                 if (r.sleep != null) '${t.checkInSleep} ${decimalText(r.sleep!.toStringAsFixed(1))}',
@@ -271,7 +265,7 @@ class _ReportCsvSheet extends StatefulWidget {
 }
 
 class _ReportCsvSheetState extends State<_ReportCsvSheet> {
-  late final _selected = widget.sections.intersection({ReportSection.workouts, ReportSection.nutrition});
+  late final _selected = widget.sections.intersection({ReportSection.workouts});
 
   String _label(ReportSection section) => switch (section) {
     ReportSection.workouts => titleCase(t.reportWorkouts),
