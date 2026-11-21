@@ -2,7 +2,7 @@ part of 'fit_state.dart';
 
 const String kBgPhotoId = 'bg';
 
-const List<String> kHomeBlocks = ['weekdays', 'steps', 'week', 'routines', 'activity', 'recommended', 'folders', 'nutrition', 'recovery'];
+const List<String> kHomeBlocks = ['weekdays', 'steps', 'week', 'routines', 'activity', 'recommended', 'folders', 'recovery'];
 
 mixin SettingsState on FitCore, ToolsState, LibraryState {
   String themePref = 'dark';
