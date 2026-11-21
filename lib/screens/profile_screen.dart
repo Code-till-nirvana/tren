@@ -9,7 +9,6 @@ import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import '../app/desktop.dart';
 import '../l10n/l10n.dart';
 import '../models/profile.dart';
-import '../services/food_library.dart';
 import '../services/media_store.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
@@ -58,7 +57,6 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    if (fit.nutritionBeta) FoodLibrary.load();
     _back = AnimationController(vsync: this, duration: const Duration(milliseconds: 320))
       ..addListener(() => _pull.value = _from * (1 - Curves.easeOutCubic.transform(_back.value)));
   }
