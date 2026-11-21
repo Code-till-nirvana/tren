@@ -69,7 +69,7 @@ import '../services/server/server_link.dart';
 import '../widgets/server_card.dart';
 import 'about_screen.dart';
 
-const _kRepoUrl = 'https://github.com/InlitX/GymMane';
+const _kRepoUrl = 'https://github.com/InlitX/TREN';
 const _kBugUrl = '$_kRepoUrl/issues/new?labels=bug';
 const _kFeatureUrl = '$_kRepoUrl/issues/new?labels=enhancement';
 const _kKofiUrl = 'https://ko-fi.com/inlitx';
@@ -1316,8 +1316,8 @@ class SettingsScreen extends StatelessWidget {
       return;
     }
     final stamp = DateTime.now().toIso8601String().split('T').first;
-    await shareFile('gymmane-workouts-$stamp.csv', utf8Bytes(fit.exportCsv()),
-        mime: 'text/csv', subject: 'GymMane workouts');
+    await shareFile('tren-workouts-$stamp.csv', utf8Bytes(fit.exportCsv()),
+        mime: 'text/csv', subject: 'TREN workouts');
   }
 
   Future<void> _clearWorkouts(BuildContext context) async {
@@ -1352,7 +1352,7 @@ class SettingsScreen extends StatelessWidget {
     final stamp = DateTime.now().toIso8601String().split('T').first;
     final zip = await buildBackupZip();
     if (!context.mounted) return;
-    await shareFile('gymmane-backup-$stamp.zip', zip, mime: 'application/zip', subject: 'GymMane backup');
+    await shareFile('tren-backup-$stamp.zip', zip, mime: 'application/zip', subject: 'TREN backup');
   }
 
   Future<void> _importBackup(BuildContext context) async {
@@ -1635,7 +1635,7 @@ class SettingsScreen extends StatelessWidget {
         return;
       }
       await HomeWidget.requestPinWidget(
-          qualifiedAndroidName: 'com.gymmane.app.$provider');
+          qualifiedAndroidName: 'com.tren.app.$provider');
     } catch (_) {
       if (context.mounted) _snack(context, t.pinUnsupported);
     }
