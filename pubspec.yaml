@@ -59,7 +59,6 @@ flutter:
     - assets/audio/
     - assets/badges/
     - assets/data/
-    - assets/food/
     - assets/icon/variants/
 
   shaders:
