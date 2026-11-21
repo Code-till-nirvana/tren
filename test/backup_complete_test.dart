@@ -29,7 +29,7 @@ void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     await Store.instance.init();
-    tmp = await Directory.systemTemp.createTemp('gymmane_full');
+    tmp = await Directory.systemTemp.createTemp('tren_full');
     MediaStore.directory = tmp.path;
     ProgressReminder.instance.enabled = false;
     TrainReminder.instance.enabled = false;
@@ -327,7 +327,7 @@ void main() {
     expect(fit.heatTone, 'green');
   });
 
-  test('vuelve lo de la 1.9: circuitos, medidas propias, ayuno, grupos, carnet, Salud y notas por serie', () async {
+  test('vuelve la copia completa de circuitos, medidas, carnet, Salud y notas por serie', () async {
     await seedTwoYears();
     final last = fit.sessions.last;
     last.exercises.first.sets[0] = LoggedSet(10, 80, note: 'Agarre flojo');
@@ -338,8 +338,6 @@ void main() {
     fit.saveCircuit(circuit);
     final arm = fit.addCustomMeasure('Antebrazo', unit: 'cm');
     fit.setMeasureEvery(14);
-    fit.setFastGoal(18);
-    fit.startFast(at: DateTime.now().subtract(const Duration(hours: 3)));
     fit.addGymPass(name: 'Gym del barrio', code: '123456');
     fit.setTextSize('large');
     fit.setCalmMotion(true);
@@ -356,8 +354,6 @@ void main() {
     expect(fit.circuits.single.steps.single.work, 30);
     expect(fit.customMeasures.map((c) => c.id), contains(arm));
     expect(fit.measureEveryDays, 14);
-    expect(fit.fastGoalHours, 18);
-    expect(fit.fasting, isTrue);
     expect(fit.gymPasses.single.name, 'Gym del barrio');
     expect(fit.textSize, 'large');
     expect(fit.calmMotion, isTrue);
@@ -367,7 +363,6 @@ void main() {
     fit.persistNow();
     fit.loadFromStore();
     expect(fit.circuits.single.name, 'Core rápido');
-    expect(fit.fasting, isTrue);
     expect(fit.textSize, 'large');
     expect(fit.hcWrite, isTrue);
   });
