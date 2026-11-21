@@ -37,7 +37,6 @@ import '../services/notif_sound.dart';
 import '../services/progress_reminder.dart';
 import '../services/plan_share.dart';
 import '../services/rest_alarm.dart';
-import '../services/supplement_reminder.dart';
 import '../services/train_reminder.dart';
 import '../services/voice_coach.dart';
 import '../services/workout_import.dart';
@@ -82,7 +81,7 @@ class FitState extends FitCore
     }
   }
 
-  static const _soundChannels = ['train_reminder', 'supplement_reminder', 'fasting', 'progress_photo', 'measures'];
+  static const _soundChannels = ['train_reminder', 'progress_photo', 'measures'];
 
   Future<void> setNotifSound(SoundGroup g, String uri, {String name = ''}) async {
     if (uri.isEmpty) {
@@ -96,18 +95,12 @@ class FitState extends FitCore
     notifyListeners();
     await NotifSound.dropOld(_soundChannels, {
       NotifSound.channelOf('train_reminder', SoundGroup.train),
-      NotifSound.channelOf('supplement_reminder', SoundGroup.food),
-      NotifSound.channelOf('fasting', SoundGroup.food),
       NotifSound.channelOf('progress_photo', SoundGroup.other),
       NotifSound.channelOf('measures', SoundGroup.other),
-      'fasting_live',
     });
     switch (g) {
       case SoundGroup.train:
         syncTrainReminder();
-      case SoundGroup.food:
-        syncSupplementReminder();
-        _syncFast();
       case SoundGroup.other:
         syncPhotoReminder();
         syncMeasureReminder();
