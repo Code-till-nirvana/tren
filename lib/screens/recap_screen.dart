@@ -1124,10 +1124,6 @@ RecapExtras recapExtras(MonthRecap recap) {
   final from = recap.month;
   final to = DateTime(from.year, from.month + 1);
   final today = DateTime.now();
-  final days = [
-    for (var d = from; d.isBefore(to) && !d.isAfter(today); d = DateTime(d.year, d.month, d.day + 1)) d,
-  ];
-
   var km = 0.0;
   var sec = 0, count = 0;
   final byCardio = <String, int>{};
@@ -1310,3 +1306,512 @@ class _ExerciseWallState extends State<_ExerciseWall> with SingleTickerProviderS
   }
 }
 
+class _Route extends StatelessWidget {
+  const _Route({required this.progress, required this.color, required this.track});
+
+  final double progress;
+  final Color color;
+  final Color track;
+
+  @override
+  Widget build(BuildContext context) => TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0, end: progress),
+        duration: const Duration(milliseconds: 1600),
+        curve: Curves.easeInOutCubic,
+        builder: (_, v, _) => SizedBox(
+          height: 70,
+          width: double.infinity,
+          child: CustomPaint(painter: _RoutePainter(v, color, track)),
+        ),
+      );
+}
+
+class _RoutePainter extends CustomPainter {
+  _RoutePainter(this.v, this.color, this.track);
+
+  final double v;
+  final Color color;
+  final Color track;
+
+  @override
+  void paint(Canvas canvas, Size s) {
+    final h = s.height;
+    final path = Path()
+      ..moveTo(4, h * 0.7)
+      ..cubicTo(s.width * 0.18, h * 0.05, s.width * 0.32, h * 0.05, s.width * 0.45, h * 0.5)
+      ..cubicTo(s.width * 0.58, h * 0.95, s.width * 0.74, h * 0.95, s.width * 0.84, h * 0.4)
+      ..quadraticBezierTo(s.width * 0.92, h * 0.05, s.width - 4, h * 0.3);
+    final base = Paint()
+      ..color = track
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round;
+    canvas.drawPath(path, base);
+    final metric = path.computeMetrics().first;
+    canvas.drawPath(metric.extractPath(0, metric.length * v), base..color = color);
+    final tip = metric.getTangentForOffset(metric.length * v)?.position;
+    if (tip != null) {
+      canvas.drawCircle(tip, 9, Paint()..color = color);
+      canvas.drawCircle(tip, 4, Paint()..color = track);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_RoutePainter old) => old.v != v || old.color != color;
+}
+
+class _CloseButton extends StatelessWidget {
+  const _CloseButton({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    return Semantics(
+      button: true,
+      label: t.recapClose,
+      child: Pressable(
+        onTap: onTap,
+        scale: 0.88,
+        child: Padding(
+          padding: const EdgeInsets.all(2),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(color: gc.text.withValues(alpha: 0.1), shape: BoxShape.circle),
+            child: Icon(PhosphorIconsBold.x, size: 17, color: gc.text),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _WorkoutsPage extends StatefulWidget {
+  const _WorkoutsPage({
+    required this.recap,
+    required this.tone,
+    required this.kicker,
+    required this.versus,
+    this.notes = const [],
+  });
+
+  final MonthRecap recap;
+  final Color tone;
+  final Widget kicker;
+  final Widget versus;
+  final List<String> notes;
+
+  @override
+  State<_WorkoutsPage> createState() => _WorkoutsPageState();
+}
+
+class _WorkoutsPageState extends State<_WorkoutsPage> with SingleTickerProviderStateMixin {
+  late final List<int> _days = widget.recap.days.toList()..sort();
+  late final AnimationController _run;
+  int _lit = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _run = AnimationController(vsync: this, duration: Duration(milliseconds: 500 + 90 * _days.length))
+      ..addListener(() {
+        final lit = (Curves.easeInOut.transform(_run.value) * _days.length).round();
+        if (lit != _lit) {
+          if (lit > _lit) HapticFeedback.selectionClick();
+          setState(() => _lit = lit);
+        }
+      })
+      ..addStatusListener((s) {
+        if (s == AnimationStatus.completed && mounted) setState(() {});
+      });
+    Future<void>.delayed(const Duration(milliseconds: 350), () {
+      if (mounted) _run.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _run.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    final m = widget.recap.month;
+    final count = DateTime(m.year, m.month + 1, 0).day;
+    final lead = (DateTime(m.year, m.month, 1).weekday - fit.weekStartDay + 7) % 7;
+    final lit = {for (final d in _days.take(_lit)) d};
+    final shown = (_lit / math.max(1, _days.length) * widget.recap.workouts).round();
+    final order = [for (var i = 0; i < 7; i++) (fit.weekStartDay - 1 + i) % 7 + 1];
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.end, children: [
+      widget.kicker,
+      const SizedBox(height: 6),
+      Ltr(child: Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
+        Text('$shown', style: _num(112, gc.text)),
+        const SizedBox(width: 10),
+        Text(t.recapWorkouts(widget.recap.workouts),
+            style: AppTheme.f(28, weight: FontWeight.w800, color: gc.text, letterSpacing: -0.6)),
+      ])),
+      const SizedBox(height: 14),
+      widget.versus,
+      const SizedBox(height: 22),
+      LayoutBuilder(builder: (context, box) {
+        final cell = math.min(38.0, (box.maxWidth - 6 * 6) / 7);
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Wrap(spacing: 6, children: [
+            for (final d in order)
+              SizedBox(
+                width: cell,
+                child: Text(t.weekdayInitial(d),
+                    textAlign: TextAlign.center,
+                    style: AppTheme.f(10.5, weight: FontWeight.w800, color: gc.textTertiary)),
+              ),
+          ]),
+          const SizedBox(height: 8),
+          Wrap(spacing: 6, runSpacing: 6, children: [
+            for (var i = 0; i < lead; i++) SizedBox(width: cell, height: cell),
+            for (var d = 1; d <= count; d++)
+              AnimatedScale(
+                scale: lit.contains(d) ? 1 : 0.88,
+                duration: const Duration(milliseconds: 260),
+                curve: Curves.easeOutBack,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 220),
+                  width: cell,
+                  height: cell,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: lit.contains(d) ? gc.ember : gc.bgRaised2,
+                    shape: BoxShape.circle,
+                    border: lit.contains(d) ? null : Border.all(color: gc.border.withValues(alpha: 0.7)),
+                  ),
+                  child: Text('$d',
+                      style: AppTheme.f(cell * 0.34,
+                          weight: FontWeight.w800, color: lit.contains(d) ? gc.onEmber : gc.textSecondary)),
+                ),
+              ),
+          ]),
+        ]);
+      }),
+      const SizedBox(height: 16),
+      AnimatedOpacity(
+        opacity: _run.isCompleted ? 1 : 0,
+        duration: const Duration(milliseconds: 400),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(t.recapDays(_days.length),
+              style: AppTheme.f(16, weight: FontWeight.w600, color: gc.text, height: 1.4)),
+          for (final note in widget.notes) ...[
+            const SizedBox(height: 4),
+            Text(note, style: AppTheme.f(16, weight: FontWeight.w600, color: gc.textSecondary, height: 1.4)),
+          ],
+        ]),
+      ),
+      const SizedBox(height: 30),
+    ]);
+  }
+}
+
+
+class RecapCard extends StatelessWidget {
+  const RecapCard({super.key, required this.recap, this.variant = 0});
+
+  final MonthRecap recap;
+  final int variant;
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    final tone = gc.accent;
+    final lift = recap.lift == null ? null : fit.exerciseById(recap.lift!.id);
+    final wall = variant == 2 ? recapWallIds(recap) : const <String>[];
+    return SizedBox(
+      width: 360,
+      height: 640,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(28),
+        child: ColoredBox(
+          color: gc.bg,
+          child: Stack(children: [
+            if (wall.isNotEmpty)
+              Positioned(left: 0, right: 0, top: 0, height: 440, child: _staticWall(wall, gc.bg))
+            else
+              Positioned(
+                left: 0,
+                right: 0,
+                top: variant == 1 ? 130 : 70,
+                height: 240,
+                child: NameTicker(
+                  text: switch (variant) {
+                    1 => t.monthName(recap.month.month),
+                    2 when lift != null => exerciseName(lift),
+                    _ => fit.displayName,
+                  },
+                  color: gc.text.withValues(alpha: 0.06),
+                  rows: 3,
+                  size: 74,
+                  running: false,
+                ),
+              ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 26, 24, 22),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                _header(gc, tone),
+                const SizedBox(height: 18),
+                Expanded(
+                  child: switch (variant) {
+                    1 => _calendar(gc, tone),
+                    2 when lift != null => _lift(gc, tone, lift),
+                    _ => _summary(gc, tone),
+                  },
+                ),
+                const SizedBox(height: 18),
+                Center(child: _mark(gc)),
+              ]),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+
+  Widget _staticWall(List<String> ids, Color bg) {
+    final exs = [for (final id in ids) ?fit.exerciseById(id)];
+    return Stack(fit: StackFit.expand, children: [
+      Positioned(
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 40,
+      child: Opacity(
+      opacity: 0.43,
+      child: ClipRect(
+        child: Transform.rotate(
+          angle: -0.18,
+          child: OverflowBox(
+            maxWidth: 760,
+            maxHeight: 760,
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              for (var r = 0; r < 7; r++)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    for (var c = 0; c < 7; c++)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: SizedBox(
+                          width: 96,
+                          child: ExerciseMedia(ex: exs[(r * 3 + c) % exs.length], height: 96, radius: 16, bordered: false),
+                        ),
+                      ),
+                  ]),
+                ),
+            ]),
+          ),
+        ),
+      ),
+      ),
+      ),
+      DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [bg.withValues(alpha: 0), bg.withValues(alpha: 0.3), bg],
+            stops: const [0, 0.45, 0.88],
+          ),
+        ),
+      ),
+    ]);
+  }
+
+  Widget _header(GymColors gc, Color tone) => Row(children: [
+        const ProfileAvatar(size: 46),
+        const SizedBox(width: 11),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(fit.displayName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTheme.f(18, weight: FontWeight.w900, color: gc.text, letterSpacing: -0.4)),
+            Text('@${fit.profileHandle}',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTheme.f(11.5, weight: FontWeight.w700, color: gc.textSecondary)),
+          ]),
+        ),
+        const SizedBox(width: 8),
+        Text(t.monthYear(recap.month).toUpperCase(),
+            style: AppTheme.f(9.5, weight: FontWeight.w800, color: tone, letterSpacing: 1.4)),
+      ]);
+
+  Widget _mark(GymColors gc) => Row(mainAxisSize: MainAxisSize.min, children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: Image.asset('assets/img/app_icon.png', width: 20, height: 20),
+        ),
+        const SizedBox(width: 7),
+        Text('TREN', style: AppTheme.f(14, weight: FontWeight.w900, color: gc.text, letterSpacing: -0.2, height: 1)),
+      ]);
+
+  Widget _stat(GymColors gc, String value, String unit, String label, {double size = 28, bool soft = false}) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: AlignmentDirectional.centerStart,
+            child: Ltr(child: Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
+              Text(value, style: _num(size, soft ? gc.textSecondary : gc.text)),
+              if (unit.isNotEmpty) ...[
+                const SizedBox(width: 3),
+                Text(unit, style: AppTheme.f(size * 0.4, weight: FontWeight.w800, color: gc.textSecondary)),
+              ],
+            ])),
+          ),
+          const SizedBox(height: 4),
+          Text(label.toUpperCase(),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTheme.f(8.5, weight: FontWeight.w800, color: gc.textTertiary, letterSpacing: 1.1)),
+        ],
+      );
+
+  (String, String) get _time {
+    final h = recap.seconds ~/ 3600;
+    final m = (recap.seconds % 3600) ~/ 60;
+    return h > 0 ? ('$h', 'h') : ('$m', 'min');
+  }
+
+  Widget _summary(GymColors gc, Color tone) {
+    final time = _time;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Ltr(child: Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
+        Text('${recap.workouts}', style: _num(80, gc.text)),
+        const SizedBox(width: 8),
+        Text(t.recapWorkouts(recap.workouts),
+            style: AppTheme.f(22, weight: FontWeight.w800, color: gc.text, letterSpacing: -0.4)),
+      ])),
+      const SizedBox(height: 2),
+      Text(t.recapDays(recap.days.length), style: AppTheme.f(13.5, weight: FontWeight.w700, color: gc.textSecondary)),
+      const Spacer(),
+      Center(child: BodyHeatArt(gc: gc, intensity: recap.heat, width: 220)),
+      if (recap.topMuscle != null) ...[
+        const SizedBox(height: 8),
+        Center(
+          child: Text('${t.recapMuscleKicker} · ${muscleLabel(recap.topMuscle!)}'.toUpperCase(),
+              style: AppTheme.f(9.5, weight: FontWeight.w800, color: tone, letterSpacing: 1.3)),
+        ),
+      ],
+      const Spacer(),
+      Row(children: [
+        Expanded(child: _stat(gc, time.$1, time.$2, t.duration, size: 34)),
+        Expanded(child: _stat(gc, fit.volumeValue(recap.volumeKg), fit.volumeUnit, t.statLifted, size: 34)),
+        Expanded(child: _stat(gc, '${recap.sets}', '', t.setsCaps, size: 34)),
+      ]),
+      const SizedBox(height: 14),
+      Row(children: [
+        Expanded(child: _stat(gc, '${recap.records.length}', '', t.prs, size: 22, soft: true)),
+        Expanded(child: _stat(gc, '${recap.avgMinutes}', 'min', t.recapAvgLabel, size: 22, soft: true)),
+        Expanded(
+          child: _stat(gc, recap.favDay == null ? '–' : t.weekdayShort(recap.favDay!), '', t.recapFavLabel,
+              size: 22, soft: true),
+        ),
+      ]),
+    ]);
+  }
+
+  Widget _calendar(GymColors gc, Color tone) {
+    final m = recap.month;
+    final count = DateTime(m.year, m.month + 1, 0).day;
+    final lead = (DateTime(m.year, m.month, 1).weekday - fit.weekStartDay + 7) % 7;
+    final time = _time;
+    final order = [for (var i = 0; i < 7; i++) (fit.weekStartDay - 1 + i) % 7 + 1];
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(t.monthName(m.month),
+          style: AppTheme.f(56, weight: FontWeight.w900, color: gc.text, letterSpacing: -2.4, height: 1)),
+      const SizedBox(height: 6),
+      Text(t.recapCalendarLine(recap.workouts, recap.days.length),
+          style: AppTheme.f(13.5, weight: FontWeight.w800, color: tone)),
+      const SizedBox(height: 18),
+      Row(children: [
+        for (final d in order)
+          Expanded(
+            child: Center(
+              child:
+                  Text(t.weekdayInitial(d), style: AppTheme.f(10, weight: FontWeight.w800, color: gc.textTertiary)),
+            ),
+          ),
+      ]),
+      const SizedBox(height: 6),
+      GridView.count(
+        crossAxisCount: 7,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        mainAxisSpacing: 6,
+        crossAxisSpacing: 6,
+        padding: EdgeInsets.zero,
+        children: [
+          for (var i = 0; i < lead; i++) const SizedBox.shrink(),
+          for (var d = 1; d <= count; d++)
+            Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: recap.days.contains(d) ? gc.ember : gc.bgRaised2,
+                shape: BoxShape.circle,
+              ),
+              child: Text('$d',
+                  style: AppTheme.f(11.5,
+                      weight: FontWeight.w800, color: recap.days.contains(d) ? gc.onEmber : gc.textSecondary)),
+            ),
+        ],
+      ),
+      const Spacer(),
+      Row(children: [
+        Expanded(child: _stat(gc, time.$1, time.$2, t.duration, size: 34)),
+        Expanded(child: _stat(gc, fit.volumeValue(recap.volumeKg), fit.volumeUnit, t.statLifted, size: 34)),
+        Expanded(
+          child: _stat(gc, recap.favDay == null ? '–' : t.weekdayShort(recap.favDay!), '', t.recapFavLabel, size: 34),
+        ),
+      ]),
+    ]);
+  }
+
+  Widget _lift(GymColors gc, Color tone, Exercise ex) {
+    final l = recap.lift!;
+    final heavy = l.bestKg > 0;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Spacer(flex: 2),
+      Center(
+        child: Container(
+          padding: const EdgeInsets.all(3),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(27), border: Border.all(color: gc.border, width: 1.5)),
+          child: SizedBox(width: 196, child: ExerciseMedia(ex: ex, height: 196, radius: 24)),
+        ),
+      ),
+      const Spacer(flex: 3),
+      Text(t.recapLiftKicker.toUpperCase(),
+          style: AppTheme.f(10, weight: FontWeight.w800, color: tone, letterSpacing: 1.6)),
+      const SizedBox(height: 6),
+      Text(exerciseName(ex),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: AppTheme.f(28, weight: FontWeight.w900, color: gc.text, letterSpacing: -0.8, height: 1.05)),
+      const SizedBox(height: 18),
+      _stat(
+        gc,
+        heavy ? fit.weightLabel(l.bestKg).split(' ').first : '${l.sets}',
+        heavy ? fit.units : '',
+        heavy ? t.recapBest : t.setsCaps,
+        size: 72,
+      ),
+      const SizedBox(height: 18),
+      Row(children: [
+        if (heavy) Expanded(child: _stat(gc, '${l.sets}', '', t.setsCaps, size: 26)),
+        Expanded(child: _stat(gc, '${l.times}', '', t.recapTimes, size: 26)),
+        Expanded(child: _stat(gc, fit.volumeValue(l.volumeKg), fit.volumeUnit, t.statLifted, size: 26)),
+      ]),
+    ]);
+  }
+}
