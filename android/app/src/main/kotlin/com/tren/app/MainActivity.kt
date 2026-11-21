@@ -82,7 +82,7 @@ class MainActivity : FlutterActivity() {
                 return@setMethodCallHandler
             }
             val bytes = call.argument<ByteArray>("bytes")
-            val name = call.argument<String>("name") ?: "gymmane.png"
+            val name = call.argument<String>("name") ?: "tren.png"
             if (bytes == null) {
                 result.error("no-bytes", "missing image", null)
                 return@setMethodCallHandler
@@ -393,7 +393,7 @@ class MainActivity : FlutterActivity() {
             val values = ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, name)
                 put(MediaStore.Images.Media.MIME_TYPE, "image/png")
-                put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/GymMane")
+                put(MediaStore.Images.Media.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/TREN")
                 put(MediaStore.Images.Media.IS_PENDING, 1)
             }
             val resolver = contentResolver
@@ -408,7 +408,7 @@ class MainActivity : FlutterActivity() {
 
         val dir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-            "GymMane",
+            "TREN",
         )
         if (!dir.exists() && !dir.mkdirs()) return false
         val file = File(dir, name)
