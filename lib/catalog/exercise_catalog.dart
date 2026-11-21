@@ -7483,7 +7483,6 @@ const List<Exercise> kExercises = [
 const List<ToolMeta> kToolMeta = [
   ToolMeta('rm', '1RM', 'Estimated one-rep max'),
   ToolMeta('bmi', 'BMI', 'Body mass index'),
-  ToolMeta('cal', 'Calories', 'Calories & macros'),
   ToolMeta('bf', 'Body Fat', 'Body fat percentage'),
   ToolMeta('ffmi', 'FFMI', 'Fat-free mass index'),
   ToolMeta('plate', 'Plates', 'Barbell plate calculator'),
@@ -7491,8 +7490,6 @@ const List<ToolMeta> kToolMeta = [
   ToolMeta('rpe', 'RPE load', 'Weight for a target effort'),
   ToolMeta('dots', 'Strength level', 'DOTS score'),
   ToolMeta('wilks', 'Wilks', 'Wilks score'),
-  ToolMeta('protein', 'Protein', 'Daily protein'),
-  ToolMeta('water', 'Water', 'Daily water'),
 ];
 
 const List<String> kFilterMuscles = [
