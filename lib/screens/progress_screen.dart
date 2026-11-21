@@ -2483,7 +2483,6 @@ class _DaySheet extends StatelessWidget {
 
   Widget _loggedRow(BuildContext context, GymColors gc, LoggedSession s, LoggedExercise e) {
     final detail = fit.setsSummary(e.sets);
-    final kcal = fit.cardioKcal(s, e);
     final records = fit.recordSets;
     final broke = [for (final st in e.workingSets) if (records.contains(st)) st];
     return Padding(
@@ -2519,11 +2518,6 @@ class _DaySheet extends StatelessWidget {
                           style: AppTheme.s(11, weight: FontWeight.w700, color: gc.brass)),
                     ),
                   ]),
-                ],
-                if (kcal != null) ...[
-                  const SizedBox(height: 2),
-                  Text('${kcal.own ? '' : '≈ '}${fit.energyOf(kcal.active)} ${fit.energyUnit} ${t.kcalActive}',
-                      style: AppTheme.s(11, weight: FontWeight.w600, color: gc.warn)),
                 ],
                 for (var i = 0; i < e.sets.length; i++)
                   if (e.sets[i].note.isNotEmpty) ...[
@@ -2757,7 +2751,7 @@ void showEditLoggedSheet(BuildContext context, LoggedSession s, LoggedExercise e
                   ),
                   if (fit.loggedDistance(e) && fit.walksOrRuns(e)) ...[
                     const SizedBox(height: 12),
-                    _cardioKcalCard(sheetCtx, gc, s, e),
+                    _cardioInclineCard(sheetCtx, gc, e),
                   ],
                   const SizedBox(height: 16),
                   PrimaryButton(label: t.done, onTap: () => Navigator.pop(sheetCtx), height: 52),
@@ -2771,83 +2765,26 @@ void showEditLoggedSheet(BuildContext context, LoggedSession s, LoggedExercise e
   );
 }
 
-Widget _cardioKcalCard(BuildContext context, GymColors gc, LoggedSession s, LoggedExercise e) {
-  final kcal = fit.cardioKcal(s, e);
+Widget _cardioInclineCard(BuildContext context, GymColors gc, LoggedExercise e) {
   final incline = e.incline ?? 0;
-  Widget link(String label, VoidCallback onTap) => GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Text(label, style: AppTheme.s(13, weight: FontWeight.w600, color: gc.accent)),
-        ),
-      );
   return Container(
-    padding: const EdgeInsets.fromLTRB(14, 12, 14, 6),
+    padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
     decoration: BoxDecoration(color: gc.bgRaised2, borderRadius: BorderRadius.circular(14)),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Row(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(PhosphorIconsFill.fire, size: 18, color: gc.warn),
-            const SizedBox(width: 8),
-            if (kcal == null)
-              Expanded(child: Text(t.kcalNeedsData, style: AppTheme.s(13, color: gc.textSecondary)))
-            else ...[
-              Text('${kcal.own ? '' : '≈ '}${fit.energyOf(kcal.active)} ${fit.energyUnit}',
-                  style: AppTheme.d(20, weight: FontWeight.w700, color: gc.text)),
-              const SizedBox(width: 6),
-              Expanded(
-                child: Text('${t.kcalActive} · ${kcal.own ? t.kcalYours : t.kcalEstimated}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTheme.s(12, color: gc.textSecondary)),
-              ),
-            ],
-          ],
-        ),
-        if (kcal != null) ...[
-          const SizedBox(height: 4),
-          Text(t.kcalTotalRest('${fit.energyOf(kcal.total)} ${fit.energyUnit}'),
-              style: AppTheme.s(11.5, color: gc.textTertiary)),
-        ],
-        const SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(child: Text(t.inclineLabel, style: AppTheme.s(13, weight: FontWeight.w500, color: gc.text))),
-            StepperControl(
-              value: '${fmt(incline)} %',
-              onDec: () => fit.setLoggedIncline(e, incline - 0.5),
-              onInc: () => fit.setLoggedIncline(e, incline + 0.5),
-              onEdit: () async {
-                final v = await askNumber(context, title: t.inclineLabel, initial: fmt(incline), decimal: true);
-                if (v != null) fit.setLoggedIncline(e, v);
-              },
-              minWidth: 52,
-              btnSize: 26,
-              gap: 8,
-              fontSize: 14,
-            ),
-          ],
-        ),
-        if (kcal != null && !kcal.own) ...[
-          const SizedBox(height: 6),
-          Text(t.kcalHowEstimated, style: AppTheme.s(11, color: gc.textTertiary, height: 1.35)),
-        ],
-        Row(
-          children: [
-            link(t.kcalUseOwn, () async {
-              final v = await askNumber(context,
-                  title: t.kcalOwnTitle, initial: kcal == null ? '' : '${fit.energyOf(kcal.active)}', decimal: false);
-              if (v != null) fit.setLoggedKcal(e, fit.kcalFromShown(v).round());
-            }),
-            if (e.kcal != null) ...[
-              const SizedBox(width: 18),
-              link(t.kcalBackToEstimate, () => fit.setLoggedKcal(e, null)),
-            ],
-          ],
+        Expanded(child: Text(t.inclineLabel, style: AppTheme.s(13, weight: FontWeight.w500, color: gc.text))),
+        StepperControl(
+          value: '${fmt(incline)} %',
+          onDec: () => fit.setLoggedIncline(e, incline - 0.5),
+          onInc: () => fit.setLoggedIncline(e, incline + 0.5),
+          onEdit: () async {
+            final v = await askNumber(context, title: t.inclineLabel, initial: fmt(incline), decimal: true);
+            if (v != null) fit.setLoggedIncline(e, v);
+          },
+          minWidth: 52,
+          btnSize: 26,
+          gap: 8,
+          fontSize: 14,
         ),
       ],
     ),

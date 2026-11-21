@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/state/fit_state.dart';
 
 void main() {
@@ -10,7 +10,7 @@ void main() {
     fit.trainStep = 'select';
     fit.selectedMuscles.clear();
 
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pumpAndSettle();
 
     expect(find.text('Chest'), findsNothing);

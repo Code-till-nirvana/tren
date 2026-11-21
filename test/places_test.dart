@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/catalog/program_templates.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/screens/places_screen.dart';
@@ -208,7 +208,7 @@ void main() {
   testWidgets('the library screen carries the place chips', (tester) async {
     fit.addPlace('Casa', equipment: {'Dumbbell'});
     fit.route = 'exercises';
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pumpAndSettle();
 
     await tester.tap(find.text(t.filters));

@@ -64,6 +64,7 @@ String dayMarkdown(DateTime day, {required bool full}) {
 
 bool dayHasMore(DateTime day) {
   final d = DateTime(day.year, day.month, day.day);
+  return _sessionsIn(d, d).isNotEmpty || _bodyLines(d).isNotEmpty;
 }
 
 RepHeader _header(RangeReport r, ReportKind kind, DateTime now) {

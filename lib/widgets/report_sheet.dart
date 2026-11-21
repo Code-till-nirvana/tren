@@ -122,7 +122,7 @@ class _ReportSheetState extends State<ReportSheet> {
     final kinds = [
       (ReportKind.summary, PhosphorIconsRegular.chartBar, t.reportKindSummary, t.reportKindSummaryHint),
       (ReportKind.training, PhosphorIconsRegular.barbell, t.reportKindTraining, t.reportKindTrainingHint),
-      (ReportKind.full, PhosphorIconsRegular.files, t.reportKindFull, t.reportKindFullNoFoodHint),
+      (ReportKind.full, PhosphorIconsRegular.files, t.reportKindFull, t.reportKindFullHint),
     ];
     Widget stat(String label, String value) => Expanded(
           child: Container(

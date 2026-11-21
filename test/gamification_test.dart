@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/services/local_store.dart';
@@ -86,7 +86,7 @@ void main() {
     fit.resetRoute('settings');
 
     Future<void> show() async {
-      await tester.pumpWidget(const GymManeApp());
+      await tester.pumpWidget(const TrenApp());
       for (var i = 0; i < 20; i++) {
         await tester.pump(const Duration(milliseconds: 100));
       }

@@ -261,7 +261,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
   void dispose() {
     sheetRecede.removeListener(_syncBlurSnap);
     _blurAgain?.cancel();
-    _snapLater?.cancel();
     _blurred?.dispose();
     fit.removeListener(_fitChanged);
     _snap.dispose();

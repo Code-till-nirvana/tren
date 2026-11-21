@@ -327,7 +327,7 @@ void main() {
     expect(fit.heatTone, 'green');
   });
 
-  test('vuelve la copia completa de circuitos, medidas, carnet, Salud y notas por serie', () async {
+  test('vuelve la copia completa de circuitos, medidas, carnet y notas por serie', () async {
     await seedTwoYears();
     final last = fit.sessions.last;
     last.exercises.first.sets[0] = LoggedSet(10, 80, note: 'Agarre flojo');
@@ -341,8 +341,6 @@ void main() {
     fit.addGymPass(name: 'Gym del barrio', code: '123456');
     fit.setTextSize('large');
     fit.setCalmMotion(true);
-    fit.hcWrite = true;
-    fit.hcWeights = true;
 
     final zip = await buildBackupZip();
     fit.resetAllData();
@@ -357,13 +355,10 @@ void main() {
     expect(fit.gymPasses.single.name, 'Gym del barrio');
     expect(fit.textSize, 'large');
     expect(fit.calmMotion, isTrue);
-    expect(fit.hcWrite, isTrue);
-    expect(fit.hcWeights, isTrue);
 
     fit.persistNow();
     fit.loadFromStore();
     expect(fit.circuits.single.name, 'Core rápido');
     expect(fit.textSize, 'large');
-    expect(fit.hcWrite, isTrue);
   });
 }

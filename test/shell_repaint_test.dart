@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gymmane/widgets/glass.dart';
 import 'package:gymmane/widgets/ui_kit.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/services/local_store.dart';
 import 'package:gymmane/services/progress_reminder.dart';
@@ -30,7 +30,7 @@ void main() {
 
   Future<void> open(WidgetTester tester, String route) async {
     fit.route = route;
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pumpAndSettle();
   }
 

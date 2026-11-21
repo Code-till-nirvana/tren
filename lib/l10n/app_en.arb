@@ -2026,8 +2026,6 @@
     }
   },
   "mergedToast": "History merged",
-  "kcalLabel": "CALORIES",
-  "kcalOver": "over",
   "glassSize": "Glass size",
   "suppCreatine": "Creatine",
   "suppVitaminD": "Vitamin D",
@@ -2057,8 +2055,6 @@
   "entryRemoved": "Removed",
   "goalsFromProfile": "Calculate from my profile",
   "goalsFromProfileHint": "Calories from your profile, 1.8 g of protein and 35 ml of water per kg of bodyweight.",
-  "kcalEaten": "Eaten",
-  "kcalRemaining": "Remaining",
   "shakeEmpty": "Tap to pick your shake",
   "shakeTapHint": "Tap: + {name}",
   "@shakeTapHint": {
@@ -2087,7 +2083,6 @@
   "fiberLabel": "Fiber",
   "sugarLabel": "Sugar",
   "sodiumLabel": "Sodium",
-  "kcalBurned": "Burned",
   "moreNutrients": "Fiber, sugar and sodium",
   "ofGoal": "of {goal} {unit}",
   "@ofGoal": {
@@ -2721,23 +2716,7 @@
     }
   },
   "stopwatch": "Stopwatch",
-  "kcalActive": "active",
-  "kcalEstimated": "estimated",
-  "kcalYours": "your value",
-  "kcalTotalRest": "{value} in total, counting what you burn at rest",
   "inclineLabel": "Incline",
-  "kcalUseOwn": "Use my value",
-  "kcalBackToEstimate": "Back to the estimate",
-  "kcalNeedsData": "Add distance and time to estimate the calories",
-  "kcalHowEstimated": "Estimated from distance, time, incline and your weight (ACSM formula).",
-  "kcalOwnTitle": "Active calories",
-  "@kcalTotalRest": {
-    "placeholders": {
-      "value": {
-        "type": "String"
-      }
-    }
-  },
   "planMine": "My plan",
   "planNew": "New plan",
   "planSaveWeek": "Save this week",
@@ -4490,7 +4469,7 @@
   "reportKindTraining": "Training",
   "reportKindTrainingHint": "For your coach: every workout with its sets, RPE and notes",
   "reportKindFull": "Everything",
-  "reportKindFullHint": "Training, nutrition, body and health, day by day",
+  "reportKindFullHint": "Training, body measurements and daily activity, day by day.",
   "reportKickerTraining": "DETAILED TRAINING REPORT",
   "reportKickerFull": "COMPLETE REPORT",
   "reportWorkoutLog": "Workout log",

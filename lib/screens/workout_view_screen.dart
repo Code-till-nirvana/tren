@@ -122,7 +122,6 @@ class _ExerciseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final gc = context.gc;
     final e = exercise;
-    final kcal = fit.cardioKcal(session, e);
     var n = 0;
     return SoftCard(
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
@@ -141,11 +140,6 @@ class _ExerciseCard extends StatelessWidget {
             Icon(PhosphorIconsRegular.caretRight, size: 15, color: gc.textTertiary),
           ]),
         ),
-        if (kcal != null) ...[
-          const SizedBox(height: 2),
-          Text('${kcal.own ? '' : '≈ '}${fit.energyOf(kcal.active)} ${fit.energyUnit} ${t.kcalActive}',
-              style: AppTheme.f(12, weight: FontWeight.w600, color: gc.textSecondary)),
-        ],
         const SizedBox(height: 8),
         for (final x in e.sets) _setRow(gc, x, x.counts ? ++n : null),
       ]),

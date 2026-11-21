@@ -38,6 +38,8 @@ void main() {
     final template = arb('en').keys.where((k) => !k.startsWith('@')).toSet();
     final pending =
         File('test/pending_translation_keys.txt').readAsLinesSync().where((k) => k.isNotEmpty).toSet();
+    final optional =
+        File('test/optional_localization_keys.txt').readAsLinesSync().where((k) => k.isNotEmpty).toSet();
     for (final code in appLanguages.where((c) => c != 'en')) {
       final keys = arb(code).keys.where((k) => !k.startsWith('@')).toSet();
       expect(template.difference(keys).difference(optional).difference(pending), isEmpty,

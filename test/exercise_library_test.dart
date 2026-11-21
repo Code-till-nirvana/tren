@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/catalog/exercise_catalog.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/models/workout.dart';
@@ -288,7 +288,7 @@ void main() {
       tester.view.devicePixelRatio = 2.75;
       addTearDown(tester.view.reset);
       fit.route = 'exercises';
-      await tester.pumpWidget(const GymManeApp());
+      await tester.pumpWidget(const TrenApp());
       await tester.pumpAndSettle();
 
       await tester.tap(find.text(t.filters));

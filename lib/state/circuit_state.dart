@@ -57,7 +57,6 @@ mixin CircuitState on FitCore, LibraryState {
     final entry = LoggedSession(end, seconds, exercises, name: c.name);
     sessions.add(entry);
     sessions.sort((a, b) => a.date.compareTo(b.date));
-    healthSave(entry);
     persistNow();
     _refreshWidgets();
     refreshAwards();

@@ -464,7 +464,6 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
 
   void deleteSession(LoggedSession s) {
     sessions.remove(s);
-    healthForget(s);
     _releaseLevel(s, s.exercises.map((e) => e.id));
     persistNow();
     _refreshWidgets();
@@ -474,7 +473,6 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
   void setSessionDuration(LoggedSession s, int seconds) {
     if (!sessions.contains(s) || seconds < 0 || seconds == s.durationSec) return;
     s.durationSec = seconds;
-    healthSave(s);
     persistNow();
     notifyListeners();
   }
@@ -483,9 +481,7 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
     s.exercises.remove(e);
     if (s.exercises.isEmpty) {
       sessions.remove(s);
-      healthForget(s);
     } else {
-      healthSave(s);
     }
     _releaseLevel(s, [e.id]);
     persistNow();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/services/local_store.dart';
 import 'package:gymmane/state/fit_state.dart';
@@ -24,7 +24,7 @@ void main() {
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 2.75;
     addTearDown(tester.view.reset);
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pumpAndSettle();
 
     expect(find.byIcon(PhosphorIconsBold.arrowLeft), findsNothing);

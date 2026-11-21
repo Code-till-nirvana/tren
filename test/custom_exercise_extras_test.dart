@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/models/exercise.dart';
 import 'package:gymmane/screens/exercises_screen.dart';
@@ -98,7 +98,7 @@ void main() {
     fit.onboarded = true;
     fit.pendingAwards.clear();
     fit.goExercises();
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     for (var i = 0; i < 10; i++) {
       await tester.pump(const Duration(milliseconds: 80));
     }

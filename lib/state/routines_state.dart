@@ -338,6 +338,8 @@ mixin RoutinesState on FitCore, LibraryState {
   @override
   bool hasPlanOn(DateTime day) => routinesOn(day).isNotEmpty;
 
+  bool isTrainingDay(DateTime day) => routinesOn(day).isNotEmpty;
+
   List<Routine> routinesOn(DateTime day) =>
       rotating ? _rotationOn(day) : [for (final id in planIdsFor(day)) ?_routine(id)];
 

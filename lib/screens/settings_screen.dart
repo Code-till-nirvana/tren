@@ -769,6 +769,7 @@ class SettingsScreen extends StatelessWidget {
               (PhosphorIconsRegular.export, t.stravaRow, () => showStravaSheet(context)),
               (PhosphorIconsRegular.barbell, t.clearWorkouts, () => _clearWorkouts(context)),
               (PhosphorIconsRegular.trash, t.resetData, () => _resetAll(context)),
+          ]),
         ];
       default:
         return [

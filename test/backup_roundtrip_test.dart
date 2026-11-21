@@ -113,8 +113,6 @@ void main() {
     fit.addMeasure('waist', 80.5);
     await fit.addMoment(await source('moment.png'), note: 'Hito');
 
-    fit.setStepsGoal(10000);
-
     fit.refreshAwards(silent: true);
   }
 

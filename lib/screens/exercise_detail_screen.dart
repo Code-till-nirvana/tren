@@ -662,7 +662,7 @@ class _ExerciseDetailScreenState extends State<ExerciseDetailScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(color: gc.bgRaised, borderRadius: BorderRadius.circular(15)),
-                child: Text(t.healthSeeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
+                child: Text(t.seeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
               ),
             ),
           ),

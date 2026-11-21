@@ -151,7 +151,7 @@ mixin MeasuresState on FitCore {
     final unit = measureUnit(m.key);
     if (isPressure(m.key)) {
       final bp = '${measureHeadline(m)} $unit';
-      return m.pulse == null ? bp : '$bp · ${m.pulse} ${t.healthBpm}';
+      return m.pulse == null ? bp : '$bp · ${m.pulse} ${'bpm'}';
     }
     if (m.sided) {
       return '${t.measureLeftShort} ${measureValue(m.key, m.left!)} · ${t.measureRightShort} ${measureValue(m.key, m.right!)} $unit';

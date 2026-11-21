@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -493,7 +492,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   _in(2, Text('TRAIN. EVOLVE. BECOME.',
                       style: AppTheme.f(10.5, weight: FontWeight.w800, color: gc.accent, letterSpacing: 2.1))),
                   const SizedBox(height: 12),
-                  _in(3, Text(kIsWeb ? t.webWelcomeBlurb : t.welcomeBlurb,
+                  _in(3, Text(t.welcomeBlurb,
                       style: AppTheme.f(15, weight: FontWeight.w500, color: gc.textSecondary, height: 1.5))),
                 ],
               ),
@@ -515,9 +514,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     4,
                     _group(gc, [
                       _promise(gc, PhosphorIconsRegular.gift, t.freeForever, t.freeForeverWhy),
-                      kIsWeb
-                          ? _promise(gc, PhosphorIconsRegular.hardDrives, t.webOwnServer, t.webOwnServerWhy)
-                          : _promise(gc, PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
+                      _promise(gc, PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
                       _promise(gc, PhosphorIconsRegular.export, t.yoursToTake, t.yoursToTakeWhy),
                     ]),
                   ),
@@ -573,7 +570,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 3,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Text(kIsWeb ? t.webWelcomeBlurb : t.welcomeBlurb,
+                  child: Text(t.welcomeBlurb,
                       style: AppTheme.f(14.5, weight: FontWeight.w500, color: gc.textSecondary, height: 1.5)),
                 ),
               ),
@@ -582,9 +579,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 4,
                 _group(gc, [
                   _promise(gc, PhosphorIconsRegular.gift, t.freeForever, t.freeForeverWhy),
-                  kIsWeb
-                      ? _promise(gc, PhosphorIconsRegular.hardDrives, t.webOwnServer, t.webOwnServerWhy)
-                      : _promise(gc, PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
+                  _promise(gc, PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
                   _promise(gc, PhosphorIconsRegular.export, t.yoursToTake, t.yoursToTakeWhy),
                 ]),
               ),

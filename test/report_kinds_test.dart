@@ -7,7 +7,6 @@ import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/models/measure.dart';
 import 'package:gymmane/models/report_doc.dart';
 import 'package:gymmane/models/workout.dart';
-import 'package:gymmane/services/health_metrics.dart';
 import 'package:gymmane/services/local_store.dart';
 import 'package:gymmane/services/plan_pdf.dart';
 import 'package:gymmane/services/report_content.dart';
@@ -65,18 +64,16 @@ void main() {
       expect('### '.allMatches(md).length, 2);
     });
 
-    test('todo: día a día con entreno, peso y salud', () {
+    test('todo: día a día con entreno y peso', () {
       lift(1, 100);
       fit.bodyweight.add(BodyweightEntry(ago(1, 8), 81.4));
-      fit.healthShown.add(HealthMetric.restingHr);
-      fit.healthByDay[HealthMetric.restingHr] = {HealthMetrics.dayKey(ago(1)): [57]};
       final md = reportMarkdown(reportBlocks(range(7), ReportKind.full));
       expect(md, contains('COMPLETE REPORT'));
       expect(md, contains('## Day by day'));
       final day = md.substring(md.indexOf('### ${t.longDate(ago(1))}'));
       expect(day, contains('Barbell Bench Press'));
-      expect(day, contains('- Bodyweight 81.4 kg · Resting heart rate 57 bpm'));
-      expect(md, contains('## Health · daily average'));
+      expect(day, contains('- Bodyweight 81.4 kg'));
+      expect(md, isNot(contains('## Health')));
     });
 
     test('el resumen se queda como estaba: sin día a día ni datos personales', () {
@@ -128,27 +125,6 @@ void main() {
         }
       }
       await tester.pump(const Duration(seconds: 5));
-    });
-  });
-
-  group('tensión en Salud (#338)', () {
-    test('junta las lecturas a mano con las de Health Connect', () {
-      fit.healthShown.add(HealthMetric.bloodPressure);
-      fit.healthByDay[HealthMetric.bloodPressure] = {HealthMetrics.dayKey(ago(3)): [130, 85]};
-      fit.addPressure(120, 80, date: ago(3, 9));
-      fit.addPressure(118, 76, date: ago(1, 9));
-      expect(fit.healthOnDay(HealthMetric.bloodPressure, ago(3)), [125, 82.5]);
-      final latest = fit.healthLatest(HealthMetric.bloodPressure)!;
-      expect(latest.day, ago(1));
-      expect(latest.values, [118, 76]);
-      expect(fit.healthOnDay(HealthMetric.restingHr, ago(1)), isNull);
-    });
-
-    test('sin lecturas a mano queda como antes', () {
-      fit.healthByDay[HealthMetric.bloodPressure] = {HealthMetrics.dayKey(ago(2)): [121, 79]};
-      expect(fit.healthOnDay(HealthMetric.bloodPressure, ago(2)), [121, 79]);
-      expect(fit.healthLatest(HealthMetric.bloodPressure)!.values, [121, 79]);
-      expect(fit.healthLatest(HealthMetric.hrv), isNull);
     });
   });
 

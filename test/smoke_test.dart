@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/state/fit_state.dart';
@@ -26,7 +26,7 @@ void main() {
 
   Future<void> visit(WidgetTester tester, String route) async {
     fit.route = route;
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pump(const Duration(milliseconds: 400));
     expect(tester.takeException(), isNull, reason: 'la pantalla $route reventó');
   }

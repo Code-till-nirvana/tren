@@ -499,7 +499,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
           padding: const EdgeInsets.symmetric(horizontal: 12),
           alignment: Alignment.center,
           decoration: BoxDecoration(color: gc.bgRaised2, borderRadius: BorderRadius.circular(14)),
-          child: Text(t.healthSeeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
+          child: Text(t.seeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
         ),
       );
 

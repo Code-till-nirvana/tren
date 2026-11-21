@@ -1,6 +1,3 @@
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/widgets.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
@@ -40,8 +37,6 @@ const Map<String, Map<String, List<String>>> _catalogSteps = {'es': kExerciseSte
 
 String appLanguage = 'en';
 AppLocalizations t = lookupAppLocalizations(const Locale('en'));
-
-String health(String text) => !kIsWeb && Platform.isIOS ? text.replaceAll('Health Connect', 'Apple Health') : text;
 
 String _codeOf(Locale l) => l.scriptCode == null ? l.languageCode : '${l.languageCode}_${l.scriptCode}';
 
@@ -111,8 +106,6 @@ extension GymL10n on AppLocalizations {
         'dots' => toolNameDots,
         'wilks' => toolNameWilks,
         'ffmi' => toolNameFfmi,
-        'protein' => toolNameProtein,
-        'water' => toolNameWater,
         _ => toolNameWarmup,
       };
 
@@ -126,8 +119,6 @@ extension GymL10n on AppLocalizations {
         'dots' => toolTitleDots,
         'wilks' => toolTitleWilks,
         'ffmi' => toolTitleFfmi,
-        'protein' => toolTitleProtein,
-        'water' => toolTitleWater,
         _ => toolTitleWarmup,
       };
 
@@ -136,8 +127,6 @@ extension GymL10n on AppLocalizations {
         'cal' => toolHintCal,
         'bf' => toolHintBf,
         'plate' => toolHintPlate,
-        'protein' => toolHintProtein,
-        'water' => toolHintWater,
         _ => toolHintWarmup,
       };
 
@@ -164,8 +153,6 @@ extension GymL10n on AppLocalizations {
         'dots' => toolDescDots,
         'wilks' => toolDescWilks,
         'ffmi' => toolDescFfmi,
-        'protein' => toolDescProtein,
-        'water' => toolDescWater,
         _ => toolDescWarmup,
       };
 

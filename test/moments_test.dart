@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/gymmane_app.dart';
+import 'package:gymmane/app/tren_app.dart';
 import 'package:gymmane/l10n/l10n.dart';
 import 'package:gymmane/services/local_store.dart';
 import 'package:gymmane/state/fit_state.dart';
@@ -27,7 +27,7 @@ void main() {
       fit.moments.add(Moment(now.subtract(Duration(days: i)), 'missing-$i.jpg'));
     }
     fit.goMoments();
-    await tester.pumpWidget(const GymManeApp());
+    await tester.pumpWidget(const TrenApp());
     await tester.pumpAndSettle();
 
     final built = find.byType(FileThumb).evaluate().length;

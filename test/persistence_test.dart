@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gymmane/models/note.dart';
-import 'package:gymmane/models/nutrition.dart';
 import 'package:gymmane/models/profile.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/services/local_store.dart';
@@ -195,14 +194,12 @@ void main() {
       expect(jsonEncode(Store.instance.load()), jsonEncode(stored()));
     }
 
-    test('lo guardado es igual que toJson, también tras editar entrenos y comidas', () {
+    test('lo guardado es igual que toJson tras editar entrenos', () {
       for (var i = 0; i < 5; i++) {
         fit.sessions.add(LoggedSession(DateTime(2026, 3, 1 + i, 18), 3600, [
           LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(8, 60), LoggedSet(6, 70)]),
         ]));
       }
-      final food = fit.saveFood(name: 'Avena', macros: const Macros(kcal: 380, protein: 13, carbs: 60, fat: 7));
-      fit.logFood(food, meal: Meal.breakfast);
       same();
 
       fit.sessions[1].name = 'Pierna';
@@ -218,10 +215,6 @@ void main() {
       fit.sessions[0].exercises.add(LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(1, 1)]));
       same();
       fit.sessions.removeAt(2);
-      same();
-      fit.logFood(food, servings: 2, meal: Meal.lunch);
-      same();
-      fit.foodLog.removeAt(0);
       same();
     });
 

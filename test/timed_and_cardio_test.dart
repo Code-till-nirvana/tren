@@ -478,11 +478,6 @@ void main() {
       expect(fit.cardioKcal(s, s.exercises.first)!.active, 175);
     });
 
-    test('las kcal quemadas del día usan el cardio y el resto como pesas', () {
-      walk('walking', 5, 3600, dur: 5400);
-      expect(fit.burnedOn(DateTime.now()), 175 + 140);
-    });
-
     test('la inclinación y el valor propio se guardan', () async {
       final s = walk('walking', 5, 3600);
       fit.setLoggedIncline(s.exercises.first, 4);
