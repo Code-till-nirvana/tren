@@ -1356,7 +1356,7 @@ class _Sidebar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(14, 20, 14, 16),
       decoration: BoxDecoration(
         color: gc.bgRaised.withValues(alpha: 0.72),
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Padding(
