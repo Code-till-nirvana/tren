@@ -1,6 +1,5 @@
 import '../l10n/l10n.dart';
 import '../models/measure.dart';
-import '../models/nutrition.dart';
 import '../models/report_doc.dart';
 import '../models/workout.dart';
 import '../services/health_metrics.dart';
@@ -17,34 +16,18 @@ String reportRangeLabel(RangeReport r) => r.from.year == r.to.year
 String reportKicker(ReportKind kind) => switch (kind) {
       ReportKind.summary => t.reportKicker,
       ReportKind.training => t.reportKickerTraining,
-      ReportKind.nutrition => t.reportKickerNutrition,
       ReportKind.full => t.reportKickerFull,
     };
-
-bool reportHasNutrition(DateTime from, DateTime to) {
-  if (!fit.nutritionBeta) return false;
-  for (var d = from; !d.isAfter(to); d = shiftDays(d, 1)) {
-    if (fit.entriesOn(d).isNotEmpty || fit.waterOn(d) > 0) return true;
-  }
-  return false;
-}
 
 List<ReportBlock> reportBlocks(RangeReport r, ReportKind kind, {DateTime? now}) {
   final at = now ?? DateTime.now();
   final b = <ReportBlock>[_header(r, kind, at)];
-  final training = kind != ReportKind.nutrition;
-  final food = kind != ReportKind.training && kind != ReportKind.summary;
+  final training = true;
   if (training) b.addAll(_trainingSummary(r));
   if (kind == ReportKind.summary) {
     b.addAll(_bodySummary(r, measures: false));
-    if (r.food case final f?) {
-      b
-        ..add(RepSection(t.reportFood(f.days)))
-        ..add(RepPairs(_foodAverages(f)));
-    }
     return b;
   }
-  if (food) b.addAll(_nutritionSummary(r));
   b.addAll(_bodySummary(r, measures: true));
   if (kind == ReportKind.full) b.addAll(_healthSummary(r));
   switch (kind) {
@@ -56,16 +39,6 @@ List<ReportBlock> reportBlocks(RangeReport r, ReportKind kind, {DateTime? now}) 
           b
             ..add(RepDay(t.longDate(s.day), _sessionLine(s)))
             ..addAll(_sessionGroups(s));
-        }
-      }
-    case ReportKind.nutrition:
-      final days = [for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1)) if (_hasFood(d)) d];
-      if (days.isNotEmpty) {
-        b.add(RepSection(t.reportFoodLog));
-        for (final d in days) {
-          b
-            ..add(RepDay(t.longDate(d), _foodLine(d)))
-            ..addAll(_mealGroups(d));
         }
       }
     case ReportKind.full:
@@ -89,11 +62,7 @@ List<ReportBlock> reportBlocks(RangeReport r, ReportKind kind, {DateTime? now}) 
 
 String dayMarkdown(DateTime day, {required bool full}) {
   final day0 = DateTime(day.year, day.month, day.day);
-  final blocks = <ReportBlock>[
-    RepDay(t.longDate(day0), full ? '' : _foodLine(day0)),
-    ...full ? _dayBlocks(day0, full: true) : _mealGroups(day0),
-  ];
-  return reportMarkdown(blocks);
+  return reportMarkdown([RepDay(t.longDate(day0)), ..._dayBlocks(day0, full: full)]);
 }
 
 bool dayHasMore(DateTime day) {
@@ -171,90 +140,6 @@ List<ReportBlock> _trainingSummary(RangeReport r) {
       ]),
     ],
   ];
-}
-
-List<(String, String)> _foodAverages(ReportFood f) => [
-      (sentenceCase(t.kcalLabel), '${fit.energyOf(f.kcal)} ${fit.energyUnit}'),
-      (sentenceCase(t.macroProtein), '${f.protein.round()} g'),
-      (sentenceCase(t.macroCarbs), '${f.carbs.round()} g'),
-      (sentenceCase(t.macroFat), '${f.fat.round()} g'),
-      if (f.waterMl > 0) (sentenceCase(t.waterLabel), fit.waterLabel(f.waterMl)),
-    ];
-
-String _goalLine(NutritionGoals g) =>
-    '${fit.energyOf(g.kcal)} ${fit.energyUnit} · ${t.proteinLetter} ${g.protein} · ${t.carbsLetter} ${g.carbs} · ${t.fatLetter} ${g.fat} g';
-
-List<ReportBlock> _nutritionSummary(RangeReport r) {
-  final f = r.food;
-  if (f == null) return const [];
-  final days = [for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1)) if (fit.entriesOn(d).isNotEmpty) d];
-  var onTarget = 0, protein = 0;
-  var fiber = 0.0;
-  for (final d in days) {
-    final total = fit.totalOn(d);
-    final budget = fit.kcalBudgetOn(d);
-    if (budget > 0 && (total.kcal - budget).abs() <= budget * 0.1) onTarget++;
-    if (total.protein >= fit.goalsFor(d).protein) protein++;
-    fiber += total.fiber;
-  }
-  final rest = fit.restGoals;
-  final out = <ReportBlock>[
-    RepSection(t.reportFood(f.days)),
-    RepStats([
-      RepStat('${f.days}/${r.days}', t.reportSessionsCol),
-      RepStat('${fit.energyOf(f.kcal)}', fit.energyUnit.toUpperCase()),
-      RepStat('${f.protein.round()} g', t.macroProtein.toUpperCase()),
-      RepStat('${f.carbs.round()} g', t.macroCarbs.toUpperCase()),
-      RepStat('${f.fat.round()} g', t.macroFat.toUpperCase()),
-    ]),
-    RepPairs([
-      (t.reportGoalsLabel, _goalLine(fit.activeGoals)),
-      if (rest != null) (t.reportGoalsRest, _goalLine(rest)),
-      (t.reportKcalOnTarget, '$onTarget / ${days.length}'),
-      (t.reportProteinMet, '$protein / ${days.length}'),
-      if (fiber > 0) (t.fiberLabel, '${(fiber / days.length).round()} g'),
-      if (f.waterMl > 0) (sentenceCase(t.waterLabel), fit.waterLabel(f.waterMl)),
-    ]),
-    RepSection(t.reportDailyTotals),
-    RepTable(
-      head: [t.reportDateCol, fit.energyUnit.toUpperCase(), t.proteinLetter, t.carbsLetter, t.fatLetter, t.waterLabel],
-      rows: [
-        for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1))
-          if (_hasFood(d))
-            () {
-              final m = fit.totalOn(d);
-              final water = fit.waterOn(d);
-              return [
-                t.shortDate(d),
-                '${fit.energyOf(m.kcal)}',
-                '${m.protein.round()}',
-                '${m.carbs.round()}',
-                '${m.fat.round()}',
-                water > 0 ? fit.waterLabel(water) : '–',
-              ];
-            }(),
-      ],
-      widths: const [155, 80, 60, 60, 60, 100],
-    ),
-  ];
-  final names = {for (final s in fit.supplements) s.id: s.name};
-  final taken = <String, int>{};
-  for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1)) {
-    for (final id in fit.takenOn(d)) {
-      if (names.containsKey(id)) taken[id] = (taken[id] ?? 0) + 1;
-    }
-  }
-  if (taken.isNotEmpty) {
-    out
-      ..add(RepSection(titleCase(t.supplementsLabel)))
-      ..add(RepTable(
-        rows: [
-          for (final e in taken.entries.toList()..sort((a, b) => b.value.compareTo(a.value))) [names[e.key]!, t.reportDays(e.value)],
-        ],
-        widths: const [385, 130],
-      ));
-  }
-  return out;
 }
 
 List<BodyMeasure> _measuresIn(String key, DateTime from, DateTime to) {
@@ -352,49 +237,6 @@ List<ReportBlock> _sessionGroups(LoggedSession s) => [
           ),
     ];
 
-bool _hasFood(DateTime d) => fit.entriesOn(d).isNotEmpty || fit.waterOn(d) > 0;
-
-String _macros(Macros m) =>
-    '${t.proteinLetter} ${m.protein.round()} · ${t.carbsLetter} ${m.carbs.round()} · ${t.fatLetter} ${m.fat.round()} g';
-
-String _foodLine(DateTime d) {
-  final m = fit.totalOn(d);
-  final budget = fit.kcalBudgetOn(d);
-  final water = fit.waterOn(d);
-  return [
-    budget > 0
-        ? '${fit.energyOf(m.kcal)} / ${fit.energyOf(budget)} ${fit.energyUnit}'
-        : '${fit.energyOf(m.kcal)} ${fit.energyUnit}',
-    _macros(m),
-    if (water > 0) '${sentenceCase(t.waterLabel)} ${fit.waterLabel(water)}',
-  ].join(' · ');
-}
-
-List<ReportBlock> _mealGroups(DateTime d) {
-  final entries = fit.entriesOn(d);
-  final order = [for (final s in fit.mealSlots) s.meal];
-  for (final e in entries) {
-    if (!order.contains(e.meal)) order.add(e.meal);
-  }
-  return [
-    for (final meal in order)
-      if (entries.where((e) => e.meal == meal).toList() case final list when list.isNotEmpty)
-        RepGroup(
-          fit.mealLabel(meal),
-          trailing: '${fit.energyOf(list.fold(0.0, (s, e) => s + e.total.kcal))} ${fit.energyUnit}',
-          lines: [
-            for (final e in list)
-              [
-                e.name.isEmpty ? t.quickAdd : e.name,
-                if (fit.servingLabel(e) case final s when s.isNotEmpty) s,
-                '${fit.energyOf(e.total.kcal)} ${fit.energyUnit}',
-                _macros(e.total),
-              ].join(' · '),
-          ],
-        ),
-  ];
-}
-
 List<String> _healthLines(DateTime d) {
   final out = <String>[];
   final weights = [for (final w in fit.bodyweight) if (w.date.year == d.year && w.date.month == d.month && w.date.day == d.day) w];
@@ -421,11 +263,6 @@ List<ReportBlock> _dayBlocks(DateTime d, {required bool full}) {
     out
       ..add(RepSub(fit.sessionTitle(s) ?? t.healthWorkoutTitle, _sessionLine(s, title: false)))
       ..addAll(_sessionGroups(s));
-  }
-  if (fit.nutritionBeta && _hasFood(d)) {
-    out
-      ..add(RepSub(t.nutrition, _foodLine(d)))
-      ..addAll(_mealGroups(d));
   }
   if (full) {
     final health = _healthLines(d);
