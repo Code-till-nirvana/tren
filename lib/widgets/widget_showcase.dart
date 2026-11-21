@@ -7,11 +7,7 @@ import 'settings_showcase.dart' show ShowcaseFrame;
 class WidgetShowcase extends StatelessWidget {
   const WidgetShowcase({super.key, this.height = 380});
 
-  static bool _warm = false;
-
-  static void warm(BuildContext context) {
-    _warm = true;
-  }
+  static void warm(BuildContext context) {}
 
   final double height;
 
