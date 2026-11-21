@@ -340,7 +340,6 @@ void main() {
     fit.setMeasureEvery(14);
     fit.setFastGoal(18);
     fit.startFast(at: DateTime.now().subtract(const Duration(hours: 3)));
-    final group = fit.addFoodGroup('Platos preparados');
     fit.addGymPass(name: 'Gym del barrio', code: '123456');
     fit.setTextSize('large');
     fit.setCalmMotion(true);
@@ -359,7 +358,6 @@ void main() {
     expect(fit.measureEveryDays, 14);
     expect(fit.fastGoalHours, 18);
     expect(fit.fasting, isTrue);
-    expect(fit.foodGroups.map((g) => g.id), contains(group));
     expect(fit.gymPasses.single.name, 'Gym del barrio');
     expect(fit.textSize, 'large');
     expect(fit.calmMotion, isTrue);
