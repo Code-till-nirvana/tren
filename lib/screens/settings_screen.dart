@@ -726,6 +726,7 @@ class SettingsScreen extends StatelessWidget {
 
           ]),
           const SizedBox(height: 22),
+          const HomeCardsPanel(),
         ];
       case 'beta':
         return [

@@ -3,14 +3,9 @@ import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../catalog/exercise_catalog.dart';
 import '../l10n/l10n.dart';
-import '../models/gym_pass.dart';
-import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
-import 'ui_kit.dart';
 import 'charts.dart';
-import 'gym_pass_card.dart';
-import 'medal.dart';
 
 class _Collage extends StatelessWidget {
   const _Collage({required this.columns, this.left = const [], this.right = const [], this.offset = Offset.zero});

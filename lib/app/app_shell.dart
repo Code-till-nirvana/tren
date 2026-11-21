@@ -115,27 +115,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     });
   }
 
-  void _openFromWidget(String route) {
-    if (route == 'nfc/today' || route == 'today') {
-      if (mounted) openTodayFromTag(context, tag: route != 'today');
-      return;
-    }
-    if (route == 'pass') {
-      if (!mounted || !fit.onboarded) return;
-      final pass = fit.quickPass;
-      if (pass == null) {
-        if (!fit.isSessionActive) fit.goGymPasses();
-      } else {
-        showGymPass(context, pass);
-      }
-      return;
-    }
-    if (!mounted || !fit.onboarded || fit.isSessionActive) return;
-    if (route == 'play') {
-      playWorkout(context);
-    }
-  }
-
   void _receive(String text) {
     _incoming = text;
     _offerIncoming();

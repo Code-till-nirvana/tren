@@ -10,6 +10,8 @@ import 'glass.dart';
 import 'ui_kit.dart';
 
 class HomeCardsPanel extends StatelessWidget {
+  const HomeCardsPanel({super.key});
+
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'dart:math' as math;
 import 'dart:ui' show PlatformDispatcher;
 
 import 'package:app_settings/app_settings.dart';
-import 'package:flutter/foundation.dart' show listEquals, setEquals;
+import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

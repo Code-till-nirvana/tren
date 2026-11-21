@@ -3,7 +3,6 @@ import '../models/measure.dart';
 import '../models/report_doc.dart';
 import '../models/workout.dart';
 import '../state/fit_state.dart';
-import '../widgets/ui_kit.dart';
 
 const kReportDetailDays = 92;
 
