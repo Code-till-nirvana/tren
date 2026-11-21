@@ -313,32 +313,6 @@ Widget _rings(GymColors gc, List<(double, Color, String)> rings) => _Tile(
       ]),
     );
 
-Widget _macros(GymColors gc, List<(String, double, Color)> rows) => _Tile(
-      w: 330,
-      h: 124,
-      pad: 14,
-      child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        for (final (label, v, c) in rows)
-          Row(children: [
-            SizedBox(width: 70, child: Text(label, style: AppTheme.f(12.5, weight: FontWeight.w700, color: gc.textSecondary))),
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: SizedBox(
-                  height: 10,
-                  child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                    Expanded(flex: (v * 100).round(), child: ColoredBox(color: c)),
-                    Expanded(flex: 100 - (v * 100).round(), child: ColoredBox(color: gc.bgRaised)),
-                  ]),
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Text('${(v * 100).round()} %', style: AppTheme.f(12, weight: FontWeight.w800, color: gc.text)),
-          ]),
-      ]),
-    );
-
 const _sample = 'Aa';
 
 String _letter(int weekday) => t.weekdayShort(weekday).characters.first.toUpperCase();
@@ -515,29 +489,6 @@ class AlertsShowcase extends StatelessWidget {
         ),
       ),
     );
-    final supp = _Tile(
-      w: 150,
-      h: 140,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          Icon(PhosphorIconsRegular.pill, size: 26, color: gc.brass),
-          const Spacer(),
-          Text('10:00', style: AppTheme.f(13, weight: FontWeight.w700, color: gc.textSecondary)),
-        ]),
-        const Spacer(),
-        Text(t.suppCreatine, maxLines: 1, style: AppTheme.f(16, weight: FontWeight.w800, color: gc.text)),
-        Text('5 g', style: AppTheme.f(12.5, weight: FontWeight.w600, color: gc.textTertiary)),
-      ]),
-    );
-    final fast = _Tile(
-      w: 150,
-      h: 110,
-      child: Row(children: [
-        Icon(PhosphorIconsRegular.hourglassMedium, size: 30, color: gc.sage),
-        const SizedBox(width: 10),
-        _big(gc, '16 h', size: 26),
-      ]),
-    );
     return _Collage(
       offset: const Offset(22, -8),
       left: [
@@ -562,13 +513,13 @@ class AlertsShowcase extends StatelessWidget {
       ],
       right: [
         _stack(0, [
-          _wideStat(gc, PhosphorIconsRegular.pill, '10:00', t.suppCreatine, gc.brass),
-          _chips(gc, const ['5 g', '3 g', '500 mg', '1000 IU'], on: 0),
-          _macros(gc, [('P', 0.8, gc.accent), ('C', 0.55, gc.sage), ('G', 0.4, gc.warn)]),
-          _wideStat(gc, PhosphorIconsRegular.drop, '2 L', '', gc.info),
+          _wideStat(gc, PhosphorIconsRegular.barbell, '4 sets', 'Strength', gc.accent),
+          _chips(gc, const ['6 reps', '8 reps', '10 reps', '12 reps'], on: 0),
+          _bars(gc, const [0.8, 0.55, 0.4, 0.9, 0.6, 0.75], hi: 3),
+          _wideStat(gc, PhosphorIconsRegular.footprints, '6 240', 'steps', gc.sage),
           _bars(gc, const [0.3, 0.6, 0.45, 0.8, 0.55, 1.0, 0.7], hi: 5),
           _wideStat(gc, PhosphorIconsRegular.camera, '14', t.notifPhotoTitle, gc.info),
-          _rings(gc, [(0.7, gc.accent, '7/10'), (0.4, gc.sage, '2 L'), (0.9, gc.brass, '5 g')]),
+          _rings(gc, [(0.7, gc.accent, '7/10'), (0.4, gc.sage, '3/5'), (0.9, gc.brass, '4/4')]),
         ]),
         _stack(0, [
           _iconTile(gc, PhosphorIconsRegular.speakerHigh, '80 %', '', gc.text),
@@ -637,8 +588,10 @@ class AlertsShowcase extends StatelessWidget {
           ),
           _spark(gc, const [62, 75, 58, 90, 70, 84, 96, 78, 88], gc.accent, '1:30', t.liveResting),
         ]),
-        _stack(40, [timer, supp, fast, _iconTile(gc, PhosphorIconsRegular.ruler, '14', t.notifMeasureTitle, gc.warn),
-            _iconTile(gc, PhosphorIconsRegular.drop, '1,5 L', '', gc.info),
+        _stack(40, [timer, _iconTile(gc, PhosphorIconsRegular.barbell, '4/5', 'sets', gc.accent),
+            _iconTile(gc, PhosphorIconsRegular.clock, '45 min', '', gc.sage),
+            _iconTile(gc, PhosphorIconsRegular.ruler, '14', t.notifMeasureTitle, gc.warn),
+            _iconTile(gc, PhosphorIconsRegular.footprints, '6 240', 'steps', gc.info),
             _iconTile(gc, PhosphorIconsRegular.clockCountdown, '5 min', '', gc.accent)]),
       ],
     );
@@ -771,12 +724,12 @@ class HomeExtrasShowcase extends StatelessWidget {
           _bars(gc, const [0.6, 0.3, 0.8, 1.0, 0.0, 0.5, 0.7], hi: 3),
           _wideStat(gc, PhosphorIconsRegular.chartLineUp, '+2,5 kg', '', gc.sage),
           _chips(gc, const ['1 RM', '5 RM', '10 RM'], on: 0),
-          _macros(gc, [('P', 0.9, gc.accent), ('C', 0.6, gc.sage), ('G', 0.45, gc.warn)]),
+          _bars(gc, const [0.9, 0.6, 0.45, 0.7, 0.5, 0.8], hi: 0),
           _exerciseList(gc, 25),
           _spark(gc, const [80.2, 79.8, 79.9, 79.1, 78.9, 79.0, 78.6, 78.4], gc.brass, '78,4', 'kg'),
         ]),
         _stack(0, [
-          _iconTile(gc, PhosphorIconsRegular.drop, '2,1 L', '', gc.info),
+          _iconTile(gc, PhosphorIconsRegular.scales, '78,4', 'kg', gc.info),
           _toggleTile(gc, PhosphorIconsRegular.bell, true),
           _iconTile(gc, PhosphorIconsRegular.clock, '17:05', '', gc.textSecondary),
           _iconTile(gc, PhosphorIconsRegular.trendUp, '+12 %', '', gc.sage),
@@ -1022,7 +975,7 @@ class LookShowcase extends StatelessWidget {
           _iconTile(gc, PhosphorIconsRegular.palette, '4', '', gc.accent),
           _iconTile(gc, PhosphorIconsRegular.frameCorners, '16', '', gc.textSecondary),
           _iconTile(gc, PhosphorIconsRegular.monitor, '1440', '', gc.textSecondary),
-          _toggleTile(gc, PhosphorIconsRegular.drop, true),
+          _toggleTile(gc, PhosphorIconsRegular.footprints, true),
         ]),
       ],
       columns: [
