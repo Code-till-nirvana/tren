@@ -350,19 +350,4 @@ mixin ToolsState on FitCore {
 
   void bumpWarmupTarget(double d) { warmupTarget = _clamp(warmupTarget + d, 0, null); notifyListeners(); }
 
-};
-
-  int get protLow => (protWeight * _protPerKg.$1 / 5).round() * 5;
-
-  int get protHigh => (protWeight * _protPerKg.$2 / 5).round() * 5;
-
-  double get waterLiters => _round1((waterWeight * 35 + waterMinutes * 12) / 1000);
-
-  void setProtGoal(String g) { protGoal = g; notifyListeners(); }
-
-  void bumpProtWeight(double d) { protWeight = _clamp(protWeight + d, 30, 300); notifyListeners(); }
-
-  void bumpWaterWeight(double d) { waterWeight = _clamp(waterWeight + d, 30, 300); notifyListeners(); }
-
-  void bumpWaterMinutes(int d) { waterMinutes = (waterMinutes + d).clamp(0, 300); notifyListeners(); }
 }
