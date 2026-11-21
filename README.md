@@ -83,7 +83,7 @@ build/app/outputs/flutter-apk/app-release.apk
 
 TREN is an independently branded customization of an existing open-source codebase.
 
-**Based on GymMane by InlitX.**
+The project includes inherited open-source components and third-party assets. All applicable licence notices and attribution requirements are retained in the files linked below.
 
 The inherited source is distributed under the GNU General Public License v3.0 together with the applicable additional terms. See [LICENSE](LICENSE) and [ADDITIONAL_TERMS.md](ADDITIONAL_TERMS.md) before redistributing modified builds or source.
 
