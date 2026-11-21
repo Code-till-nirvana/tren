@@ -27,7 +27,7 @@ Future<void> sharePlan(List<Routine> routines, {String? title}) async {
         .toLowerCase()
         .replaceAll(RegExp(r'[^a-z0-9]+'), '-')
         .replaceAll(RegExp(r'^-+|-+$'), '');
-    await shareFile('gymmane-${slug.isEmpty ? 'plan' : slug}.json', utf8Bytes(fit.exportPlanJson(routines)),
+    await shareFile('tren-${slug.isEmpty ? 'plan' : slug}.json', utf8Bytes(fit.exportPlanJson(routines)),
         mime: 'application/json', text: '${fit.planSummaryText(routines)}\n\n${t.shareMessage(name)}', subject: name);
   } catch (_) {}
 }
