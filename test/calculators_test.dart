@@ -5,7 +5,7 @@ import 'package:gymmane/state/fit_state.dart';
 void main() {
   test('every tool in the menu has a screen behind it', () {
     expect(kToolMeta.map((t) => t.id).toSet(),
-        {'rm', 'bmi', 'cal', 'bf', 'ffmi', 'plate', 'warmup', 'rpe', 'dots', 'wilks', 'protein', 'water'});
+        {'rm', 'bmi', 'bf', 'ffmi', 'plate', 'warmup', 'rpe', 'dots', 'wilks'});
     for (final t in kToolMeta) {
       expect(t.name.trim(), isNotEmpty);
       expect(t.desc.trim(), isNotEmpty);
@@ -86,49 +86,6 @@ void main() {
       expect(fit.bmiCat, 'Overweight');
       fit.bmiWeight = 30;
       expect(fit.bmiCat, 'Obese');
-    });
-  });
-
-  group('Calories (Mifflin-St Jeor)', () {
-    test('male 28y, 175 cm, 75 kg, moderate → 2649 kcal', () {
-      fit.calSex = 'male';
-      fit.calAge = 28;
-      fit.calHeight = 175;
-      fit.calWeight = 75;
-      fit.calActivity = 1.55;
-
-      expect(fit.tdee, 2649);
-    });
-
-    test('female uses the -161 constant, not -5', () {
-      fit.calSex = 'female';
-      fit.calAge = 28;
-      fit.calHeight = 175;
-      fit.calWeight = 75;
-      fit.calActivity = 1.0;
-      expect(fit.tdee, 1543);
-    });
-
-    test('macros split 30/40/30 and add back up to the target', () {
-      fit.calSex = 'male';
-      fit.calAge = 28;
-      fit.calHeight = 175;
-      fit.calWeight = 75;
-      fit.calActivity = 1.55;
-      final kcal = fit.calProtein * 4 + fit.calCarbs * 4 + fit.calFat * 9;
-      expect(kcal, closeTo(fit.tdee, 6));
-    });
-
-    test('the activity label matches the factor', () {
-      for (final (factor, label) in [
-        (1.2, 'Sedentary'),
-        (1.375, 'Light'),
-        (1.55, 'Moderate'),
-        (1.725, 'Active'),
-      ]) {
-        fit.calActivity = factor;
-        expect(fit.activityLabel, label);
-      }
     });
   });
 
@@ -223,23 +180,10 @@ void main() {
 
   test('the profile feeds the calculators so they open ready to use', () {
     fit.updateProfile(name: 'Test', sex: 'female');
-    expect(fit.calSex, 'female');
     expect(fit.bfSex, 'female');
-    expect(fit.calHeight, fit.profile.heightCm);
     expect(fit.bmiWeight, fit.profile.weightKg);
     fit.updateProfile(sex: 'male');
   });
 
-  test('protein and water follow weight, goal and training', () {
-    fit.protWeight = 80;
-    fit.setProtGoal('hold');
-    expect((fit.protLow, fit.protHigh), (110, 145));
-    fit.setProtGoal('lose');
-    expect((fit.protLow, fit.protHigh), (145, 175));
-    fit.waterWeight = 80;
-    fit.waterMinutes = 0;
-    expect(fit.waterLiters, 2.8);
-    fit.bumpWaterMinutes(60);
-    expect(fit.waterLiters, 3.5);
-  });
+});
 }
