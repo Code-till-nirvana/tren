@@ -9,7 +9,6 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../l10n/l10n.dart';
 import 'headphones.dart';
-import 'supplement_reminder.dart';
 import 'host.dart';
 
 class RestAlarm {
@@ -112,15 +111,13 @@ class RestAlarm {
       tzdata.initializeTimeZones();
       await _plugin.initialize(
         settings: const InitializationSettings(
-          android: AndroidInitializationSettings('@drawable/ic_stat_gymmane'),
+          android: AndroidInitializationSettings('@drawable/ic_stat_tren'),
           iOS: DarwinInitializationSettings(
             requestAlertPermission: false,
             requestSoundPermission: false,
             requestBadgePermission: false,
           ),
         ),
-        onDidReceiveNotificationResponse: (r) => SupplementReminder.instance.tapped(r.payload),
-        onDidReceiveBackgroundNotificationResponse: supplementActionInBackground,
       );
       _ready = true;
     } catch (e) {
