@@ -61,7 +61,6 @@ class ToolsScreen extends StatelessWidget {
             for (final (i, g) in [
               (t.kindStrength, const ['rm', 'plate', 'warmup', 'rpe', 'dots', 'wilks']),
               (t.toolGroupBody, const ['bmi', 'bf', 'ffmi']),
-              (t.nutrition, const ['cal', 'protein', 'water']),
             ].indexed) ...[
               if (i > 0) const SizedBox(height: 26),
               Padding(
