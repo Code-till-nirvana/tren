@@ -23,7 +23,6 @@ import '../widgets/exercise_history_sheet.dart';
 import '../widgets/exercise_media.dart';
 import '../widgets/file_thumb.dart';
 import '../widgets/glass.dart';
-import '../widgets/health_cards.dart';
 import '../widgets/liquid_notch.dart';
 import '../widgets/report_sheet.dart';
 import '../widgets/muscle_radar.dart';
@@ -599,7 +598,6 @@ class ProgressScreen extends StatelessWidget {
       if (prs.isNotEmpty) _PrCard(prs),
       if (fit.shotCount > 0) _timelineCard(gc),
       if (fit.measures.isNotEmpty) _measuresCard(gc),
-      if (fit.healthShown.isNotEmpty) const HealthCard(),
     ];
   }
 

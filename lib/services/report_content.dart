@@ -2,9 +2,7 @@ import '../l10n/l10n.dart';
 import '../models/measure.dart';
 import '../models/report_doc.dart';
 import '../models/workout.dart';
-import '../services/health_metrics.dart';
 import '../state/fit_state.dart';
-import '../widgets/health_cards.dart';
 import '../widgets/ui_kit.dart';
 
 const kReportDetailDays = 92;
@@ -29,7 +27,6 @@ List<ReportBlock> reportBlocks(RangeReport r, ReportKind kind, {DateTime? now}) 
     return b;
   }
   b.addAll(_bodySummary(r, measures: true));
-  if (kind == ReportKind.full) b.addAll(_healthSummary(r));
   switch (kind) {
     case ReportKind.training:
       final picked = _sessionsIn(r.from, r.to);
@@ -67,7 +64,6 @@ String dayMarkdown(DateTime day, {required bool full}) {
 
 bool dayHasMore(DateTime day) {
   final d = DateTime(day.year, day.month, day.day);
-  return _sessionsIn(d, d).isNotEmpty || _healthLines(d).isNotEmpty;
 }
 
 RepHeader _header(RangeReport r, ReportKind kind, DateTime now) {
@@ -182,31 +178,6 @@ List<ReportBlock> _bodySummary(RangeReport r, {required bool measures}) {
   return [RepSection(t.reportBody), RepPairs(rows)];
 }
 
-List<ReportBlock> _healthSummary(RangeReport r) {
-  final rows = <(String, String)>[];
-  final steps = [
-    for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1))
-      if (fit.stepsOnDay(d) > 0) fit.stepsOnDay(d),
-  ];
-  if (fit.stepsOn && steps.isNotEmpty) {
-    rows.add((t.homeCardSteps, '${(steps.reduce((a, b) => a + b) / steps.length).round()}'));
-  }
-  for (final m in fit.healthMetrics) {
-    final vals = [
-      for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1)) ?fit.healthOnDay(m, d),
-    ];
-    if (vals.isEmpty) continue;
-    final avg = [
-      for (var i = 0; i < vals.first.length; i++)
-        vals.fold(0.0, (s, v) => s + (i < v.length ? v[i] : 0)) / vals.length,
-    ];
-    final unit = healthUnit(m);
-    rows.add((healthName(m), unit.isEmpty ? healthValue(m, avg) : '${healthValue(m, avg)} $unit'));
-  }
-  if (rows.isEmpty) return const [];
-  return [RepSection(t.reportHealthAvg), RepPairs(rows)];
-}
-
 List<LoggedSession> _sessionsIn(DateTime from, DateTime to) {
   final end = shiftDays(to, 1);
   return [for (final s in fit.sessions) if (!s.day.isBefore(from) && s.day.isBefore(end)) s]
@@ -218,7 +189,6 @@ String _sessionLine(LoggedSession s, {bool title = true}) => [
       if (s.durationSec > 0) '${s.durationSec ~/ 60} min',
       t.setCount(s.setCount),
       if (s.volume > 0) fit.volumeLabel(s.volume),
-      if (s.hrAvg != null) '${s.hrAvg} ${t.healthBpm}',
       if (s.sleep != null) '${t.checkInSleep} ${s.sleep}/5',
       if (s.energy != null) '${t.checkInEnergy} ${s.energy}/5',
       if (s.deload) t.deloadNow,
@@ -237,21 +207,13 @@ List<ReportBlock> _sessionGroups(LoggedSession s) => [
           ),
     ];
 
-List<String> _healthLines(DateTime d) {
+List<String> _bodyLines(DateTime d) {
   final out = <String>[];
   final weights = [for (final w in fit.bodyweight) if (w.date.year == d.year && w.date.month == d.month && w.date.day == d.day) w];
   if (weights.isNotEmpty) out.add('${t.bodyweightLabel} ${fit.weightLabel(weights.last.kg)}');
-  if (fit.stepsOn && fit.stepsOnDay(d) > 0) out.add('${t.homeCardSteps} ${fit.stepsOnDay(d)}');
-  final shown = fit.healthMetrics;
-  for (final m in shown) {
-    final v = fit.healthOnDay(m, d);
-    if (v == null) continue;
-    final unit = healthUnit(m);
-    out.add('${healthName(m)} ${healthValue(m, v)}${unit.isEmpty ? '' : ' $unit'}');
-  }
-  if (!shown.contains(HealthMetric.bloodPressure)) {
-    for (final m in _measuresIn('bp', d, d)) {
-      out.add('${fit.measureTitle('bp')} ${fit.measureEntryLabel(m)}');
+  for (final key in fit.trackedMeasures) {
+    for (final m in _measuresIn(key, d, d)) {
+      out.add('${fit.measureTitle(key)} ${fit.measureEntryLabel(m)}');
     }
   }
   return out;
@@ -261,16 +223,16 @@ List<ReportBlock> _dayBlocks(DateTime d, {required bool full}) {
   final out = <ReportBlock>[];
   for (final s in _sessionsIn(d, d)) {
     out
-      ..add(RepSub(fit.sessionTitle(s) ?? t.healthWorkoutTitle, _sessionLine(s, title: false)))
+      ..add(RepSub(fit.sessionTitle(s) ?? 'Workout', _sessionLine(s, title: false)))
       ..addAll(_sessionGroups(s));
   }
   if (full) {
-    final health = _healthLines(d);
-    if (health.isNotEmpty) {
+    final body = _bodyLines(d);
+    if (body.isNotEmpty) {
       out
-        ..add(RepSub(t.reportBodyHealth))
+        ..add(RepSub(t.reportBody))
         ..add(RepGroup('', lines: [
-          for (var i = 0; i < health.length; i += 3) health.sublist(i, i + 3 > health.length ? health.length : i + 3).join(' · '),
+          for (var i = 0; i < body.length; i += 3) body.sublist(i, i + 3 > body.length ? body.length : i + 3).join(' · '),
         ]));
     }
   }

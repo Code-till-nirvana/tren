@@ -36,12 +36,6 @@ int heatLevel(double v) {
 abstract class FitCore extends ChangeNotifier {
   Map<String, dynamic> toJson();
 
-  void healthSave(LoggedSession s) {}
-
-  void healthForget(LoggedSession s) {}
-
-  Future<void> stepsAllowed() async {}
-
   String route = 'home';
   final List<String> _routeStack = [];
   final Map<String, bool> favorites = {};

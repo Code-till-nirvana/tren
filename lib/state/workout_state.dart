@@ -2019,7 +2019,6 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
       _photosFrom = null;
       _computeSummaryHighlights(entry);
       _offerLevelUp(entry);
-      healthSave(entry);
     } else {
       _filed = null;
       summaryPrs = 0;

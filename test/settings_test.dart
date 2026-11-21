@@ -204,7 +204,7 @@ void main() {
           }
           expect(rows.contains((h.section!, h.row!)), isTrue, reason: '${h.id} lleva a ${h.section} › ${h.row}');
         }
-        for (final id in kHelpCommon.where((id) => id != 'steps')) {
+        for (final id in kHelpCommon) {
           expect(topics.any((h) => h.id == id), isTrue, reason: 'frecuente sin entrada: $id');
         }
         for (final h in topics) {

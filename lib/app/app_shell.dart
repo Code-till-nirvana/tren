@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show RenderRepaintBoundary;
 import 'package:flutter/services.dart';
@@ -38,12 +37,8 @@ import '../screens/tool_detail_screen.dart';
 import '../screens/tools_screen.dart';
 import '../screens/train_screen.dart';
 import '../screens/workout_view_screen.dart';
-import '../services/auto_backup.dart';
 import '../services/device_kind.dart';
-import '../services/health_steps.dart';
 import '../services/incoming_share.dart';
-import '../services/local_store.dart';
-import '../services/server/server_link.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
@@ -52,9 +47,7 @@ import '../widgets/app_background.dart';
 import '../widgets/award_celebration.dart';
 import '../widgets/dialogs.dart';
 import '../widgets/rest_glow.dart';
-import '../widgets/steps_card.dart';
 import '../widgets/glass.dart';
-import '../widgets/health_cards.dart';
 import '../widgets/liquid_notch.dart';
 import '../widgets/start_countdown.dart';
 import '../widgets/ui_kit.dart';
@@ -79,7 +72,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     'routines',
     'tools',
     'tools-detail',
-    'health',
   };
 
   static const _pillSpace = 68.0;
@@ -115,17 +107,9 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     fit.addListener(_restOver);
     _queueCelebration();
     IncomingShare.listen(_receive);
-    if (kIsWeb) {
-      ServerLink.instance.onRemote = _remoteChanged;
-      ServerLink.instance.start();
-    }
-    HealthSteps.listen(_showStepsInfo);
-    fit.refreshSteps();
-    fit.refreshHealth();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final text = await IncomingShare.take();
       if (text != null) _receive(text);
-      if (await HealthSteps.takeUsage()) _showStepsInfo();
       await fit.readDisplay();
       await _offerLiteMode();
     });
@@ -150,19 +134,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     if (route == 'play') {
       playWorkout(context);
     }
-  }
-
-  void _remoteChanged(String text, {required bool conflict, required bool fromPhone}) {
-    final data = Store.decodeState(text);
-    if (data.isEmpty || fit.isSessionActive) return;
-    fit.applyBackup(data);
-    if (!mounted) return;
-    showNotchToast(context, fromPhone ? t.webSyncedPhone : t.webSynced, icon: PhosphorIconsFill.arrowsClockwise, accent: context.gc.sage);
-  }
-
-  void _showStepsInfo() {
-    if (!mounted || !fit.onboarded) return;
-    showStepsSheet(context);
   }
 
   void _receive(String text) {
@@ -333,13 +304,10 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         state == AppLifecycleState.detached) {
       fit.persistNow();
     }
-    if (state == AppLifecycleState.paused) AutoBackup.instance.onLeave();
     if (state == AppLifecycleState.resumed) {
       fit.refreshAlarmPermission();
       fit.syncRest();
       fit.refreshWidgets();
-      fit.refreshSteps();
-      fit.refreshHealth();
     }
   }
 
@@ -603,7 +571,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         'measures' => t.measures,
         'awards' => t.awardsTitle,
         'about' => t.about,
-        'health' => t.healthTitle,
         'recovery' => t.recoveryTitle,
         _ when fit.route.startsWith('preferences/') => SettingsScreen.sectionTitleOf(fit.route.substring(12)),
         _ => null,
@@ -659,8 +626,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
         return const WorkoutViewScreen();
       case 'recovery':
         return RecoveryScreen();
-      case 'health':
-        return const HealthScreen();
       case 'note-edit':
         return NoteEditScreen(key: ValueKey(fit.editingNoteId ?? 'new'));
       case 'home':
@@ -1337,7 +1302,6 @@ class _Sidebar extends StatelessWidget {
           onTap: () => _go('preferences'),
         ),
         const SizedBox(height: 10),
-        const _ServerStatus(),
       ]),
     );
   }
@@ -1438,40 +1402,6 @@ class _SideItemState extends State<_SideItem> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _ServerStatus extends StatelessWidget {
-  const _ServerStatus();
-
-  @override
-  Widget build(BuildContext context) {
-    final gc = context.gc;
-    return ListenableBuilder(
-      listenable: ServerLink.instance,
-      builder: (context, _) {
-        final link = ServerLink.instance;
-        final ok = !link.available || link.online;
-        final text = !link.available ? t.webServerLocal : (link.online ? t.webServerSaved : t.webServerOffline);
-        return Padding(
-          padding: const EdgeInsetsDirectional.only(start: 14, end: 8),
-          child: Row(children: [
-            Container(
-              width: 7,
-              height: 7,
-              decoration: BoxDecoration(color: ok ? gc.sage : gc.warn, shape: BoxShape.circle),
-            ),
-            const SizedBox(width: 9),
-            Expanded(
-              child: Text(text,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTheme.f(11.5, weight: FontWeight.w600, color: gc.textTertiary)),
-            ),
-          ]),
-        );
-      },
     );
   }
 }

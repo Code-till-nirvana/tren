@@ -28,8 +28,6 @@ import '../services/alarm_store.dart';
 import '../services/beeper.dart';
 import '../services/device_kind.dart';
 import '../services/exercise_match.dart';
-import '../services/health_metrics.dart';
-import '../services/health_steps.dart';
 import '../services/local_store.dart';
 import '../services/media_store.dart';
 import '../services/merged_ids.dart';
@@ -45,7 +43,6 @@ part 'awards_state.dart';
 part 'circuit_state.dart';
 part 'fit_core.dart';
 part 'gym_pass_state.dart';
-part 'health_state.dart';
 part 'library_state.dart';
 part 'measures_state.dart';
 part 'moments_state.dart';
@@ -56,13 +53,12 @@ part 'report_state.dart';
 part 'routines_state.dart';
 part 'settings_state.dart';
 part 'stats_state.dart';
-part 'steps_state.dart';
 part 'timeline_state.dart';
 part 'tools_state.dart';
 part 'workout_state.dart';
 
 class FitState extends FitCore
-    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, RecoveryState, HealthState, CircuitState, ReportState, AwardsState, RoutinesState, WorkoutState {
+    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, RecoveryState, CircuitState, ReportState, AwardsState, RoutinesState, WorkoutState {
   FitState() {
     setLoad = loadOf;
   }
@@ -192,9 +188,7 @@ class FitState extends FitCore
             .map((e) => Moment.fromJson((e as Map).cast<String, dynamic>())));
       photoIntervalDays = (data['photoEvery'] as num?)?.toInt() ?? 30;
       bodyTimeline = data['bodyTl'] as bool? ?? false;
-      loadSteps((data['steps'] as Map?)?.cast<String, dynamic>());
       loadRecovery((data['recovery'] as Map?)?.cast<String, dynamic>());
-      loadHealth((data['health'] as Map?)?.cast<String, dynamic>());
       loadCircuits(data['circuits'] as List?);
       _restoreLiveSession(data);
     }
@@ -692,9 +686,7 @@ class FitState extends FitCore
         'moments': moments.map((m) => m.toJson()).toList(),
         'photoEvery': photoIntervalDays,
         'bodyTl': bodyTimeline,
-        'steps': stepsJson(),
         'recovery': recoveryJson(),
-        'health': healthJson(),
         if (circuits.isNotEmpty) 'circuits': circuitsJson(),
         if (session != null && !session!.complete) ...{
           'live': session!.toJson(),
@@ -754,11 +746,8 @@ class FitState extends FitCore
     notes.clear();
     noteFolders.clear();
     moments.clear();
-    loadSteps(null);
     loadRecovery(null);
-    loadHealth(null);
     circuits.clear();
-    healthGranted = {};
     awards.clear();
     awardsSeen.clear();
     pendingAwards.clear();
@@ -968,9 +957,7 @@ class FitState extends FitCore
     _loadMoments(map, restored: restoredMoments);
     photoIntervalDays = (map['photoEvery'] as num?)?.toInt() ?? photoIntervalDays;
     bodyTimeline = map['bodyTl'] as bool? ?? bodyTimeline;
-    loadSteps((map['steps'] as Map?)?.cast<String, dynamic>());
     loadRecovery((map['recovery'] as Map?)?.cast<String, dynamic>());
-    loadHealth((map['health'] as Map?)?.cast<String, dynamic>());
     loadCircuits(map['circuits'] as List?);
     _seedCalculatorsFromProfile();
     _loading = false;

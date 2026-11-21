@@ -516,7 +516,6 @@ class AlertsShowcase extends StatelessWidget {
           _wideStat(gc, PhosphorIconsRegular.barbell, '4 sets', 'Strength', gc.accent),
           _chips(gc, const ['6 reps', '8 reps', '10 reps', '12 reps'], on: 0),
           _bars(gc, const [0.8, 0.55, 0.4, 0.9, 0.6, 0.75], hi: 3),
-          _wideStat(gc, PhosphorIconsRegular.footprints, '6 240', 'steps', gc.sage),
           _bars(gc, const [0.3, 0.6, 0.45, 0.8, 0.55, 1.0, 0.7], hi: 5),
           _wideStat(gc, PhosphorIconsRegular.camera, '14', t.notifPhotoTitle, gc.info),
           _rings(gc, [(0.7, gc.accent, '7/10'), (0.4, gc.sage, '3/5'), (0.9, gc.brass, '4/4')]),
@@ -526,7 +525,6 @@ class AlertsShowcase extends StatelessWidget {
           _toggleTile(gc, PhosphorIconsRegular.headphones, true),
           _gauge(gc, 0.75, '16 h', gc.warn),
           _iconTile(gc, PhosphorIconsRegular.bellSimpleSlash, '8:00', '', gc.textTertiary),
-          _iconTile(gc, PhosphorIconsRegular.footprints, '6 240', '', gc.sage),
           _iconTile(gc, PhosphorIconsRegular.coffee, '1', '', gc.brass),
           _toggleTile(gc, PhosphorIconsRegular.moon, false),
         ]),
@@ -591,195 +589,7 @@ class AlertsShowcase extends StatelessWidget {
         _stack(40, [timer, _iconTile(gc, PhosphorIconsRegular.barbell, '4/5', 'sets', gc.accent),
             _iconTile(gc, PhosphorIconsRegular.clock, '45 min', '', gc.sage),
             _iconTile(gc, PhosphorIconsRegular.ruler, '14', t.notifMeasureTitle, gc.warn),
-            _iconTile(gc, PhosphorIconsRegular.footprints, '6 240', 'steps', gc.info),
             _iconTile(gc, PhosphorIconsRegular.clockCountdown, '5 min', '', gc.accent)]),
-      ],
-    );
-  }
-}
-
-class HomeExtrasShowcase extends StatelessWidget {
-  const HomeExtrasShowcase({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final gc = context.gc;
-    const pass = GymPass(id: 'demo', name: 'TREN Fit', code: 'TREN-2026-0042', hue: 0);
-    final steps = _Tile(
-      w: 150,
-      h: 170,
-      child: Center(
-        child: _Ring(
-          value: 0.78,
-          color: gc.sage,
-          size: 112,
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Icon(PhosphorIconsRegular.footprints, size: 18, color: gc.sage),
-            _big(gc, '6 240', size: 22),
-            Text(t.homeCardSteps, style: AppTheme.f(11, weight: FontWeight.w600, color: gc.textTertiary)),
-          ]),
-        ),
-      ),
-    );
-    final medal = _Tile(w: 150, h: 150, child: Center(child: Medal(id: AwardId.values[1], size: 96)));
-    final medalLocked = _Tile(w: 150, h: 150, child: Center(child: Medal(id: AwardId.values[6], size: 96, locked: true)));
-    final passCard = SizedBox(width: 330, child: _lift(const GymPassCard(pass: pass, hero: false), radius: 22));
-    final heart = _Tile(
-      w: 330,
-      h: 130,
-      pad: 0,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(24),
-        child: Stack(children: [
-          Positioned.fill(
-            top: 34,
-            child: CustomPaint(
-              painter: _Pulse(
-                const [64, 62, 63, 60, 61, 59, 60, 57, 58, 56, 58],
-                line: gc.accent,
-                grid: gc.text.withValues(alpha: 0.06),
-                dotRing: gc.bgRaised2,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 0),
-            child: Row(children: [
-              Icon(PhosphorIconsFill.heart, size: 16, color: gc.accent),
-              const SizedBox(width: 6),
-              Expanded(child: _kicker(gc, t.healthRestingHr)),
-              Ltr(child: Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
-                _big(gc, '56', size: 26),
-                const SizedBox(width: 3),
-                Text(t.healthBpm, style: AppTheme.f(11.5, weight: FontWeight.w600, color: gc.textSecondary)),
-              ])),
-            ]),
-          ),
-        ]),
-      ),
-    );
-    final week = _Tile(
-      w: 330,
-      h: 96,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        for (var d = 1; d <= 7; d++)
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(_letter(d), style: AppTheme.f(10.5, weight: FontWeight.w700, color: gc.textTertiary)),
-            const SizedBox(height: 6),
-            Container(
-              width: 30,
-              height: 30,
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: const {1, 3, 4, 6}.contains(d) ? gc.text : gc.bgRaised),
-              child: const {1, 3, 4, 6}.contains(d) ? Icon(PhosphorIconsBold.check, size: 14, color: gc.bg) : null,
-            ),
-          ]),
-      ]),
-    );
-    final streak = _Tile(
-      w: 150,
-      h: 108,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Icon(PhosphorIconsFill.flame, size: 24, color: gc.accent),
-        const Spacer(),
-        _big(gc, '12'),
-        _kicker(gc, t.streakCaps),
-      ]),
-    );
-    final sleep = _Tile(
-      w: 150,
-      h: 108,
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Icon(PhosphorIconsRegular.moonStars, size: 24, color: gc.warn),
-        const Spacer(),
-        _big(gc, '7:42'),
-        _kicker(gc, t.unitHours),
-      ]),
-    );
-    return _Collage(
-      offset: const Offset(22, -8),
-      left: [
-        _stack(0, [
-          _gauge(gc, 0.6, '60 %', gc.accent),
-          _iconTile(gc, PhosphorIconsRegular.heartbeat, '128', t.healthBpm, gc.accent),
-          _iconTile(gc, PhosphorIconsRegular.barbell, '42', '', gc.text),
-          _iconTile(gc, PhosphorIconsRegular.lightning, '4', t.streakCaps, gc.accent),
-          _iconTile(gc, PhosphorIconsRegular.target, '100 %', '', gc.sage),
-          _toggleTile(gc, PhosphorIconsRegular.heart, false),
-          _iconTile(gc, PhosphorIconsRegular.bicycle, '12', 'km', gc.textSecondary),
-        ]),
-        _stack(0, [
-          _bars(gc, const [0.4, 0.7, 0.2, 0.9, 0.5, 1.0, 0.3], hi: 5),
-          _wideStat(gc, PhosphorIconsRegular.personSimpleRun, '8 432', t.homeCardSteps, gc.sage),
-          _chips(gc, [for (var d = 1; d <= 7; d++) _letter(d)], on: 3),
-          _calendar(gc, 7, '18', gc.accent),
-          _wideStat(gc, PhosphorIconsRegular.barbell, '3,9 t', '', gc.text),
-          _rings(gc, [(0.8, gc.accent, '4/5'), (0.6, gc.sage, '60 %'), (0.95, gc.warn, '7 h')]),
-          _wideStat(gc, PhosphorIconsRegular.calendarCheck, '4/4', '', gc.accent),
-        ]),
-      ],
-      right: [
-        _stack(0, [
-          _wideStat(gc, PhosphorIconsRegular.moon, '7:42', t.unitHours, gc.warn),
-          _bars(gc, const [0.6, 0.3, 0.8, 1.0, 0.0, 0.5, 0.7], hi: 3),
-          _wideStat(gc, PhosphorIconsRegular.chartLineUp, '+2,5 kg', '', gc.sage),
-          _chips(gc, const ['1 RM', '5 RM', '10 RM'], on: 0),
-          _bars(gc, const [0.9, 0.6, 0.45, 0.7, 0.5, 0.8], hi: 0),
-          _exerciseList(gc, 25),
-          _spark(gc, const [80.2, 79.8, 79.9, 79.1, 78.9, 79.0, 78.6, 78.4], gc.brass, '78,4', 'kg'),
-        ]),
-        _stack(0, [
-          _iconTile(gc, PhosphorIconsRegular.scales, '78,4', 'kg', gc.info),
-          _toggleTile(gc, PhosphorIconsRegular.bell, true),
-          _iconTile(gc, PhosphorIconsRegular.clock, '17:05', '', gc.textSecondary),
-          _iconTile(gc, PhosphorIconsRegular.trendUp, '+12 %', '', gc.sage),
-          _iconTile(gc, PhosphorIconsRegular.swimmingPool, '1 km', '', gc.info),
-          _iconTile(gc, PhosphorIconsRegular.mountains, '320 m', '', gc.textSecondary),
-          _toggleTile(gc, PhosphorIconsRegular.sun, true),
-        ]),
-      ],
-      columns: [
-        _stack(20, [steps, medal, _iconTile(gc, PhosphorIconsRegular.fire, '520', 'kcal', gc.accent),
-            _iconTile(gc, PhosphorIconsRegular.scales, '78,4', 'kg', gc.textSecondary),
-            _toggleTile(gc, PhosphorIconsRegular.footprints, true),
-            _iconTile(gc, PhosphorIconsRegular.timer, '55 min', '', gc.textSecondary)]),
-        _stack(0, [
-          passCard,
-          heart,
-          week,
-          _Tile(
-            w: 330,
-            h: 120,
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              for (final i in [2, 3, 4, 5]) Medal(id: AwardId.values[i], size: 70, locked: i == 5),
-            ]),
-          ),
-          _Tile(
-            w: 330,
-            h: 120,
-            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              for (final (i, v) in const [0.45, 0.8, 0.3, 1.0, 0.0, 0.65, 0.0].indexed) ...[
-                if (i > 0) const SizedBox(width: 10),
-                Expanded(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Container(
-                      height: 8 + 62 * v,
-                      decoration: BoxDecoration(
-                        color: v == 0 ? gc.bgRaised : (i == 3 ? gc.accent : gc.text.withValues(alpha: 0.55)),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(_letter(i + 1), style: AppTheme.f(10, weight: FontWeight.w700, color: gc.textTertiary)),
-                  ]),
-                ),
-              ],
-            ]),
-          ),
-          _exerciseList(gc, 11),
-        ]),
-        _stack(40, [streak, sleep, medalLocked, _iconTile(gc, PhosphorIconsRegular.path, '4,2', 'km', gc.sage),
-            _iconTile(gc, PhosphorIconsRegular.trophy, '3', '', gc.brass), _gauge(gc, 0.9, '9/10', gc.brass)]),
       ],
     );
   }
@@ -975,7 +785,6 @@ class LookShowcase extends StatelessWidget {
           _iconTile(gc, PhosphorIconsRegular.palette, '4', '', gc.accent),
           _iconTile(gc, PhosphorIconsRegular.frameCorners, '16', '', gc.textSecondary),
           _iconTile(gc, PhosphorIconsRegular.monitor, '1440', '', gc.textSecondary),
-          _toggleTile(gc, PhosphorIconsRegular.footprints, true),
         ]),
       ],
       columns: [

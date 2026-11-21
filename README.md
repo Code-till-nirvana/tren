@@ -50,7 +50,7 @@ The application is built with **Flutter** and **Dart**, with **Android as its on
 
 | Technology | Purpose |
 |---|---|
-| Flutter | Cross-platform UI toolkit used with Android as the project target |
+| Flutter | UI framework for the Android application |
 | Dart | Main programming language |
 | Android SDK | Android application build and runtime |
 | Gradle | Android build configuration |

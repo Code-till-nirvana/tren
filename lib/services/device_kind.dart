@@ -13,7 +13,7 @@ class DeviceKind {
 
   static Future<bool> isLowEnd() async {
     if (lowEndOverride case final forced?) return forced;
-    if (kIsWeb || !Platform.isAndroid) return false;
+    if (!Platform.isAndroid) return false;
     try {
       return await _channel.invokeMethod<bool>('isLowEnd') ?? false;
     } catch (_) {
@@ -22,7 +22,7 @@ class DeviceKind {
   }
 
   static Future<double> maxRefresh() async {
-    if (kIsWeb || !Platform.isAndroid) return 60;
+    if (!Platform.isAndroid) return 60;
     try {
       return await _channel.invokeMethod<double>('maxRefresh') ?? 60;
     } catch (_) {
@@ -31,7 +31,7 @@ class DeviceKind {
   }
 
   static Future<void> setHighRefresh(bool on) async {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (!Platform.isAndroid) return;
     try {
       await _channel.invokeMethod<void>('setHighRefresh', {'on': on});
     } catch (_) {}

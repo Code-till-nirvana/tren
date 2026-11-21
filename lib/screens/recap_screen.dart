@@ -11,7 +11,6 @@ import '../catalog/awards.dart';
 import '../l10n/l10n.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
-import '../services/health_metrics.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
@@ -41,7 +40,7 @@ Future<void> openRecap(BuildContext context) async {
     ));
 }
 
-enum _Page { hello, workouts, time, volume, peak, lift, fresh, muscle, records, medals, cardio, steps, sleep, habit, share }
+enum _Page { hello, workouts, time, volume, peak, lift, fresh, muscle, records, medals, cardio, habit, share }
 
 TextStyle _num(double size, Color color) => AppTheme.f(size,
         weight: FontWeight.w900, color: color, letterSpacing: -size * 0.045, height: 1)
@@ -223,8 +222,6 @@ class _RecapScreenState extends State<RecapScreen> {
       _Page.records,
       if (_extras.medals.isNotEmpty) _Page.medals,
       if (_extras.cardio != null) _Page.cardio,
-      if (_extras.steps != null) _Page.steps,
-      if (_extras.sleep != null) _Page.sleep,
       if (_recap.favDay != null) _Page.habit,
       _Page.share,
     ],
@@ -500,8 +497,6 @@ class _RecapScreenState extends State<RecapScreen> {
         _Page.records => _records(gc, tone),
         _Page.medals => _medals(gc, tone),
         _Page.cardio => _cardio(gc, tone),
-        _Page.steps => _stepsPage(gc, tone),
-        _Page.sleep => _sleepPage(gc, tone),
         _Page.habit => _habit(gc, tone),
         _Page.share => _sharePage(gc, tone),
       };
@@ -972,47 +967,6 @@ class _RecapScreenState extends State<RecapScreen> {
     ]);
   }
 
-  Widget _stepsPage(GymColors gc, Color tone) {
-    final s = _extras.steps!;
-    final group = MaterialLocalizations.of(context);
-    return _bottom([
-      _kicker(t.recapStepsKicker, tone),
-      const SizedBox(height: 6),
-      _bigRow([
-        _Count(s.total.toDouble(),
-            style: _num(96, gc.text), format: (v) => group.formatDecimal(v.round()), duration: 1800),
-      ]),
-      Text(t.recapStepsWord, style: AppTheme.f(28, weight: FontWeight.w800, color: gc.text, letterSpacing: -0.6)),
-      const SizedBox(height: 24),
-      _MonthChart(values: s.perDay, avg: s.avg, month: _recap.month, tone: gc.text, label: gc.textTertiary),
-      const SizedBox(height: 18),
-      _line(gc, t.recapStepsAvg(group.formatDecimal(s.avg)), color: gc.text),
-      const SizedBox(height: 4),
-      _line(gc, t.recapStepsBest(group.formatDecimal(s.best), t.shortDate(s.bestDay)), delay: 1100),
-      const SizedBox(height: 30),
-    ]);
-  }
-
-  Widget _sleepPage(GymColors gc, Color tone) {
-    final s = _extras.sleep!;
-    return _bottom([
-      _kicker(t.recapSleepKicker, tone),
-      const SizedBox(height: 6),
-      _bigRow([
-        _Count((s.avg ~/ 60).toDouble(), style: _num(112, gc.text)),
-        _unit('h', 112, tone),
-        _Count((s.avg % 60).toDouble(), style: _num(112, gc.text), delay: 300),
-        _unit('min', 112, tone),
-      ]),
-      Text(t.recapSleepAvg, style: AppTheme.f(20, weight: FontWeight.w800, color: gc.textSecondary)),
-      const SizedBox(height: 24),
-      _MonthChart(values: s.perNight, avg: s.avg, month: _recap.month, tone: gc.text, label: gc.textTertiary),
-      const SizedBox(height: 18),
-      _line(gc, t.recapSleepBest('${s.best ~/ 60} h ${s.best % 60} min', t.shortDate(s.bestDay)), color: gc.text),
-      const SizedBox(height: 30),
-    ]);
-  }
-
   Widget _habit(GymColors gc, Color tone) {
     final start = _recap.usualStart;
     final days = _recap.weekdays;
@@ -1139,8 +1093,6 @@ class _RecapScreenState extends State<RecapScreen> {
 
 typedef RecapExtras = ({
   ({double km, int sec, int count, String? topId})? cardio,
-  ({int total, int avg, int best, DateTime bestDay, List<int> perDay})? steps,
-  ({int avg, int best, DateTime bestDay, List<int> perNight})? sleep,
   List<AwardId> medals,
   LoggedSession? peak,
   List<String> fresh,
@@ -1200,41 +1152,6 @@ RecapExtras recapExtras(MonthRecap recap) {
     if (topCardio == null || e.value > byCardio[topCardio]!) topCardio = e.key;
   }
 
-  ({int total, int avg, int best, DateTime bestDay, List<int> perDay})? steps;
-  if (fit.stepsOn) {
-    final perDay = [for (final d in days) fit.stepsOnDay(d)];
-    final walked = perDay.where((n) => n > 0).toList();
-    if (walked.length >= 3) {
-      var best = 0;
-      var bestDay = from;
-      for (final (i, n) in perDay.indexed) {
-        if (n > best) {
-          best = n;
-          bestDay = days[i];
-        }
-      }
-      final total = walked.fold(0, (a, b) => a + b);
-      steps = (total: total, avg: total ~/ walked.length, best: best, bestDay: bestDay, perDay: perDay);
-    }
-  }
-
-  ({int avg, int best, DateTime bestDay, List<int> perNight})? sleep;
-  if (fit.healthShown.contains(HealthMetric.sleep)) {
-    final nights = [for (final d in days) (fit.healthOnDay(HealthMetric.sleep, d)?.first ?? 0).round()];
-    final slept = nights.where((n) => n > 0).toList();
-    if (slept.length >= 3) {
-      var best = 0;
-      var bestDay = from;
-      for (final (i, n) in nights.indexed) {
-        if (n > best) {
-          best = n;
-          bestDay = days[i];
-        }
-      }
-      sleep = (avg: slept.fold(0, (a, b) => a + b) ~/ slept.length, best: best, bestDay: bestDay, perNight: nights);
-    }
-  }
-
   final medals = !fit.gamification
       ? <AwardId>[]
       : [
@@ -1279,8 +1196,6 @@ RecapExtras recapExtras(MonthRecap recap) {
 
   return (
     cardio: count == 0 || (km <= 0 && sec <= 0) ? null : (km: km, sec: sec, count: count, topId: topCardio),
-    steps: steps,
-    sleep: sleep,
     medals: medals,
     peak: peak,
     fresh: fresh,

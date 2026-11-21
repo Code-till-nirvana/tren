@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'server/transport_stub.dart' if (dart.library.js_interop) 'server/transport_web.dart' as net;
 
 class ShareItem {
   const ShareItem(this.name, this.bytes, {this.mime});
@@ -17,12 +16,6 @@ class ShareItem {
 
 Future<void> shareFiles(List<ShareItem> items, {String? subject, String? text}) async {
   if (items.isEmpty) return;
-  if (kIsWeb) {
-    for (final f in items) {
-      net.download(f.name, f.bytes, f.mime ?? 'application/octet-stream');
-    }
-    return;
-  }
   final dir = await getTemporaryDirectory();
   final files = <XFile>[];
   for (final f in items) {

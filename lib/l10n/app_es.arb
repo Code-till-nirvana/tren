@@ -196,7 +196,6 @@
   "homeCardsTitle": "Tarjetas de Inicio",
   "homeCardsHint": "Lo que enciendas sale en Inicio",
   "homeCardFocus": "Hoy",
-  "homeCardSteps": "Pasos",
   "homeCardWeek": "Esta semana",
   "homeCardRoutines": "Rutinas",
   "homeCardRecommended": "Recomendados",
@@ -207,9 +206,6 @@
   "textSizeHint": "Además del tamaño de letra del móvil",
   "calmMotionSetting": "Reducir animaciones",
   "calmMotionHint": "Las pantallas aparecen sin deslizarse",
-  "dishArchive": "Archivar",
-  "dishUnarchive": "Recuperar",
-  "dishArchivedToast": "Plato archivado",
   "filterShowLabel": "Mostrar",
   "noExercisesFound": "Sin resultados",
   "noExercisesHint": "Prueba otra búsqueda o quita los filtros.",
@@ -429,9 +425,6 @@
   "onbUnitsWhy": "Para pesos, medidas y distancias. Puedes cambiarlo cuando quieras en Ajustes.",
   "nameLabel": "NOMBRE",
   "sexLabel": "SEXO",
-  "macroProtein": "PROTEÍNA",
-  "macroCarbs": "CARBOS",
-  "macroFat": "GRASA",
   "male": "Hombre",
   "female": "Mujer",
   "ageLabel": "EDAD",
@@ -934,18 +927,6 @@
   "homeRoutinesHint": "La última que hiciste, primero",
   "homeWeekStats": "Esta semana en inicio",
   "homeWeekStatsHint": "Volumen, series y récords de la semana",
-  "stepsSetting": "Pasos de Health Connect",
-  "stepsSettingHint": "Los pasos de hoy en Inicio",
-  "stepsToday": "Pasos hoy",
-  "stepsOfGoal": "de {goal}",
-  "stepsTodayCount": "{count} pasos hoy",
-  "stepsGoal": "Objetivo de pasos diario",
-  "stepsNoAccess": "Sin acceso a tus pasos",
-  "stepsGrant": "Toca para permitirlo en Health Connect",
-  "stepsInfoRead": "Solo lee tu número de pasos. Nunca lee nada más ni escribe en Health Connect.",
-  "stepsInfoLocal": "Tus pasos se quedan en el móvil. TREN nunca se conecta a internet.",
-  "stepsInfoOff": "Puedes quitarlo cuando quieras, en Ajustes o en Health Connect.",
-  "stepsManage": "Gestionar permiso",
   "routineDoneToday": "Hecha por hoy · buen trabajo",
   "trainAgain": "Entrenar otra vez",
   "lastDoneAgo": "{n, plural, =0{Hecha hoy} =1{Hecha ayer} other{Hace {n} días}}",
@@ -1156,66 +1137,36 @@
   "mergeExerciseTitle": "¿Fusionar ejercicios?",
   "mergeExerciseBody": "Todo el historial de «{from}» pasa a «{to}». «{from}» se queda en tu biblioteca. No se puede deshacer.",
   "mergedToast": "Historial fusionado",
-  "nutrition": "Nutrición",
-  "nutritionHomeEmpty": "Agua, proteína y calorías",
-  "nutritionHomeDetail": "{energy} · {protein} g de proteína",
-  "nutritionToday": "Hoy",
-  "nutritionYesterday": "Ayer",
-  "nutritionGoals": "Objetivos diarios",
   "kcalLabel": "CALORÍAS",
   "kcalOver": "de más",
-  "waterLabel": "AGUA",
-  "waterDone": "Objetivo cumplido",
-  "waterCustom": "Otra cantidad",
   "glassSize": "Tamaño del vaso",
-  "supplementsLabel": "SUPLEMENTOS",
-  "supplementsEmpty": "Toca uno para añadirlo o + para el tuyo.",
-  "addSupplement": "Nuevo suplemento",
-  "supplementNameHint": "Creatina, vitamina D…",
-  "removeSupplementTitle": "¿Quitar {name}?",
-  "removeSupplementBody": "Se borran también los días que lo marcaste.",
   "suppCreatine": "Creatina",
   "suppVitaminD": "Vitamina D",
   "suppOmega3": "Omega 3",
   "suppMagnesium": "Magnesio",
   "suppMultivitamin": "Multivitamínico",
   "suppCaffeine": "Cafeína",
-  "myFoods": "Mis alimentos",
-  "newFood": "Nuevo alimento",
-  "editFood": "Editar alimento",
-  "foodNameHint": "Proteína whey, avena, pan…",
   "servingLabel": "RACIÓN",
   "servingHint": "1 cacito · 30 g",
   "perServing": "POR RACIÓN",
   "servingsLabel": "Raciones",
-  "foodPhotoHint": "Sobre un fondo liso se convierte en pegatina.",
   "cutoutWorking": "Recortando…",
   "cutoutTry": "Recortar",
   "cutoutKeep": "Foto entera",
-  "deleteFoodTitle": "¿Borrar {name}?",
-  "deleteFoodBody": "Desaparece de tus alimentos. Lo que ya apuntaste se queda.",
-  "mealBreakfast": "Desayuno",
-  "mealLunch": "Comida",
-  "mealDinner": "Cena",
-  "mealSnacks": "Picoteo",
   "nothingLogged": "Aún no has apuntado nada.",
-  "addToMeal": "Añadir a {meal}",
   "quickAdd": "Añadido rápido",
   "quickAddHint": "Solo los números, sin guardar ningún alimento.",
   "quickAddName": "¿Qué era? (opcional)",
-  "logFood": "Añadir",
   "loggedToast": "Añadido a {meal}",
   "entryRemoved": "Quitado",
   "goalsFromProfile": "Calcular con mi perfil",
   "goalsFromProfileHint": "Calorías según tu perfil, 1,8 g de proteína y 35 ml de agua por kg de peso.",
   "kcalEaten": "Comido",
   "kcalRemaining": "Quedan",
-  "waterTapHint": "Toca el vaso: + {amount}",
   "shakeEmpty": "Toca para elegir tu batido",
   "shakeTapHint": "Toca: + {name}",
   "shakePick": "Tu batido",
   "shakePickHint": "Tocas el shaker y se apunta de una vez.",
-  "proteinLetter": "P",
   "carbsLetter": "H",
   "fatLetter": "G",
   "addBurnedLabel": "Sumar lo quemado",
@@ -1223,19 +1174,14 @@
   "amountLabel": "Cantidad",
   "amountIn": "Cantidad ({unit})",
   "bodyweightLabel": "Peso",
-  "copiedMealToast": "{count, plural, =1{1 alimento copiado} other{{count} alimentos copiados}}",
-  "deleteSavedMealBody": "Lo que ya apuntaste se queda como está.",
   "fiberLabel": "Fibra",
   "sugarLabel": "Azúcar",
   "sodiumLabel": "Sodio",
-  "foodDatabase": "Base de alimentos",
   "kcalBurned": "Quemado",
-  "mealOptions": "Opciones de la comida",
   "moreNutrients": "Fibra, azúcar y sodio",
   "ofGoal": "de {goal} {unit}",
   "per100": "por 100 {unit}",
   "perServingShort": "por ración",
-  "foodCategory": "CATEGORÍA",
   "portionUnit": "{count, plural, =1{1 unidad} other{{count} unidades}}",
   "portionSlice": "{count, plural, =1{1 loncha} other{{count} lonchas}}",
   "portionScoop": "{count, plural, =1{1 cacito} other{{count} cacitos}}",
@@ -1243,7 +1189,6 @@
   "portionTsp": "{count, plural, =1{1 cucharadita} other{{count} cucharaditas}}",
   "portionCup": "{count, plural, =1{1 taza} other{{count} tazas}}",
   "portionGlass": "{count, plural, =1{1 vaso} other{{count} vasos}}",
-  "recentFoods": "Recientes",
   "recipeItems": "{count, plural, =1{1 alimento} other{{count} alimentos}}",
   "renameLabel": "Renombrar",
   "repeatFrom": "Repetir de",
@@ -1252,20 +1197,10 @@
   "trainingDays": "Días de entreno",
   "restDays": "Días de descanso",
   "trainingDay": "Día de entreno",
-  "saveAsMeal": "Guardar como comida",
-  "savedMealNameHint": "p. ej. Desayuno de siempre",
-  "savedMealToast": "Comida guardada",
-  "savedMeals": "Comidas guardadas",
-  "searchFoodsHint": "Buscar alimentos",
-  "searchFoodsEmpty": "Busca entre más de 500 alimentos con foto o crea los tuyos.",
-  "searchFoodsNone": "Nada para «{query}». Créalo como alimento tuyo.",
   "servingWeight": "GRAMOS",
   "weekAverage": "Esta semana",
   "weekAvgEnergy": "Media al día",
-  "weekAvgProtein": "Proteína al día",
   "weekEnergyOnTarget": "Calorías en objetivo",
-  "weekProteinOnTarget": "Proteína en objetivo",
-  "weekProteinAvg": "{grams} g de proteína al día",
   "weekDaysOnTarget": "{met} de {days} días en objetivo",
   "weekLoggedDays": "{count, plural, =1{1 día apuntado} other{{count} días apuntados}}",
   "weekNoData": "Aún sin apuntar",
@@ -1286,8 +1221,6 @@
   "aminoThr": "treonina",
   "aminoTrp": "triptófano",
   "aminoVal": "valina",
-  "animalProtein": "Proteína animal",
-  "proteinQuality": "Calidad de la proteína",
   "qualityComplete": "Completa",
   "qualityAlmost": "Casi completa",
   "qualityIncomplete": "Incompleta",
@@ -1303,11 +1236,6 @@
   "satLimitLine": "Saturadas {grams} g de {limit} g máx. (10 % de las calorías)",
   "sugarSodium": "Azúcar y sodio",
   "shakeCard": "Batido de proteína",
-  "mealOther": "Comida",
-  "mealAdd": "Añadir comida",
-  "mealAddHint": "p. ej. Preentreno",
-  "mealsOfDay": "Comidas del día",
-  "mealsHint": "Crea tantas como quieras. Si quitas una, lo apuntado pasa a la de arriba.",
   "trackersTitle": "Personalizar",
   "trackersHint": "Deja solo lo que quieras seguir.",
   "trackersDaily": "Resumen del día",
@@ -1358,7 +1286,6 @@
   "catDrink": "Bebidas",
   "catSauce": "Salsas",
   "catSpice": "Especias",
-  "searchFoodsPrompt": "¿Qué has comido?",
   "shelfEmpty": "Busca un alimento o hazle una foto al tuyo: aquí saldrán los que más apuntes.",
   "repeatEntry": "Repetir",
   "notifSuppChannel": "Suplementos",
@@ -1366,20 +1293,13 @@
   "energySplit": "De dónde vienen las calorías",
   "typicalServing": "Ración típica",
   "cookedYieldLine": "Pesa {factor} veces lo que en crudo",
-  "readyDishes": "Platos",
   "weightLastLine": "Última pesada {weight}",
-  "proteinAnimalShort": "Animal",
-  "proteinPlantShort": "Vegetal",
-  "kcalFromMacros": "Estos macros suman unos {value}",
   "useValue": "Usar",
   "suppRowHint": "Toca para marcar · mantén para ver",
   "suppPhoto": "Foto",
   "suppDose": "Dosis",
   "suppDoseHint": "5 g, 2 cápsulas…",
   "suppRemind": "Avisarme",
-  "mealPlanDefault": "Plan {n}",
-  "mealPlansTitle": "Planes de comida",
-  "mealPlanNew": "Nuevo plan",
   "fromPlan": "Del plan {name}",
   "logPlan": "Apuntar",
   "planFromDay": "Copiar este día",
@@ -1392,20 +1312,6 @@
   "planDeleteTitle": "¿Borrar {name}?",
   "planDeleteBody": "Lo que ya apuntaste se queda como está.",
   "sectionBeta": "Beta",
-  "nutritionBeta": "Nutrición",
-  "nutritionBetaHint": "Comidas, agua y suplementos",
-  "nutritionAboutTitle": "Sobre Nutrición",
-  "nutritionAboutSub": "Qué es y qué no será nunca.",
-  "nutritionAboutWhatTitle": "Parte de tu entreno",
-  "nutritionAboutWhat": "Una forma sencilla de apuntar comidas, agua, proteína y suplementos junto a tus entrenos. TREN es ante todo una app de gimnasio: Nutrición está para que lo tengas todo en un mismo sitio, no para sustituir a una app de dietas.",
-  "nutritionAboutScanTitle": "Sin escáner, nunca",
-  "nutritionAboutScan": "Escanear un código de barras y que se rellene todo solo sería cómodo. Pero necesita internet y una base de datos enorme en línea, y lo que comes acaba en servidores ajenos. Esos datos dicen cuándo comes, qué comes y cómo cuidas tu cuerpo, y pueden usarse para publicidad o acabar en manos de grandes empresas. Por eso no hay escáner, ni lo habrá.",
-  "nutritionAboutLocalTitle": "Todo en tu móvil",
-  "nutritionAboutLocal": "La app trae más de 500 alimentos con foto. Puedes añadir los tuyos, cambiarles la foto y editar sus valores. Todo se queda en tu móvil, como el resto de TREN.",
-  "nutritionAboutBetaTitle": "Todavía en beta",
-  "nutritionAboutBeta": "Si echas algo en falta, proponlo en GitHub. Eso sí, ni escáner ni una base de datos más grande: además de tu privacidad, haría la app mucho más pesada. ¿No necesitas Nutrición? Apágala en Ajustes y tus datos se quedan.",
-  "nutritionAboutSuggest": "Proponer una idea",
-  "nutritionAboutOk": "Entendido",
   "planShare": "Compartir",
   "planImport": "Importar un plan",
   "planImported": "{n, plural, =1{1 plan importado} other{{n} planes importados}}",
@@ -1453,38 +1359,17 @@
   "planSave": "Guardar plan",
   "planToday": "Plan de hoy",
   "planLogRest": "Apuntar el resto",
-  "dishNew": "Crear mi plato",
-  "dishNewHint": "Elige ingredientes y cantidades, guárdalo y apúntalo de un toque.",
-  "dishEdit": "Editar plato",
-  "dishNameHint": "Ej. Lentejas de mi madre",
-  "dishIngredients": "Ingredientes",
-  "dishEmptyHint": "Añade lo que lleva con la cantidad que sueles comer.",
-  "dishSave": "Guardar plato",
-  "dishNeedsName": "Ponle un nombre",
-  "dishNeedsItems": "Añade al menos un ingrediente",
   "suppHistory": "Últimos 14 días",
   "suppTakenOf": "{n} de {total} tomados",
   "suppNoReminder": "Sin aviso",
   "suppMarkTaken": "Marcar como tomado",
   "suppUnmark": "Desmarcar",
   "suppEdit": "Editar",
-  "mealMoveTo": "Mover a",
-  "mealClear": "Vaciar comida",
-  "mealCleared": "Comida vaciada",
-  "movedMealToast": "{count, plural, =1{1 alimento movido} other{{count} alimentos movidos}}",
   "repeatWholeDay": "Repetir el día entero",
-  "createFoodNamed": "Crear «{name}»",
   "entryDay": "Día",
   "movedToDay": "Movido",
-  "favFoodsHint": "Toca ☆ en un alimento",
-  "favFoodsEmpty": "Toca la estrella de cualquier alimento para tenerlo aquí, a un toque.",
-  "savedMealsCount": "{count, plural, =1{1 comida} other{{count} comidas}}",
-  "savedMealsEmpty": "Guarda una comida desde su menú ••• o crea tu propio plato.",
   "sugarLimitLabel": "Tope de azúcar",
   "sodiumLimitLabel": "Tope de sodio",
-  "waterOptions": "Opciones del agua",
-  "waterNone": "Aún no has apuntado agua.",
-  "waterDailyGoal": "Agua al día",
   "trackersScreen": "Pantalla",
   "vesselMotion": "Agua y batido en movimiento",
   "vesselMotionHint": "Apágalo si notas la pantalla lenta: los vasos se siguen llenando, solo dejan de moverse.",
@@ -1524,7 +1409,6 @@
   "skipShort": "Saltar",
   "moveUp": "Subir",
   "moveDown": "Bajar",
-  "widgetNutritionOff": "Activa Nutrición en Ajustes › Beta para usar este widget.",
   "widgetPickShake": "Elige tu batido",
   "heatRangeSetting": "Calendario de actividad",
   "heatRangeWeeks": "12 semanas",
@@ -1567,8 +1451,6 @@
   "historyEmptyHint": "Desliza de lado o usa las flechas para ver otros meses.",
   "historyMore": "+{n} más",
   "stopwatch": "Cronómetro",
-  "proteinSource": "Origen de la proteína",
-  "proteinMixedShort": "Mixta",
   "kcalActive": "activas",
   "kcalEstimated": "estimado",
   "kcalYours": "tu valor",
@@ -1627,21 +1509,6 @@
   "archiveRoutine": "Archivar rutina",
   "routineArchived": "Rutina archivada",
   "archivedRoutines": "Archivadas",
-  "autoBackup": "Copia automática",
-  "autoBackupHint": "Guarda un ZIP con todos tus datos en la carpeta que elijas. Sincroniza esa carpeta con Nextcloud, Syncthing o la app que uses para tener la copia fuera del móvil.",
-  "autoBackupFolder": "Elegir carpeta",
-  "autoBackupNoFolder": "Sin carpeta",
-  "autoBackupOff": "Desactivada",
-  "autoBackupWorkout": "Tras cada entreno",
-  "autoBackupDaily": "Una vez al día",
-  "autoBackupWeekly": "Una vez a la semana",
-  "autoBackupOnLeave": "Al salir de la app",
-  "autoBackupKeep": "Copias a guardar",
-  "autoBackupNow": "Hacer copia ahora",
-  "autoBackupLast": "Última copia {when}",
-  "autoBackupNever": "Aún no hay copias",
-  "autoBackupLost": "No se pudo guardar la última copia. Vuelve a elegir la carpeta.",
-  "autoBackupSaved": "Copia guardada",
   "prepPortions": "Raciones",
   "rotationAddRest": "Añadir día de descanso",
   "rotationRestHint": "Pasa solo al día siguiente",
@@ -1649,36 +1516,6 @@
   "rotationSkipRest": "Saltar este descanso",
   "rotationRestUpNext": "Después: {name}",
   "trainAnyway": "Entrenar igualmente",
-  "healthTitle": "Salud",
-  "healthSetting": "Datos de salud",
-  "healthSettingHint": "Datos de Health Connect en Progreso",
-  "healthPickTitle": "Datos de salud",
-  "healthPickHint": "Elige qué traer de Health Connect. Android pide permiso una vez para cada uno. Solo se lee y nunca sale del móvil.",
-  "healthGroupHeart": "Corazón",
-  "healthGroupVitals": "Constantes",
-  "healthGroupActivity": "Actividad",
-  "healthRestingHr": "Pulso en reposo",
-  "healthHeartRate": "Pulso medio",
-  "healthHrv": "Variabilidad cardiaca",
-  "healthSpo2": "Oxígeno en sangre",
-  "healthRespiration": "Frecuencia respiratoria",
-  "healthBloodPressure": "Tensión arterial",
-  "healthTemperature": "Temperatura corporal",
-  "healthSleep": "Sueño",
-  "healthDistance": "Distancia",
-  "healthFloors": "Pisos subidos",
-  "healthElevation": "Desnivel subido",
-  "healthActiveKcal": "Calorías activas",
-  "healthNoData": "Aún sin datos",
-  "healthReadFailed": "No se pudo leer",
-  "healthAllow": "Toca para permitir",
-  "healthLast7": "Últimos 7 días",
-  "healthAvg30": "Media 30 días",
-  "healthLow": "Mínimo",
-  "healthHigh": "Máximo",
-  "healthFrom": "De Health Connect · últimos 30 días",
-  "healthBpm": "lpm",
-  "healthBreaths": "resp/min",
   "weekTab": "Semana",
   "muscleSetsList": "Series por músculo",
   "fatTrans": "Trans",
@@ -1704,10 +1541,6 @@
   "settingsGroupApp": "Tu app",
   "settingsGroupHome": "Inicio y extras",
   "settingsGroupData": "Datos y ayuda",
-  "healthAllowAll": "Activar todo",
-  "healthSeeAll": "Ver todo",
-  "healthPinTitle": "En la tarjeta",
-  "healthPinHint": "Elige hasta 3 para la tarjeta de Progreso.",
   "blurSetting": "Desenfoque",
   "blurSettingHint": "Quítalo si el móvil va lento",
   "lowEndTitle": "Tu móvil va justo de memoria",
@@ -1718,7 +1551,6 @@
   "momentsDays": "Días con foto",
   "awardsPick": "Elegir para tu perfil",
   "awardsPickHint": "Toca las que quieres en tu perfil",
-
   "gymPassPicture": "Guardar una foto del código",
   "gymPassPictureHint": "Para códigos que la app no lee: enseña tu foto con el brillo al máximo",
   "gymPassPictureFormat": "Foto",
@@ -1727,42 +1559,30 @@
   "cropTitle": "Recorta el código",
   "cropHint": "Mueve las esquinas para que solo quede el código",
   "rotatePhoto": "Girar",
-
   "cardioNoSets": "El cardio no suma a tus series por músculo de la semana",
-
-  "countsAsWater": "Cuenta como agua",
-  "countsAsWaterHint": "Para batidos con agua: al apuntarlo también suma a tu agua",
-  "waterPerServing": "Agua por ración",
-
   "estOneRm": "1RM estimado",
-
   "newInWorkout": "Nuevo en este entreno",
   "newInWorkoutHint": "Añádelo a {routine} con las series que acabas de hacer. El resto de la rutina no cambia.",
   "addedToRoutine": "Añadido",
   "addShort": "Añadir",
-
   "allTimeLifted": "LEVANTADO",
   "pctBodyweight": "% de tu peso",
   "ofBodyweight": "de tu peso",
-
   "recoveryStateMid": "Recuperando",
   "recoveryStateReady": "Listo",
   "recoveringIn": "Recuperando en {time}",
   "readyIn": "Listo en {time}",
   "recoveryReadyNow": "Listo para entrenarlo otra vez",
-
   "restAfterThisSet": "Descanso tras esta serie",
   "restUsual": "El de siempre: {time}",
   "restJustToday": "Solo para esta serie, hoy",
   "restUseUsual": "Volver al descanso de siempre",
   "restChange": "Cambiar",
   "noRestTimer": "Sin temporizador",
-
   "sessionMuscles": "Músculos de este entreno",
   "sessionMusclesHint": "Lo tenue está por hacer, lo vivo ya está hecho. Series por músculo; los secundarios cuentan la mitad.",
   "miniBodySetting": "Mapa muscular pequeño en las rutinas",
   "miniBodySettingHint": "Músculos de cada rutina",
-
   "balanceTitle": "Equilibrio de fuerza",
   "balanceWhy": "Cómo funciona",
   "balanceGood": "Tus ejercicios básicos están equilibrados",
@@ -1771,11 +1591,9 @@
   "balanceEven": "En equilibrio",
   "balanceBehindShort": "Atrasado",
   "balanceAheadShort": "Adelantado",
-
   "holdProgress": "Progresión por tiempo",
   "holdProgressHint": "Suma segundos cuando aguantas todas las series",
   "holdProgressOn": "+{s} s cada vez que aguantas todas las series",
-
   "paceTitle": "Ritmo semanal",
   "paceOn": "Vas a buen ritmo",
   "paceTooFast": "Más rápido que el rango que pusiste",
@@ -1795,7 +1613,6 @@
   "paceGainRange": "Entre 0,25 y 0,5 % de tu peso por semana",
   "paceAutoHint": "Según tu objetivo de peso",
   "weekShort": "sem",
-
   "weightStack": "Pila de pesos",
   "weightStackHint": "Los pesos que tiene de verdad esta máquina. Los botones + y −, la progresión y las descargas solo caen en ellos.",
   "weightStackOff": "Apagada: saltos de peso normales",
@@ -1808,22 +1625,12 @@
   "stackEditWeight": "Peso en el pasador",
   "stackClear": "Quitar la pila",
   "stackCount": "{n} pesos",
-
-  "healthLinksTitle": "Con tus entrenos",
-  "healthLinkHeart": "Pulso de tu reloj",
-  "healthLinkHeartHint": "Pulso medio y máximo de cada entreno, sea cual sea el reloj que lo grabó",
-  "healthLinkWeight": "Pesajes de otras apps",
-  "healthLinkWeightHint": "Los pesajes de tu báscula de los últimos 30 días. Nunca pisa uno que hayas escrito tú.",
-  "healthLinkDenied": "Health Connect no dio permiso",
-  "healthOpenSettings": "Abrir",
   "hrMaxShort": "máx {bpm}",
-
   "setNote": "Nota de esta serie",
   "setNoteHint": "Agarre, una molestia, algo que te funcionó…",
   "setNoteLast": "La última vez: {note}",
   "lastTimeNotes": "La última vez",
   "setNoteLine": "Serie {n} · {note}",
-
   "newMeasure": "Nueva medida",
   "newMeasureHint": "Lo que quieras seguir: muñeca, pulso en reposo, agua corporal…",
   "measureKindLength": "Longitud",
@@ -1844,11 +1651,6 @@
   "notifMeasureChannelWhy": "Un aviso cuando toca volver a medirte.",
   "notifMeasureTitle": "Toca medirte",
   "notifMeasureBody": "{n} días desde la última vez. Mismo sitio, misma hora del día.",
-
-  "healthLinkWrite": "Guardar tus entrenos",
-  "healthLinkWriteHint": "Cada entreno que acabes va a Health Connect con su hora y su tipo, para que otras apps también lo cuenten. Manda también los últimos 30 días.",
-  "healthWorkoutTitle": "Entreno",
-
   "circuits": "Circuitos por tiempo",
   "circuitsHint": "Trabajo y pausa al reloj, ronda tras ronda",
   "newCircuit": "Nuevo circuito",
@@ -1878,25 +1680,14 @@
   "circuitPickExercise": "Elige un ejercicio",
   "circuitNoSteps": "Añade al menos un ejercicio",
   "circuitPrevious": "Anterior",
-
   "circuitUpNext": "Ahora viene",
-
-  "foodGroupNew": "Nueva categoría",
-  "foodGroupHint": "Platos preparados, congelados…",
-  "foodGroupCount": "{n, plural, =0{Aún sin alimentos} one{1 alimento} other{{n} alimentos}}",
-  "foodGroupDeleteTitle": "¿Borrar {name}?",
-  "foodGroupDeleteBody": "Tus alimentos se quedan, solo pierden esta categoría.",
-
   "onbHello": "Hola, {name}",
   "onbPlaceHero": "ejercicios que podrás hacer",
-
   "settingsRests": "Descansos",
   "settingsDuring": "Durante el entreno",
   "settingsLook": "Cómo se ve",
-
   "importCardTitle": "Trae aquí tus entrenos",
   "importCardBody": "Desde Hevy, Strong, FitNotes y más",
-
   "checkInTitle": "¿Cómo llegabas?",
   "checkInSleep": "Sueño",
   "checkInEnergy": "Energía",
@@ -1945,10 +1736,8 @@
   "reportBestHint": "El mejor 1RM se estima con tus series. El cambio compara el primer y el último día del ejercicio en este informe.",
   "reportMuscles": "Series por músculo",
   "reportBody": "Cuerpo y recuperación",
-  "reportFood": "{n, plural, one{Nutrición · media de 1 día} other{Nutrición · media de {n} días}}",
   "reportRecordsLine": "{n, plural, one{1 récord nuevo} other{{n} récords nuevos}}",
   "reportLiftsLine": "{n, plural, one{1 ejercicio} other{{n} ejercicios}}",
-  "reportFoodLine": "{kcal} y {protein} g de proteína al día · {days} días apuntados",
   "reportSharePdf": "Compartir PDF",
   "reportShareCsv": "Exportar CSV",
   "reportChooseCsv": "Elige qué archivos CSV compartir.",
@@ -1972,7 +1761,6 @@
   "fastSince": "Desde las {time}",
   "fastStartedAt": "¿Cuándo empezaste el ayuno?",
   "fastStart": "Empezar ayuno",
-  "fastFromMeal": "Desde las {time}",
   "fastEnd": "Terminar",
   "fastCancel": "Cancelar este ayuno",
   "fastPlan": "Plan de ayuno",
@@ -1990,12 +1778,9 @@
   "notifFastLiveBody": "Tu ventana de comida se abre a las {time}",
   "notifFastDoneTitle": "Ayuno terminado",
   "notifFastDoneBody": "{n} horas. Ya puedes comer.",
-
   "newExerciseHint": "Solo hace falta el nombre. Lo demás ayuda, pero puedes añadirlo luego.",
-
   "supportThanksTitle": "Gracias por estar aquí 🤍",
   "supportThanksBody": "TREN es gratis y lo será siempre, sin anuncios ni nada escondido.\n\nSi te ayuda a entrenar, invitarme a un café me alegra el día ☕\nY si no puedes, no pasa nada: una estrella en GitHub también ⭐",
-
   "perfSetting": "Rendimiento",
   "perfSheetHint": "Cuánto exprime TREN tu móvil. Debajo puedes cambiar cada parte.",
   "perfLite": "Ahorro",
@@ -2004,143 +1789,343 @@
   "perfBalancedHint": "Desenfoque y animaciones sin gastar batería de más.",
   "perfMax": "Máximo",
   "perfMaxHint": "Desenfoque más fino y la pantalla a {hz} Hz. Para móviles potentes.",
-  "@perfMaxHint": {"placeholders": {"hz": {"type": "int"}}},
+  "@perfMaxHint": {
+    "placeholders": {
+      "hz": {
+        "type": "int"
+      }
+    }
+  },
   "perfMaxHintNoHz": "Desenfoque más fino en todo. Para móviles potentes.",
   "perfCustom": "Personalizado",
   "perfTweak": "Ajuste fino",
   "perfFine": "Desenfoque fino",
   "perfFineHint": "Bordes más suaves y un fondo más nítido detrás de las hojas",
   "perfHz": "Pantalla a {hz} Hz",
-  "@perfHz": {"placeholders": {"hz": {"type": "int"}}},
+  "@perfHz": {
+    "placeholders": {
+      "hz": {
+        "type": "int"
+      }
+    }
+  },
   "perfHzHint": "Todo se desliza más suave, a cambio de algo más de batería",
   "lowEndLiteBody": "Con el modo Ahorro (sin desenfoque y con menos animación) irá más fluido. Lo cambias en Ajustes → General → Rendimiento.",
   "lowEndLiteOn": "Activar Ahorro",
-
   "dayOffHint": "Tu racha y el aviso respetan este día",
   "dayOffTrained": "Entrené, pero no lo apunté",
   "dayOffSick": "Enfermedad",
   "dayOffTravel": "Viaje",
   "dayOffInjury": "Lesión",
   "dayOffRest": "Descanso",
-
   "altsTitle": "Reservas",
   "altsHint": "Por si la máquina está ocupada",
   "altsPickHint": "Elige hasta {count}. Si la máquina está ocupada, cambias con un toque.",
-  "@altsPickHint": {"placeholders": {"count": {"type": "int"}}},
-
+  "@altsPickHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "placeDumbbells": "Mancuernas",
   "dumbbellsHint": "El peso de una mancuerna. Aquí la progresión y los botones + y − solo caerán en estos.",
   "dumbbellOther": "Otro peso",
-
   "tuneTitle": "Volumen de hoy",
   "tuneHint": "Dime qué tal cada músculo y ajusto las series para la próxima vez.",
   "tuneLess": "Me faltó",
   "tuneRight": "Justo",
   "tuneMore": "Me pasé",
   "tuneNext": "Próxima vez: {sets} de {name}",
-  "@tuneNext": {"placeholders": {"sets": {"type": "String"}, "name": {"type": "String"}}},
+  "@tuneNext": {
+    "placeholders": {
+      "sets": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "tuneSame": "La próxima vez queda igual",
   "tuneSetting": "Ajustar series por músculo",
   "tuneSettingHint": "Al acabar una rutina, valoras cada músculo y se ajustan las series",
-
   "insightLoad": "{pct} % más series que tu semana normal. Ojo con la recuperación.",
-  "@insightLoad": {"placeholders": {"pct": {"type": "int"}}},
+  "@insightLoad": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "insightMuscle": "{muscle}: {days} días sin tocar.",
-  "@insightMuscle": {"placeholders": {"muscle": {"type": "String"}, "days": {"type": "int"}}},
+  "@insightMuscle": {
+    "placeholders": {
+      "muscle": {
+        "type": "String"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "insightPushHeavy": "Empujas más de lo que tiras: {a} series frente a {b} en cuatro semanas.",
-  "@insightPushHeavy": {"placeholders": {"a": {"type": "int"}, "b": {"type": "int"}}},
+  "@insightPushHeavy": {
+    "placeholders": {
+      "a": {
+        "type": "int"
+      },
+      "b": {
+        "type": "int"
+      }
+    }
+  },
   "insightPullHeavy": "Tiras más de lo que empujas: {a} series frente a {b} en cuatro semanas.",
-  "@insightPullHeavy": {"placeholders": {"a": {"type": "int"}, "b": {"type": "int"}}},
+  "@insightPullHeavy": {
+    "placeholders": {
+      "a": {
+        "type": "int"
+      },
+      "b": {
+        "type": "int"
+      }
+    }
+  },
   "insightStronger": "{name}: un {pct} % más fuerte que el mes pasado.",
-  "@insightStronger": {"placeholders": {"name": {"type": "String"}, "pct": {"type": "int"}}},
-
+  "@insightStronger": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "recapPull": "Sigue tirando para ver tu {month}",
-  "@recapPull": {"placeholders": {"month": {"type": "String"}}},
+  "@recapPull": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapRelease": "Suelta",
   "recapHi": "Hola, {name}",
-  "@recapHi": {"placeholders": {"name": {"type": "String"}}},
+  "@recapHi": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "recapReady": "¿Vemos lo que hiciste en {month}?",
-  "@recapReady": {"placeholders": {"month": {"type": "String"}}},
+  "@recapReady": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapGo": "Vamos",
   "recapEmpty": "Aún no hay entrenos en {month}. El primero lo abre todo.",
-  "@recapEmpty": {"placeholders": {"month": {"type": "String"}}},
+  "@recapEmpty": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapClose": "Cerrar",
   "recapShare": "Compartir",
   "recapWorkoutsKicker": "Este mes entrenaste",
   "recapWorkouts": "{n, plural, =1{entreno} other{entrenos}}",
-  "@recapWorkouts": {"placeholders": {"n": {"type": "int"}}},
+  "@recapWorkouts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapDays": "{n, plural, =1{En un solo día} other{En {n} días distintos}}",
-  "@recapDays": {"placeholders": {"n": {"type": "int"}}},
+  "@recapDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapTimeKicker": "Tiempo bajo la barra",
   "recapLongest": "Tu sesión más larga: {time}, el {date}",
-  "@recapLongest": {"placeholders": {"time": {"type": "String"}, "date": {"type": "String"}}},
+  "@recapLongest": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "recapVolumeKicker": "Moviste",
   "recapCars": "{n, plural, =1{Como levantar un coche} other{Como levantar {count} coches}}",
-  "@recapCars": {"placeholders": {"n": {"type": "int"}, "count": {"type": "String"}}},
+  "@recapCars": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
   "recapTop": "Lo que más: {name}, {volume}",
-  "@recapTop": {"placeholders": {"name": {"type": "String"}, "volume": {"type": "String"}}},
+  "@recapTop": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "volume": {
+        "type": "String"
+      }
+    }
+  },
   "recapMuscleKicker": "Tu músculo del mes",
   "recapRecordsKicker": "Récords nuevos",
   "recapNoRecords": "Esta vez no hubo récords, pero sumaste {n} series.",
-  "@recapNoRecords": {"placeholders": {"n": {"type": "int"}}},
+  "@recapNoRecords": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapHabitKicker": "Tu momento",
   "recapHabitStart": "Sueles empezar a las {time}",
-  "@recapHabitStart": {"placeholders": {"time": {"type": "String"}}},
+  "@recapHabitStart": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "recapShareKicker": "Tu mes, listo para compartir",
   "recapTickWorkouts": "Entrenos",
   "recapTickTime": "Tiempo",
   "recapTickVolume": "Carga",
   "recapTickRecords": "Récords",
-
   "recapAvg": "{n} min de media por entreno",
-  "@recapAvg": {"placeholders": {"n": {"type": "int"}}},
+  "@recapAvg": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapLiftKicker": "Tu ejercicio del mes",
   "recapBest": "Mejor",
   "recapTimes": "Días",
   "recapDaysLabel": "Días",
   "recapAvgLabel": "Media",
   "recapCalendarLine": "{workouts} entrenos en {days} días",
-  "@recapCalendarLine": {"placeholders": {"workouts": {"type": "int"}, "days": {"type": "int"}}},
+  "@recapCalendarLine": {
+    "placeholders": {
+      "workouts": {
+        "type": "int"
+      },
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "recapFavLabel": "Tu día",
   "recapWatermark": "tu diario de gym, gratis",
-
-  "recapTickSteps": "Pasos",
-  "recapTickFood": "Comida",
   "recapCardioKicker": "Cardio",
   "recapCardioTime": "{minutes} min en {n, plural, =1{un entreno} other{{n} entrenos}}",
-  "@recapCardioTime": {"placeholders": {"minutes": {"type": "int"}, "n": {"type": "int"}}},
+  "@recapCardioTime": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapCardioCount": "{n, plural, =1{Un entreno de cardio} other{{n} entrenos de cardio}}",
-  "@recapCardioCount": {"placeholders": {"n": {"type": "int"}}},
+  "@recapCardioCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapCardioTop": "Tu favorito: {name}",
-  "@recapCardioTop": {"placeholders": {"name": {"type": "String"}}},
-  "recapStepsKicker": "Caminaste",
-  "recapStepsWord": "pasos",
-  "recapStepsAvg": "{value} al día de media",
-  "@recapStepsAvg": {"placeholders": {"value": {"type": "String"}}},
-  "recapStepsBest": "Tu mejor día: {value}, el {date}",
-  "@recapStepsBest": {"placeholders": {"value": {"type": "String"}, "date": {"type": "String"}}},
-  "recapFoodKicker": "En tu plato",
+  "@recapCardioTop": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "recapLiftRest": "Le siguen",
-
   "recapSameAs": "Igual que en {month}",
-  "@recapSameAs": {"placeholders": {"month": {"type": "String"}}},
+  "@recapSameAs": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapMoreThan": "{value} más que en {month}",
-  "@recapMoreThan": {"placeholders": {"value": {"type": "String"}, "month": {"type": "String"}}},
+  "@recapMoreThan": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapLessThan": "{value} menos que en {month}",
-  "@recapLessThan": {"placeholders": {"value": {"type": "String"}, "month": {"type": "String"}}},
+  "@recapLessThan": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "recapTickMedals": "Medallas",
   "recapTickSleep": "Sueño",
   "recapMedalsKicker": "Medallas que ganaste",
   "recapMedalsMore": "{n, plural, =1{Y una más} other{Y {n} más}}",
-  "@recapMedalsMore": {"placeholders": {"n": {"type": "int"}}},
+  "@recapMedalsMore": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "recapSleepKicker": "Dormiste",
   "recapSleepAvg": "por noche de media",
   "recapSleepBest": "Tu mejor noche: {value}, el {date}",
-  "@recapSleepBest": {"placeholders": {"value": {"type": "String"}, "date": {"type": "String"}}},
+  "@recapSleepBest": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "recapCardSummary": "Resumen",
   "recapCardCalendar": "Calendario",
   "recapCardLift": "Ejercicio",
-
   "recapPeakKicker": "Tu sesión más dura",
   "recapTickPeak": "Sesión",
   "recapFreshKicker": "Lo probaste por primera vez",
@@ -2149,30 +2134,16 @@
   "recapStreak": "{n} días seguidos, tu racha más larga",
   "recapYearAgo": "Hace un año: {n, plural, =1{1 entreno} other{{n} entrenos}}",
   "recapForgot": "Este mes se quedó fuera: {muscle}",
-  "recapFoodProtein": "de proteína al día · objetivo {goal} g",
-
-  "recapFoodStarDays": "{n, plural, =1{En tu plato 1 día} other{En tu plato {n} días}}",
-  "recapFoodProteinLabel": "Proteína · g/día",
-  "recapFoodGoalDays": "Objetivo",
-  "recapFoodWaterLabel": "Agua/día",
-  "recapFoodTimes": "{n, plural, =1{1 día} other{{n} días}}",
-
-  "recapFoodStarKicker": "Tu comida del mes",
-
   "onbSpeedTitle": "Que vaya fluido",
   "onbSpeedWhy": "Parece que tu móvil va justo. Si los apagas, todo irá más suave: pruébalos y mira cómo cambia.",
-
   "onbSpeedMotion": "Animaciones",
-
   "onbSpeedBlurHint": "Cristal esmerilado detrás de hojas y barras",
   "onbSpeedMotionHint": "Pantallas y hojas que entran deslizándose",
   "onbSpeedLater": "Lo cambias cuando quieras en Ajustes › General › Rendimiento.",
-
   "notifSoundSetting": "Sonidos de notificación",
   "notifSoundRowHint": "Cómo suena cada tipo de aviso",
   "notifSoundHint": "Elige un sonido para cada tipo de aviso. Del móvil abre los sonidos de tu teléfono, y en la mayoría puedes añadir ahí tu propia canción.",
   "notifSoundTrain": "Entrenos",
-  "notifSoundFood": "Comida, suplementos y ayuno",
   "notifSoundOther": "Fotos y medidas",
   "notifSoundNormal": "Normal",
   "notifSoundPhone": "Del móvil",
@@ -2180,9 +2151,7 @@
   "notifSoundPhoneHint": "Toca uno para oírlo. Se guarda al momento.",
   "notifSoundMore": "Otro archivo…",
   "notifSoundChange": "Cambiar",
-
   "workoutNoteAdd": "Nota fija: asiento, agarre, máquina…",
-
   "autoProgressSetting": "Progresión automática",
   "autoProgressRowHint": "Qué te propone para la próxima vez",
   "autoProgressOff": "Apagada",
@@ -2197,7 +2166,6 @@
   "noteFolderNone": "Sin carpeta",
   "noteFolderDelete": "¿Borrar la carpeta?",
   "noteFolderDeleteBody": "Las notas no se borran: se quedan sin carpeta.",
-  "foodArchivedToast": "Alimento archivado",
   "planArchivedToast": "Plan archivado",
   "suppArchivedToast": "Suplemento archivado",
   "voiceSetting": "Voz en el entreno",
@@ -2217,7 +2185,6 @@
   "deloadNowHint": "Hoy, la mitad de series y un 10 % menos de peso",
   "deloadIn": "{weeks, plural, =0{Esta semana} =1{La próxima semana} other{Dentro de {weeks} semanas}}",
   "deloadSkip": "Entrenar normal",
-
   "voiceSheetTitle": "Así funciona la voz",
   "voicePointRest": "Al marcar una serie te dice cuánto descansas y qué toca después.",
   "voicePointCount": "Cuenta 3, 2, 1 al final del descanso y te avisa para volver.",
@@ -2226,13 +2193,10 @@
   "voiceNoEngine": "Tu móvil no tiene ningún motor de voz activo.",
   "voiceNoLang": "Falta la voz de tu idioma. Descárgala en los ajustes de voz del móvil.",
   "voiceOpenSettings": "Ajustes de voz",
-
   "voiceMinutes": "{count, plural, =1{1 minuto} other{{count} minutos}}",
   "voiceSeconds": "{count, plural, =1{1 segundo} other{{count} segundos}}",
   "voiceAnd": "y",
-
   "repRecordsTitle": "Mejor peso por reps",
-
   "suppUnitCapsule": "{n, plural, =1{cápsula} other{cápsulas}}",
   "suppUnitPill": "{n, plural, =1{pastilla} other{pastillas}}",
   "suppUnitScoop": "{n, plural, =1{cazo} other{cazos}}",
@@ -2244,89 +2208,37 @@
   "suppLeftFor": "{n, plural, =1{Queda para 1 día} other{Quedan para {n} días}}",
   "suppForDays": "{n, plural, =1{1 día} other{{n} días}}",
   "suppRanOut": "Se ha acabado",
-
   "lightSession": "Sesión ligera",
   "lightSessionHint": "Se guarda en tu historial y estadísticas, pero no cambia tus próximos objetivos.",
   "lightSessionNote": "No cuenta para la progresión",
   "lightSessionOff": "Quitar",
-
   "eachSideRepsHint": "Apunta las reps de la izquierda y la derecha por separado. La progresión sigue al lado más flojo.",
   "repsLeftCol": "REPS I",
   "repsRightCol": "REPS D",
   "repsLeftTitle": "REPS IZQUIERDA",
   "repsRightTitle": "REPS DERECHA",
   "sidesReps": "I{l} D{r}",
-  "@sidesReps": {"placeholders": {"l": {"type": "int"}, "r": {"type": "int"}}},
-
+  "@sidesReps": {
+    "placeholders": {
+      "l": {
+        "type": "int"
+      },
+      "r": {
+        "type": "int"
+      }
+    }
+  },
   "progSchemeTitle": "Progresión de peso",
-
   "groupMoveUp": "Subir el grupo",
   "groupMoveDown": "Bajar el grupo",
-
-  "mealAiRow": "Pedir a una IA",
-  "mealAiRowHint": "Copia la petición y pega la respuesta",
-  "mealAiTitle": "Comidas con IA",
-  "mealAiSubtitle": "Vale con cualquier IA. La app sigue sin conexión.",
-  "mealAiStepAsk": "Pedir",
-  "mealAiStepPaste": "Pegar",
-  "mealAiWholeDay": "Todo el día",
-  "mealAiTarget": "Objetivo",
-  "mealAiLeft": "Hoy te quedan {kcal} y {protein} g de proteína",
-  "mealAiStyle": "Tus gustos",
-  "mealAiTagProtein": "Alto en proteína",
-  "mealAiTagVeggie": "Vegetariano",
-  "mealAiTagVegan": "Vegano",
-  "mealAiTagNoGluten": "Sin gluten",
-  "mealAiTagNoLactose": "Sin lactosa",
-  "mealAiTagQuick": "Rápido",
-  "mealAiTagNoCook": "Sin cocinar",
-  "mealAiTagCheap": "Barato",
-  "mealAiNotesHint": "Tengo en casa… no me gusta… alergias…",
-  "mealAiOptions": "Opciones",
-  "mealAiCopy": "Copiar petición",
-  "mealAiCopied": "Petición copiada",
-  "mealAiCopiedHint": "Pégala en tu IA y vuelve aquí con la respuesta",
-  "mealAiShowText": "Ver la petición",
-  "mealAiHideText": "Ocultar la petición",
-  "mealAiPasteHint": "Pega aquí la respuesta de la IA",
-  "mealAiReview": "Revisar respuesta",
-  "mealAiUnreadable": "No he encontrado alimentos en ese texto",
-  "mealAiUnreadableHint": "Pídele a la IA que envíe solo el JSON, en un bloque de código y con el formato de la petición.",
-  "mealAiCopyFix": "Copiar esa frase",
-  "mealAiOption": "Opción {n}",
-  "mealAiAddTo": "Añadir a {meal}",
-  "mealAiAddDay": "Añadir a hoy",
-  "mealAiAddPick": "Añadir",
-  "mealAiAdded": "{n, plural, one{1 alimento añadido} other{{n} alimentos añadidos}}",
-  "mealAiSaveRecipe": "Guardar como receta",
-  "mealAiSavePlan": "Guardar como plan",
-  "mealAiRecipeSaved": "Receta guardada",
-  "mealAiPlanSaved": "Plan guardado",
-  "mealAiFlagEstimated": "Estimado por la IA",
-  "mealAiFlagAdjusted": "Calorías corregidas según los macros",
-  "mealAiFlagDoubtful": "No cuadra, revísalo",
-  "mealAiFlagNoValues": "Sin valores nutricionales",
-  "mealAiFlagNoAmount": "Sin cantidad",
-  "mealAiTruncated": "La respuesta parece cortada. He guardado los alimentos completos.",
-  "mealAiAmount": "Cantidad",
-  "mealAiTargetLine": "Objetivo {kcal}",
-  "mealAiNothingChosen": "Activa al menos un alimento",
-
   "cholesterolLabel": "Colesterol",
-
-  "mealAiFlagMatched": "Igual que un alimento tuyo",
-  "mealAiNotSame": "No es el mismo",
-
   "homeOrderRow": "Orden de las secciones",
   "homeOrderHint": "Mantén y arrastra para cambiar el orden de Inicio.",
   "homeOrderFolders": "Accesos",
-
   "equipNew": "Nuevo",
   "equipNewTitle": "Material nuevo",
   "equipNewHint": "p. ej. Cinturón de lastre",
-
   "homeOrderWeekdays": "Checks semanales",
-
   "repsMaxTitle": "Repeticiones hasta",
   "repsRangeHint": "Mantén pulsadas las repeticiones para poner un rango como 8-12.",
   "repsRangeClear": "Quitar rango",
@@ -2336,97 +2248,24 @@
   "noteLinkNameHint": "Nombre",
   "noteLinkUrlHint": "Dirección web",
   "noteLinkInvalid": "Esa dirección no parece válida",
-
   "changeRest": "Descanso entre ejercicios",
   "changeRestHint": "Tras la última serie, antes del siguiente ejercicio",
-
   "notifSuppTake": "Tomado",
-
   "sideRest": "Descanso entre lados",
   "sideRestHint": "Ejercicios por lados: el primer ✓ cierra un lado",
-
   "gfxCompat": "Gráficos compatibles",
   "gfxCompatHint": "Para móviles donde las letras se ven rotas. El desenfoque se queda, algún efecto se simplifica",
   "gfxRestartTitle": "¿Reiniciar TREN?",
   "gfxRestartBody": "Se cierra y se vuelve a abrir para cambiar cómo dibuja la pantalla. No se pierde nada de lo guardado.",
   "gfxRestart": "Reiniciar",
-
-  "webSynced": "Actualizado con cambios de otro dispositivo",
-  "webSyncedPhone": "Ya tienes los cambios de tu móvil",
-
-  "webWelcomeBlurb": "Todo se queda en tu propio servidor. Sin cuenta, sin nube, sin pagar nada.",
-  "webOwnServer": "Tu servidor, tus reglas",
-  "webOwnServerWhy": "Sin cuentas ni nubes de terceros. Tus datos viven donde tú lo montas.",
-
-  "webServerSaved": "Guardado en tu servidor",
-  "webServerOffline": "Sin conexión con tu servidor",
-  "webServerLocal": "Guardado en este navegador",
-
-  "webServerTitle": "Tu servidor",
-  "webPhoneLast": "Última copia del móvil: {date}",
-  "@webPhoneLast": {"placeholders": {"date": {"type": "String"}}},
-  "webPhoneNone": "Aún no ha llegado ninguna copia del móvil",
-  "webPhoneScan": "Traer del móvil",
-  "webPhoneExport": "Mandar al móvil",
-  "webPhoneExportDone": "Lista en la carpeta compartida. Tu móvil la trae al sincronizar",
-  "webPhoneImported": "Ya tienes los cambios de tu móvil",
-  "webPhoneNothing": "No hay nada nuevo del móvil",
-  "webPhoneHow": "Activa en el móvil la copia automática en una carpeta que sincronices con Syncthing. El servidor y el móvil se traen solos los cambios del otro, y al juntar nunca se borra nada.",
-  "webPhoneGuide": "Cómo montarlo",
-  "webSignOut": "Cerrar sesión",
-  "wearSyncTitle": "Móvil",
-  "wearSyncNever": "Aún sin sincronizar",
-  "wearSyncLast": "Sincronizado el {when}",
-  "wearSyncWaiting": "{n, plural, =1{1 entreno esperando para ir al móvil} other{{n} entrenos esperando para ir al móvil}}",
-  "wearSyncNow": "Sincronizar ahora",
-  "wearSyncHow": "En el móvil, activa Ajustes › Reloj Wear OS y abre TREN en los dos.",
   "routinesOrder": "Ordenar rutinas",
   "routinesOrderHint": "Arrastra para cambiar el orden en que salen.",
-  "webPhoneOff": "La sincronización con el móvil está apagada en este servidor",
-
   "toolGroupBody": "Cuerpo",
-
-  "toolNameProtein": "Proteína",
-  "toolTitleProtein": "Proteína diaria",
-  "toolDescProtein": "Cuánta proteína al día",
-  "toolHintProtein": "Gramos al día, repartidos en tus comidas",
-  "proteinGoalLabel": "Objetivo",
-  "proteinExplain": "Sale del rango en el que coinciden casi todos los estudios para gente que entrena: más cuando bajas de peso, para no perder músculo. Pasarte no es malo, solo aporta poco.",
-  "toolNameWater": "Agua",
-  "toolTitleWater": "Agua diaria",
-  "toolDescWater": "Cuánta agua beber al día",
-  "toolHintWater": "Litros al día, contando la comida",
-  "waterTrainingLabel": "Entreno al día",
-  "waterExplain": "Unos 35 ml por kilo de peso, más un extra por cada minuto que entrenas. Bebe más los días de calor.",
-
-  "autoBackupSync": "Sincronizar ahora",
-  "autoBackupMerged": "Ya tienes los cambios de tus otros dispositivos",
-  "autoBackupSyncHint": "Comparte esta carpeta con Syncthing y cada dispositivo trae lo que dejan los otros. Al juntar nunca se borra nada.",
-
-  "webPhoneFolder": "Carpeta compartida",
-  "webPhoneFolderHow": "Se elige al instalar el servidor. Para cambiarla, pon GYMMANE_SYNC en el archivo .env del servidor y reinícialo.",
-  "webPhoneOffHow": "Para encenderla, quita GYMMANE_SYNC=off del archivo .env del servidor y reinícialo.",
-  "webPhoneDevices": "{n, plural, =0{Ningún móvil ha sincronizado aún} =1{1 móvil sincronizado} other{{n} móviles sincronizados}}",
-  "@webPhoneDevices": {"placeholders": {"n": {"type": "int"}}},
-  "webPhoneError": "No se pudo leer la carpeta: {error}",
-  "@webPhoneError": {"placeholders": {"error": {"type": "String"}}},
-
   "duplicateExercise": "Duplicar",
   "exerciseCopyName": "{name} (copia)",
-
-  "foodAiRow": "Rellenar con una IA",
-  "foodAiRowHint": "Desde una etiqueta, una captura o un enlace",
-  "foodAiTitle": "Alimento con IA",
-  "foodAiHow": "Copia la petición y pégala en cualquier chatbot junto con una foto de la etiqueta, una captura del producto o un enlace. Luego pega aquí su respuesta.",
-  "foodAiCheck": "El formulario se rellena solo. Revisa los valores con la etiqueta antes de guardar.",
-  "foodAiFill": "Rellenar el alimento",
-  "foodAiFilled": "Alimento rellenado",
-  "foodAiFilledHint": "Revisa los valores antes de guardar",
-
   "routineExerciseNote": "Nota de la rutina",
   "importRoutineNotes": "Añadir las notas de rutina que falten",
   "routineNotesAdded": "Notas de rutina añadidas",
-
   "fastAdd": "Añadir un ayuno pasado",
   "fastAddTitle": "Añadir ayuno",
   "fastEditTitle": "Editar ayuno",
@@ -2440,14 +2279,11 @@
   "fastErrOverlap": "Se solapa con otro ayuno",
   "fastSaved": "Ayuno guardado",
   "fastAdjust": "Ajustar",
-
   "keepCounting": "Seguir contando",
   "keepCountingHint": "Suena al llegar a tu tiempo y sigue hasta que lo pares",
   "holdOvertime": "Tiempo extra",
-
   "pairSetting": "Par de mancuernas",
   "pairSettingHint": "Apunta el peso de una. El volumen cuenta las dos.",
-
   "helpCommon": "Preguntas frecuentes",
   "helpQuestions": "Preguntas",
   "helpNoResults": "No hay nada con ese nombre. Prueba con otra palabra",
@@ -2479,9 +2315,7 @@
   "helpRaceA": "En el entreno, toca la píldora de arriba: «{race}».",
   "helpFastQ": "Se me olvidó terminar el ayuno",
   "helpFastA": "Termínalo y toca «{adjust}» en el aviso, o toca el ayuno en la hoja de ayuno para cambiar las horas.",
-
   "helpGo": "Llévame",
-
   "helpHomeOrderQ": "¿Puedo cambiar el orden de Inicio?",
   "helpHomeOrderA": "Sí: Ajustes › {section} › «{row}». Mantén y arrastra las secciones, o apaga las que no uses.",
   "helpCustomQ": "¿Puedo crear mi propio ejercicio?",
@@ -2490,48 +2324,16 @@
   "helpWarmupA": "Sí: abre el ejercicio › {settings} › «{warm}». Para calcularlas a mano, usa «{tool}» en Herramientas.",
   "helpPassQ": "¿Puedo llevar el carnet del gimnasio en la app?",
   "helpPassA": "Sí: «{row}» en Ajustes › {section}. Enseña el código de barras o el QR para pasarlo en la entrada.",
-
-  "helpStepsQ": "¿Por qué no me salen los pasos?",
-  "helpStepsA": "Los pasos se leen de Health Connect, que viene con Android 14 o superior. En móviles más antiguos no está. Si lo tienes, activa «{row}» en Ajustes › {section}.",
   "helpNfcQ": "¿Puedo empezar el entreno acercando el móvil?",
   "helpNfcA": "Sí, con una pegatina NFC: «{row}» en Ajustes › {section}. Pégala en el gimnasio y al acercar el móvil se abre el entreno de hoy.",
   "helpCleanQ": "¿Cómo dejo la pantalla de Nutrición más limpia?",
   "helpCleanA": "En Nutrición, toca el botón de los controles de arriba («{button}») y apaga lo que no sigas.",
-
   "alsoWorksMuscles": "También trabajan {muscles}",
-
-  "wearSyncAllow": "Permitir Bluetooth",
-  "wearSyncSearching": "Buscando el móvil…",
-  "wearSyncNotFound": "No se encontró el móvil",
-  "wearSyncBluetoothOff": "El Bluetooth está apagado",
-  "watchRow": "Reloj Wear OS",
-  "watchTitle": "Reloj Wear OS",
-  "watchSubtitle": "Tus rutinas en la muñeca y tus entrenos de vuelta en el móvil",
-  "watchPoint1": "Instala TREN en el reloj",
-  "watchPoint1Body": "Es la misma app del móvil. Toca para ver la guía de instalación.",
-  "watchPoint2": "Abre TREN en los dos",
-  "watchPoint2Body": "Se sincronizan solos por el Bluetooth que ya une el móvil y el reloj. Sin Internet.",
-  "watchPoint3": "Entrena con el reloj",
-  "watchPoint3Body": "Lo que hagas en el reloj llega al móvil la próxima vez que estén abiertos los dos.",
-  "watchUse": "Sincronizar con el reloj",
-  "watchUseHint": "Solo si tienes reloj. Pide permiso para usar el Bluetooth",
-  "watchTurnOnBluetooth": "Activar Bluetooth",
-  "watchSyncNow": "Sincronizar ahora",
-  "watchSearching": "Buscando el reloj…",
-  "watchSearchingHint": "Abre TREN en el reloj si aún no lo está.",
-  "watchBluetoothOff": "El Bluetooth está apagado.",
-  "watchNotFound": "No se encontró el reloj. Abre TREN en él y vuelve a probar.",
-  "watchNever": "Aún no se ha sincronizado.",
-  "watchLast": "Sincronizado el {when}.",
-  "watchLastWith": "Sincronizado con {name} el {when}.",
-  "watchTip": "Beta: aún no se ha probado en todos los relojes. Si falla, cuéntalo en GitHub.",
-
   "mineralsTracker": "Hierro y potasio",
   "ironLabel": "Hierro",
   "potassiumLabel": "Potasio",
   "mineralsCoverage": "{known} de {total} alimentos de hoy traen hierro y potasio",
   "mineralsHint": "Pocos alimentos de la lista traen hierro y potasio, así que el total solo cuenta los que sí. Añádelos en tus alimentos o con la IA.",
-
   "qsRow": "Accesos en el panel",
   "qsRowHint": "El entreno de hoy o tu pase del gimnasio, desde el panel de arriba",
   "qsTitle": "Accesos en el panel",
@@ -2547,13 +2349,11 @@
   "qsManual": "Baja el panel de ajustes rápidos, toca el lápiz y arrastra el acceso de TREN a los tuyos.",
   "qsPassUse": "Abrir desde el panel",
   "qsPassUseHint": "El acceso del panel de ajustes rápidos abre este pase",
-
   "measureAbdomen": "Abdomen",
   "bfNeckBelow": "Cuello (bajo la nuez)",
   "bfAbdomen": "Abdomen (a la altura del ombligo)",
   "bfWaistNarrow": "Cintura (parte más estrecha)",
   "bfHipWide": "Cadera (parte más ancha)",
-
   "measureBp": "Tensión arterial",
   "measureLeft": "Izquierda",
   "measureRight": "Derecha",
@@ -2565,10 +2365,8 @@
   "bpLow": "Baja",
   "bpPulse": "Pulso",
   "bpPulseAdd": "+ Pulso",
-
   "autoHold": "Encadenar series por tiempo",
   "autoHoldHint": "Tras el descanso, la siguiente serie por tiempo empieza sola",
-
   "recoveryTitle": "Recuperación",
   "recoverySettingHint": "Sauna, frío y respiración, aparte de tu entreno",
   "recoveryKindSauna": "Sauna",
@@ -2605,12 +2403,6 @@
   "breathStart": "Empezar",
   "breathAgain": "Otra vez",
   "breathDone": "Hecho",
-
-  "mealAiNoData": "La IA contestó con texto, sin datos",
-  "mealAiNoDataHint": "Vuelve a pegar la petición entera. Algunas IA se niegan si no ven la foto o la comida no está clara: descríbela en una frase.",
-  "mealAiCutOff": "La respuesta llegó cortada",
-  "mealAiCutOffHint": "Pídele que envíe el resto o que conteste con menos alimentos.",
-
   "recoveryGoal": "Meta",
   "recoveryRest": "Descanso",
   "recoveryStart": "Empezar temporizador",
@@ -2641,61 +2433,50 @@
   "breathHoldOut": "Suelta el aire y aguanta",
   "breathRelease": "Respirar",
   "breathRecover": "Inspira y aguanta",
-
   "bodyLoadSetting": "Contar tu peso corporal",
   "bodyLoadSettingHint": "El volumen usa tu peso de ese día más el lastre (menos la ayuda en los asistidos). Los récords siguen con el lastre.",
-
   "lengthUnitsLabel": "Medidas del cuerpo",
-
   "workoutFullView": "Ver completo",
-
   "routineRepeatTag": "Bloque {n} de {total}",
   "routineAddAgain": "Añadir otra vez",
   "routineAddAgainHint": "Para hacerlo otra vez más tarde en este entreno, con sus propias series",
   "routineAddedAgain": "Añadido otra vez al final",
   "routineAddedAgainHint": "Arrástralo a donde lo hagas",
-
   "restGlowSetting": "Luz al acabar el descanso",
   "restGlowHint": "Los bordes de la pantalla se iluminan al acabar el descanso, para verlo aunque no oigas el pitido",
-
   "bodyweightRatio": "Tu 1RM estimado es {x} veces tu peso",
-
-  "healthAddReading": "Añadir una lectura",
-  "healthFromYours": "De Health Connect y tus lecturas · últimos 30 días",
   "reportKindSummary": "Resumen",
   "reportKindSummaryHint": "El periodo de un vistazo: totales, récords y medias",
   "reportKindTraining": "Entrenamiento",
   "reportKindTrainingHint": "Para tu entrenador: cada entreno con sus series, RPE y notas",
-  "reportKindNutrition": "Nutrición",
-  "reportKindNutritionHint": "Para tu nutricionista: objetivos, totales por día y cada comida",
   "reportKindFull": "Todo",
   "reportKindFullHint": "Entreno, nutrición, cuerpo y salud, día a día",
-  "reportKindFullNoFoodHint": "Entreno, cuerpo y salud, día a día",
   "reportKickerTraining": "INFORME DE ENTRENAMIENTO DETALLADO",
-  "reportKickerNutrition": "INFORME DE NUTRICIÓN",
   "reportKickerFull": "INFORME COMPLETO",
   "reportWorkoutLog": "Registro de entrenos",
-  "reportFoodLog": "Registro de comidas",
   "reportDayByDay": "Día a día",
   "reportGoalsLabel": "Objetivo diario",
   "reportGoalsRest": "Objetivo en días de descanso",
   "reportKcalOnTarget": "Días a menos del 10 % del objetivo de calorías",
-  "reportProteinMet": "Días que llegan a la proteína",
   "reportDailyTotals": "Totales por día",
   "reportDateCol": "FECHA",
   "reportReadings": "{n, plural, one{1 lectura} other{{n} lecturas}}",
-  "@reportReadings": {"placeholders": {"n": {"type": "int"}}},
-  "reportHealthAvg": "Salud · media diaria",
-  "reportBodyHealth": "Cuerpo y salud",
+  "@reportReadings": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "reportCopyMarkdown": "Copiar en Markdown",
   "reportDetailCap": "Los informes detallados abarcan hasta {n} días, hasta el último día que elegiste.",
-  "@reportDetailCap": {"placeholders": {"n": {"type": "int"}}},
-  "nutritionCopyDay": "Copiar el día",
-  "nutritionCopyFood": "Solo la comida",
-  "nutritionCopyFoodHint": "Comidas, alimentos, calorías y macros",
-  "nutritionCopyAll": "Todo el día",
-  "nutritionCopyAllHint": "También el entreno, el peso y tus datos de salud",
-
+  "@reportDetailCap": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "jumpSet": "Series alternas",
   "jumpSetHint": "Descansas también después de cada ejercicio encadenado y luego pasas al siguiente.",
   "jumpSetLink": "Convertir en series alternas"

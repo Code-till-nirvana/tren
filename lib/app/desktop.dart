@@ -17,7 +17,7 @@ class DesktopScope extends InheritedWidget {
   @visibleForTesting
   static bool forceWide = false;
 
-  static bool wideFor(double width) => (kIsWeb || forceWide) && width >= minWidth;
+  static bool wideFor(double width) => width >= minWidth;
 
   static bool of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<DesktopScope>()?.wide ?? false;

@@ -5,7 +5,6 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:home_widget/home_widget.dart';
@@ -18,7 +17,6 @@ import '../l10n/l10n.dart';
 import '../models/profile.dart';
 import '../services/graphics_mode.dart';
 import '../services/alarm_store.dart';
-import '../services/auto_backup.dart';
 import '../services/backup_zip.dart';
 import '../services/fitnotes_backup.dart';
 import '../services/home_widget_bridge.dart';
@@ -36,13 +34,11 @@ import 'help_topics.dart';
 import '../widgets/app_icon_sheet.dart';
 import '../widgets/nfc_sheet.dart';
 import '../widgets/quick_tiles_sheet.dart';
-import '../widgets/auto_backup_sheet.dart';
 import '../widgets/body_rulers.dart';
 import '../widgets/dialogs.dart';
 import '../widgets/entrance.dart';
 import '../widgets/file_thumb.dart';
 import '../widgets/glass.dart';
-import '../widgets/health_cards.dart';
 import '../widgets/home_cards_panel.dart';
 import '../widgets/import_card.dart';
 import '../widgets/liquid_notch.dart';
@@ -52,7 +48,6 @@ import '../widgets/report_sheet.dart';
 import '../widgets/ruler_picker.dart';
 import '../widgets/settings_showcase.dart';
 import '../widgets/sheet_page.dart';
-import '../widgets/steps_card.dart';
 import '../widgets/svg_icon.dart';
 import '../widgets/timer_panel.dart';
 import '../widgets/ui_kit.dart';
@@ -63,8 +58,6 @@ import 'strava_sheet.dart';
 
 import '../services/host.dart';
 import '../services/file_share.dart';
-import '../services/server/server_link.dart';
-import '../widgets/server_card.dart';
 import 'about_screen.dart';
 
 const _kRepoUrl = 'https://github.com/InlitX/TREN';
@@ -605,7 +598,7 @@ class SettingsScreen extends StatelessWidget {
       case 'alerts':
         return [
           _card(gc, [
-                  if (!kIsWeb)
+                  
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () => _editTrainReminder(context),
@@ -652,7 +645,7 @@ class SettingsScreen extends StatelessWidget {
                       hint: t.notifSoundRowHint,
                     ),
                   ),
-                  if (!kIsWeb)
+                  
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () => _editAlarmSound(context),
@@ -704,7 +697,7 @@ class SettingsScreen extends StatelessWidget {
                     child: _prefRow(gc, PhosphorIconsRegular.bellSimple, t.toastSoundSetting,
                         TinySwitch(on: fit.toastSound), hint: t.toastSoundHint),
                   ),
-                  if (!kIsWeb && !fit.alarmAllowed) ...[
+                  if (!fit.alarmAllowed) ...[
                     const SizedBox(height: 14),
                     _alarmWarning(context, gc),
                     const SizedBox(height: 14),
@@ -716,29 +709,8 @@ class SettingsScreen extends StatelessWidget {
         ];
       case 'home':
         return [
-          HomeCardsPanel(onSteps: () async {
-            if (await fit.setStepsOn(!fit.stepsOn) || !context.mounted) return;
-            showStepsSheet(context);
-          }),
           const SizedBox(height: 22),
           _card(gc, [
-                  if (fit.stepsAvailable)
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => showHealthPicker(context),
-                      child: _prefRow(
-                          gc,
-                          PhosphorIconsRegular.heartbeat,
-                          t.healthSetting,
-                          Row(mainAxisSize: MainAxisSize.min, children: [
-                            if (fit.healthShown.isNotEmpty || fit.stepsOn)
-                              Text('${fit.healthShown.length + (fit.stepsOn ? 1 : 0)}',
-                                  style: AppTheme.f(13.5, weight: FontWeight.w700, color: gc.textSecondary)),
-                            const SizedBox(width: 6),
-                            Icon(PhosphorIconsBold.caretRight, size: 14, color: gc.textTertiary),
-                          ]),
-                          hint: health(t.healthSettingHint)),
-                    ),
                   GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: fit.toggleGamification,
@@ -754,7 +726,6 @@ class SettingsScreen extends StatelessWidget {
 
           ]),
           const SizedBox(height: 22),
-          const HomeExtrasShowcase(),
         ];
       case 'beta':
         return [
@@ -788,10 +759,6 @@ class SettingsScreen extends StatelessWidget {
         ];
       case 'data':
         return [
-          if (kIsWeb && ServerLink.instance.available) ...[
-            const ServerCard(),
-            const SizedBox(height: 12),
-          ],
           ImportCard(onTap: () => _openImportApps(context)),
           const SizedBox(height: 12),
           _linkGroup(gc, [
@@ -799,12 +766,9 @@ class SettingsScreen extends StatelessWidget {
               (PhosphorIconsRegular.fileText, t.reportTitle, () => showReportSheet(context)),
               (PhosphorIconsRegular.fileZip, t.exportBackup, () => _exportBackup(context)),
               (PhosphorIconsRegular.downloadSimple, t.importBackup, () => _importBackup(context)),
-              if (AutoBackup.instance.supported)
-                (PhosphorIconsRegular.clockCounterClockwise, t.autoBackup, () => showAutoBackupSheet(context)),
               (PhosphorIconsRegular.export, t.stravaRow, () => showStravaSheet(context)),
               (PhosphorIconsRegular.barbell, t.clearWorkouts, () => _clearWorkouts(context)),
               (PhosphorIconsRegular.trash, t.resetData, () => _resetAll(context)),
-          ], danger: AutoBackup.instance.supported ? 6 : 5),
         ];
       default:
         return [
@@ -925,8 +889,6 @@ class SettingsScreen extends StatelessWidget {
         (t.homeRecommended, PhosphorIconsRegular.sparkle),
         (t.homeRoutines, PhosphorIconsRegular.folders),
         (t.homeWeekStats, PhosphorIconsRegular.chartBar),
-        (health(t.stepsSetting), PhosphorIconsRegular.footprints),
-        (t.healthSetting, PhosphorIconsRegular.heartbeat),
         (t.gamificationSetting, PhosphorIconsRegular.medal),
         (t.gymPass, PhosphorIconsRegular.qrCode),
       ]),
@@ -946,7 +908,6 @@ class SettingsScreen extends StatelessWidget {
         (t.reportTitle, PhosphorIconsRegular.fileText),
         (t.exportBackup, PhosphorIconsRegular.fileZip),
         (t.importBackup, PhosphorIconsRegular.downloadSimple),
-        (t.autoBackup, PhosphorIconsRegular.clockCounterClockwise),
         (t.importFromApp, PhosphorIconsRegular.arrowSquareIn),
         (t.stravaRow, PhosphorIconsRegular.export),
         (t.clearWorkouts, PhosphorIconsRegular.barbell),

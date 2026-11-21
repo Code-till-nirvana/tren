@@ -21,7 +21,6 @@ import '../widgets/home_folder.dart';
 import '../widgets/recovery_art.dart';
 import '../widgets/routine_folder.dart';
 import '../widgets/scroll_away.dart';
-import '../widgets/steps_card.dart';
 import '../widgets/svg_icon.dart';
 import '../widgets/ui_kit.dart';
 import 'progress_screen.dart';
@@ -73,7 +72,7 @@ class HomeScreen extends StatelessWidget {
     Widget one(List<Widget> b) =>
         b.length == 1 ? b.single : Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: b);
     final year = fit.heatmapYear;
-    const slots = {'weekdays': 1, 'routines': 1, 'folders': 0, 'week': 2, 'steps': 2, 'activity': 2, 'recovery': 2};
+    const slots = {'weekdays': 1, 'routines': 1, 'folders': 0, 'week': 2, 'activity': 2, 'recovery': 2};
     final hero = fit.showFocus || fit.todayRoutine?.exerciseIds.isNotEmpty == true;
     bool shown(String id) => blocks[id]?.isNotEmpty ?? false;
     final fixed = hero &&
@@ -158,10 +157,10 @@ class HomeScreen extends StatelessWidget {
     for (final id in fit.homeOrderShown) {
       final b = blocks[id];
       if (b == null || b.isEmpty) continue;
-      final card = id == 'weekdays' || id == 'steps';
+      final card = id == 'weekdays';
       final gap = last == null
           ? (fit.photoDue ? (card ? 14.0 : 30.0) : (card ? 0.0 : 16.0))
-          : (card && (last == 'weekdays' || last == 'steps'))
+          : (card && last == 'weekdays')
               ? 14.0
               : id == 'recovery' && last == 'folders'
                   ? 12.0
@@ -177,9 +176,6 @@ class HomeScreen extends StatelessWidget {
       BuildContext context, GymColors gc, List<Routine> routines, List<Exercise> recommended) {
     return <String, List<Widget>>{
       'weekdays': [_away(_weekCard(context, gc))],
-      'steps': [
-            if (fit.stepsOn && fit.stepsAvailable) _away(StepsCard()),
-      ],
       'week': [
             if (fit.showWeekStats) ...[
               _section(gc, t.thisWeek, null, _weekStats(context, gc)),
@@ -369,7 +365,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(color: gc.bgRaised, borderRadius: BorderRadius.circular(14)),
-                  child: Text(t.healthSeeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
+                  child: Text(t.seeAll, style: AppTheme.f(12, weight: FontWeight.w700, color: gc.text)),
                 ),
             ],
           ),

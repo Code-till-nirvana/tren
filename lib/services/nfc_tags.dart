@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../state/fit_state.dart';
@@ -16,7 +16,7 @@ class NfcTags {
 
   static Stream<String> get written => _written.stream;
 
-  static bool get _android => !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+  static bool get _android => Platform.isAndroid;
 
   static Future<void> load() async {
     if (!_android) return;

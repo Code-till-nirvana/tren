@@ -6,7 +6,6 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'app/tren_app.dart';
 import 'services/alarm_store.dart';
-import 'services/auto_backup.dart';
 import 'services/home_widget_bridge.dart';
 import 'services/live_workout.dart';
 import 'services/local_store.dart';
@@ -47,7 +46,6 @@ Future<void> main() async {
   _sessionSideEffects();
 
   fit.onWidgetsShouldUpdate = HomeWidgetBridge.update;
-  AutoBackup.instance.init();
   unawaited(QuickTiles.init());
   runApp(const TrenApp());
 

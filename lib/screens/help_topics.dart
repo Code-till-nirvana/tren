@@ -1,7 +1,3 @@
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
-
 import '../l10n/l10n.dart';
 import '../services/nfc_tags.dart';
 import '../state/fit_state.dart';
@@ -37,7 +33,7 @@ String helpPlain(String s) => s
     .replaceAll(RegExp('[úùüû]'), 'u')
     .replaceAll(RegExp('[¿?¡!.,:;«»“”"()]'), ' ');
 
-const kHelpCommon = ['superset', 'range', 'dayOff', 'lb', 'rest', 'import', 'phone', 'homeOrder', 'custom', 'steps', 'slow'];
+const kHelpCommon = ['superset', 'range', 'dayOff', 'lb', 'rest', 'import', 'phone', 'homeOrder', 'custom', 'slow'];
 
 List<HelpTopic> helpTopics() {
   String s(String id) => SettingsScreen.sectionTitleOf(id);
@@ -62,9 +58,6 @@ List<HelpTopic> helpTopics() {
     HelpTopic('warmup', t.helpWarmupQ, t.helpWarmupA(t.exerciseSettings, t.autoWarmup, t.toolNameWarmup),
         go: fit.goExercises),
     HelpTopic('pass', t.helpPassQ, t.helpPassA(t.gymPass, s('home')), section: 'home', row: t.gymPass),
-    if (!kIsWeb && Platform.isAndroid)
-      HelpTopic('steps', t.helpStepsQ, t.helpStepsA(health(t.stepsSetting), s('home')),
-          section: 'home', row: health(t.stepsSetting)),
     if (NfcTags.available)
       HelpTopic('nfc', t.helpNfcQ, t.helpNfcA(t.nfcRow, s('training')), section: 'training', row: t.nfcRow),
   ];

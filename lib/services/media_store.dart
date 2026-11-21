@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'server/server_link.dart';
 
 class MediaStore {
   MediaStore._();
@@ -21,24 +20,17 @@ class MediaStore {
     }
   }
 
-  static bool get remote => kIsWeb && ServerLink.instance.available;
-
-  static bool get ready => _dir != null || remote;
+  static bool get ready => _dir != null;
 
   @visibleForTesting
   static set directory(String? path) => _dir = path;
 
   static String? pathFor(String basename) {
     if (basename.isEmpty) return null;
-    if (remote) return ServerLink.instance.mediaUrl(basename);
     return _dir == null ? null : '$_dir/$basename';
   }
 
   static Future<String?> importFor(String exerciseId, String srcPath) async {
-    if (remote) {
-      final bytes = await ServerLink.instance.fetchBytes(srcPath);
-      return bytes == null ? null : saveBytes(exerciseId, extOf(srcPath), bytes);
-    }
     if (_dir == null) return null;
     try {
       final base = _newName(exerciseId, extOf(srcPath));
@@ -50,10 +42,6 @@ class MediaStore {
   }
 
   static Future<String?> saveBytes(String exerciseId, String ext, Uint8List bytes) async {
-    if (remote) {
-      final base = _newName(exerciseId, ext);
-      return await ServerLink.instance.putMedia(base, bytes) ? base : null;
-    }
     if (_dir == null) return null;
     try {
       final base = _newName(exerciseId, ext);
@@ -65,7 +53,6 @@ class MediaStore {
   }
 
   static Future<Uint8List?> readBytes(String basename) async {
-    if (remote) return basename.isEmpty ? null : ServerLink.instance.getMedia(basename);
     final p = pathFor(basename);
     if (p == null) return null;
     try {
@@ -77,7 +64,6 @@ class MediaStore {
   }
 
   static Future<void> delete(String basename) async {
-    if (remote && basename.isNotEmpty) return ServerLink.instance.deleteMedia(basename);
     if (_dir == null || basename.isEmpty) return;
     try {
       final f = File('$_dir/$basename');

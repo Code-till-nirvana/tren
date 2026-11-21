@@ -170,8 +170,6 @@ class MainActivity : FlutterActivity() {
             }
         }
 
-        HealthBridge.attach(this, MethodChannel(messenger, HealthBridge.CHANNEL))
-        BackupBridge.attach(this, MethodChannel(messenger, BackupBridge.CHANNEL))
         SoundBridge.attach(this, MethodChannel(messenger, SoundBridge.CHANNEL))
         AppIconBridge.attach(this, MethodChannel(messenger, AppIconBridge.CHANNEL))
         NfcBridge.attach(this, MethodChannel(messenger, NfcBridge.CHANNEL))
@@ -267,13 +265,7 @@ class MainActivity : FlutterActivity() {
             }
             return
         }
-        if (BackupBridge.onActivityResult(this, requestCode, resultCode, data)) return
         super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (HealthBridge.onPermissionResult(requestCode, grantResults)) return
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun dispatchGenericMotionEvent(event: MotionEvent): Boolean {
@@ -298,7 +290,6 @@ class MainActivity : FlutterActivity() {
         openChannel = null
         NfcBridge.detach(this)
         LiveNotifier.dart = null
-        HealthBridge.channel = null
         if (isFinishing) LiveNotifier.cancel(this)
         super.cleanUpFlutterEngine(flutterEngine)
     }
@@ -309,10 +300,6 @@ class MainActivity : FlutterActivity() {
         val open = takeOpen(intent)
         if (open != null) {
             openChannel?.invokeMethod("open", open)
-            return
-        }
-        if (HealthBridge.takeUsage(intent)) {
-            HealthBridge.channel?.invokeMethod("usage", null)
             return
         }
         val text = takeIncoming(intent) ?: return

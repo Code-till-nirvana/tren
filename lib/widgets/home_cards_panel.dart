@@ -10,16 +10,12 @@ import 'glass.dart';
 import 'ui_kit.dart';
 
 class HomeCardsPanel extends StatelessWidget {
-  const HomeCardsPanel({super.key, required this.onSteps});
-
-  final VoidCallback onSteps;
 
   @override
   Widget build(BuildContext context) {
     final gc = context.gc;
     final rows = <(String, bool, VoidCallback)>[
       (t.homeCardFocus, fit.showFocus, fit.toggleFocusCard),
-      if (fit.stepsAvailable) (t.homeCardSteps, fit.stepsOn, onSteps),
       (t.homeCardWeek, fit.showWeekStats, fit.toggleWeekStats),
       (t.homeCardRoutines, fit.showRoutineRow, fit.toggleRoutineRow),
       (t.homeCardRecommended, fit.showRecommended, fit.toggleRecommended),
@@ -104,7 +100,6 @@ class HomeCardsPanel extends StatelessWidget {
 
 String _blockLabel(String id) => switch (id) {
       'weekdays' => t.homeOrderWeekdays,
-      'steps' => t.homeCardSteps,
       'week' => t.homeCardWeek,
       'routines' => t.homeCardRoutines,
       'activity' => titleCase(t.activityLabel),
@@ -118,7 +113,7 @@ void _showOrderSheet(BuildContext context) {
   final gc = context.gc;
   var order = [
     for (final id in fit.homeOrderShown)
-      if ((id != 'recovery' || fit.recoveryOn) && (id != 'steps' || (fit.stepsOn && fit.stepsAvailable))) id,
+      if (id != 'recovery' || fit.recoveryOn) id,
   ];
   showAppSheet<void>(
     context: context,
@@ -220,33 +215,6 @@ class _HomeSketch extends StatelessWidget {
             ])),
       ),
       (
-        fit.stepsOn && fit.stepsAvailable,
-        _box(32,
-            pad: const EdgeInsets.fromLTRB(9, 7, 9, 7),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Expanded(
-                child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  _bar(24, 6, gc.text.withValues(alpha: 0.75)),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(3),
-                    child: SizedBox(
-                      height: 4,
-                      child: Row(children: [
-                        Expanded(flex: 6, child: ColoredBox(color: gc.text.withValues(alpha: 0.8))),
-                        Expanded(flex: 4, child: ColoredBox(color: gc.bgRaised2)),
-                      ]),
-                    ),
-                  ),
-                ]),
-              ),
-              const SizedBox(width: 10),
-              for (final h in const [8.0, 12.0, 10.0, 16.0, 6.0]) ...[
-                _bar(3, h, gc.text.withValues(alpha: 0.7)),
-                const SizedBox(width: 3),
-              ],
-            ])),
-      ),
-      (
         fit.showWeekStats,
         _box(28,
             child: Row(children: [
@@ -335,11 +303,10 @@ class _HomeSketch extends StatelessWidget {
     );
     final byId = <String, (bool, Widget)>{
       'weekdays': blocks[1],
-      'steps': blocks[2],
-      'week': blocks[3],
-      'routines': blocks[4],
-      'activity': blocks[5],
-      'recommended': blocks[6],
+      'week': blocks[2],
+      'routines': blocks[3],
+      'activity': blocks[4],
+      'recommended': blocks[5],
       ...extra,
     };
     final shown = [

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -56,9 +55,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: 20),
             _group(gc, [
               (PhosphorIconsRegular.gift, t.freeForever, t.freeForeverWhy),
-              kIsWeb
-                  ? (PhosphorIconsRegular.hardDrives, t.webOwnServer, t.webOwnServerWhy)
-                  : (PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
+              (PhosphorIconsRegular.wifiSlash, t.fullyOffline, t.fullyOfflineWhy),
               (PhosphorIconsRegular.export, t.yoursToTake, t.yoursToTakeWhy),
             ]),
             const SizedBox(height: 18),

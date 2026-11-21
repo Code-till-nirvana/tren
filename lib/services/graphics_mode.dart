@@ -1,6 +1,5 @@
 import 'dart:io' show Platform;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +13,7 @@ class GraphicsMode {
   static bool detected = false;
 
   static Future<void> load() async {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (!Platform.isAndroid) return;
     try {
       final state = await _channel.invokeMapMethod<String, Object?>('state');
       if (state == null) return;
@@ -27,7 +26,7 @@ class GraphicsMode {
   }
 
   static void watchFirstFrame() {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (!Platform.isAndroid) return;
     late final TimingsCallback done;
     done = (_) {
       SchedulerBinding.instance.removeTimingsCallback(done);
