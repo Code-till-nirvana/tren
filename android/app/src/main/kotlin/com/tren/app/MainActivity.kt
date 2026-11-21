@@ -1,7 +1,5 @@
 package com.tren.app
 
-internal const val OPEN_EXTRA = "com.tren.app.OPEN"
-
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -22,6 +20,8 @@ import io.flutter.embedding.engine.FlutterShellArgs
 import io.flutter.plugin.common.MethodChannel
 import java.io.File
 import java.io.FileOutputStream
+
+internal const val OPEN_EXTRA = "com.tren.app.OPEN"
 
 class MainActivity : FlutterActivity() {
     private var pendingSound: MethodChannel.Result? = null
