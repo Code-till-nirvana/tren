@@ -1123,7 +1123,6 @@ List<String> recapWallIds(MonthRecap recap) {
 RecapExtras recapExtras(MonthRecap recap) {
   final from = recap.month;
   final to = DateTime(from.year, from.month + 1);
-  final today = DateTime.now();
   var km = 0.0;
   var sec = 0, count = 0;
   final byCardio = <String, int>{};
