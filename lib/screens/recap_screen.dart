@@ -294,7 +294,7 @@ class _RecapScreenState extends State<RecapScreen> {
         _Page.sleep => t.recapTickSleep,
         _Page.food => t.recapTickFood,
         _Page.habit => t.weekday(_recap.favDay ?? 1),
-        _Page.share => 'GymMane',
+        _Page.share => 'TREN',
       };
 
   Future<void> _share() async {
@@ -308,8 +308,8 @@ class _RecapScreenState extends State<RecapScreen> {
       image.dispose();
       if (data == null) return;
       if (!mounted) return;
-      await shareFile('gymmane-${_recap.month.year}-${_recap.month.month}-$_variant.png', data.buffer.asUint8List(),
-          mime: 'image/png', subject: 'GymMane');
+      await shareFile('tren-${_recap.month.year}-${_recap.month.month}-$_variant.png', data.buffer.asUint8List(),
+          mime: 'image/png', subject: 'TREN');
     } catch (_) {
       if (mounted) {
         showNotchToast(context, t.shareFailed, icon: PhosphorIconsFill.warningCircle, accent: context.gc.warn);
@@ -1993,7 +1993,7 @@ class RecapCard extends StatelessWidget {
           child: Image.asset('assets/img/app_icon.png', width: 20, height: 20),
         ),
         const SizedBox(width: 7),
-        Text('GymMane', style: AppTheme.f(14, weight: FontWeight.w900, color: gc.text, letterSpacing: -0.2, height: 1)),
+        Text('TREN', style: AppTheme.f(14, weight: FontWeight.w900, color: gc.text, letterSpacing: -0.2, height: 1)),
       ]);
 
   Widget _stat(GymColors gc, String value, String unit, String label, {double size = 28, bool soft = false}) => Column(
