@@ -15,7 +15,7 @@ Future<void> shareMealPlans(List<MealPlan> plans) async {
   final name = plans.length == 1 ? plans.first.name : t.mealPlansTitle;
   try {
     final slug = name.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]+'), '-').replaceAll(RegExp(r'^-+|-+$'), '');
-    await shareFile('gymmane-${slug.isEmpty ? 'plan' : slug}.json', utf8Bytes(fit.exportMealPlansJson(plans)),
+    await shareFile('tren-${slug.isEmpty ? 'plan' : slug}.json', utf8Bytes(fit.exportMealPlansJson(plans)),
         mime: 'application/json', text: [for (final p in plans) _planSummary(p)].join('\n\n'), subject: name);
   } catch (_) {}
 }
