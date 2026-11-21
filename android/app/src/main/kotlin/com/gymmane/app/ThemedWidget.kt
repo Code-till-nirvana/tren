@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -85,7 +85,7 @@ abstract class DayWidgetProvider : HomeWidgetProvider() {
     )
 
     companion object {
-        private const val ACTION_NEW_DAY = "com.gymmane.app.NEW_DAY"
+        private const val ACTION_NEW_DAY = "com.tren.app.NEW_DAY"
         private val rollover = setOf(
             ACTION_NEW_DAY,
             Intent.ACTION_TIME_CHANGED,
