@@ -44,9 +44,8 @@ flutter_launcher_icons:
   android: true
   ios: false
   remove_alpha_ios: true
-  image_path: "assets/icon/ic_1024.png"
+  image_path: "assets/icon/tren-logo.jpg"
   adaptive_icon_background: "#0C0B0A"
-  adaptive_icon_foreground: "assets/icon/ic_fg_1024.png"
   min_sdk_android: 21
 
 flutter:
