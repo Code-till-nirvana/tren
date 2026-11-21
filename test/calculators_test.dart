@@ -184,6 +184,5 @@ void main() {
     expect(fit.bmiWeight, fit.profile.weightKg);
     fit.updateProfile(sex: 'male');
   });
-
-});
 }
+
