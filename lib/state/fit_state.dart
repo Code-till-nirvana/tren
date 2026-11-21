@@ -18,7 +18,6 @@ import '../models/live_session.dart';
 import '../models/circuit.dart';
 import '../models/measure.dart';
 import '../models/note.dart';
-import '../models/nutrition.dart';
 import '../models/place.dart';
 import '../models/profile.dart';
 import '../models/progression.dart';
@@ -29,7 +28,6 @@ import '../services/alarm_store.dart';
 import '../services/beeper.dart';
 import '../services/device_kind.dart';
 import '../services/exercise_match.dart';
-import '../services/food_library.dart';
 import '../services/health_metrics.dart';
 import '../services/health_steps.dart';
 import '../services/local_store.dart';
@@ -53,7 +51,6 @@ part 'library_state.dart';
 part 'measures_state.dart';
 part 'moments_state.dart';
 part 'notes_state.dart';
-part 'nutrition_state.dart';
 part 'places_state.dart';
 part 'recovery_state.dart';
 part 'report_state.dart';
@@ -66,7 +63,7 @@ part 'tools_state.dart';
 part 'workout_state.dart';
 
 class FitState extends FitCore
-    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, RecoveryState, HealthState, CircuitState, NutritionState, ReportState, AwardsState, RoutinesState, WorkoutState {
+    with ToolsState, LibraryState, SettingsState, NotesState, PlacesState, GymPassState, MeasuresState, MomentsState, TimelineState, StatsState, StepsState, RecoveryState, HealthState, CircuitState, ReportState, AwardsState, RoutinesState, WorkoutState {
   FitState() {
     setLoad = loadOf;
   }
@@ -202,7 +199,6 @@ class FitState extends FitCore
             .map((e) => Moment.fromJson((e as Map).cast<String, dynamic>())));
       photoIntervalDays = (data['photoEvery'] as num?)?.toInt() ?? 30;
       bodyTimeline = data['bodyTl'] as bool? ?? false;
-      loadNutrition((data['nutrition'] as Map?)?.cast<String, dynamic>());
       loadSteps((data['steps'] as Map?)?.cast<String, dynamic>());
       loadRecovery((data['recovery'] as Map?)?.cast<String, dynamic>());
       loadHealth((data['health'] as Map?)?.cast<String, dynamic>());
@@ -703,7 +699,6 @@ class FitState extends FitCore
         'moments': moments.map((m) => m.toJson()).toList(),
         'photoEvery': photoIntervalDays,
         'bodyTl': bodyTimeline,
-        'nutrition': nutritionJson(),
         'steps': stepsJson(),
         'recovery': recoveryJson(),
         'health': healthJson(),
@@ -764,7 +759,6 @@ class FitState extends FitCore
     notes.clear();
     noteFolders.clear();
     moments.clear();
-    loadNutrition(null);
     loadSteps(null);
     loadRecovery(null);
     loadHealth(null);
@@ -896,7 +890,6 @@ class FitState extends FitCore
       Map<String, String>? restoredNoteMedia,
       Map<String, String>? restoredShots,
       Map<String, String>? restoredMoments,
-      Map<String, String>? restoredFoods,
       Map<String, String>? restoredPasses}) {
     final before = jsonDecode(jsonEncode(Store.finite(toJson()))) as Map<String, dynamic>;
     try {
@@ -905,7 +898,6 @@ class FitState extends FitCore
           restoredNoteMedia: restoredNoteMedia,
           restoredShots: restoredShots,
           restoredMoments: restoredMoments,
-          restoredFoods: restoredFoods,
           restoredPasses: restoredPasses);
       return true;
     } catch (e) {
@@ -982,7 +974,6 @@ class FitState extends FitCore
     _loadMoments(map, restored: restoredMoments);
     photoIntervalDays = (map['photoEvery'] as num?)?.toInt() ?? photoIntervalDays;
     bodyTimeline = map['bodyTl'] as bool? ?? bodyTimeline;
-    loadNutrition((map['nutrition'] as Map?)?.cast<String, dynamic>(), restored: restoredFoods);
     loadSteps((map['steps'] as Map?)?.cast<String, dynamic>());
     loadRecovery((map['recovery'] as Map?)?.cast<String, dynamic>());
     loadHealth((map['health'] as Map?)?.cast<String, dynamic>());
@@ -1496,8 +1487,6 @@ class FitState extends FitCore
         backFromCompare();
       case 'notes':
         backFromNotes();
-      case 'nutrition':
-        backFromNutrition();
       case 'note-edit':
         closeNoteEditor();
       case 'train':
