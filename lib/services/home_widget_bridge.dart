@@ -8,13 +8,11 @@ import 'package:home_widget/home_widget.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../widgets/home_widget_views.dart';
-import 'nutrition_widgets.dart';
 
 class HomeWidgetBridge {
   HomeWidgetBridge._();
 
-  static const _pkg = 'com.gymmane.app';
-  static const appGroup = 'group.com.gymmane.app';
+  static const _pkg = 'com.tren.app';
   static const heatmapKey = 'heatmap_img';
   static const statsKey = 'stats_img';
   static const bodyKey = 'body_img';
@@ -23,12 +21,8 @@ class HomeWidgetBridge {
   static const todayRestKey = 'today_rest_img';
   static const weekKey = 'week_img';
   static const weekFreshKey = 'week_fresh_img';
-  static const darkKey = 'widget_dark';
-  static const themeKey = 'widget_theme';
   static const bodyDays = 7;
-  static bool get _ios => !kIsWeb && Platform.isIOS;
-  static bool get _supported => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
-  static bool _groupReady = false;
+  static bool get _supported => Platform.isAndroid;
   static Timer? _debounce;
   static Future<void>? _job;
   static String? _allPainted;
@@ -63,7 +57,7 @@ class HomeWidgetBridge {
     try {
       final today = _stamp(DateTime.now());
       final everyone = _allPainted != today;
-      final installed = _ios || everyone
+      final installed = everyone
           ? null
           : {
               ..._forced,
@@ -72,19 +66,15 @@ class HomeWidgetBridge {
       _forced.clear();
       if (installed != null && installed.isEmpty) return;
       bool wants(String provider) => installed == null || installed.contains(provider);
-      if (_ios && !_groupReady) {
-        await HomeWidget.setAppGroupId(appGroup);
-        _groupReady = true;
-      }
       final pref = fit.themePref;
       final darkColors = pref == 'amoled' ? GymColors.amoled : GymColors.dark;
       final day = pref == 'dark' || pref == 'amoled' ? darkColors : GymColors.light;
       final night = pref == 'light' ? GymColors.light : darkColors;
-      final framed = !_ios;
+      const framed = true;
       const heatmapSize = Size(320, 150);
       const statsSize = Size(155, 155);
-      final bodySize = _ios ? const Size(320, 336) : const Size(320, 220);
-      final todaySize = _ios ? const Size(155, 155) : const Size(120, 120);
+      const bodySize = Size(320, 220);
+      const todaySize = Size(120, 120);
       const weekSize = Size(320, 150);
       final week = [for (var i = 0; i < 7; i++) fit.isDayDone(i) && !fit.isDayPartial(i)];
       final levels = fit.heatmapWeeksFor(26);
@@ -190,9 +180,6 @@ class HomeWidgetBridge {
           if (path != null) await HomeWidget.saveWidgetData<String>('${key}_night', path);
         }
       }
-      if (NutritionWidgets.providers.any(wants)) {
-        await NutritionWidgets.paint(render: _render, wants: wants, day: day, night: night, framed: framed);
-      }
       final now = DateTime.now();
       if (everyone) _allPainted = today;
       await HomeWidget.saveWidgetData<String>('today_stamp', _stamp(now));
@@ -207,24 +194,15 @@ class HomeWidgetBridge {
           'week_geo', WeekWidgetView.geometry(weekSize, framed: framed).map((v) => v.toStringAsFixed(5)).join(','));
       await HomeWidget.saveWidgetData<String>('week_ring', _hex(day.ember));
       await HomeWidget.saveWidgetData<String>('week_ring_night', _hex(night.ember));
-      if (_ios) {
-        await HomeWidget.saveWidgetData<bool>(darkKey, fit.dark);
-        await HomeWidget.saveWidgetData<String>(themeKey, pref);
-      }
 
-      for (final (android, ios) in const [
-        ('HeatmapWidgetProvider', 'HeatmapWidget'),
-        ('BodyWidgetProvider', 'BodyWidget'),
-        ('TodayWidgetProvider', 'TodayWidget'),
-        ('StatsWidgetProvider', 'StatsWidget'),
-        ('WeekWidgetProvider', 'WeekWidget'),
+      for (final android in const [
+        'HeatmapWidgetProvider',
+        'BodyWidgetProvider',
+        'TodayWidgetProvider',
+        'StatsWidgetProvider',
+        'WeekWidgetProvider',
       ]) {
-        if (wants(android)) await _reload(android, ios);
-      }
-      if (!_ios) {
-        for (final android in NutritionWidgets.providers) {
-          if (wants(android)) await _reload(android, android);
-        }
+        if (wants(android)) await _reload(android);
       }
     } catch (e) {
       debugPrint('HomeWidgetBridge.update falló: $e');
@@ -239,8 +217,6 @@ class HomeWidgetBridge {
   static Future<void> _render(Widget view, String key, Size size) =>
       HomeWidget.renderFlutterWidget(view, key: key, logicalSize: size, pixelRatio: 3);
 
-  static Future<void> _reload(String android, String ios) => HomeWidget.updateWidget(
-        qualifiedAndroidName: '$_pkg.$android',
-        iOSName: ios,
-      );
+  static Future<void> _reload(String android) =>
+      HomeWidget.updateWidget(qualifiedAndroidName: '$_pkg.$android');
 }
