@@ -297,7 +297,7 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="gymmane" android:host="today"/>
+                <data android:scheme="tren" android:host="today"/>
             </intent-filter>
         </activity-alias>
         <activity-alias
