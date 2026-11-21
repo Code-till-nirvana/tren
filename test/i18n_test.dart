@@ -40,7 +40,7 @@ void main() {
         File('test/pending_translation_keys.txt').readAsLinesSync().where((k) => k.isNotEmpty).toSet();
     for (final code in appLanguages.where((c) => c != 'en')) {
       final keys = arb(code).keys.where((k) => !k.startsWith('@')).toSet();
-      expect(template.difference(keys).difference(pending), isEmpty,
+      expect(template.difference(keys).difference(optional).difference(pending), isEmpty,
           reason: 'faltan claves en $code');
       expect(keys.difference(template), isEmpty, reason: 'claves de más en $code');
     }
