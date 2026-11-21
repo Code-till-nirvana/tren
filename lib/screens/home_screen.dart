@@ -73,12 +73,12 @@ class HomeScreen extends StatelessWidget {
     Widget one(List<Widget> b) =>
         b.length == 1 ? b.single : Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: b);
     final year = fit.heatmapYear;
-    const slots = {'weekdays': 1, 'routines': 1, 'folders': 0, 'week': 2, 'nutrition': 2, 'steps': 2, 'activity': 2, 'recovery': 2};
+    const slots = {'weekdays': 1, 'routines': 1, 'folders': 0, 'week': 2, 'steps': 2, 'activity': 2, 'recovery': 2};
     final hero = fit.showFocus || fit.todayRoutine?.exerciseIds.isNotEmpty == true;
     bool shown(String id) => blocks[id]?.isNotEmpty ?? false;
     final fixed = hero &&
         listEquals(fit.homeOrderShown, kHomeBlocks) &&
-        const ['weekdays', 'week', 'routines', 'folders', 'nutrition', 'activity'].every(shown);
+        const ['weekdays', 'week', 'routines', 'folders', 'activity'].every(shown);
     final tiles = <Widget>[];
     final wraps = <Widget Function(Widget)>[];
     void add(Widget w, Widget Function(Widget) wrap) {
@@ -163,7 +163,7 @@ class HomeScreen extends StatelessWidget {
           ? (fit.photoDue ? (card ? 14.0 : 30.0) : (card ? 0.0 : 16.0))
           : (card && (last == 'weekdays' || last == 'steps'))
               ? 14.0
-              : (id == 'nutrition' || id == 'recovery') && (last == 'folders' || last == 'nutrition')
+              : id == 'recovery' && last == 'folders'
                   ? 12.0
                   : 30.0;
       out.add(SizedBox(height: gap));
@@ -276,17 +276,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ), dim: 0),
       ],
-      'nutrition': [
-            if (fit.nutritionBeta) ...[
-              HomeFolder(
-                title: _tc(t.nutrition),
-                detail: _nutritionDetail,
-                peek: const NutritionPeek(),
-                badge: BetaTag(t.sectionBeta, small: true),
-                onTap: fit.goNutrition,
-              ),
-            ],
-      ],
       'recovery': [
             if (fit.recoveryOn)
               HomeFolder(
@@ -360,14 +349,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   String _tc(String s) => titleCase(s);
-
-  String get _nutritionDetail {
-    final now = DateTime.now();
-    final total = fit.totalOn(now);
-    final water = fit.waterOn(now);
-    if (total.isEmpty && water == 0) return t.nutritionHomeEmpty;
-    return t.nutritionHomeDetail('${fit.energyOf(total.kcal)} ${fit.energyUnit}', total.protein.round());
-  }
 
   Widget _heading(GymColors gc, String title, {VoidCallback? onMore}) {
     return GestureDetector(
