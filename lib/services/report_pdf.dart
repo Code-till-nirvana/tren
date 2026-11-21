@@ -16,7 +16,6 @@ String reportFileStem(RangeReport r, ReportKind kind) {
   return switch (kind) {
     ReportKind.summary => 'tren-report-$stamp',
     ReportKind.training => 'tren-training-$stamp',
-    ReportKind.nutrition => 'tren-nutrition-$stamp',
     ReportKind.full => 'tren-full-report-$stamp',
   };
 }
