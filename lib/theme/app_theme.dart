@@ -19,7 +19,7 @@ class AppTheme {
       scaffoldBackgroundColor: gc.bg,
       colorScheme: base.colorScheme.copyWith(
         surface: gc.bgRaised,
-        primary: gc.accent,
+        primary: gc.ember,
         onPrimary: gc.onEmber,
         onSurface: gc.text,
         error: const Color(0xFFE5563B),
