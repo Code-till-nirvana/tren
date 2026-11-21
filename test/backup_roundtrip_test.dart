@@ -6,7 +6,6 @@ import 'package:archive/archive.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gymmane/catalog/exercise_catalog.dart';
 import 'package:gymmane/models/note.dart';
-import 'package:gymmane/models/nutrition.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/services/backup_zip.dart';
 import 'package:gymmane/services/local_store.dart';
@@ -114,22 +113,6 @@ void main() {
     fit.addMeasure('waist', 80.5);
     await fit.addMoment(await source('moment.png'), note: 'Hito');
 
-    final oats = fit.saveFood(
-        name: 'Avena', grams: 100, photo: (await MediaStore.importFor('food', await source('oats.png')))!,
-        macros: const Macros(kcal: 380, protein: 13, carbs: 60, fat: 7));
-    final milk = fit.saveFood(name: 'Leche', grams: 250, liquid: true, macros: const Macros(kcal: 120, protein: 8));
-    final a = fit.logFood(oats, servings: 0.8);
-    final b = fit.logFood(milk);
-    fit.toggleFavoriteFood(oats.id);
-    fit.saveRecipe('Desayuno', [a, b]);
-    fit.addWater(330);
-    final supp = fit.addSupplement('Creatina', amount: 5, unit: 'g', stock: 30, at: 9 * 60)!;
-    fit.toggleSupplement(supp.id);
-    fit.setUseKj(true);
-    fit.setWeightGoal(78);
-    fit.setNutritionGoals(fit.nutritionGoals.copyWith(kcal: 2400, protein: 160));
-    final plan = fit.createMealPlan(name: 'Lunes', fromDay: true);
-    fit.setPlanDay(1, plan.id);
     fit.setStepsGoal(10000);
 
     fit.refreshAwards(silent: true);
