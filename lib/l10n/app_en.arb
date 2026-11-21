@@ -2225,7 +2225,7 @@
   "clearWorkoutsNone": "There are no workouts to delete",
   "clearWorkoutsTitle": "{n, plural, one{Delete 1 workout?} other{Delete {n} workouts?}}",
   "@clearWorkoutsTitle": {"placeholders": {"n": {"type": "int"}}},
-  "clearWorkoutsBody": "Your history, records and medals go. Routines, exercises, photos, measurements, nutrition and settings stay. Export a backup first if you might want them back.",
+  "clearWorkoutsBody": "Your history, records and medals go. Routines, exercises, photos, measurements and settings stay. Export a backup first if you might want them back.",
   "clearWorkoutsConfirm": "Delete workouts",
   "clearWorkoutsDone": "Workouts deleted",
   "reportTitle": "Report",
