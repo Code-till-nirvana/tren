@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.app.PendingIntent
 import android.content.Intent
