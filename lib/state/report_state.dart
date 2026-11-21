@@ -197,7 +197,7 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
     final weights = bodyweight.where((w) => _inReport(r, w.date)).toList()
       ..sort((a, b) => a.date.compareTo(b.date));
     return _reportCsv('date,recorded_at,weight_kg', [
-      for (final w in weights) [NutritionState._dk(w.date), w.date.toIso8601String(), w.kg],
+      for (final w in weights) [_reportDayKey(w.date), w.date.toIso8601String(), w.kg],
     ]);
   }
 
@@ -209,7 +209,7 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
       [
         for (final s in picked)
           [
-            NutritionState._dk(s.day),
+            _reportDayKey(s.day),
             s.day.toIso8601String(),
             s.date.toIso8601String(),
             sessionTitle(s),
