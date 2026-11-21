@@ -717,3 +717,270 @@ class _EmblemPainter extends CustomPainter {
   @override
   bool shouldRepaint(_EmblemPainter o) => o.gc != gc || o.variant != variant;
 }
+
+
+class ValueLineChart extends StatelessWidget {
+  const ValueLineChart({
+    super.key,
+    required this.values,
+    required this.labels,
+    required this.format,
+    required this.color,
+    this.goal,
+    this.goalLabel,
+    this.highlight,
+    this.fromZero = true,
+    this.height = 168,
+    this.tone,
+    this.tags,
+  });
+
+  final List<double?> values;
+  final List<String> labels;
+  final List<String?>? tags;
+  final String Function(double) format;
+  final Color color;
+  final double? goal;
+  final String? goalLabel;
+  final int? highlight;
+  final bool fromZero;
+  final double height;
+  final Color Function(double)? tone;
+
+  @override
+  Widget build(BuildContext context) {
+    final gc = context.gc;
+    return SizedBox(
+      height: height,
+      width: double.infinity,
+      child: TweenAnimationBuilder<double>(
+        key: ValueKey(Object.hashAll([...values, ...?tags, goal])),
+        tween: Tween(begin: 0, end: 1),
+        duration: const Duration(milliseconds: 900),
+        curve: Curves.easeOutCubic,
+        builder: (context, p, _) => CustomPaint(
+          painter: _ValueLinePainter(
+            values: values,
+            labels: labels,
+            tags: tags,
+            format: format,
+            color: color,
+            goal: goal,
+            goalLabel: goalLabel,
+            highlight: highlight,
+            fromZero: fromZero,
+            tone: tone,
+            progress: p,
+            gc: gc,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ValueLinePainter extends CustomPainter {
+  _ValueLinePainter({
+    required this.values,
+    required this.labels,
+    required this.tags,
+    required this.format,
+    required this.color,
+    required this.goal,
+    required this.goalLabel,
+    required this.highlight,
+    required this.fromZero,
+    required this.tone,
+    required this.progress,
+    required this.gc,
+  });
+
+  final List<double?> values;
+  final List<String> labels;
+  final List<String?>? tags;
+  final String Function(double) format;
+  final Color color;
+  final double? goal;
+  final String? goalLabel;
+  final int? highlight;
+  final bool fromZero;
+  final Color Function(double)? tone;
+  final double progress;
+  final GymColors gc;
+
+  static const _top = 30.0, _bottom = 26.0;
+
+  TextPainter _text(String s, TextStyle style) =>
+      TextPainter(text: TextSpan(text: s, style: style), textDirection: TextDirection.ltr)..layout();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final n = values.length;
+    if (n == 0) return;
+    final goalTag = goal == null || goalLabel == null
+        ? null
+        : _text(goalLabel!, AppTheme.f(10, weight: FontWeight.w800, color: gc.textTertiary));
+    final right = goalTag == null ? 0.0 : goalTag.width + 10;
+    final width = size.width - right;
+    final col = width / n;
+    const plotTop = _top;
+    final plotBottom = size.height - _bottom;
+    final shown = [for (final v in values) ?v];
+    var lo = shown.isEmpty ? 0.0 : shown.reduce(math.min);
+    var hi = shown.isEmpty ? 1.0 : shown.reduce(math.max);
+    if (goal != null) {
+      lo = math.min(lo, goal!);
+      hi = math.max(hi, goal!);
+    }
+    if (fromZero) {
+      lo = 0;
+    } else {
+      final pad = math.max((hi - lo) * 0.25, hi.abs() * 0.01 + 0.5);
+      lo -= pad;
+      hi += pad * 0.4;
+    }
+    if (hi - lo < 1e-6) hi = lo + 1;
+    double yOf(double v) => plotBottom - (v - lo) / (hi - lo) * (plotBottom - plotTop);
+    double xOf(int i) => col * (i + 0.5);
+
+    canvas.drawLine(
+      Offset(0, plotBottom + 0.5),
+      Offset(width, plotBottom + 0.5),
+      Paint()
+        ..color = gc.border.withValues(alpha: 0.6)
+        ..strokeWidth = 1,
+    );
+
+    if (goal != null) {
+      final gy = yOf(goal!);
+      final dash = Paint()
+        ..color = gc.textTertiary.withValues(alpha: 0.7)
+        ..strokeWidth = 1.2;
+      for (var x = 0.0; x < width; x += 8) {
+        canvas.drawLine(Offset(x, gy), Offset(math.min(x + 4, width), gy), dash);
+      }
+      goalTag?.paint(canvas, Offset(size.width - goalTag.width, gy - goalTag.height / 2));
+    }
+
+    final pts = <(int, Offset)>[
+      for (var i = 0; i < n; i++)
+        if (values[i] != null) (i, Offset(xOf(i), plotBottom - (plotBottom - yOf(values[i]!)) * progress)),
+    ];
+
+    if (pts.length >= 2) {
+      final line = _smooth([for (final p in pts) p.$2]);
+      final area = Path.from(line)
+        ..lineTo(pts.last.$2.dx, plotBottom)
+        ..lineTo(pts.first.$2.dx, plotBottom)
+        ..close();
+      canvas.drawPath(
+        area,
+        Paint()
+          ..shader = LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [color.withValues(alpha: 0.26), color.withValues(alpha: 0)],
+          ).createShader(Rect.fromLTRB(0, plotTop, width, plotBottom)),
+      );
+      canvas.drawPath(
+        line,
+        Paint()
+          ..color = color.withValues(alpha: 0.14)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 8
+          ..strokeCap = StrokeCap.round
+          ..strokeJoin = StrokeJoin.round,
+      );
+      canvas.drawPath(
+        line,
+        Paint()
+          ..color = color
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2.6
+          ..strokeCap = StrokeCap.round
+          ..strokeJoin = StrokeJoin.round,
+      );
+    }
+
+    for (final (i, o) in pts) {
+      final hot = i == highlight;
+      final c = tone?.call(values[i]!) ?? color;
+      if (hot) canvas.drawCircle(o, 10, Paint()..color = c.withValues(alpha: 0.22));
+      final r = hot ? 5.5 : 4.0;
+      canvas.drawCircle(o, r, Paint()..color = gc.bgRaised);
+      canvas.drawCircle(
+        o,
+        r,
+        Paint()
+          ..color = c
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = hot ? 3 : 2.2,
+      );
+      final tag = _text(
+        (tags != null && i < tags!.length ? tags![i] : null) ?? format(values[i]!),
+        AppTheme.f(hot ? 11.5 : 10.5, weight: FontWeight.w800, color: hot ? gc.text : gc.textSecondary),
+      );
+      final at = Offset(o.dx, o.dy - 15 - tag.height / 2);
+      if (hot) {
+        canvas.drawRRect(
+          RRect.fromRectAndRadius(
+            Rect.fromCenter(center: at, width: tag.width + 12, height: tag.height + 5),
+            const Radius.circular(20),
+          ),
+          Paint()..color = c.withValues(alpha: 0.2),
+        );
+      }
+      tag.paint(canvas, at - Offset(tag.width / 2, tag.height / 2));
+    }
+
+    for (var i = 0; i < n && i < labels.length; i++) {
+      final hot = i == highlight;
+      final tag = _text(
+        labels[i],
+        AppTheme.f(10.5, weight: hot ? FontWeight.w800 : FontWeight.w700, color: hot ? gc.text : gc.textTertiary),
+      );
+      tag.paint(canvas, Offset(xOf(i) - tag.width / 2, size.height - tag.height - 2));
+    }
+  }
+
+  Path _smooth(List<Offset> p) {
+    final n = p.length;
+    final slope = [for (var i = 0; i < n - 1; i++) (p[i + 1].dy - p[i].dy) / (p[i + 1].dx - p[i].dx)];
+    final tan = List<double>.filled(n, 0);
+    tan[0] = slope.first;
+    tan[n - 1] = slope.last;
+    for (var i = 1; i < n - 1; i++) {
+      tan[i] = slope[i - 1] * slope[i] <= 0 ? 0 : (slope[i - 1] + slope[i]) / 2;
+    }
+    for (var i = 0; i < n - 1; i++) {
+      if (slope[i] == 0) {
+        tan[i] = 0;
+        tan[i + 1] = 0;
+        continue;
+      }
+      final a = tan[i] / slope[i], b = tan[i + 1] / slope[i];
+      final h = a * a + b * b;
+      if (h > 9) {
+        final k = 3 / math.sqrt(h);
+        tan[i] = k * a * slope[i];
+        tan[i + 1] = k * b * slope[i];
+      }
+    }
+    final path = Path()..moveTo(p.first.dx, p.first.dy);
+    for (var i = 0; i < n - 1; i++) {
+      final dx = (p[i + 1].dx - p[i].dx) / 3;
+      path.cubicTo(p[i].dx + dx, p[i].dy + tan[i] * dx, p[i + 1].dx - dx, p[i + 1].dy - tan[i + 1] * dx,
+          p[i + 1].dx, p[i + 1].dy);
+    }
+    return path;
+  }
+
+  @override
+  bool shouldRepaint(_ValueLinePainter o) =>
+      o.progress != progress ||
+      o.values != values ||
+      o.goal != goal ||
+      o.color != color ||
+      o.highlight != highlight ||
+      o.gc != gc;
+}
