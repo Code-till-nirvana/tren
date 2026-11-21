@@ -44,7 +44,6 @@ import '../services/health_steps.dart';
 import '../services/incoming_share.dart';
 import '../services/local_store.dart';
 import '../services/server/server_link.dart';
-import '../services/supplement_reminder.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
@@ -116,8 +115,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     fit.addListener(_restOver);
     _queueCelebration();
     IncomingShare.listen(_receive);
-    SupplementReminder.instance.onOpen = _openSupplements;
-    SupplementReminder.instance.listenTaken(fit.takeSupplementsOn);
     if (kIsWeb) {
       ServerLink.instance.onRemote = _remoteChanged;
       ServerLink.instance.start();
@@ -128,9 +125,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final text = await IncomingShare.take();
       if (text != null) _receive(text);
-      final launched = await SupplementReminder.instance.launchIds();
-      if (launched != null) _openSupplements(launched);
-      await SupplementReminder.instance.takePending();
       if (await HealthSteps.takeUsage()) _showStepsInfo();
       await fit.readDisplay();
       await _offerLiteMode();
@@ -164,11 +158,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     fit.applyBackup(data);
     if (!mounted) return;
     showNotchToast(context, fromPhone ? t.webSyncedPhone : t.webSynced, icon: PhosphorIconsFill.arrowsClockwise, accent: context.gc.sage);
-  }
-
-  void _openSupplements(List<String> ids) {
-    if (!mounted || !fit.onboarded || fit.isSessionActive) return;
-    fit.openSupplements(ids);
   }
 
   void _showStepsInfo() {
@@ -346,7 +335,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     }
     if (state == AppLifecycleState.paused) AutoBackup.instance.onLeave();
     if (state == AppLifecycleState.resumed) {
-      SupplementReminder.instance.takePending();
       fit.refreshAlarmPermission();
       fit.syncRest();
       fit.refreshWidgets();
