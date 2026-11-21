@@ -7,11 +7,6 @@ mixin ToolsState on FitCore {
   int rmPct = 75;
   double bmiHeight = 175;
   double bmiWeight = 75;
-  int calAge = 28;
-  double calHeight = 175;
-  double calWeight = 75;
-  String calSex = 'male';
-  double calActivity = 1.55;
   String bfSex = 'male';
   double bfHeight = 175;
   double bfNeck = 38;
@@ -35,19 +30,10 @@ mixin ToolsState on FitCore {
   double ffmiHeight = 175;
   double ffmiWeight = 75;
   double ffmiBf = 15;
-  String protGoal = 'hold';
-  double protWeight = 75;
-  double waterWeight = 75;
-  int waterMinutes = 60;
 
   static const dotsLifts = ['qXTaZnJ', 'EIeI8Vf', 'ila4NZS'];
 
   void _seedCalculatorsFromProfile() {
-    calAge = profile.age;
-    calHeight = profile.heightCm;
-    calWeight = profile.weightKg;
-    calSex = profile.sex;
-    calActivity = profile.activity;
     bmiHeight = profile.heightCm;
     bmiWeight = profile.weightKg;
     bfHeight = profile.heightCm;
@@ -57,8 +43,6 @@ mixin ToolsState on FitCore {
     ffmiHeight = profile.heightCm;
     ffmiWeight = profile.weightKg;
     ffmiSex = profile.sex;
-    protWeight = profile.weightKg;
-    waterWeight = profile.weightKg;
   }
 
   double bestLift(String id) => 0;
@@ -113,25 +97,6 @@ mixin ToolsState on FitCore {
     if (v < 25) return 'Normal';
     if (v < 30) return 'Overweight';
     return 'Obese';
-  }
-
-  double get _bmr => calSex == 'male'
-      ? 10 * calWeight + 6.25 * calHeight - 5 * calAge + 5
-      : 10 * calWeight + 6.25 * calHeight - 5 * calAge - 161;
-
-  int get tdee => (_bmr * calActivity).round();
-
-  int get calProtein => (tdee * 0.3 / 4).round();
-
-  int get calCarbs => (tdee * 0.4 / 4).round();
-
-  int get calFat => (tdee * 0.3 / 9).round();
-
-  String get activityLabel {
-    if (calActivity == 1.2) return 'Sedentary';
-    if (calActivity == 1.375) return 'Light';
-    if (calActivity == 1.725) return 'Active';
-    return 'Moderate';
   }
 
   double _log10(double x) => math.log(x) / math.ln10;
@@ -266,16 +231,6 @@ mixin ToolsState on FitCore {
 
   void bumpBmiWeight(double d) { bmiWeight = _clamp(bmiWeight + d, 30, 250); notifyListeners(); }
 
-  void bumpCalAge(int d) { calAge = _clamp(calAge + d.toDouble(), 10, 90).round(); notifyListeners(); }
-
-  void bumpCalHeight(double d) { calHeight = _clamp(calHeight + d, 100, 250); notifyListeners(); }
-
-  void bumpCalWeight(double d) { calWeight = _clamp(calWeight + d, 30, 250); notifyListeners(); }
-
-  void setCalSex(String s) { calSex = s; notifyListeners(); }
-
-  void setCalActivity(double a) { calActivity = a; notifyListeners(); }
-
   void bumpBfHeight(double d) { bfHeight = _clamp(bfHeight + d, 100, 250); notifyListeners(); }
 
   void bumpBfNeck(double d) { bfNeck = _clamp(bfNeck + d, 20, 60); notifyListeners(); }
@@ -395,11 +350,7 @@ mixin ToolsState on FitCore {
 
   void bumpWarmupTarget(double d) { warmupTarget = _clamp(warmupTarget + d, 0, null); notifyListeners(); }
 
-  (double, double) get _protPerKg => switch (protGoal) {
-        'lose' => (1.8, 2.2),
-        'gain' => (1.6, 2.2),
-        _ => (1.4, 1.8),
-      };
+};
 
   int get protLow => (protWeight * _protPerKg.$1 / 5).round() * 5;
 
