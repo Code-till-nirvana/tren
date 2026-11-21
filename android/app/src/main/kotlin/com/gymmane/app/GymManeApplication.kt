@@ -3,7 +3,7 @@ package com.tren.app
 import android.app.Application
 import io.flutter.FlutterInjector
 
-class GymManeApplication : Application() {
+class TrenApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         GraphicsMode.judgeLastLaunch(this)
