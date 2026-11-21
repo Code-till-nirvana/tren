@@ -116,7 +116,7 @@ object LiveNotifier {
                 Intent(ctx, LiveActionReceiver::class.java).setAction("$ACTION.$id").putExtra("id", id),
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
             )
-            b.addAction(Notification.Action.Builder(Icon.createWithResource(ctx, R.drawable.ic_stat_gymmane), label, pi).build())
+            b.addAction(Notification.Action.Builder(Icon.createWithResource(ctx, R.drawable.ic_stat_tren), label, pi).build())
         }
 
         if (Build.VERSION.SDK_INT >= 36) {
