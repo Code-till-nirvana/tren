@@ -1,186 +1,226 @@
-# TREN
-
 <div align="center">
 
-<img src="docs/readme/tren-hero.svg" width="100%" alt="TREN — Train. Evolve. Become.">
+<img src="docs/readme/tren-hero.svg" alt="TREN — Train. Evolve. Become." width="100%">
 
-<img src="docs/readme/tren-icon.png" width="112" alt="TREN app icon">
+<br>
+
+<img src="assets/img/app_icon.png" alt="TREN app icon" width="112" height="112">
+
+# TREN
 
 ### TRAIN. EVOLVE. BECOME.
 
-**A focused workout tracker for Android.**
+**A Flutter-based workout tracking application for Android.**
 
-![Android](https://img.shields.io/badge/PLATFORM-ANDROID-873F50?style=for-the-badge&logo=android&logoColor=white)
-![Flutter](https://img.shields.io/badge/BUILT_WITH-FLUTTER-29292D?style=for-the-badge&logo=flutter&logoColor=C99BA4)
-![Dart](https://img.shields.io/badge/LANGUAGE-DART-37363B?style=for-the-badge&logo=dart&logoColor=C99BA4)
+Plan workouts · Record training · Review progress
+
+![Android](https://img.shields.io/badge/Platform-Android-873F50?style=flat-square&logo=android&logoColor=white)
+![Flutter](https://img.shields.io/badge/Framework-Flutter-29292D?style=flat-square&logo=flutter&logoColor=C99BA4)
+![Dart](https://img.shields.io/badge/Language-Dart-37363B?style=flat-square&logo=dart&logoColor=C99BA4)
 
 </div>
 
 ---
 
-## YOUR TRAINING, IN FOCUS
+## 1. About the project
 
-TREN is an Android workout companion built to help keep training organized. Record sessions, explore exercises, shape routines and look back at your progress in a clean charcoal-and-burgundy interface.
+TREN is a mobile workout companion developed as a university project. It is designed to help users organize their gym training, record workout sessions and review their training history.
+
+The application is built with **Flutter** and **Dart**, with **Android as its only target platform**. Its visual design uses a dark charcoal background with burgundy accents to keep the interface consistent and easy to read.
+
+## 2. Main features
 
 <div align="center">
 
-| **TRAIN WITH INTENT** | **SEE YOUR PROGRESS** |
+| Workout tracking | Training progress |
 |:---:|:---:|
-| <img src="docs/readme/01-training.svg" width="100%" alt="Training sessions"> | <img src="docs/readme/02-progress.svg" width="100%" alt="Training progress"> |
-| Build a session. Log each set. | Review the work you put in. |
+| <img src="docs/readme/01-training.svg" alt="Workout tracking illustration" width="100%"> | <img src="docs/readme/02-progress.svg" alt="Progress illustration" width="100%"> |
+| Record exercises, sets, repetitions and weights. | Review your workout history and performance. |
 
-| **FIND YOUR MOVEMENT** | **MAKE CONSISTENCY COUNT** |
+| Exercise library | Workout routines |
 |:---:|:---:|
-| <img src="docs/readme/03-exercises.svg" width="100%" alt="Exercise library"> | <img src="docs/readme/04-routines.svg" width="100%" alt="Workout routines"> |
-| Explore the exercise library. | Organize your training week. |
-
-<sub>Feature illustrations. Replace with actual app screenshots as the Android UI is finalized.</sub>
+| <img src="docs/readme/03-exercises.svg" alt="Exercise library illustration" width="100%"> | <img src="docs/readme/04-routines.svg" alt="Workout routines illustration" width="100%"> |
+| Browse exercises and their details. | Organize exercises into repeatable plans. |
 
 </div>
 
-## WHAT TREN IS BUILT AROUND
+*The panels above are illustrative artwork. The actual interface and available features are defined by the current application build.*
 
-<table>
-<tr>
-<td width="50%" valign="top">
+## 3. Technology used
 
-### 🏋️ Workout logging
-
-- Record training sessions.
-- Log exercises, sets, repetitions and weights.
-- Keep workouts organized.
-- Review previous sessions.
-
-</td>
-<td width="50%" valign="top">
-
-### 📈 Training progress
-
-- Follow your training history.
-- Review exercise performance.
-- Track activity over time.
-- Use past sessions to guide future training.
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 💪 Exercise library
-
-- Browse available exercises.
-- Explore muscle groups and equipment.
-- View exercise details and instructions.
-- Find movements for your sessions.
-
-</td>
-<td width="50%" valign="top">
-
-### 📅 Routines
-
-- Organize exercises into routines.
-- Structure recurring training days.
-- Revisit saved plans.
-- Build a consistent training schedule.
-
-</td>
-</tr>
-</table>
-
-## VISUAL IDENTITY
-
-| Role | Colour |
+| Technology | Purpose |
 |---|---|
-| Main background | `#202124` |
-| Primary surface | `#29292D` |
-| Raised surface | `#37363B` |
-| Burgundy | `#873F50` |
-| Rose accent | `#B87988` |
-| Highlight | `#C99BA4` |
-| Main text | `#F1F0EF` |
-| Secondary text | `#B6B2B4` |
+| Flutter | Cross-platform UI toolkit used with Android as the project target |
+| Dart | Main programming language |
+| Android SDK | Android application build and runtime |
+| Gradle | Android build configuration |
 
-## ANDROID APP
+## 4. Getting started
 
-| Detail | Value |
-|---|---|
-| App name | TREN |
-| Tagline | TRAIN. EVOLVE. BECOME. |
-| Platform | Android only |
-| Application ID | `com.tren.app` |
-| Framework | Flutter |
-| Language | Dart |
+Follow these steps to run TREN on your computer.
 
-## GET STARTED
+### Step 1 — Install the required software
 
-### Requirements
+Before starting, install:
 
-- Flutter SDK compatible with the project
-- Android Studio or Android SDK command-line tools
-- Android emulator or physical Android device
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- [Android Studio](https://developer.android.com/studio)
+- Android SDK and Android platform tools
+- Git
 
-### Clone and run
+After installation, open a terminal and check your setup:
+
+```bash
+flutter doctor
+```
+
+Resolve any Android toolchain issues reported by Flutter before continuing.
+
+### Step 2 — Download the project
+
+Open PowerShell, Command Prompt or a terminal and run:
 
 ```bash
 git clone https://github.com/Code-till-nirvana/tren.git
 cd tren
+```
+
+### Step 3 — Install project dependencies
+
+From the project folder, run:
+
+```bash
 flutter pub get
+```
+
+### Step 4 — Connect an Android device
+
+You can use either:
+
+- A physical Android phone with USB debugging enabled, or
+- An Android Virtual Device (AVD) created in Android Studio.
+
+Check that Flutter detects your device:
+
+```bash
+flutter devices
+```
+
+### Step 5 — Run the application
+
+```bash
 flutter run
 ```
 
-### Build a release APK
+Flutter will build and launch TREN on the selected Android device or emulator.
+
+## 5. Build an APK
+
+To create a release APK, run:
 
 ```bash
-flutter analyze
-flutter test
 flutter build apk --release
 ```
 
-APK output:
+After a successful build, find the APK here:
 
 ```text
 build/app/outputs/flutter-apk/app-release.apk
 ```
 
-## PROJECT STRUCTURE
+You can copy this APK to an Android phone and install it. For local testing, make sure the device allows installation from the location where the APK is stored.
+
+## 6. Useful development commands
+
+| Command | What it does |
+|---|---|
+| `flutter pub get` | Downloads the project's Dart and Flutter dependencies |
+| `flutter devices` | Lists connected Android devices and emulators |
+| `flutter run` | Runs the app in debug mode |
+| `dart format lib test` | Formats Dart source and test files |
+| `flutter analyze` | Checks the project for static analysis issues |
+| `flutter test` | Runs automated tests |
+| `flutter clean` | Removes generated build files |
+| `flutter build apk --release` | Builds the Android release APK |
+
+## 7. Project folder overview
+
+The main folders and files you will work with are:
 
 ```text
 tren/
-├── android/       Android application and Gradle files
-├── assets/        Application assets
+├── android/       Android-specific app and build configuration
+├── assets/        Images, icons, fonts and other app resources
 ├── docs/          Project documentation and README artwork
-├── lib/           Flutter application source
+├── lib/           Main Flutter and Dart application code
 ├── test/          Automated tests
-├── pubspec.yaml   Flutter dependencies and assets
-└── README.md
+├── pubspec.yaml   Project dependencies and asset declarations
+└── README.md      Project documentation
 ```
 
-## DEVELOPMENT STATUS
+Most application changes will be made inside the **lib/** directory. Android package settings, permissions and build configuration are maintained inside **android/**.
 
-TREN is a college project under active development. Features and screens are being refined as the Android application evolves. Run the checks above before treating a build as release-ready.
+## 8. Design colours
 
-## PRIVACY AND PERMISSIONS
+TREN uses a charcoal and burgundy colour palette.
 
-Android permissions should be limited to the capabilities used by the app. Review the Android manifest and runtime permission prompts when changing functionality.
+| UI element | Hex colour |
+|---|---|
+| Main background | `#202124` |
+| Primary card | `#29292D` |
+| Secondary surface | `#37363B` |
+| Primary burgundy | `#873F50` |
+| Secondary burgundy | `#B87988` |
+| Highlight | `#C99BA4` |
+| Main text | `#F1F0EF` |
+| Secondary text | `#B6B2B4` |
 
-## THIRD-PARTY SOFTWARE AND LICENCE NOTICES
+## 9. Troubleshooting
 
-This project includes third-party and upstream open-source components. Their applicable licence notices, additional terms and attribution requirements are retained in the repository.
+**Flutter command is not recognized**
 
-- [GPL-3.0 licence](LICENSE)
-- [Additional terms](ADDITIONAL_TERMS.md)
-- [Third-party asset credits](CREDITS.md)
+Make sure the Flutter SDK's `bin` directory has been added to your system PATH. Restart your terminal and run `flutter doctor` again.
 
-Required attribution for the upstream covered work: **Based on GymMane by InlitX**.
+**No Android device is listed**
+
+Start an Android emulator or connect a phone with USB debugging enabled. Then run `flutter devices`.
+
+**Dependencies or build files seem out of date**
+
+Try:
+
+```bash
+flutter clean
+flutter pub get
+flutter run
+```
+
+**The Android build fails**
+
+Read the first error reported in the terminal, check the installed Android SDK and Java/Gradle requirements, then run `flutter doctor -v`.
+
+## 10. Project information
+
+| Item | Details |
+|---|---|
+| Project name | TREN |
+| Project type | University / academic project |
+| Application ID | `com.tren.app` |
+| Target platform | Android |
+| Framework | Flutter |
+| Language | Dart |
+| Repository | [Code-till-nirvana/tren](https://github.com/Code-till-nirvana/tren) |
+
+## Acknowledgements
+
+This project uses open-source software and third-party resources. Licence terms and required notices are retained in the repository's [LICENSE](LICENSE), [ADDITIONAL_TERMS.md](ADDITIONAL_TERMS.md) and [CREDITS.md](CREDITS.md) files. The upstream covered work is attributed to **GymMane by InlitX**.
 
 ---
 
 <div align="center">
 
-### TREN
+**TREN — TRAIN. EVOLVE. BECOME.**
 
-**TRAIN. EVOLVE. BECOME.**
-
-<sub>Built for consistency. Designed for progress.</sub>
+<sub>Developed as a university project.</sub>
 
 </div>
