@@ -1368,7 +1368,7 @@ class _Sidebar extends StatelessWidget {
             ),
             const SizedBox(width: 11),
             Expanded(
-              child: Text('GymMane',
+              child: Text('TREN',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTheme.f(19, weight: FontWeight.w800, color: gc.text, letterSpacing: -0.4)),
