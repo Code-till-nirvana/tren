@@ -12,10 +12,7 @@ import '../widgets/entrance.dart';
 import '../widgets/ui_kit.dart';
 
 const kAppVersion = '2.4.0';
-const _kAuthor = 'InlitX';
-const _kAuthorUrl = 'https://github.com/InlitX';
-const _kRepoUrl = 'https://github.com/InlitX/GymMane';
-const _kKofiUrl = 'https://ko-fi.com/inlitx';
+const _kRepoUrl = 'https://github.com/Code-till-nirvana/tren';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key, this.embedded = false});
@@ -196,9 +193,7 @@ class AboutScreen extends StatelessWidget {
 
   Widget _credits(GymColors gc) {
     final rows = <(IconData, String, String, String, Color?)>[
-      (PhosphorIconsFill.heart, t.madeWithLoveBy, _kAuthor, _kAuthorUrl, gc.accent),
-      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'InlitX/GymMane', _kRepoUrl, null),
-      (PhosphorIconsRegular.coffee, t.buyCoffee, 'ko-fi.com/inlitx', _kKofiUrl, null),
+      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'Code-till-nirvana/tren', _kRepoUrl, null),
     ];
     return Container(
       clipBehavior: Clip.antiAlias,
