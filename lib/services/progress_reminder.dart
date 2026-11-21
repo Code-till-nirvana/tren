@@ -85,61 +85,6 @@ class ProgressReminder {
     }
   }
 
-  static const _fastId = 1004;
-  static const _fastDoneId = 1005;
-
-  AndroidNotificationDetails _fastAndroid({required bool live, DateTime? end}) => AndroidNotificationDetails(
-        live ? 'fasting_live' : NotifSound.channelOf('fasting', SoundGroup.food),
-        live ? t.notifFastLiveChannel : t.notifFastChannel,
-        channelDescription: live ? t.notifFastLiveChannelWhy : t.notifFastChannelWhy,
-        importance: live ? Importance.low : Importance.defaultImportance,
-        priority: live ? Priority.low : Priority.defaultPriority,
-        playSound: !live && NotifSound.plays(SoundGroup.food),
-        sound: live ? null : NotifSound.soundOf(SoundGroup.food),
-        enableVibration: !live,
-        ongoing: live,
-        autoCancel: !live,
-        onlyAlertOnce: live,
-        showWhen: live,
-        when: live ? end?.millisecondsSinceEpoch : null,
-        usesChronometer: live,
-        chronometerCountDown: live,
-        category: live ? AndroidNotificationCategory.stopwatch : AndroidNotificationCategory.reminder,
-      );
-
-  Future<void> showFast(DateTime start, DateTime end) async {
-    if (!enabled) return;
-    await cancelFast();
-    try {
-      if (end.isAfter(DateTime.now())) {
-        await _plugin.show(
-          id: _fastId,
-          title: t.notifFastLiveTitle,
-          body: t.notifFastLiveBody(t.clockTime(end)),
-          notificationDetails: NotificationDetails(android: _fastAndroid(live: true, end: end)),
-        );
-        await _plugin.zonedSchedule(
-          id: _fastDoneId,
-          title: t.notifFastDoneTitle,
-          body: t.notifFastDoneBody(end.difference(start).inHours),
-          scheduledDate: tz.TZDateTime.from(end, tz.local),
-          notificationDetails: NotificationDetails(android: _fastAndroid(live: false), iOS: _darwin),
-          androidScheduleMode: await reminderMode(_plugin),
-        );
-      }
-    } catch (e) {
-      debugPrint('No se pudo programar el aviso del ayuno: $e');
-    }
-  }
-
-  Future<void> cancelFast() async {
-    if (!enabled) return;
-    try {
-      await _plugin.cancel(id: _fastId);
-      await _plugin.cancel(id: _fastDoneId);
-    } catch (_) {}
-  }
-
   Future<void> cancelMeasure() async {
     if (!enabled) return;
     try {
