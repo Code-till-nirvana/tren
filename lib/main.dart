@@ -7,7 +7,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'app/tren_app.dart';
 import 'services/alarm_store.dart';
 import 'services/auto_backup.dart';
-import 'services/device_kind.dart';
 import 'services/home_widget_bridge.dart';
 import 'services/live_workout.dart';
 import 'services/local_store.dart';
@@ -19,10 +18,6 @@ import 'services/rest_alarm.dart';
 import 'services/screen_awake.dart';
 import 'state/fit_state.dart';
 import 'services/quick_tiles.dart';
-import 'services/watch_phone.dart';
-import 'wear/wear_app.dart';
-import 'wear/wear_surfaces.dart';
-import 'wear/wear_sync.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,22 +43,11 @@ Future<void> main() async {
   fit.syncMeasureReminder();
   fit.syncTrainReminder();
 
-  final watch = await DeviceKind.isWatch();
-  _onWatch = watch;
   fit.addListener(_sessionSideEffects);
   _sessionSideEffects();
 
-  if (watch) {
-    WearSurfaces.watch();
-    unawaited(WearSync.instance.init());
-    runApp(const WearApp());
-    GraphicsMode.watchFirstFrame();
-    return;
-  }
-
   fit.onWidgetsShouldUpdate = HomeWidgetBridge.update;
   AutoBackup.instance.init();
-  unawaited(WatchPhone.init());
   unawaited(QuickTiles.init());
   runApp(const TrenApp());
 
@@ -71,10 +55,8 @@ Future<void> main() async {
   WidgetsBinding.instance.addPostFrameCallback((_) => HomeWidgetBridge.update());
 }
 
-bool _onWatch = false;
-
 void _sessionSideEffects() {
-  if (!_onWatch) LiveWorkout.sync();
+  LiveWorkout.sync();
   final live = fit.isSessionActive && fit.session?.manual == false;
   ScreenAwake.keepOn(fit.keepScreenOn && live);
 }
