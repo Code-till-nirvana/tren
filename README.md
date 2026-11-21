@@ -1,57 +1,125 @@
 # TREN
 
-**TRAIN. EVOLVE. BECOME.**
+<div align="center">
 
-TREN is a fitness and workout companion focused on helping you plan training, log workouts, understand progress, and build consistent habits.
+<img src="docs/readme/tren-hero.svg" width="100%" alt="TREN — Train. Evolve. Become.">
 
-This repository contains the TREN application source code. The project is being actively customized: some inherited modules and platform integrations may still be under review, so feature availability can vary by platform and build.
+<img src="docs/readme/tren-icon.png" width="112" alt="TREN app icon">
 
-## Project
+### TRAIN. EVOLVE. BECOME.
 
-- **App name:** TREN
-- **Tagline:** TRAIN. EVOLVE. BECOME.
-- **Supported platform:** Android only
-- **Framework:** Flutter
-- **Language:** Dart
-- **Repository:** [Code-till-nirvana/tren](https://github.com/Code-till-nirvana/tren)
+**A focused workout tracker for Android.**
 
-## Product direction
+![Android](https://img.shields.io/badge/PLATFORM-ANDROID-873F50?style=for-the-badge&logo=android&logoColor=white)
+![Flutter](https://img.shields.io/badge/BUILT_WITH-FLUTTER-29292D?style=for-the-badge&logo=flutter&logoColor=C99BA4)
+![Dart](https://img.shields.io/badge/LANGUAGE-DART-37363B?style=for-the-badge&logo=dart&logoColor=C99BA4)
 
-TREN is being shaped around a focused, premium training experience:
+</div>
 
-- Workout logging and training history
-- Exercise discovery and workout planning
-- Strength and activity progress tracking
-- Personal fitness metrics and training insights
-- A consistent dark interface using charcoal and burgundy
-- A simple, distraction-conscious experience
+---
 
-TREN is maintained as an Android-only Flutter application. Other platform project folders and build workflows are intentionally excluded.
+## YOUR TRAINING, IN FOCUS
 
-## Design system
+TREN is an Android workout companion built to help keep training organized. Record sessions, explore exercises, shape routines and look back at your progress in a clean charcoal-and-burgundy interface.
 
-The current visual direction uses a charcoal foundation with restrained burgundy accents.
+<div align="center">
 
-| Role | Color |
+| **TRAIN WITH INTENT** | **SEE YOUR PROGRESS** |
+|:---:|:---:|
+| <img src="docs/readme/01-training.svg" width="100%" alt="Training sessions"> | <img src="docs/readme/02-progress.svg" width="100%" alt="Training progress"> |
+| Build a session. Log each set. | Review the work you put in. |
+
+| **FIND YOUR MOVEMENT** | **MAKE CONSISTENCY COUNT** |
+|:---:|:---:|
+| <img src="docs/readme/03-exercises.svg" width="100%" alt="Exercise library"> | <img src="docs/readme/04-routines.svg" width="100%" alt="Workout routines"> |
+| Explore the exercise library. | Organize your training week. |
+
+<sub>Feature illustrations. Replace with actual app screenshots as the Android UI is finalized.</sub>
+
+</div>
+
+## WHAT TREN IS BUILT AROUND
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🏋️ Workout logging
+
+- Record training sessions.
+- Log exercises, sets, repetitions and weights.
+- Keep workouts organized.
+- Review previous sessions.
+
+</td>
+<td width="50%" valign="top">
+
+### 📈 Training progress
+
+- Follow your training history.
+- Review exercise performance.
+- Track activity over time.
+- Use past sessions to guide future training.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 💪 Exercise library
+
+- Browse available exercises.
+- Explore muscle groups and equipment.
+- View exercise details and instructions.
+- Find movements for your sessions.
+
+</td>
+<td width="50%" valign="top">
+
+### 📅 Routines
+
+- Organize exercises into routines.
+- Structure recurring training days.
+- Revisit saved plans.
+- Build a consistent training schedule.
+
+</td>
+</tr>
+</table>
+
+## VISUAL IDENTITY
+
+| Role | Colour |
 |---|---|
 | Main background | `#202124` |
 | Primary surface | `#29292D` |
 | Raised surface | `#37363B` |
-| Primary burgundy | `#873F50` |
-| Secondary burgundy | `#B87988` |
+| Burgundy | `#873F50` |
+| Rose accent | `#B87988` |
+| Highlight | `#C99BA4` |
 | Main text | `#F1F0EF` |
 | Secondary text | `#B6B2B4` |
-| Borders | `#414047` |
 
-## Getting started
+## ANDROID APP
+
+| Detail | Value |
+|---|---|
+| App name | TREN |
+| Tagline | TRAIN. EVOLVE. BECOME. |
+| Platform | Android only |
+| Application ID | `com.tren.app` |
+| Framework | Flutter |
+| Language | Dart |
+
+## GET STARTED
 
 ### Requirements
 
-- Flutter SDK compatible with the project's `pubspec.yaml`
-- Android Studio or Visual Studio Code
-- Android SDK and an emulator or Android device
+- Flutter SDK compatible with the project
+- Android Studio or Android SDK command-line tools
+- Android emulator or physical Android device
 
-### Run locally
+### Clone and run
 
 ```bash
 git clone https://github.com/Code-till-nirvana/tren.git
@@ -60,39 +128,59 @@ flutter pub get
 flutter run
 ```
 
-### Build an Android APK
+### Build a release APK
 
 ```bash
+flutter analyze
+flutter test
 flutter build apk --release
 ```
 
-The generated APK is normally written to:
+APK output:
 
 ```text
 build/app/outputs/flutter-apk/app-release.apk
 ```
 
-## Development notes
+## PROJECT STRUCTURE
 
-- Keep changes focused and test affected flows after modifying them.
-- Avoid removing existing functionality unless it is intentionally being replaced.
-- Keep Android configuration in sync when changing the application identifier, app label, icons, or permissions.
-- Do not commit signing keys, API secrets, local environment files, or generated build artifacts.
+```text
+tren/
+├── android/       Android application and Gradle files
+├── assets/        Application assets
+├── docs/          Project documentation and README artwork
+├── lib/           Flutter application source
+├── test/          Automated tests
+├── pubspec.yaml   Flutter dependencies and assets
+└── README.md
+```
 
-## Credits and licensing
+## DEVELOPMENT STATUS
 
-TREN is an independently branded customization of an existing open-source codebase.
+TREN is a college project under active development. Features and screens are being refined as the Android application evolves. Run the checks above before treating a build as release-ready.
 
-The project includes inherited open-source components and third-party assets. All applicable licence notices and attribution requirements are retained in the files linked below.
+## PRIVACY AND PERMISSIONS
 
-The inherited source is distributed under the GNU General Public License v3.0 together with the applicable additional terms. See [LICENSE](LICENSE) and [ADDITIONAL_TERMS.md](ADDITIONAL_TERMS.md) before redistributing modified builds or source.
+Android permissions should be limited to the capabilities used by the app. Review the Android manifest and runtime permission prompts when changing functionality.
 
-Third-party artwork, fonts, and other assets retain their respective licences and attribution requirements. See [CREDITS.md](CREDITS.md).
+## THIRD-PARTY SOFTWARE AND LICENCE NOTICES
 
-## Contributing
+This project includes third-party and upstream open-source components. Their applicable licence notices, additional terms and attribution requirements are retained in the repository.
 
-Issues and improvement suggestions are welcome. Before submitting a substantial change, describe the intended behavior and the parts of the app it affects.
+- [GPL-3.0 licence](LICENSE)
+- [Additional terms](ADDITIONAL_TERMS.md)
+- [Third-party asset credits](CREDITS.md)
 
-## Status
+Required attribution for the upstream covered work: **Based on GymMane by InlitX**.
 
-TREN is under active customization. Documentation, branding, platform identifiers, and visual assets are being updated incrementally. Android builds should be tested after each substantial change.
+---
+
+<div align="center">
+
+### TREN
+
+**TRAIN. EVOLVE. BECOME.**
+
+<sub>Built for consistency. Designed for progress.</sub>
+
+</div>
