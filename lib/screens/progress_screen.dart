@@ -9,7 +9,7 @@ import '../app/desktop.dart';
 import '../l10n/l10n.dart';
 import '../models/progress_shot.dart';
 import '../models/workout.dart';
-import '../services/food_library.dart' show foldText;
+import '../utils/text_utils.dart' show foldText;
 import '../services/media_store.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
@@ -27,7 +27,6 @@ import '../widgets/health_cards.dart';
 import '../widgets/liquid_notch.dart';
 import '../widgets/report_sheet.dart';
 import '../widgets/muscle_radar.dart';
-import '../widgets/nutrition_art.dart' show ValueLineChart;
 import '../widgets/rolling_text.dart';
 import '../widgets/ruler_picker.dart';
 import '../widgets/set_kind.dart';
@@ -993,7 +992,7 @@ class _BodyweightSheetState extends State<_BodyweightSheet> {
     final pace = fit.weightPace!;
     final status = fit.weightPaceStatus;
     final aim = fit.effectiveWeightAim;
-    final band = NutritionState.paceCorridors[aim];
+    final band = MeasuresState.paceCorridors[aim];
     final (text, color) = switch (status) {
       'onPace' => (t.paceOn, gc.sage),
       'tooFast' => (t.paceTooFast, gc.warn),
