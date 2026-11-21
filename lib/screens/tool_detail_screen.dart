@@ -96,8 +96,6 @@ class ToolDetailScreen extends StatelessWidget {
       case 'bmi':
 
         return (t.toolTitle('bmi'), fmt(fit.bmiVal), t.bmiCategory(fit.bmiCat));
-      case 'cal':
-        return (t.toolTitle('cal'), '${fit.tdee} kcal', t.toolResultHint('cal'));
       case 'bf':
         return (t.toolTitle('bf'), '${fmt(fit.bfVal)}%', t.toolResultHint('bf'));
       case 'plate':
@@ -113,10 +111,6 @@ class ToolDetailScreen extends StatelessWidget {
         return (t.toolTitle('wilks'), fmt(fit.wilksScore), t.dotsLevelName(fit.wilksLevel));
       case 'ffmi':
         return (t.toolTitle('ffmi'), fmt(fit.ffmiScore), t.ffmiLevelName(fit.ffmiLevel));
-      case 'protein':
-        return (t.toolTitle('protein'), ltr('${fit.protLow}-${fit.protHigh} g'), t.toolResultHint('protein'));
-      case 'water':
-        return (t.toolTitle('water'), ltr('${fmt(fit.waterLiters)} L'), t.toolResultHint('water'));
       default:
         return ('', '', '');
     }
@@ -139,26 +133,6 @@ class ToolDetailScreen extends StatelessWidget {
           ToolRow(label: t.heightLabel, control: StepperControl(value: fit.heightLabel(fit.bmiHeight), onDec: () => fit.bumpBmiHeight(-fit.heightStep), onInc: () => fit.bumpBmiHeight(fit.heightStep), onEdit: () => _editNumber(context, title: t.heightLabel, current: fit.toDisplayCm(fit.bmiHeight), decimal: true, apply: (v) => fit.bumpBmiHeight(fit.fromDisplayCm(v) - fit.bmiHeight)))),
           const SizedBox(height: 10),
           ToolRow(label: t.weightLabel, control: StepperControl(value: ltr('${fit.weightValue(fit.bmiWeight)} ${fit.units}'), onDec: () => fit.bumpBmiWeight(-fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onInc: () => fit.bumpBmiWeight(fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onEdit: () => _editNumber(context, title: t.weightLabel, current: fit.toDisplayWeight(fit.bmiWeight), decimal: true, apply: (v) => fit.bumpBmiWeight(fit.fromDisplayWeight(v) - fit.bmiWeight)))),
-        ];
-      case 'cal':
-        return [
-          ToolRow(
-            label: t.sexLabel,
-            control: SegToggle([
-              SegOption(t.male, fit.calSex == 'male', () => fit.setCalSex('male')),
-              SegOption(t.female, fit.calSex == 'female', () => fit.setCalSex('female')),
-            ]),
-          ),
-          const SizedBox(height: 10),
-          ToolRow(label: t.ageLabel, control: StepperControl(value: '${fit.calAge}', minWidth: 40, onDec: () => fit.bumpCalAge(-1), onInc: () => fit.bumpCalAge(1), onEdit: () => _editNumber(context, title: t.ageLabel, current: fit.calAge.toDouble(), decimal: false, apply: (v) => fit.bumpCalAge(v.round() - fit.calAge)))),
-          const SizedBox(height: 10),
-          ToolRow(label: t.heightLabel, control: StepperControl(value: fit.heightLabel(fit.calHeight), onDec: () => fit.bumpCalHeight(-fit.heightStep), onInc: () => fit.bumpCalHeight(fit.heightStep), onEdit: () => _editNumber(context, title: t.heightLabel, current: fit.toDisplayCm(fit.calHeight), decimal: true, apply: (v) => fit.bumpCalHeight(fit.fromDisplayCm(v) - fit.calHeight)))),
-          const SizedBox(height: 10),
-          ToolRow(label: t.weightLabel, control: StepperControl(value: ltr('${fit.weightValue(fit.calWeight)} ${fit.units}'), onDec: () => fit.bumpCalWeight(-fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onInc: () => fit.bumpCalWeight(fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onEdit: () => _editNumber(context, title: t.weightLabel, current: fit.toDisplayWeight(fit.calWeight), decimal: true, apply: (v) => fit.bumpCalWeight(fit.fromDisplayWeight(v) - fit.calWeight)))),
-          const SizedBox(height: 10),
-          _activityCard(gc),
-          const SizedBox(height: 10),
-          _macros(gc),
         ];
       case 'bf':
         final male = fit.bfSex == 'male';
@@ -249,25 +223,6 @@ class ToolDetailScreen extends StatelessWidget {
           ToolRow(label: t.ffmiBodyFat, control: StepperControl(value: '${fmt(fit.ffmiBf)}%', minWidth: 52, onDec: () => fit.bumpFfmiBf(-0.5), onInc: () => fit.bumpFfmiBf(0.5), onEdit: () => _editNumber(context, title: t.ffmiBodyFat, current: fit.ffmiBf, decimal: true, apply: (v) => fit.bumpFfmiBf(v - fit.ffmiBf)))),
           _note(gc, '${t.ffmiLeanLine(fit.weightLabel(fit.ffmiLean))}\n${t.ffmiExplain}'),
         ];
-      case 'protein':
-        return [
-          ToolRow(
-            label: t.proteinGoalLabel,
-            control: SegToggle([
-              SegOption(t.paceLose, fit.protGoal == 'lose', () => fit.setProtGoal('lose')),
-              SegOption(t.paceHold, fit.protGoal == 'hold', () => fit.setProtGoal('hold')),
-              SegOption(t.paceGain, fit.protGoal == 'gain', () => fit.setProtGoal('gain')),
-            ]),
-          ),
-          ToolRow(label: t.weightLabel, control: StepperControl(value: ltr('${fit.weightValue(fit.protWeight)} ${fit.units}'), onDec: () => fit.bumpProtWeight(-fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onInc: () => fit.bumpProtWeight(fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onEdit: () => _editNumber(context, title: t.weightLabel, current: fit.toDisplayWeight(fit.protWeight), decimal: true, apply: (v) => fit.bumpProtWeight(fit.fromDisplayWeight(v) - fit.protWeight)))),
-          _note(gc, t.proteinExplain),
-        ];
-      case 'water':
-        return [
-          ToolRow(label: t.weightLabel, control: StepperControl(value: ltr('${fit.weightValue(fit.waterWeight)} ${fit.units}'), onDec: () => fit.bumpWaterWeight(-fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onInc: () => fit.bumpWaterWeight(fit.fromDisplayWeight(fit.isLb ? 1 : 0.5)), onEdit: () => _editNumber(context, title: t.weightLabel, current: fit.toDisplayWeight(fit.waterWeight), decimal: true, apply: (v) => fit.bumpWaterWeight(fit.fromDisplayWeight(v) - fit.waterWeight)))),
-          ToolRow(label: t.waterTrainingLabel, control: StepperControl(value: ltr('${fit.waterMinutes} min'), minWidth: 64, onDec: () => fit.bumpWaterMinutes(-15), onInc: () => fit.bumpWaterMinutes(15), onEdit: () => _editNumber(context, title: t.waterTrainingLabel, current: fit.waterMinutes.toDouble(), decimal: false, apply: (v) => fit.bumpWaterMinutes(v.round() - fit.waterMinutes)))),
-          _note(gc, t.waterExplain),
-        ];
       default:
         return const [];
     }
@@ -293,62 +248,6 @@ class ToolDetailScreen extends StatelessWidget {
   }) async {
     final parsed = await askNumber(context, title: title, initial: fmt(current), decimal: decimal);
     if (parsed != null) apply(parsed);
-  }
-
-  Widget _activityCard(GymColors gc) {
-    Widget pill(String label, double v) {
-      final active = fit.calActivity == v;
-      return Pill(
-        label: label,
-        bg: active ? gc.ember : gc.bgRaised2,
-        fg: active ? gc.onEmber : gc.textSecondary,
-        onTap: () => fit.setCalActivity(v),
-        hPad: 12,
-        vPad: 7,
-        fontSize: 12,
-      );
-    }
-
-    return SoftCard(
-      radius: 22,
-      borderColor: Colors.transparent,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(t.activityLevel, style: AppTheme.f(13, weight: FontWeight.w600, color: gc.textSecondary)),
-          const SizedBox(height: 10),
-          Wrap(spacing: 6, runSpacing: 6, children: [
-            pill(t.activityName('Sedentary'), 1.2),
-            pill(t.activityName('Light'), 1.375),
-            pill(t.activityName('Moderate'), 1.55),
-            pill(t.activityName('Active'), 1.725),
-          ]),
-        ],
-      ),
-    );
-  }
-
-  Widget _macros(GymColors gc) {
-    Widget card(String label, String value) => Expanded(
-          child: SoftCard(
-            radius: 22,
-            borderColor: Colors.transparent,
-            padding: const EdgeInsets.all(12),
-            child: Column(children: [
-              Text(label, style: AppTheme.f(10, weight: FontWeight.w600, color: gc.textSecondary)),
-              const SizedBox(height: 4),
-              Text(value, style: AppTheme.f(16, weight: FontWeight.w700, color: gc.text)),
-            ]),
-          ),
-        );
-    return Row(children: [
-      card(t.macroProtein, '${fit.calProtein}g'),
-      const SizedBox(width: 10),
-      card(t.macroCarbs, '${fit.calCarbs}g'),
-      const SizedBox(width: 10),
-      card(t.macroFat, '${fit.calFat}g'),
-    ]);
   }
 
   Widget _barWeightCard(BuildContext context, GymColors gc) {
