@@ -4,7 +4,7 @@
 
 <br>
 
-<img src="assets/icon/tren-logo.jpg" alt="TREN app icon" width="112" height="112">
+<img src="assets/icon/tren-logo-exact.png" alt="Official TREN app logo" width="112">
 
 # TREN
 
