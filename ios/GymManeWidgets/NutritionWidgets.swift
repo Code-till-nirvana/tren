@@ -2,9 +2,9 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
-private let group = "group.com.gymmane.app"
+private let group = "group.com.tren.app"
 private let pendingKey = "nutri_pending"
-private let openURL = URL(string: "gymmane://nutrition")
+private let openURL = URL(string: "tren://nutrition")
 
 private func stamp(_ date: Date) -> String {
   let parts = Calendar.current.dateComponents([.year, .month, .day], from: date)
