@@ -1,247 +1,98 @@
-<div align="center">
+# TREN
 
-<img src="docs/screenshots/banner-en.png" alt="GymMane — Lift. Log it. Grow." width="860" />
+**TRAIN. EVOLVE. BECOME.**
 
-<br/>
+TREN is a fitness and workout companion focused on helping you plan training, log workouts, understand progress, and build consistent habits.
 
-<img src="docs/screenshots/icon.png" width="94" alt="GymMane" />
+This repository contains the TREN application source code. The project is being actively customized: some inherited modules and platform integrations may still be under review, so feature availability can vary by platform and build.
 
-# GymMane
+## Project
 
-A free, offline gym log for Android.<br/>
-Tap the muscles you want to train, log your sets and watch your numbers go up.
+- **App name:** TREN
+- **Tagline:** TRAIN. EVOLVE. BECOME.
+- **Primary platform:** Android
+- **Framework:** Flutter
+- **Language:** Dart
+- **Repository:** [Code-till-nirvana/tren](https://github.com/Code-till-nirvana/tren)
 
-<br/>
+## Product direction
 
-<p>
-  <img alt="Android 7.0+" src="https://img.shields.io/badge/Android-7.0%2B-3DDC84?style=flat&logo=android&logoColor=white" />
-  <img alt="License GPLv3" src="https://img.shields.io/badge/Code-GPLv3-C2410C?style=flat&logo=gnu&logoColor=white" />
-  <img alt="Art CC BY-SA 4.0" src="https://img.shields.io/badge/Art-CC%20BY--SA%204.0-8A6B41?style=flat&logo=creativecommons&logoColor=white" />
-  <a href="https://github.com/InlitX/GymMane/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/InlitX/GymMane?style=flat&color=D9A184&labelColor=181717&logo=github" /></a>
-  <a href="https://github.com/InlitX/GymMane/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/InlitX/GymMane/total?style=flat&color=D9A184&labelColor=181717&logo=github&label=downloads" /></a>
-</p>
+TREN is being shaped around a focused, premium training experience:
 
-<p>
-  <a href="https://trendshift.io/repositories/107197?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-107197" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/107197" alt="InlitX%2FGymMane | Trendshift" width="250" height="55"/></a>
-  <br/>
-  <a href="https://ko-fi.com/inlitx"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" height="34" /></a>
-</p>
+- Workout logging and training history
+- Exercise discovery and workout planning
+- Strength and activity progress tracking
+- Personal fitness metrics and training insights
+- A consistent dark interface using charcoal and burgundy
+- A simple, distraction-conscious experience
 
-<a href="https://f-droid.org/packages/com.gymmane.app/"><img alt="Get it on F-Droid" src="docs/badges/get-it-on-fdroid.png" height="60" /></a>
-&nbsp;
-<a href="https://apt.izzysoft.de/fdroid/index/apk/com.gymmane.app?repo=main"><img alt="Get it on IzzyOnDroid" src="docs/badges/get-it-on-izzyondroid.png" height="60" /></a>
-&nbsp;
-<a href="https://www.openapk.net/gymmane/com.gymmane.app/"><img alt="Get it on OpenAPK" src="docs/badges/get-it-on-openapk.png" height="60" /></a>
-&nbsp;
-<a href="https://github.com/InlitX/GymMane/releases"><img alt="Get it on GitHub" src="docs/badges/get-it-on-github.png" height="60" /></a>
-&nbsp;
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.gymmane.app%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FInlitX%2FGymMane%22%2C%22author%22%3A%22InlitX%22%2C%22name%22%3A%22GymMane%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Afalse%2C%5C%22fallbackToOlderReleases%5C%22%3Atrue%2C%5C%22filterReleaseTitlesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22filterReleaseNotesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22verifyLatestTag%5C%22%3Afalse%2C%5C%22dontSortReleasesList%5C%22%3Afalse%2C%5C%22useLatestAssetDateAsReleaseDate%5C%22%3Afalse%2C%5C%22trackOnly%5C%22%3Afalse%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%22%5C%22%2C%5C%22versionDetection%5C%22%3Atrue%2C%5C%22releaseDateAsVersion%5C%22%3Afalse%2C%5C%22useVersionCodeAsOSVersion%5C%22%3Afalse%2C%5C%22apkFilterRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22autoApkFilterByArch%5C%22%3Atrue%2C%5C%22appName%5C%22%3A%5C%22%5C%22%2C%5C%22shizukuPretendToBeGooglePlay%5C%22%3Afalse%2C%5C%22allowInsecure%5C%22%3Afalse%2C%5C%22exemptFromBackgroundUpdates%5C%22%3Afalse%2C%5C%22skipUpdateNotifications%5C%22%3Afalse%2C%5C%22about%5C%22%3A%5C%22GymMane%20is%20an%20open%20source%20gym%20log%20for%20Android.%20Pick%20your%20muscles%20on%20a%20body%20map%2C%20log%20your%20sets%2C%20and%20watch%20your%20numbers%20grow.%20No%20accounts%2C%20no%20ads%2C%20no%20tracking%2C%20no%20internet%20permission.%5C%22%7D%22%2C%22overrideSource%22%3Anull%7D"><img alt="Get it on Obtainium" src="docs/badges/get-it-on-obtainium.png" height="60" /></a>
+The feature set and interface will continue to evolve as development progresses. Check the application itself for features currently available in your build.
 
-<sub><b>English</b> · <a href="docs/readme/README.es.md">Español</a> · <a href="docs/readme/README.it.md">Italiano</a> · <a href="docs/readme/README.zh.md">简体中文</a></sub>
+## Design system
 
-<br/>
-<br/>
+The current visual direction uses a charcoal foundation with restrained burgundy accents.
 
-<img src="docs/screenshots/store/en/01-hero.jpg" width="196" alt="Lift. Log it. Grow." />
-<img src="docs/screenshots/store/en/02-train.jpg" width="196" alt="Tap the muscle, get the session" />
-<img src="docs/screenshots/store/en/03-rest.jpg" width="196" alt="Tick the set, rest rings itself" />
-<img src="docs/screenshots/store/en/04-progress.jpg" width="196" alt="Progress from your own sets" />
-
-<img src="docs/screenshots/store/en/05-library.jpg" width="196" alt="500+ exercises with animations" />
-<img src="docs/screenshots/store/en/10-nutrition.jpg" width="196" alt="What you eat, at a glance" />
-<img src="docs/screenshots/store/en/06-privacy.jpg" width="196" alt="No account. No internet. No smoke." />
-
-<details>
-<summary><sub><b>Plain screenshots</b>, every screen straight off the phone</sub></summary>
-<br/>
-
-<img src="docs/screenshots/mock/01-home.png" width="215" alt="Today" />
-<img src="docs/screenshots/mock/03-train.png" width="215" alt="Body map" />
-<img src="docs/screenshots/mock/04-session.png" width="215" alt="Live session" />
-<img src="docs/screenshots/mock/02-progress.png" width="215" alt="Progress" />
-
-<sub><b>Today</b> &nbsp;·&nbsp; <b>Body map</b> &nbsp;·&nbsp; <b>Live session</b> &nbsp;·&nbsp; <b>Progress</b></sub>
-
-<br/>
-<br/>
-
-<img src="docs/screenshots/mock/05-history.png" width="215" alt="History" />
-<img src="docs/screenshots/mock/06-library.png" width="215" alt="Library" />
-<img src="docs/screenshots/mock/07-routines.png" width="215" alt="Routines" />
-<img src="docs/screenshots/mock/08-settings.png" width="215" alt="Settings" />
-
-<img src="docs/screenshots/mock/09-notes.png" width="215" alt="Journal" />
-<img src="docs/screenshots/mock/10-places.png" width="215" alt="Places" />
-<img src="docs/screenshots/mock/11-body.png" width="215" alt="Muscle timeline" />
-<img src="docs/screenshots/mock/12-profile.png" width="215" alt="Profile" />
-
-<sub><b>History</b> &nbsp;·&nbsp; <b>Library</b> &nbsp;·&nbsp; <b>Routines</b> &nbsp;·&nbsp; <b>Settings</b></sub>
-
-</details>
-
-</div>
-
-## What it does
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### Training
-
-- Tap the muscles on a **body map** and get a session
-- Reps, weight and a **rest timer** with your own sound
-- Warm-up, drop, failure, rest-pause and cluster sets, with RPE or RIR
-- **Supersets** and **plates per side**
-- **Routines**, weekly plans and rotations, with days off that keep your streak
-- **Progression** per exercise, **deload weeks** and light sessions
-- A **voice** that guides your rest (beta)
-
-</td>
-<td width="50%" valign="top">
-
-### Progress
-
-- Volume, streaks, weekly goal and **records** for every rep range
-- **Strength curves** with estimated 1RM and strength per bodyweight
-- An **activity heatmap** and a muscle map of what you trained
-- **Your month, recapped**, as a story and a card to share
-- **Progress photos** on a timeline
-- Bodyweight, **ten body measurements**, steps, sleep and heart rate
-- Levels, **medals** and a sticker to share your workout
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### Exercises and tools
-
-- **500+ exercises** with animations and instructions
-- Browse by muscle, equipment or level, or add **your own**
-- Use **your own photo, GIF or video** for any exercise
-- **Places**: tell it your kit and it only suggests what fits
-- A **training journal** with photos and video
-- Twelve **calculators**, five **widgets** and an **NFC sticker** that opens today's workout
-
-</td>
-<td width="50%" valign="top">
-
-### Your data
-
-- **CSV** export and a full **ZIP backup**
-- Import from **Hevy**, **Strong**, **Lyfta**, **Liftosaur**, **JEFIT**, **StrongLifts**, **FitNotes** or **openGym**
-- **Health Connect** in and out, and workouts to **Strava** as a `.fit` file
-- No account, no ads, no analytics, no **internet permission**
-- **22 languages**, light and dark, kg or lb
-- Delete everything in one tap
-
-</td>
-</tr>
-</table>
-
-## Nutrition (beta)
-
-Calories and macros against your goal, 500+ foods with photos, your own foods
-and dishes, water, supplements with dose and stock, meal plans and meal prep.
-**Ask any AI for a meal**, paste its answer and GymMane turns it into real
-food, with nothing sent from the app. No scanner and no online database. Don't
-need it? Turn it off in **Settings › Beta**.
-
-## Download
-
-Get it from F-Droid, IzzyOnDroid, OpenAPK, Obtainium or the
-[GitHub releases](https://github.com/InlitX/GymMane/releases/latest). Not sure
-which APK? Take `arm64-v8a`.
-
-| Platform | Status |
+| Role | Color |
 |---|---|
-| Android 7.0+ | Supported |
-| Web, self-hosted | Supported, see [SELFHOST.md](SELFHOST.md) |
-| Wear OS 3+ | Beta, see [WEAR.md](WEAR.md) |
-| iOS 15+ | In progress |
+| Main background | `#202124` |
+| Primary surface | `#29292D` |
+| Raised surface | `#37363B` |
+| Primary burgundy | `#873F50` |
+| Secondary burgundy | `#B87988` |
+| Main text | `#F1F0EF` |
+| Secondary text | `#B6B2B4` |
+| Borders | `#414047` |
 
-### Self-hosted
+## Getting started
 
-The full app also runs in the browser from your own server, laid out for big
-screens, with your data in one folder on that machine:
+### Requirements
 
-```sh
-curl -fsSLO https://raw.githubusercontent.com/InlitX/GymMane/main/compose.yaml
-docker compose up -d
-```
+- Flutter SDK compatible with the project's `pubspec.yaml`
+- Android Studio or Visual Studio Code
+- Android SDK and an emulator or Android device
 
-No Docker? There are one-line installers for Linux, macOS, Windows and
-Proxmox VE, a template for Unraid and a compose file you can paste into
-Synology, QNAP, TrueNAS, CasaOS or Portainer. Everything, including syncing
-with the phone through Syncthing, is in [SELFHOST.md](SELFHOST.md).
-
-## Privacy
-
-GymMane doesn't have the internet permission, so your training never leaves
-your phone. The permissions it asks for are for the rest timer, its
-notification and the widgets.
-
-## Contributing
-
-Bug reports, ideas and pull requests are welcome. For anything big, open an
-issue first. Want to translate? Edit your language's file and send a pull
-request, [TRANSLATING.md](TRANSLATING.md) shows how.
+### Run locally
 
 ```bash
-git clone https://github.com/InlitX/GymMane.git
-cd GymMane
+git clone https://github.com/Code-till-nirvana/tren.git
+cd tren
 flutter pub get
+flutter run
+```
+
+### Build an Android APK
+
+```bash
 flutter build apk --release
 ```
 
-## Support
+The generated APK is normally written to:
 
-GymMane is free and will stay that way. A star, a translation or a clear bug
-report helps a lot. If you want to buy me a coffee:
+```text
+build/app/outputs/flutter-apk/app-release.apk
+```
 
-<div align="center">
+## Development notes
 
-<a href="https://ko-fi.com/inlitx"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" height="38" /></a>
+- Keep changes focused and test affected flows after modifying them.
+- Avoid removing existing functionality unless it is intentionally being replaced.
+- Keep platform-specific configuration in sync when changing application identifiers, app labels, icons, or permissions.
+- Do not commit signing keys, API secrets, local environment files, or generated build artifacts.
 
-<table align="center">
-  <tr>
-    <td align="center" width="130"><img src="docs/crypto/bitcoin.svg" width="22" alt="Bitcoin" /><br/><sub><b>Bitcoin</b></sub></td>
-    <td><code>bc1qm0r4pg8nknnjh3a7n2t63ckafhsz8jdd6qer29</code></td>
-  </tr>
-  <tr>
-    <td align="center" width="130"><img src="docs/crypto/ethereum.svg" width="22" alt="Ethereum" /><br/><sub><b>Ethereum</b></sub></td>
-    <td><code>0x34b7A5552132cBca150Ae29c1E632faA49430e1a</code></td>
-  </tr>
-  <tr>
-    <td align="center" width="130"><img src="docs/crypto/solana.svg" width="22" alt="Solana" /><br/><sub><b>Solana</b></sub></td>
-    <td><code>DC8dNEUNJhWdtBHBZAn4FTheVC3W4PtkGhbazvtk17Jo</code></td>
-  </tr>
-  <tr>
-    <td align="center" width="130"><img src="docs/crypto/monero.svg" width="22" alt="Monero" /><br/><sub><b>Monero</b></sub></td>
-    <td><code>44SECMEf3rfV228kpy3Gs48wLmLXnq231gAMG7ULYoCWBWLYLHdwYV7YFkhMk31DR5P7SRAyRPyhkYaehtgEoajASz7qubq</code></td>
-  </tr>
-</table>
+## Credits and licensing
 
-</div>
+TREN is an independently branded customization of an existing open-source codebase.
 
-## License
+**Based on GymMane by InlitX.**
 
-The code is [GPL-3.0](LICENSE), with one [additional term](ADDITIONAL_TERMS.md)
-under its section 7(b): works based on GymMane must credit it as "Based on
-GymMane by InlitX". The exercise art comes from
-[Workout Guide](https://github.com/bryllim/workout-guide) by Bryl Lim and from
-[Everkinetic](https://github.com/everkinetic/data), the drawings Workout Guide
-builds on, and is
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The fonts use
-the SIL Open Font License. [CREDITS.md](CREDITS.md) has the details.
+The inherited source is distributed under the GNU General Public License v3.0 together with the applicable additional terms. See [LICENSE](LICENSE) and [ADDITIONAL_TERMS.md](ADDITIONAL_TERMS.md) before redistributing modified builds or source.
 
-## Star history
+Third-party artwork, fonts, and other assets retain their respective licences and attribution requirements. See [CREDITS.md](CREDITS.md).
 
-<a href="https://www.star-history.com/?repos=inlitx%2Fgymmane&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=inlitx/gymmane&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=inlitx/gymmane&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=inlitx/gymmane&type=date&legend=top-left" />
- </picture>
-</a>
+## Contributing
+
+Issues and improvement suggestions are welcome. Before submitting a substantial change, describe the intended behavior and the parts of the app it affects.
+
+## Status
+
+TREN is under active customization. Documentation, branding, platform identifiers, and visual assets are being updated incrementally. Not every platform or inherited feature should be considered production-ready until it has been tested in a TREN build.
