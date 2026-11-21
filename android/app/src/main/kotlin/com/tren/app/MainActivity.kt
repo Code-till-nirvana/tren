@@ -1,5 +1,7 @@
 package com.tren.app
 
+internal const val OPEN_EXTRA = "com.tren.app.OPEN"
+
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
