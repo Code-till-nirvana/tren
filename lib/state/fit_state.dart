@@ -912,7 +912,6 @@ class FitState extends FitCore
       Map<String, String>? restoredNoteMedia,
       Map<String, String>? restoredShots,
       Map<String, String>? restoredMoments,
-      Map<String, String>? restoredFoods,
       Map<String, String>? restoredPasses}) {
     final map = withMergedExercises(backup);
     if (restoredMedia != null) restoredMedia = withMergedExercises(restoredMedia).cast<String, String>();
