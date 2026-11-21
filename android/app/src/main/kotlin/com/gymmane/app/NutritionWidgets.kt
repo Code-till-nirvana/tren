@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -315,7 +315,7 @@ abstract class VesselWidgetProvider(private val prefix: String, private val prev
     }
 
     companion object {
-        private const val ACTION_ADD = "com.gymmane.app.NUTRI_ADD"
+        private const val ACTION_ADD = "com.tren.app.NUTRI_ADD"
         private const val PENDING = "nutri_pending"
         private const val DURATION = 720L
         private const val FRAME_MS = 40L
