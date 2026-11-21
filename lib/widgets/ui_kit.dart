@@ -10,7 +10,7 @@ import '../theme/app_theme.dart';
 import 'rolling_text.dart';
 import 'svg_icon.dart';
 
-const kSheetRadius = 28.0;
+const kSheetRadius = 26.0;
 
 BoxDecoration sheetDecoration(GymColors gc) => BoxDecoration(
       color: gc.bgRaised,
@@ -119,7 +119,7 @@ class SoftCard extends StatelessWidget {
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(20),
-    this.radius = 22,
+    this.radius = 18,
     this.borderColor,
     this.color,
     this.clip = false,
