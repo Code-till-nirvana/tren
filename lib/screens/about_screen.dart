@@ -194,6 +194,13 @@ class AboutScreen extends StatelessWidget {
   Widget _credits(GymColors gc) {
     final rows = <(IconData, String, String, String, Color?)>[
       (PhosphorIconsRegular.githubLogo, t.sourceCode, 'Code-till-nirvana/tren', _kRepoUrl, null),
+      (
+        PhosphorIconsRegular.info,
+        'Open-source attribution',
+        'Based on GymMane by InlitX',
+        'https://github.com/InlitX/GymMane',
+        null,
+      ),
     ];
     return Container(
       clipBehavior: Clip.antiAlias,
