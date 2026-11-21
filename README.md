@@ -211,9 +211,6 @@ Read the first error reported in the terminal, check the installed Android SDK a
 | Language | Dart |
 | Repository | [Code-till-nirvana/tren](https://github.com/Code-till-nirvana/tren) |
 
-## Acknowledgements
-
-This project uses open-source software and third-party resources. Licence terms and required notices are retained in the repository's [LICENSE](LICENSE), [ADDITIONAL_TERMS.md](ADDITIONAL_TERMS.md) and [CREDITS.md](CREDITS.md) files. The upstream covered work is attributed to **GymMane by InlitX**.
 
 ---
 
