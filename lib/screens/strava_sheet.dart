@@ -221,7 +221,7 @@ Future<void> shareWorkoutFit(LoggedSession s) async {
   try {
     final d = s.date;
     final stamp = '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-    await shareFile('GymMane $stamp.fit', Uint8List.fromList(workoutFit(s, pounds: fit.isLb)),
+    await shareFile('TREN $stamp.fit', Uint8List.fromList(workoutFit(s, pounds: fit.isLb)),
         mime: 'application/vnd.ant.fit', text: t.exportForStravaHint);
   } catch (_) {}
 }
