@@ -10,7 +10,7 @@ This repository contains the TREN application source code. The project is being 
 
 - **App name:** TREN
 - **Tagline:** TRAIN. EVOLVE. BECOME.
-- **Primary platform:** Android
+- **Supported platform:** Android only
 - **Framework:** Flutter
 - **Language:** Dart
 - **Repository:** [Code-till-nirvana/tren](https://github.com/Code-till-nirvana/tren)
@@ -26,7 +26,7 @@ TREN is being shaped around a focused, premium training experience:
 - A consistent dark interface using charcoal and burgundy
 - A simple, distraction-conscious experience
 
-The feature set and interface will continue to evolve as development progresses. Check the application itself for features currently available in your build.
+TREN is maintained as an Android-only Flutter application. Other platform project folders and build workflows are intentionally excluded.
 
 ## Design system
 
@@ -76,7 +76,7 @@ build/app/outputs/flutter-apk/app-release.apk
 
 - Keep changes focused and test affected flows after modifying them.
 - Avoid removing existing functionality unless it is intentionally being replaced.
-- Keep platform-specific configuration in sync when changing application identifiers, app labels, icons, or permissions.
+- Keep Android configuration in sync when changing the application identifier, app label, icons, or permissions.
 - Do not commit signing keys, API secrets, local environment files, or generated build artifacts.
 
 ## Credits and licensing
@@ -95,4 +95,4 @@ Issues and improvement suggestions are welcome. Before submitting a substantial 
 
 ## Status
 
-TREN is under active customization. Documentation, branding, platform identifiers, and visual assets are being updated incrementally. Not every platform or inherited feature should be considered production-ready until it has been tested in a TREN build.
+TREN is under active customization. Documentation, branding, platform identifiers, and visual assets are being updated incrementally. Android builds should be tested after each substantial change.
