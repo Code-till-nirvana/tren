@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.app.Activity
 import android.content.Context
