@@ -9,7 +9,6 @@ import 'services/alarm_store.dart';
 import 'services/auto_backup.dart';
 import 'services/device_kind.dart';
 import 'services/home_widget_bridge.dart';
-import 'services/nutrition_widgets.dart';
 import 'services/live_workout.dart';
 import 'services/local_store.dart';
 import 'services/media_store.dart';
@@ -63,7 +62,6 @@ Future<void> main() async {
   }
 
   fit.onWidgetsShouldUpdate = HomeWidgetBridge.update;
-  NutritionWidgets.watch(HomeWidgetBridge.update);
   AutoBackup.instance.init();
   unawaited(WatchPhone.init());
   unawaited(QuickTiles.init());
