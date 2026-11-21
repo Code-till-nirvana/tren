@@ -241,8 +241,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: math.min(660, box.maxHeight - 48),
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                          color: gc.bg.withValues(alpha: 0.72),
-                          borderRadius: BorderRadius.circular(28),
+                          color: gc.bgRaised.withValues(alpha: 0.62),
+                          border: Border.all(color: gc.border.withValues(alpha: 0.65)),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: content,
                       ),
