@@ -3,7 +3,7 @@ part of 'fit_state.dart';
 typedef ReportLift = ({String id, String name, int sessions, int sets, double volume, double best, double? change});
 typedef ReportRecord = ({String id, String name, double kg, DateTime date});
 
-enum ReportSection { workouts, supplements, weighIns, sessions }
+enum ReportSection { workouts, weighIns, sessions }
 
 class RangeReport {
   RangeReport({
@@ -166,10 +166,8 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
   }
 
   Set<ReportSection> reportCsvSections(RangeReport r) {
-    final names = _supplementNames;
     return {
       if (_reportSessions(r).any((s) => s.exercises.any((e) => e.sets.isNotEmpty))) ReportSection.workouts,
-      if (_reportDates(r).any((d) => takenOn(d).any(names.containsKey))) ReportSection.supplements,
       if (r.weightFrom != null) ReportSection.weighIns,
       if (r.sessions > 0) ReportSection.sessions,
     };
@@ -177,21 +175,9 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
 
   String reportSectionCsv(RangeReport r, ReportSection section) => switch (section) {
     ReportSection.workouts => reportWorkoutsCsv(r),
-    ReportSection.supplements => _reportSupplementsCsv(r),
     ReportSection.weighIns => _reportWeighInsCsv(r),
     ReportSection.sessions => _reportSessionsCsv(r),
   };
-
-  Map<String, String> get _supplementNames => {for (final s in supplements) s.id: s.name};
-
-  String _reportSupplementsCsv(RangeReport r) {
-    final names = _supplementNames;
-    return _reportCsv('date,supplement', [
-      for (final day in _reportDates(r))
-        for (final id in takenOn(day))
-          if (names[id] case final name?) [_reportDayKey(day), name],
-    ]);
-  }
 
   String _reportWeighInsCsv(RangeReport r) {
     final weights = bodyweight.where((w) => _inReport(r, w.date)).toList()
