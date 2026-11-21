@@ -7,6 +7,70 @@ mixin MeasuresState on FitCore {
   final Set<String> sidedMeasures = {};
   int measureEveryDays = 0;
 
+  double weightGoalKg = 0;
+  String weightAim = '';
+
+  static const paceCorridors = {
+    'lose': (-1.0, -0.5),
+    'gain': (0.25, 0.5),
+    'hold': (-0.25, 0.25),
+  };
+
+  void setWeightGoal(double kg) {
+    weightGoalKg = kg > 0 ? _round3(kg) : 0;
+    _persist();
+    notifyListeners();
+  }
+
+  void setWeightAim(String aim) {
+    weightAim = const {'lose', 'gain', 'hold'}.contains(aim) ? aim : '';
+    _persist();
+    notifyListeners();
+  }
+
+  String get effectiveWeightAim {
+    if (weightAim.isNotEmpty) return weightAim;
+    final points = [...bodyweight]..sort((a, b) => b.date.compareTo(a.date));
+    final kg = points.isEmpty ? 0.0 : points.first.kg;
+    if (weightGoalKg <= 0 || kg <= 0) return '';
+    final gap = weightGoalKg - kg;
+    if (gap.abs() < kg * 0.01) return 'hold';
+    return gap < 0 ? 'lose' : 'gain';
+  }
+
+  ({double kgPerWeek, double pctPerWeek})? get weightPace {
+    final now = DateTime.now();
+    final from = now.subtract(const Duration(days: 21));
+    final pts = [for (final b in bodyweight) if (!b.date.isBefore(from)) b]
+      ..sort((a, b) => a.date.compareTo(b.date));
+    if (pts.length < 3 || pts.last.date.difference(pts.first.date).inDays < 7) return null;
+    final xs = [for (final p in pts) p.date.difference(pts.first.date).inMinutes / 1440];
+    final ys = [for (final p in pts) p.kg];
+    final mx = xs.reduce((a, b) => a + b) / xs.length;
+    final my = ys.reduce((a, b) => a + b) / ys.length;
+    var numerator = 0.0, denominator = 0.0;
+    for (var i = 0; i < xs.length; i++) {
+      numerator += (xs[i] - mx) * (ys[i] - my);
+      denominator += (xs[i] - mx) * (xs[i] - mx);
+    }
+    if (denominator <= 0 || my <= 0) return null;
+    final perWeek = numerator / denominator * 7;
+    return (kgPerWeek: perWeek, pctPerWeek: perWeek / my * 100);
+  }
+
+  String? get weightPaceStatus {
+    final pace = weightPace;
+    final band = paceCorridors[effectiveWeightAim];
+    if (pace == null || band == null) return null;
+    final p = pace.pctPerWeek;
+    final (lo, hi) = band;
+    if (p >= lo && p <= hi) return 'onPace';
+    if (effectiveWeightAim == 'hold') return 'drifting';
+    final towards = effectiveWeightAim == 'lose' ? p < 0 : p > 0;
+    if (!towards) return 'wrongWay';
+    return p.abs() > (effectiveWeightAim == 'lose' ? -lo : hi) ? 'tooFast' : 'tooSlow';
+  }
+
   bool isPressure(String key) => key == 'bp';
 
   bool canSide(String key) => kSidedMeasureKeys.contains(key);
@@ -237,12 +301,20 @@ mixin MeasuresState on FitCore {
           if (e is Map) ?CustomMeasure.fromJson(e.cast<String, dynamic>()),
       ]);
     measureEveryDays = ((data['measureEvery'] as num?)?.toInt() ?? 0).clamp(0, 365);
+    final legacyNutrition = (data['nutrition'] as Map?)?.cast<String, dynamic>() ?? const <String, dynamic>{};
+    final rawGoal = data['weightGoalKg'] ?? legacyNutrition['wGoal'];
+    final goal = (rawGoal as num?)?.toDouble() ?? 0;
+    weightGoalKg = goal.isFinite && goal > 0 && goal < 500 ? goal : 0;
+    final rawAim = data['weightAim'] ?? legacyNutrition['wAim'];
+    weightAim = const {'lose', 'gain', 'hold'}.contains(rawAim) ? rawAim as String : '';
     sidedMeasures
       ..clear()
       ..addAll([for (final k in (data['measureSides'] as List?) ?? const []) if (k is String && canSide(k)) k]);
   }
 
   Map<String, dynamic> customMeasuresJson() => {
+        if (weightGoalKg > 0) 'weightGoalKg': weightGoalKg,
+        if (weightAim.isNotEmpty) 'weightAim': weightAim,
         if (customMeasures.isNotEmpty) 'customMeasures': customMeasures.map((c) => c.toJson()).toList(),
         if (measureEveryDays > 0) 'measureEvery': measureEveryDays,
         if (sidedMeasures.isNotEmpty) 'measureSides': sidedMeasures.toList(),
