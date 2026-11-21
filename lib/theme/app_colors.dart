@@ -110,15 +110,15 @@ class GymColors extends ThemeExtension<GymColors> {
 
   static const light = GymColors(
     pageBg: Color(0xFFF5F2F1),
-    bg: Color(0xFFF8F6F5),
+    bg: Color(0xFFF8F6F0),
     bgRaised: Color(0xFFFFFFFF),
-    bgRaised2: Color(0xFFEDE8E9),
+    bgRaised2: Color(0xFFEDE9E2),
     border: Color(0xFFE3DADD),
     navBg: Color(0xF7F8F6F5),
     text: Color(0xFF242024),
     textSecondary: Color(0xFF625A5F),
     textTertiary: Color(0xFF8D8389),
-    ember: Color(0xFF873F50),
+    ember: Color(0xFF6F3342),
     emberDeep: Color(0xFF6F3342),
     onEmber: Color(0xFFFFFFFF),
     emberSoft: Color(0x19873F50),
