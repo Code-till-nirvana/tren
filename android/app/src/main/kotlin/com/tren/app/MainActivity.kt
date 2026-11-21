@@ -3,7 +3,6 @@ package com.tren.app
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -154,7 +153,6 @@ class MainActivity : FlutterActivity() {
 
         MethodChannel(messenger, "gymmane/device").setMethodCallHandler { call, result ->
             when (call.method) {
-                "isWatch" -> result.success(packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH))
                 "pickSound" -> pickSound(call.argument<String>("current"), result)
                 "isLowEnd" -> {
                     val am = getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
@@ -178,8 +176,6 @@ class MainActivity : FlutterActivity() {
         AppIconBridge.attach(this, MethodChannel(messenger, AppIconBridge.CHANNEL))
         NfcBridge.attach(this, MethodChannel(messenger, NfcBridge.CHANNEL))
         VoiceBridge.attach(this, MethodChannel(messenger, VoiceBridge.CHANNEL))
-        WearSurfaces.attach(this, MethodChannel(messenger, WearSurfaces.CHANNEL))
-        WatchLinkBridge.attach(this, MethodChannel(messenger, WatchLinkBridge.CHANNEL))
         QuickTiles.attach(this, MethodChannel(messenger, QuickTiles.CHANNEL))
     }
 
@@ -277,7 +273,6 @@ class MainActivity : FlutterActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (HealthBridge.onPermissionResult(requestCode, grantResults)) return
-        if (WatchLinkBridge.onPermissionResult(requestCode, grantResults)) return
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
@@ -302,7 +297,6 @@ class MainActivity : FlutterActivity() {
         rotaryChannel = null
         openChannel = null
         NfcBridge.detach(this)
-        WatchLinkBridge.detach()
         LiveNotifier.dart = null
         HealthBridge.channel = null
         if (isFinishing) LiveNotifier.cancel(this)
