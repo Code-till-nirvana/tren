@@ -67,8 +67,5 @@ List<HelpTopic> helpTopics() {
           section: 'home', row: health(t.stepsSetting)),
     if (NfcTags.available)
       HelpTopic('nfc', t.helpNfcQ, t.helpNfcA(t.nfcRow, s('training')), section: 'training', row: t.nfcRow),
-    if (fit.nutritionBeta)
-      HelpTopic('clean', t.helpCleanQ, t.helpCleanA(t.trackersTitle), go: () => fit.pushRoute('nutrition')),
-    if (fit.nutritionBeta) HelpTopic('fast', t.helpFastQ, t.helpFastA(t.fastAdjust)),
   ];
 }
