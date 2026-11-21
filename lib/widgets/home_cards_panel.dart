@@ -111,14 +111,14 @@ String _blockLabel(String id) => switch (id) {
       'recommended' => t.homeCardRecommended,
       'folders' => t.homeOrderFolders,
       'recovery' => titleCase(t.recoveryTitle),
-      _ => titleCase(t.nutrition),
+      _ => titleCase(t.homeOrderFolders),
     };
 
 void _showOrderSheet(BuildContext context) {
   final gc = context.gc;
   var order = [
     for (final id in fit.homeOrderShown)
-      if ((id != 'nutrition' || fit.nutritionBeta) && (id != 'recovery' || fit.recoveryOn) && (id != 'steps' || (fit.stepsOn && fit.stepsAvailable))) id,
+      if ((id != 'recovery' || fit.recoveryOn) && (id != 'steps' || (fit.stepsOn && fit.stepsAvailable))) id,
   ];
   showAppSheet<void>(
     context: context,
@@ -318,27 +318,6 @@ class _HomeSketch extends StatelessWidget {
             ))),
           ],
         ]),
-      ),
-      'nutrition': (
-        fit.nutritionBeta,
-        _box(32,
-            pad: const EdgeInsets.fromLTRB(9, 7, 9, 7),
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _bar(30, 6, gc.text.withValues(alpha: 0.6)),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(3),
-                child: SizedBox(
-                  height: 4,
-                  child: Row(children: [
-                    Expanded(flex: 5, child: ColoredBox(color: gc.sage)),
-                    const SizedBox(width: 2),
-                    Expanded(flex: 3, child: ColoredBox(color: gc.accent)),
-                    const SizedBox(width: 2),
-                    Expanded(flex: 2, child: ColoredBox(color: gc.text.withValues(alpha: 0.35))),
-                  ]),
-                ),
-              ),
-            ])),
       ),
     };
     extra['recovery'] = (
