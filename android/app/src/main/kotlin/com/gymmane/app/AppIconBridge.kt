@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.content.ComponentName
 import android.content.Context
@@ -32,7 +32,7 @@ object AppIconBridge {
 
     private fun component(context: Context, name: String): ComponentName {
         val alias = "Icon" + name.replaceFirstChar { it.uppercase() }
-        return ComponentName(context.packageName, "com.gymmane.app.$alias")
+        return ComponentName(context.packageName, "com.tren.app.$alias")
     }
 
     private fun current(context: Context): String {
