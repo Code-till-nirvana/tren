@@ -136,52 +136,6 @@ class _ToolArtPainter extends CustomPainter {
                 Paint()..color = _ink(_hue(2)).withValues(alpha: 0.35));
           }
         });
-      case 'cal':
-        final cx = w / 2;
-        Path flame(double scale, double dy) {
-          final fh = 44 * scale, fw = 32 * scale;
-          final top = h - 4 - fh + dy, bottom = h - 4 + dy;
-          return Path()
-            ..moveTo(cx, top)
-            ..cubicTo(cx + fw * 0.15, top + fh * 0.25, cx + fw * 0.55, top + fh * 0.4, cx + fw * 0.5, top + fh * 0.68)
-            ..cubicTo(cx + fw * 0.46, top + fh * 0.92, cx + fw * 0.2, bottom, cx, bottom)
-            ..cubicTo(cx - fw * 0.2, bottom, cx - fw * 0.5, top + fh * 0.92, cx - fw * 0.5, top + fh * 0.66)
-            ..cubicTo(cx - fw * 0.5, top + fh * 0.45, cx - fw * 0.3, top + fh * 0.38, cx - fw * 0.22, top + fh * 0.22)
-            ..cubicTo(cx - fw * 0.08, top + fh * 0.36, cx - fw * 0.02, top + fh * 0.18, cx, top)
-            ..close();
-        }
-        final outer = flame(1, 0);
-        canvas.drawCircle(Offset(cx, h - 16), 18,
-            Paint()
-              ..color = const Color(0xFFF2A46E).withValues(alpha: dark ? 0.22 : 0.16)
-              ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 9));
-        _shadow(canvas, outer);
-        canvas.drawPath(
-            outer,
-            Paint()
-              ..shader = const LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFFF4BC86), Color(0xFFE0745A)],
-              ).createShader(outer.getBounds()));
-        canvas.save();
-        canvas.clipPath(outer);
-        canvas.drawPath(
-            outer.shift(const Offset(-3, 2)),
-            Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 2
-              ..color = Colors.white.withValues(alpha: 0.28));
-        canvas.restore();
-        final inner = flame(0.52, -2);
-        canvas.drawPath(
-            inner,
-            Paint()
-              ..shader = LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [const Color(0xFFF8E2A8), Color.lerp(const Color(0xFFF8E2A8), Colors.white, 0.5)!],
-              ).createShader(inner.getBounds()));
       case 'bf':
         _turn(canvas, size, 0.1, () {
           final sheet = Rect.fromCenter(center: Offset(w / 2, h / 2), width: 40, height: 46);
@@ -382,48 +336,7 @@ class _ToolArtPainter extends CustomPainter {
             Paint()..color = Colors.white.withValues(alpha: 0.42));
         canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromCenter(center: Offset(bx, by + 4), width: 10, height: 6), const Radius.circular(2)),
             Paint()..color = _ink(iron).withValues(alpha: 0.28));
-      case 'protein':
-        final cx = w / 2;
-        final tub = _hue(1);
-        final body = Rect.fromLTWH(cx - 14, 14, 28, h - 17);
-        _block(canvas, body, 6, tub);
-        canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(body.left + 3, body.top + 11, body.width - 6, 13), const Radius.circular(2.5)),
-            Paint()..color = Colors.white.withValues(alpha: 0.78));
-        canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(body.left + 7, body.top + 15, body.width - 14, 2.2), const Radius.circular(1.1)),
-            Paint()..color = _ink(tub).withValues(alpha: 0.7));
-        canvas.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(body.left + 9, body.top + 19, body.width - 18, 1.8), const Radius.circular(0.9)),
-            Paint()..color = _ink(tub).withValues(alpha: 0.4));
-        final lid = Rect.fromLTWH(cx - 16, 6, 32, 10);
-        _block(canvas, lid, 3.5, Color.lerp(tub, Colors.black, 0.28)!);
-        for (var k = 1; k < 8; k++) {
-          canvas.drawRect(Rect.fromLTWH(lid.left + k * 4, lid.top + 2, 0.9, lid.height - 4), Paint()..color = Colors.black.withValues(alpha: 0.16));
-        }
-      case 'water':
-        final cx = w / 2;
-        final blue = _hue(3);
-        canvas.drawCircle(Offset(cx, h - 18), 17,
-            Paint()
-              ..color = blue.withValues(alpha: dark ? 0.22 : 0.16)
-              ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 9));
-        final top = 4.0, bottom = h - 3, r = 15.0;
-        final drop = Path()
-          ..moveTo(cx, top)
-          ..cubicTo(cx + 4, top + 10, cx + r, bottom - r * 1.6, cx + r, bottom - r)
-          ..arcToPoint(Offset(cx - r, bottom - r), radius: Radius.circular(r))
-          ..cubicTo(cx - r, bottom - r * 1.6, cx - 4, top + 10, cx, top)
-          ..close();
-        _shadow(canvas, drop);
-        _fill(canvas, drop, blue);
-        canvas.save();
-        canvas.clipPath(drop);
-        canvas.drawPath(drop.shift(const Offset(-2.5, 2)),
-            Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 2
-              ..color = Colors.white.withValues(alpha: 0.3));
-        canvas.restore();
-        canvas.drawOval(Rect.fromCenter(center: Offset(cx - 6, bottom - r - 3), width: 5, height: 9),
-            Paint()..color = Colors.white.withValues(alpha: 0.5));
+
     }
   }
 
