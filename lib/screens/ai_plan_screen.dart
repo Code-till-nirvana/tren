@@ -224,8 +224,8 @@ class _AiPlanScreenState extends State<AiPlanScreen> {
 
   Future<void> _export() async {
     try {
-      await shareFile('gymmane-exercises.txt', utf8Bytes(fit.planRequestText()),
-          mime: 'text/plain', subject: 'GymMane exercises');
+      await shareFile('tren-exercises.txt', utf8Bytes(fit.planRequestText()),
+          mime: 'text/plain', subject: 'TREN exercises');
     } catch (_) {}
   }
 
