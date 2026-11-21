@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
