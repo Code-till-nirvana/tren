@@ -1,4 +1,4 @@
-package com.gymmane.app
+package com.tren.app
 
 import androidx.concurrent.futures.CallbackToFutureAdapter
 import androidx.wear.protolayout.ActionBuilders
