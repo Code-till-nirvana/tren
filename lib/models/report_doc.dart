@@ -1,4 +1,4 @@
-enum ReportKind { summary, training, nutrition, full }
+enum ReportKind { summary, training, full }
 
 sealed class ReportBlock {
   const ReportBlock();
