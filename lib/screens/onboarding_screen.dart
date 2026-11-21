@@ -488,6 +488,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   _in(1, _label(gc, t.welcomeKicker)),
                   const SizedBox(height: 8),
                   _in(2, Text('TREN', style: AppTheme.f(52, weight: FontWeight.w800, color: gc.text, height: 1))),
+                  const SizedBox(height: 8),
+                  _in(2, Text('TRAIN. EVOLVE. BECOME.',
+                      style: AppTheme.f(10.5, weight: FontWeight.w800, color: gc.accent, letterSpacing: 2.1))),
                   const SizedBox(height: 12),
                   _in(3, Text(kIsWeb ? t.webWelcomeBlurb : t.welcomeBlurb,
                       style: AppTheme.f(15, weight: FontWeight.w500, color: gc.textSecondary, height: 1.5))),
@@ -558,6 +561,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: AppTheme.f(44, weight: FontWeight.w800, color: gc.text, height: 1)),
                 ),
               ),
+              const SizedBox(height: 8),
+              _in(2, Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text('TRAIN. EVOLVE. BECOME.',
+                    style: AppTheme.f(10, weight: FontWeight.w800, color: gc.accent, letterSpacing: 1.8)),
+              )),
               const SizedBox(height: 12),
               _in(
                 3,
