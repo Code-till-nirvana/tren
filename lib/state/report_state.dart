@@ -2,9 +2,8 @@ part of 'fit_state.dart';
 
 typedef ReportLift = ({String id, String name, int sessions, int sets, double volume, double best, double? change});
 typedef ReportRecord = ({String id, String name, double kg, DateTime date});
-typedef ReportFood = ({int days, double kcal, double protein, double carbs, double fat, int waterMl});
 
-enum ReportSection { workouts, nutrition, supplements, weighIns, sessions }
+enum ReportSection { workouts, supplements, weighIns, sessions }
 
 class RangeReport {
   RangeReport({
@@ -20,7 +19,6 @@ class RangeReport {
     required this.muscles,
     this.weightFrom,
     this.weightTo,
-    this.food,
     this.sleep,
     this.energy,
     this.prev,
@@ -38,17 +36,16 @@ class RangeReport {
   final List<({String muscle, double sets})> muscles;
   final double? weightFrom;
   final double? weightTo;
-  final ReportFood? food;
   final double? sleep;
   final double? energy;
   final ({int sessions, int sets, double volume})? prev;
 
   int get days => to.difference(from).inDays + 1;
   double get perWeek => sessions / math.max(1, days) * 7;
-  bool get empty => sessions == 0 && food == null && weightFrom == null;
+  bool get empty => sessions == 0 && weightFrom == null;
 }
 
-mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineState, StatsState, NutritionState {
+mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineState, StatsState {
   RangeReport rangeReport(DateTime from, DateTime to) {
     final a = _dayKey(from), b = _dayKey(to);
     final end = shiftDays(b, 1);
@@ -114,30 +111,6 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
 
     final weights = [for (final w in bodyweight) if (inside(w.date)) w]..sort((x, y) => x.date.compareTo(y.date));
 
-    ReportFood? food;
-    if (nutritionBeta) {
-      var n = 0;
-      var water = 0;
-      var total = Macros.zero;
-      for (var d = a; !d.isAfter(b); d = shiftDays(d, 1)) {
-        final list = entriesOn(d);
-        if (list.isEmpty) continue;
-        n++;
-        total = total + totalOn(d);
-        water += waterOn(d);
-      }
-      if (n > 0) {
-        food = (
-          days: n,
-          kcal: total.kcal / n,
-          protein: total.protein / n,
-          carbs: total.carbs / n,
-          fat: total.fat / n,
-          waterMl: water ~/ n,
-        );
-      }
-    }
-
     double? avg(Iterable<int?> v) {
       final l = v.nonNulls.toList();
       return l.isEmpty ? null : l.reduce((x, y) => x + y) / l.length;
@@ -160,7 +133,6 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
       muscles: muscles,
       weightFrom: weights.isEmpty ? null : weights.first.kg,
       weightTo: weights.length < 2 ? null : weights.last.kg,
-      food: food,
       sleep: avg(picked.map((s) => s.sleep)),
       energy: avg(picked.map((s) => s.energy)),
       prev: previous.isEmpty
@@ -197,8 +169,6 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
     final names = _supplementNames;
     return {
       if (_reportSessions(r).any((s) => s.exercises.any((e) => e.sets.isNotEmpty))) ReportSection.workouts,
-      if (nutritionBeta && (r.food != null || _reportDates(r).any((d) => waterOn(d) != 0)))
-        ReportSection.nutrition,
       if (_reportDates(r).any((d) => takenOn(d).any(names.containsKey))) ReportSection.supplements,
       if (r.weightFrom != null) ReportSection.weighIns,
       if (r.sessions > 0) ReportSection.sessions,
@@ -207,7 +177,6 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
 
   String reportSectionCsv(RangeReport r, ReportSection section) => switch (section) {
     ReportSection.workouts => reportWorkoutsCsv(r),
-    ReportSection.nutrition => reportNutritionCsv(r),
     ReportSection.supplements => _reportSupplementsCsv(r),
     ReportSection.weighIns => _reportWeighInsCsv(r),
     ReportSection.sessions => _reportSessionsCsv(r),
@@ -220,7 +189,7 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
     return _reportCsv('date,supplement', [
       for (final day in _reportDates(r))
         for (final id in takenOn(day))
-          if (names[id] case final name?) [NutritionState._dk(day), name],
+          if (names[id] case final name?) [_reportDayKey(day), name],
     ]);
   }
 
@@ -275,25 +244,7 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
     return csv.toString();
   }
 
-  String reportNutritionCsv(RangeReport r) {
-    final rows = StringBuffer('date,kcal,protein_g,carbs_g,fat_g,fiber_g,water_ml,foods\n');
-    for (final d in _reportDates(r)) {
-      final list = entriesOn(d);
-      final water = waterOn(d);
-      if (list.isEmpty && water == 0) continue;
-      final m = totalOn(d);
-      String n(double v) => v.toStringAsFixed(1).replaceFirst(RegExp(r'\.0$'), '');
-      rows.writeln([
-        NutritionState._dk(d),
-        m.kcal.round(),
-        n(m.protein),
-        n(m.carbs),
-        n(m.fat),
-        n(m.fiber),
-        water,
-        list.length,
-      ].join(','));
-    }
-    return rows.toString();
-  }
+
 }
+
+String _reportDayKey(DateTime d) => '${d.year.toString().padLeft(4, '0')}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
