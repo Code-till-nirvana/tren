@@ -6,7 +6,6 @@ import 'package:archive/archive.dart';
 import 'package:sync/sync.dart';
 
 import '../models/exercise.dart';
-import '../models/nutrition.dart';
 import '../models/note.dart';
 import '../models/progress_shot.dart';
 import '../state/fit_state.dart';
@@ -14,13 +13,12 @@ import 'alarm_store.dart';
 import 'local_store.dart';
 import 'media_store.dart';
 
-const String kBackupJsonEntry = 'gymmane.json';
+const String kBackupJsonEntry = 'tren.json';
 const String _imagesDir = 'media/images';
 const String _videosDir = 'media/videos';
 const String _notesDir = 'media/notes';
 const String _timelineDir = 'timeline';
 const String _momentsDir = 'moments';
-const String _foodsDir = 'foods';
 const String _passesDir = 'passes';
 const String _alarmDir = 'alarm';
 
@@ -85,21 +83,6 @@ Future<Uint8List> buildBackupZip() async {
     momentMedia[moment.file] = path;
   }
   data['momentMedia'] = momentMedia;
-
-  final foodMedia = <String, String>{};
-  for (final (photo, label) in [
-    for (final f in fit.foods) (f.photo, f.name),
-    for (final s in fit.supplements) (s.photo, s.name),
-    for (final r in fit.recipes) (r.photo, r.name),
-  ]) {
-    if (photo.isEmpty || isAssetPhoto(photo) || foodMedia.containsKey(photo)) continue;
-    final bytes = await MediaStore.readBytes(photo);
-    if (bytes == null || bytes.isEmpty) continue;
-    final name = _uniqueName(used, slugify(label), MediaStore.extOf(photo));
-    archive.addFile(ArchiveFile.noCompress('$_foodsDir/$name', bytes.length, bytes));
-    foodMedia[photo] = '$_foodsDir/$name';
-  }
-  data['foodMedia'] = foodMedia;
 
   final passMedia = <String, String>{};
   for (final pass in fit.gymPasses) {
@@ -209,18 +192,6 @@ Future<bool> restoreBackupZip(Uint8List zipBytes) async {
     if (base != null) restoredMoments[e.key] = base;
   }
 
-  final wantedFoods = <String, String>{};
-  ((data['foodMedia'] as Map?) ?? {}).forEach((k, v) {
-    if (k is String && v is String && v.isNotEmpty) wantedFoods[k] = v;
-  });
-  final restoredFoods = <String, String>{};
-  for (final e in wantedFoods.entries) {
-    final bytes = archive.findFile(e.value)?.readBytes();
-    if (bytes == null) continue;
-    final base = await MediaStore.saveBytes('food', MediaStore.extOf(e.value), bytes);
-    if (base != null) restoredFoods[e.key] = base;
-  }
-
   final wantedPasses = <String, String>{};
   ((data['passMedia'] as Map?) ?? {}).forEach((k, v) {
     if (k is String && v is String && v.isNotEmpty) wantedPasses[k] = v;
@@ -238,14 +209,12 @@ Future<bool> restoreBackupZip(Uint8List zipBytes) async {
       restoredNoteMedia: restoredNotes,
       restoredShots: restoredShots,
       restoredMoments: restoredMoments,
-      restoredFoods: restoredFoods,
       restoredPasses: restoredPasses);
   final added = {
     ...restored.values,
     ...restoredNotes.values,
     ...restoredShots.values,
     ...restoredMoments.values,
-    ...restoredFoods.values,
     ...restoredPasses.values,
   };
   if (!ok) {
@@ -340,7 +309,7 @@ ArchiveFile? _findJson(Archive a) {
   ArchiveFile? fallback;
   for (final f in a.files) {
     if (!f.isFile || !f.name.toLowerCase().endsWith('.json')) continue;
-    if (f.name == kBackupJsonEntry) return f;
+    if (f.name == kBackupJsonEntry || f.name == 'gymmane.json') return f;
     fallback ??= f;
   }
   return fallback;
