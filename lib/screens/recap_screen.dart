@@ -283,8 +283,6 @@ class _RecapScreenState extends State<RecapScreen> {
         _Page.records => t.recapTickRecords,
         _Page.medals => t.recapTickMedals,
         _Page.cardio => 'Cardio',
-        _Page.steps => t.recapTickSteps,
-        _Page.sleep => t.recapTickSleep,
         _Page.habit => t.weekday(_recap.favDay ?? 1),
         _Page.share => 'TREN',
       };
