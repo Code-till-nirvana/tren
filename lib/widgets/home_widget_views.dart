@@ -7,7 +7,6 @@ import '../l10n/l10n.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import 'body_map.dart';
-import 'nutrition_art.dart';
 import 'ui_kit.dart';
 
 const _kDisplay = 'Nunito';
