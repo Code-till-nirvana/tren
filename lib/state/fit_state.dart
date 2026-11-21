@@ -745,6 +745,8 @@ class FitState extends FitCore
     measures.clear();
     customMeasures.clear();
     measureEveryDays = 0;
+    weightGoalKg = 0;
+    weightAim = '';
     ProgressReminder.instance.cancelMeasure();
     shots.clear();
     compareFromId = null;
