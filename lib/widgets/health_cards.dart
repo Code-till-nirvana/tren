@@ -15,7 +15,6 @@ import 'charts.dart';
 import 'entrance.dart';
 import 'glass.dart';
 import 'liquid_notch.dart';
-import 'nutrition_art.dart' show ValueLineChart;
 import 'steps_card.dart' show showStepsSheet;
 import 'ui_kit.dart';
 
