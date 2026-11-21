@@ -188,7 +188,6 @@ void main() {
       await Store.instance.init();
       fit.resetAllData();
       fit.onboarded = true;
-      fit.nutritionBeta = true;
     });
 
     for (final lang in ['en', 'es']) {
