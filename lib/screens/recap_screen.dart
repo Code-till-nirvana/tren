@@ -11,7 +11,6 @@ import '../catalog/awards.dart';
 import '../l10n/l10n.dart';
 import '../models/exercise.dart';
 import '../models/workout.dart';
-import '../services/food_library.dart';
 import '../services/health_metrics.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
@@ -23,9 +22,8 @@ import '../widgets/liquid_notch.dart';
 import '../widgets/medal.dart';
 import '../widgets/medal_shelf.dart';
 import '../widgets/name_ticker.dart';
-import '../widgets/nutrition_art.dart';
 import '../widgets/profile_avatar.dart';
-import '../widgets/ui_kit.dart';
+import '../widgets/ui_kit.dart';
 import '../services/file_share.dart';
 
 const double kRecapAvatar = 150;
@@ -33,7 +31,6 @@ const double kRecapAvatar = 150;
 double recapAvatarY(Size size) => size.height * 0.4;
 
 Future<void> openRecap(BuildContext context) async {
-  if (fit.nutritionBeta && !FoodLibrary.ready) await FoodLibrary.load();
   if (!context.mounted) return;
   await Navigator.of(context).push(PageRouteBuilder<void>(
       transitionDuration: const Duration(milliseconds: 380),
@@ -44,7 +41,7 @@ Future<void> openRecap(BuildContext context) async {
     ));
 }
 
-enum _Page { hello, workouts, time, volume, peak, lift, fresh, muscle, records, medals, cardio, steps, sleep, food, habit, share }
+enum _Page { hello, workouts, time, volume, peak, lift, fresh, muscle, records, medals, cardio, steps, sleep, habit, share }
 
 TextStyle _num(double size, Color color) => AppTheme.f(size,
         weight: FontWeight.w900, color: color, letterSpacing: -size * 0.045, height: 1)
@@ -228,7 +225,6 @@ class _RecapScreenState extends State<RecapScreen> {
       if (_extras.cardio != null) _Page.cardio,
       if (_extras.steps != null) _Page.steps,
       if (_extras.sleep != null) _Page.sleep,
-      if (_extras.food != null) _Page.food,
       if (_recap.favDay != null) _Page.habit,
       _Page.share,
     ],
@@ -292,7 +288,6 @@ class _RecapScreenState extends State<RecapScreen> {
         _Page.cardio => 'Cardio',
         _Page.steps => t.recapTickSteps,
         _Page.sleep => t.recapTickSleep,
-        _Page.food => t.recapTickFood,
         _Page.habit => t.weekday(_recap.favDay ?? 1),
         _Page.share => 'TREN',
       };
@@ -507,7 +502,6 @@ class _RecapScreenState extends State<RecapScreen> {
         _Page.cardio => _cardio(gc, tone),
         _Page.steps => _stepsPage(gc, tone),
         _Page.sleep => _sleepPage(gc, tone),
-        _Page.food => _food(gc, tone),
         _Page.habit => _habit(gc, tone),
         _Page.share => _sharePage(gc, tone),
       };
@@ -1019,92 +1013,6 @@ class _RecapScreenState extends State<RecapScreen> {
     ]);
   }
 
-  Widget _food(GymColors gc, Color tone) {
-    final f = _extras.food!;
-    final star = f.star;
-    final rest = f.top.where((e) => e.name != star).take(3).toList();
-    final group = MaterialLocalizations.of(context);
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Expanded(
-        child: LayoutBuilder(
-          builder: (context, box) {
-            final size = math.min(250.0, math.min(box.maxWidth, box.maxHeight) - 16);
-            if (size < 120 || f.top.isEmpty) return const SizedBox.shrink();
-            return Center(
-              child: _Enter(
-                from: 26,
-                child: FoodPlate(
-                  size: size,
-                  items: [for (final e in f.top) (e.photo, e.name)],
-                  wrap: (i, child) => _Enter(delay: 260 + i * 140, from: -24, child: child),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-      const SizedBox(height: 18),
-      _kicker(star == null ? t.recapFoodKicker : t.recapFoodStarKicker, tone),
-      const SizedBox(height: 8),
-      if (star != null) ...[
-        _Enter(
-          delay: 150,
-          child: Text(star,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: AppTheme.f(40, weight: FontWeight.w900, color: gc.text, letterSpacing: -1.2, height: 1.02)),
-        ),
-        const SizedBox(height: 6),
-        _Enter(
-          delay: 260,
-          child: Text(t.recapFoodStarDays(f.starTimes),
-              style: AppTheme.f(18, weight: FontWeight.w800, color: gc.textSecondary)),
-        ),
-      ] else ...[
-        _bigRow([
-          _Count(f.protein.toDouble(), style: _num(96, gc.text)),
-          _unit('g', 96, tone),
-        ]),
-        Text(t.recapFoodProtein(f.goal), style: AppTheme.f(18, weight: FontWeight.w800, color: gc.textSecondary)),
-      ],
-      const SizedBox(height: 22),
-      Row(children: [
-        if (star != null)
-          _chip(gc, _Count(f.protein.toDouble(), style: _num(30, gc.text), delay: 400), t.recapFoodProteinLabel, 400),
-        _chip(gc, Text('${f.hit}/${f.days}', style: _num(30, gc.text)), t.recapFoodGoalDays, 550),
-        if (f.water > 0)
-          _chip(gc, Text(fit.waterValue(f.water), style: _num(30, gc.text)), '${t.recapFoodWaterLabel} · ${fit.waterUnit}',
-              700)
-        else
-          _chip(gc, Text(group.formatDecimal(fit.energyOf(f.kcal)), style: _num(30, gc.text)),
-              '${fit.energyUnit} · ${t.recapAvgLabel}', 700),
-      ]),
-      if (rest.isNotEmpty) ...[
-        const SizedBox(height: 18),
-        for (final (i, r) in rest.indexed)
-          _Enter(
-            delay: 850 + i * 120,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(children: [
-                FoodSticker(photo: r.photo, name: r.name, size: 38, tilt: false, shadow: false),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(r.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTheme.f(14, weight: FontWeight.w700, color: gc.text)),
-                ),
-                const SizedBox(width: 10),
-                Text(t.recapFoodTimes(r.days), style: AppTheme.f(13, weight: FontWeight.w700, color: gc.textSecondary)),
-              ]),
-            ),
-          ),
-      ],
-      const SizedBox(height: 24),
-    ]);
-  }
-
   Widget _habit(GymColors gc, Color tone) {
     final start = _recap.usualStart;
     final days = _recap.weekdays;
@@ -1233,17 +1141,6 @@ typedef RecapExtras = ({
   ({double km, int sec, int count, String? topId})? cardio,
   ({int total, int avg, int best, DateTime bestDay, List<int> perDay})? steps,
   ({int avg, int best, DateTime bestDay, List<int> perNight})? sleep,
-  ({
-    int days,
-    int kcal,
-    int protein,
-    int goal,
-    int hit,
-    List<({String name, String photo, int days})> top,
-    String? star,
-    int starTimes,
-    int water,
-  })? food,
   List<AwardId> medals,
   LoggedSession? peak,
   List<String> fresh,
@@ -1338,35 +1235,6 @@ RecapExtras recapExtras(MonthRecap recap) {
     }
   }
 
-  var logged = 0, hit = 0, waterDays = 0, water = 0;
-  var kcal = 0.0, protein = 0.0;
-  final foods = <String, int>{};
-  final photos = <String, String>{};
-  if (fit.nutritionBeta) {
-    for (final d in days) {
-      final entries = fit.entriesOn(d);
-      final sips = fit.waterOn(d);
-      if (sips > 0) {
-        waterDays++;
-        water += sips;
-      }
-      if (entries.isEmpty) continue;
-      logged++;
-      final m = fit.totalOn(d);
-      kcal += m.kcal;
-      protein += m.protein;
-      final reached = m.protein >= fit.goalsFor(d).protein;
-      if (reached) hit++;
-      for (final e in entries) {
-        if ((photos[e.name] ?? '').isEmpty) photos[e.name] = fit.photoForEntry(e);
-      }
-      for (final name in {for (final e in entries) e.name}) {
-        foods[name] = (foods[name] ?? 0) + 1;
-      }
-    }
-  }
-  final favs = foods.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
-
   final medals = !fit.gamification
       ? <AwardId>[]
       : [
@@ -1413,19 +1281,6 @@ RecapExtras recapExtras(MonthRecap recap) {
     cardio: count == 0 || (km <= 0 && sec <= 0) ? null : (km: km, sec: sec, count: count, topId: topCardio),
     steps: steps,
     sleep: sleep,
-    food: logged < 1
-        ? null
-        : (
-            days: logged,
-            kcal: (kcal / logged).round(),
-            protein: (protein / logged).round(),
-            goal: fit.activeGoals.protein,
-            hit: hit,
-            top: [for (final e in favs.take(5)) (name: e.key, photo: photos[e.key] ?? '', days: e.value)],
-            star: favs.isEmpty || favs.first.value < 2 ? null : favs.first.key,
-            starTimes: favs.isEmpty ? 0 : favs.first.value,
-            water: waterDays == 0 ? 0 : water ~/ waterDays,
-          ),
     medals: medals,
     peak: peak,
     fresh: fresh,
