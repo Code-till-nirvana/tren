@@ -14,7 +14,7 @@ void main() {
   late Directory docs;
 
   setUp(() async {
-    docs = await Directory.systemTemp.createTemp('gymmane_alarm');
+    docs = await Directory.systemTemp.createTemp('tren_alarm');
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
       const MethodChannel('plugins.flutter.io/path_provider'),
       (call) async => docs.path,
