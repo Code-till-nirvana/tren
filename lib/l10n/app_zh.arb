@@ -361,7 +361,6 @@
   "importUnitBody": "导入的数据中未注明重量单位。",
   "importNothing": "没有可导入的新数据",
   "importDone": "{n, plural, =1{已导入 {n} 次训练记录} other{已导入 {n} 次训练记录}}",
-  "aboutGymmane": "关于 TREN",
   "yourProfile": "个人资料",
   "autofills": "用于自动填充计算器参数",
   "nameLabel": "昵称",
@@ -2045,5 +2044,6 @@
   "qsToday": "今天的训练",
   "qsTodayHint": "和 NFC 贴纸一样：打开今天的安排",
   "developedByAnadi": "由 Anadi Rathore 开发",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "关于 TREN"
 }
