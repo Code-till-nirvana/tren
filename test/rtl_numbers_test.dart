@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/theme/app_colors.dart';
-import 'package:gymmane/widgets/rolling_text.dart';
-import 'package:gymmane/widgets/ui_kit.dart';
+import 'package:tren/theme/app_colors.dart';
+import 'package:tren/widgets/rolling_text.dart';
+import 'package:tren/widgets/ui_kit.dart';
 
 void main() {
   Future<void> rtl(WidgetTester tester, Widget child) async {
