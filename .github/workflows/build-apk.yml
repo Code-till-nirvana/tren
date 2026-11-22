@@ -3,6 +3,8 @@ name: Android build check
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main, cleanup/android-only-verified]
   workflow_dispatch:
 
 permissions:
