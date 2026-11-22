@@ -40,7 +40,7 @@ Date,Exercise,Category,Weight (kg),Weight (lbs),Reps,Distance,Distance Unit,Time
 2024-01-15,Bench Press,Chest,100.00,220.46,10,,,00:03:45,Good form,wr
 ''';
 
-const _gymmane = '''
+const _tren = '''
 date,exercise,muscle,set,reps,weight_kg,volume_kg,est_1rm_kg
 2024-01-16,Barbell Bench Press,chest,1,10,60,600,80
 ''';
@@ -105,7 +105,7 @@ void main() {
       expect(detectFormat(_strongPlain), ImportFormat.strong);
       expect(detectFormat(_fitnotesPlain), ImportFormat.fitnotes);
       expect(detectFormat(_fitnotesUnits), ImportFormat.fitnotes);
-      expect(detectFormat(_gymmane), ImportFormat.gymmane);
+      expect(detectFormat(_tren), ImportFormat.tren);
       expect(detectFormat('a,b,c\n1,2,3'), ImportFormat.unknown);
       expect(detectFormat(_generic), ImportFormat.generic);
       expect(detectFormat(_genericDe), ImportFormat.generic);
@@ -117,7 +117,7 @@ void main() {
       expect(needsUnitChoice(_fitnotesPlain), isTrue);
       expect(needsUnitChoice(_fitnotesUnits), isFalse);
       expect(needsUnitChoice(_hevy), isFalse);
-      expect(needsUnitChoice(_gymmane), isFalse);
+      expect(needsUnitChoice(_tren), isFalse);
     });
   });
 
@@ -192,8 +192,8 @@ void main() {
       expect(r.sessions.single.exercises.single.sets.single.weightKg, 100);
     });
 
-    test('GymMane propio', () {
-      final r = parseImport(_gymmane);
+    test('TREN propio', () {
+      final r = parseImport(_tren);
       expect(r.sessions.single.exercises.single.sets.single.weightKg, 60);
     });
 
@@ -321,7 +321,7 @@ void main() {
       expect(openGymBackupFromZip(ZipEncoder().encode(Archive()..addFile(ArchiveFile('weight.csv', 3, [1, 2, 3])))), isNull);
     });
 
-    test('no confunde un backup de GymMane con uno de openGym', () {
+    test('no confunde un backup de TREN con uno de openGym', () {
       expect(detectFormat('{"sessions": [], "routines": []}'), ImportFormat.unknown);
     });
   });
