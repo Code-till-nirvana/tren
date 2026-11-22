@@ -1,6 +1,8 @@
 name: Build & Release
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -59,15 +61,15 @@ jobs:
       - name: Rename APKs
         run: |
           cd build/app/outputs/flutter-apk
-          mv app-arm64-v8a-release.apk     GymMane-arm64-v8a.apk
-          mv app-armeabi-v7a-release.apk   GymMane-armeabi-v7a.apk
-          mv app-x86_64-release.apk        GymMane-x86_64.apk
+          mv app-arm64-v8a-release.apk     TREN-arm64-v8a.apk
+          mv app-armeabi-v7a-release.apk   TREN-armeabi-v7a.apk
+          mv app-x86_64-release.apk        TREN-x86_64.apk
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: gymmane-apks
-          path: build/app/outputs/flutter-apk/GymMane-*.apk
+          name: tren-apks
+          path: build/app/outputs/flutter-apk/TREN-*.apk
           if-no-files-found: error
 
   release:
