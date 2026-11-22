@@ -13,8 +13,8 @@ import android.service.quicksettings.TileService
 import io.flutter.plugin.common.MethodChannel
 
 object QuickTiles {
-    const val CHANNEL = "gymmane/qs"
-    private const val PREFS = "gymmane_qs"
+    const val CHANNEL = "tren/qs"
+    private const val PREFS = "tren_qs"
 
     fun attach(activity: Activity, ch: MethodChannel) {
         ch.setMethodCallHandler { call, result ->
