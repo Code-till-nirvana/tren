@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../catalog/exercise_catalog.dart';
 import '../l10n/l10n.dart';
@@ -66,10 +67,64 @@ class AboutScreen extends StatelessWidget {
               (PhosphorIconsRegular.chartLineUp, t.mathInside, t.mathInsideWhy),
             ]),
             const SizedBox(height: 22),
+            _developerCredit(gc),
+            const SizedBox(height: 16),
             Text(t.aboutBlurb,
                 textAlign: TextAlign.center,
                 style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textTertiary, height: 1.6)),
           ];
+
+  Widget _developerCredit(GymColors gc) => Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(18),
+          onTap: () async {
+            // Launch the developer's public GitHub profile.
+            // Import url_launcher for the platform hand-off.
+            await launchUrl(Uri.parse('https://github.com/Te4Kettle'), mode: LaunchMode.externalApplication);
+          },
+          child: Ink(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+            decoration: BoxDecoration(
+              color: gc.bgRaised,
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(color: gc.accent.withValues(alpha: 0.28)),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [gc.bgRaised, Color.lerp(gc.bgRaised, gc.accent, 0.10)!],
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 42,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: gc.accentSoft,
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                  child: Icon(PhosphorIconsRegular.githubLogo, color: gc.text, size: 23),
+                ),
+                const SizedBox(width: 13),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Developed by Anadi Rathore',
+                          style: AppTheme.f(14, weight: FontWeight.w800, color: gc.text)),
+                      const SizedBox(height: 4),
+                      Text('GitHub · github.com/Te4Kettle',
+                          style: AppTheme.f(12, weight: FontWeight.w600, color: gc.textSecondary)),
+                    ],
+                  ),
+                ),
+                Icon(PhosphorIconsRegular.arrowSquareOut, color: gc.textTertiary, size: 18),
+              ],
+            ),
+          ),
+        ),
+      );
 
   Widget _sectionLabel(GymColors gc, String label) => Text(label.toUpperCase(),
       style: AppTheme.f(10.5, weight: FontWeight.w700, color: gc.textTertiary, letterSpacing: 1.4));
