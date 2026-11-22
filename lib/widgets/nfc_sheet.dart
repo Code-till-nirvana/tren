@@ -102,7 +102,7 @@ class _Sticker extends StatelessWidget {
               Center(
                 child: Padding(
                   padding: EdgeInsets.all(size * 0.17),
-                  child: Image.asset('assets/img/runner.png',
+                  child: Image.asset('assets/icon/tren-logo-exact.png',
                       color: const Color(0xFF1C1411), colorBlendMode: BlendMode.srcIn, fit: BoxFit.contain),
                 ),
               ),
@@ -374,7 +374,7 @@ class _PhoneBack extends StatelessWidget {
             ),
           ),
           Center(
-            child: Image.asset('assets/img/runner.png',
+            child: Image.asset('assets/icon/tren-logo-exact.png',
                 height: w * 0.3, color: Colors.white.withValues(alpha: 0.2), colorBlendMode: BlendMode.srcIn),
           ),
         ]),
