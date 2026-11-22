@@ -57,7 +57,7 @@ import '../services/host.dart';
 import '../services/file_share.dart';
 import 'about_screen.dart';
 
-const _kImportRequestUrl = 'https://github.com/InlitX/TREN/issues/new?labels=enhancement';
+const _kImportRequestUrl = 'https://github.com/Te4Kettle/tren/issues/new?labels=enhancement';
 
 
 class SettingsScreen extends StatelessWidget {
@@ -760,7 +760,7 @@ class SettingsScreen extends StatelessWidget {
         'home' => t.sectionHome,
         'widgets' => t.sectionWidgets,
         'data' => t.sectionData,
-        'about' => t.aboutGymmane,
+        'about' => t.aboutTren,
         _ => 'Settings',
       };
 
@@ -843,7 +843,7 @@ class SettingsScreen extends StatelessWidget {
         (t.clearWorkouts, PhosphorIconsRegular.barbell),
         (t.resetData, PhosphorIconsRegular.trash),
       ]),
-      _Category('about', PhosphorIconsRegular.info, t.aboutGymmane, [(t.aboutGymmane, r)]),
+      _Category('about', PhosphorIconsRegular.info, t.aboutTren, [(t.aboutTren, r)]),
     ];
   }
 
