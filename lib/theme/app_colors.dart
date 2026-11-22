@@ -113,7 +113,7 @@ class GymColors extends ThemeExtension<GymColors> {
     bg: Color(0xFFF8F5F1),
     bgRaised: Color(0xFFFFFFFF),
     bgRaised2: Color(0xFFEDE8E5),
-    border: Color(0xFFE3DADD),
+    border: Color(0xFFE3D9D9),
     navBg: Color(0xF7F8F6F5),
     text: Color(0xFF242024),
     textSecondary: Color(0xFF625A5F),
