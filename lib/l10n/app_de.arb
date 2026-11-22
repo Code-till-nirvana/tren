@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Wie der NFC-Sticker: öffnet, was heute ansteht",
   "developedByAnadi": "Entwickelt von Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "Über TREN"
+  "aboutTren": "Über TREN",
+  "openSourceAttribution": "Open-Source-Zuordnung",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
