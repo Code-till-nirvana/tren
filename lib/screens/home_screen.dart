@@ -7,7 +7,6 @@ import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import '../app/desktop.dart';
 import '../widgets/medal.dart' show Medal;
 import '../l10n/l10n.dart';
-import '../models/exercise.dart';
 import '../models/workout.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
@@ -15,7 +14,6 @@ import '../theme/app_theme.dart';
 import '../widgets/charts.dart';
 import '../widgets/day_off_sheet.dart';
 import '../widgets/entrance.dart';
-import '../widgets/exercise_media.dart';
 import '../widgets/glass.dart';
 import '../widgets/home_folder.dart';
 import '../widgets/recovery_art.dart';
@@ -33,7 +31,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gc = context.gc;
-    final recommended = fit.recommendedExercises(8);
     final routines = fit.routinesByLastDone;
     if (DesktopScope.of(context)) return _desktop(context, gc, routines, recommended);
 
