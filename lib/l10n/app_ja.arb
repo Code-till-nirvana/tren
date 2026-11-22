@@ -2043,5 +2043,7 @@
   "qsSubtitle": "クイック設定を引き下ろせば、アプリを探さずにワンタップで開けます",
   "qsTitle": "クイック設定のタイル",
   "qsToday": "今日のワークアウト",
-  "qsTodayHint": "NFC ステッカーと同じく、今日の予定を開きます"
+  "qsTodayHint": "NFC ステッカーと同じく、今日の予定を開きます",
+  "developedByAnadi": "開発者：アナディ・ラソール",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
