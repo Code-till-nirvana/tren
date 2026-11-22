@@ -478,9 +478,10 @@ void main() {
       expect(fit.cardioKcal(s, s.exercises.first)!.active, 175);
     });
 
-    test('las kcal quemadas del día usan el cardio y el resto como pesas', () {
-      walk('walking', 5, 3600, dur: 5400);
-      expect(fit.burnedOn(DateTime.now()), 175 + 140);
+    test('las kcal quemadas del día suman cardio y fuerza', () {
+      final s = walk('walking', 5, 3600, dur: 5400);
+      s.exercises.add(LoggedExercise('bench-press-test', 'Bench Press', 'chest', [LoggedSet(10, 20)]));
+      expect(fit.burnedOn(DateTime.now()), 249 + 140);
     });
 
     test('la inclinación y el valor propio se guardan', () async {
