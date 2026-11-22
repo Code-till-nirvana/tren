@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Seperti stiker NFC: membuka yang dijadwalkan hari ini",
   "developedByAnadi": "Dikembangkan oleh Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "Tentang TREN"
+  "aboutTren": "Tentang TREN",
+  "openSourceAttribution": "Atribusi sumber terbuka",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
