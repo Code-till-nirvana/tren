@@ -2433,7 +2433,7 @@ class SessionScreen extends StatelessWidget {
               bottom: -6,
               child: Opacity(
                 opacity: 0.45,
-                child: Image.asset('assets/img/runner.png', fit: BoxFit.fitHeight),
+                child: Image.asset('assets/icon/tren-logo-exact.png', fit: BoxFit.fitHeight),
               ),
             ),
             Padding(
