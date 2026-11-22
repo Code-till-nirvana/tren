@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final gc = context.gc;
     final routines = fit.routinesByLastDone;
-    if (DesktopScope.of(context)) return _desktop(context, gc, routines, recommended);
+    if (DesktopScope.of(context)) return _desktop(context, gc, routines);
 
     return RiseScope(
       id: 'home',
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 14),
               _away(_photoNudge(gc)),
             ],
-            ..._homeBlocks(context, gc, routines, recommended),
+            ..._homeBlocks(context, gc, routines),
           ]),
         ),
       ),
@@ -63,9 +63,9 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _desktop(BuildContext context, GymColors gc, List<Routine> routines, List<Exercise> recommended) {
+  Widget _desktop(BuildContext context, GymColors gc, List<Routine> routines) {
     Medal.warm(context);
-    final blocks = _blockMap(context, gc, routines, recommended);
+    final blocks = _blockMap(context, gc, routines);
     Widget one(List<Widget> b) =>
         b.length == 1 ? b.single : Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: b);
     final year = fit.heatmapYear;
@@ -86,16 +86,13 @@ class HomeScreen extends StatelessWidget {
     final ids = fixed
         ? [
             for (final id in fit.homeOrderShown)
-              if (id != 'recommended' && id != 'activity') id,
-            if (!year) 'activity',
-            'recommended',
-            if (year) 'activity',
+              if (id != 'activity') id,
+            'activity',
           ]
         : fit.homeOrderShown;
     for (final id in ids) {
       if (blocks[id] case final b? when b.isNotEmpty) {
         add(one(b), switch (id) {
-          'recommended' => year ? (c) => FlowWide(child: c) : (c) => FlowSlot(span: 2, child: c),
           'activity' when year => (c) => FlowWide(child: c),
           _ => fixed
               ? (c) => FlowSlot(column: slots[id], lift: id == 'week' ? 44 : 0, child: c)
@@ -147,7 +144,7 @@ class HomeScreen extends StatelessWidget {
     ]);
   }
 
-  List<Widget> _homeBlocks(BuildContext context, GymColors gc, List<Routine> routines, List<Exercise> recommended) {
+  List<Widget> _homeBlocks(BuildContext context, GymColors gc, List<Routine> routines) {
     final blocks = _blockMap(context, gc, routines, recommended);
     final out = <Widget>[];
     String? last;
@@ -170,7 +167,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Map<String, List<Widget>> _blockMap(
-      BuildContext context, GymColors gc, List<Routine> routines, List<Exercise> recommended) {
+      BuildContext context, GymColors gc, List<Routine> routines) {
     return <String, List<Widget>>{
       'weekdays': [_away(_weekCard(context, gc))],
       'week': [
@@ -221,20 +218,6 @@ class HomeScreen extends StatelessWidget {
                       onTapDay: (i) => showDaySheet(context, fit.heatmapWeekDate(i)),
                     ),
             )),
-      ],
-      'recommended': [
-            if (fit.showRecommended && recommended.isNotEmpty) ...[
-              _section(gc, t.recommended, fit.goExercises, SizedBox(
-                height: 158,
-                child: ListView.separated(
-                  key: const PageStorageKey('home-recommended'),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: recommended.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 12),
-                  itemBuilder: (_, i) => _recCard(gc, recommended[i]),
-                ),
-              )),
-            ],
       ],
       'folders': [
             _away(Row(
@@ -696,33 +679,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _recCard(GymColors gc, Exercise ex) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => fit.openExercise(ex.id),
-      child: Container(
-        width: 132,
-        padding: const EdgeInsets.all(9),
-        decoration: BoxDecoration(
-          color: gc.bgRaised,
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ExerciseMedia(ex: ex, height: 88, radius: 12),
-            const SizedBox(height: 9),
-            Expanded(
-              child: Text(exerciseName(ex),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTheme.f(12, weight: FontWeight.w600, color: gc.text, height: 1.25)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+
 }
 
 void showWeeklyGoalSheet(BuildContext context) {
