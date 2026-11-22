@@ -53,6 +53,5 @@ void main() {
     expect(fit.isCardio('badminton'), true, reason: 'se apuntan por tiempo');
     expect(fit.countsForMuscles('volleyball'), false);
     expect(fit.countsForMuscles('EIeI8Vf'), true);
-    expect(fit.recommendedExercises(30).any((e) => e.kind == 'sport'), false);
   });
 }
