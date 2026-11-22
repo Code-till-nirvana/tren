@@ -20,8 +20,8 @@ void main() {
   });
 
   test('the handle falls back to the name until you set your own', () {
-    fit.profile.name = 'Inlitx Lifts';
-    expect(fit.profileHandle, 'inlitxlifts');
+    fit.profile.name = 'TREN Lifts';
+    expect(fit.profileHandle, 'trenlifts');
 
     fit.setProfileHandle(' my.handle! ');
     expect(fit.profileHandle, 'my.handle');
