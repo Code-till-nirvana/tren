@@ -2043,5 +2043,7 @@
   "qsSubtitle": "اسحب الإعدادات السريعة للأسفل وادخل بلمسة واحدة دون البحث عن التطبيق",
   "qsTitle": "مربعات الإعدادات السريعة",
   "qsToday": "تمرين اليوم",
-  "qsTodayHint": "مثل ملصق NFC: يفتح ما هو مقرر لليوم"
+  "qsTodayHint": "مثل ملصق NFC: يفتح ما هو مقرر لليوم",
+  "developedByAnadi": "طوّره أنادي راثور",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
