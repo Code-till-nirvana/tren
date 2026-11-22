@@ -68,6 +68,8 @@ class AboutScreen extends StatelessWidget {
             ]),
             const SizedBox(height: 22),
             _developerCredit(gc),
+            const SizedBox(height: 12),
+            _openSourceAttribution(gc),
             const SizedBox(height: 16),
             Text(t.aboutBlurb,
                 textAlign: TextAlign.center,
@@ -123,6 +125,25 @@ class AboutScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      );
+
+  Widget _openSourceAttribution(GymColors gc) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        decoration: BoxDecoration(
+          color: gc.bgRaised,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: gc.border),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(t.openSourceAttribution,
+                style: AppTheme.f(11, weight: FontWeight.w700, color: gc.textTertiary)),
+            const SizedBox(height: 6),
+            Text(t.basedOnGymManeByInlitX,
+                style: AppTheme.f(13, weight: FontWeight.w700, color: gc.text)),
+          ],
         ),
       );
 
