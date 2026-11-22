@@ -2045,5 +2045,7 @@
   "qsTodayHint": "NFC 스티커처럼 오늘 예정된 운동을 엽니다",
   "developedByAnadi": "개발자: 아나디 라토르",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "TREN 정보"
+  "aboutTren": "TREN 정보",
+  "openSourceAttribution": "오픈 소스 저작자 표시",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
