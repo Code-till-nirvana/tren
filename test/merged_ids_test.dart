@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/catalog/exercise_catalog.dart';
-import 'package:gymmane/catalog/merged_exercises.dart';
-import 'package:gymmane/services/merged_ids.dart';
+import 'package:tren/catalog/exercise_catalog.dart';
+import 'package:tren/catalog/merged_exercises.dart';
+import 'package:tren/services/merged_ids.dart';
 
 void main() {
   final old = kMergedExercises.keys.first;
