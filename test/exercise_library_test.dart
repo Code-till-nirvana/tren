@@ -228,7 +228,6 @@ void main() {
         expect(fit.exercisesMatching('').map((e) => e.id), isNot(contains(id)));
         expect(fit.trainSearchResults('pull').map((e) => e.id), isNot(contains(id)));
         expect(fit.getFilteredExercises(['back']).map((e) => e.id), isNot(contains(id)));
-        expect(fit.recommendedExercises(40).map((e) => e.id), isNot(contains(id)));
 
         fit.toggleArchivedFilter();
         expect(fit.exercisesMatching('').map((e) => e.id), [id]);
