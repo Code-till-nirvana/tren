@@ -361,7 +361,6 @@
   "importUnitBody": "В этой выгрузке не сказано, в каких единицах указан вес.",
   "importNothing": "Нового для загрузки нет",
   "importDone": "{n, plural, one{Загружена {n} тренировка} few{Загружены {n} тренировки} many{Загружено {n} тренировок} other{Загружено {n} тренировки}}",
-  "aboutGymmane": "О TREN",
   "yourProfile": "ТВОЙ ПРОФИЛЬ",
   "autofills": "Подставляется в калькуляторы",
   "nameLabel": "ИМЯ",
@@ -2045,5 +2044,6 @@
   "qsToday": "Тренировка на сегодня",
   "qsTodayHint": "Как NFC-метка: открывает то, что запланировано на сегодня",
   "developedByAnadi": "Разработано Анадi Ратхором",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "О TREN"
 }
