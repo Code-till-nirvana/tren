@@ -92,8 +92,8 @@
             android:name=".IconLight"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_light"
-            android:roundIcon="@mipmap/ic_launcher_light"
+            android:icon="@drawable/tren_icon_forge"
+            android:roundIcon="@drawable/tren_icon_forge"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -108,8 +108,8 @@
             android:name=".IconSand"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_sand"
-            android:roundIcon="@mipmap/ic_launcher_sand"
+            android:icon="@drawable/tren_icon_summit"
+            android:roundIcon="@drawable/tren_icon_summit"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -124,8 +124,8 @@
             android:name=".IconGraphite"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_graphite"
-            android:roundIcon="@mipmap/ic_launcher_graphite"
+            android:icon="@drawable/tren_icon_surge"
+            android:roundIcon="@drawable/tren_icon_surge"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -140,8 +140,8 @@
             android:name=".IconSage"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_sage"
-            android:roundIcon="@mipmap/ic_launcher_sage"
+            android:icon="@drawable/tren_icon_aegis"
+            android:roundIcon="@drawable/tren_icon_aegis"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -156,8 +156,8 @@
             android:name=".IconNight"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_night"
-            android:roundIcon="@mipmap/ic_launcher_night"
+            android:icon="@drawable/tren_icon_ember"
+            android:roundIcon="@drawable/tren_icon_ember"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -172,8 +172,8 @@
             android:name=".IconMaterial"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_material"
-            android:roundIcon="@mipmap/ic_launcher_material"
+            android:icon="@drawable/tren_icon_velocity"
+            android:roundIcon="@drawable/tren_icon_velocity"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -188,8 +188,8 @@
             android:name=".IconMedal"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_medal"
-            android:roundIcon="@mipmap/ic_launcher_medal"
+            android:icon="@drawable/tren_icon_pulse"
+            android:roundIcon="@drawable/tren_icon_pulse"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -204,8 +204,8 @@
             android:name=".IconGlass"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_glass"
-            android:roundIcon="@mipmap/ic_launcher_glass"
+            android:icon="@drawable/tren_icon_focus"
+            android:roundIcon="@drawable/tren_icon_focus"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -220,8 +220,8 @@
             android:name=".IconStopwatch"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_stopwatch"
-            android:roundIcon="@mipmap/ic_launcher_stopwatch"
+            android:icon="@drawable/tren_icon_tempo"
+            android:roundIcon="@drawable/tren_icon_tempo"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
@@ -236,8 +236,8 @@
             android:name=".IconMarble"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_marble"
-            android:roundIcon="@mipmap/ic_launcher_marble"
+            android:icon="@drawable/tren_icon_pillar"
+            android:roundIcon="@drawable/tren_icon_pillar"
             android:label="TREN"
             android:targetActivity=".MainActivity">
             <intent-filter>
