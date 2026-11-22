@@ -1,5 +1,5 @@
-const String kDefaultName = 'InlitX';
-const String kDefaultHandle = 'inlitx';
+const String kDefaultName = 'Te4Kettle';
+const String kDefaultHandle = 'te4kettle';
 
 class Profile {
   Profile({
