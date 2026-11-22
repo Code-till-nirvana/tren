@@ -59,10 +59,6 @@ import '../services/host.dart';
 import '../services/file_share.dart';
 import 'about_screen.dart';
 
-const _kRepoUrl = 'https://github.com/InlitX/TREN';
-const _kBugUrl = '$_kRepoUrl/issues/new?labels=bug';
-const _kFeatureUrl = '$_kRepoUrl/issues/new?labels=enhancement';
-const _kKofiUrl = 'https://ko-fi.com/inlitx';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key, this.section});
@@ -743,36 +739,7 @@ class SettingsScreen extends StatelessWidget {
           ]),
         ];
       default:
-        return [
-          _linkGroup(gc, [
-              (PhosphorIconsRegular.bug, t.reportBug, () => _open(context, _kBugUrl)),
-              (PhosphorIconsRegular.lightbulb, t.requestFeature, () => _open(context, _kFeatureUrl)),
-              (PhosphorIconsRegular.githubLogo, t.starOnGithub, () => _open(context, _kRepoUrl)),
-              (PhosphorIconsRegular.coffee, t.buyCoffee, () => _open(context, _kKofiUrl)),
-          ], hints: [t.supportHintBug, t.supportHintFeature, t.supportHintStar, t.supportHintCoffee]),
-          const SizedBox(height: 28),
-          Center(
-            child: ExcludeSemantics(
-              child: Image.asset(
-                'assets/img/support-cat.png',
-                width: 300,
-                filterQuality: FilterQuality.medium,
-              ),
-            ),
-          ),
-          const SizedBox(height: 22),
-          Text(t.supportThanksTitle,
-              textAlign: TextAlign.center,
-              style: AppTheme.f(22, weight: FontWeight.w800, color: gc.text, height: 1.2)),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(t.supportThanksBody,
-                textAlign: TextAlign.center,
-                style: AppTheme.f(14, weight: FontWeight.w500, color: gc.textSecondary, height: 1.45)),
-          ),
-          const SizedBox(height: 22),
-        ];
+        return [];
     }
   }
 
@@ -796,7 +763,7 @@ class SettingsScreen extends StatelessWidget {
         'widgets' => t.sectionWidgets,
         'data' => t.sectionData,
         'about' => t.aboutGymmane,
-        _ => titleCase(t.support),
+        _ => 'Settings',
       };
 
   static String sectionTitleOf(String id) => _sectionTitle(id);
@@ -878,12 +845,6 @@ class SettingsScreen extends StatelessWidget {
         (t.stravaRow, PhosphorIconsRegular.export),
         (t.clearWorkouts, PhosphorIconsRegular.barbell),
         (t.resetData, PhosphorIconsRegular.trash),
-      ]),
-      _Category('support', PhosphorIconsRegular.heart, _sectionTitle('support'), [
-        (t.reportBug, PhosphorIconsRegular.bug),
-        (t.requestFeature, PhosphorIconsRegular.lightbulb),
-        (t.starOnGithub, PhosphorIconsRegular.githubLogo),
-        (t.buyCoffee, PhosphorIconsRegular.coffee),
       ]),
       _Category('about', PhosphorIconsRegular.info, t.aboutGymmane, [(t.aboutGymmane, r)]),
     ];
@@ -2655,7 +2616,7 @@ class _SettingsHomeState extends State<_SettingsHome> {
                             for (final (g, label) in [
                               (const {'general', 'training', 'alerts'}, t.settingsGroupApp),
                               (const {'home', 'widgets'}, t.settingsGroupHome),
-                              (const {'data', 'support', 'about'}, t.settingsGroupData),
+                              (const {'data', 'about'}, t.settingsGroupData),
                             ]) ...[
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(4, 6, 0, 10),
