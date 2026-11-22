@@ -130,26 +130,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
     });
   }
 
-  void _openFromWidget(String route) {
-    if (route == 'nfc/today' || route == 'today') {
-      if (mounted) openTodayFromTag(context, tag: route != 'today');
-      return;
-    }
-    if (route == 'pass') {
-      if (!mounted || !fit.onboarded) return;
-      final pass = fit.quickPass;
-      if (pass == null) {
-        if (!fit.isSessionActive) fit.goGymPasses();
-      } else {
-        showGymPass(context, pass);
-      }
-      return;
-    }
-    if (!mounted || !fit.onboarded || fit.isSessionActive) return;
-    if (route == 'play') {
-      playWorkout(context);
-    }
-  }
 
   void _remoteChanged(String text, {required bool conflict, required bool fromPhone}) {
     final data = Store.decodeState(text);
@@ -289,7 +269,6 @@ class _AppShellState extends State<AppShell> with WidgetsBindingObserver, Single
   void dispose() {
     sheetRecede.removeListener(_syncBlurSnap);
     _blurAgain?.cancel();
-    _snapLater?.cancel();
     _blurred?.dispose();
     fit.removeListener(_fitChanged);
     _snap.dispose();
