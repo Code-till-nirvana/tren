@@ -51,7 +51,6 @@ import '../widgets/sheet_page.dart';
 import '../widgets/svg_icon.dart';
 import '../widgets/timer_panel.dart';
 import '../widgets/ui_kit.dart';
-import '../widgets/voice_sheet.dart';
 import '../widgets/widget_showcase.dart';
 import 'profile_screen.dart';
 import 'strava_sheet.dart';
@@ -480,17 +479,6 @@ class SettingsScreen extends StatelessWidget {
                     onTap: fit.toggleMuscleTune,
                     child: _prefRow(gc, PhosphorIconsRegular.equalizer, t.tuneSetting,
                         TinySwitch(on: fit.muscleTune), hint: t.tuneSettingHint),
-                  ),
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      fit.toggleVoiceCoach();
-                      if (fit.voiceCoach) showVoiceSheet(context);
-                    },
-                    child: _prefRow(gc, PhosphorIconsRegular.waveform, t.voiceSetting,
-                        TinySwitch(on: fit.voiceCoach),
-                        hint: t.voiceSettingHint,
-                        badge: BetaTag(t.sectionBeta, small: true)),
                   ),
                   if (NfcTags.available)
                     GestureDetector(
