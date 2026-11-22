@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Déroule les réglages rapides et vas-y en un geste, sans chercher l’app",
   "qsTitle": "Tuiles des réglages rapides",
   "qsToday": "Entraînement du jour",
-  "qsTodayHint": "Comme l’autocollant NFC : ouvre ce qui est prévu aujourd’hui"
+  "qsTodayHint": "Comme l’autocollant NFC : ouvre ce qui est prévu aujourd’hui",
+  "developedByAnadi": "Développé par Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
