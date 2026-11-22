@@ -888,7 +888,6 @@ class SettingsScreen extends StatelessWidget {
       ]),
       _Category('home', PhosphorIconsRegular.house, _sectionTitle('home'), [
         (t.focusCard, PhosphorIconsRegular.target),
-        (t.homeRecommended, PhosphorIconsRegular.sparkle),
         (t.homeRoutines, PhosphorIconsRegular.folders),
         (t.homeWeekStats, PhosphorIconsRegular.chartBar),
         (t.gamificationSetting, PhosphorIconsRegular.medal),
