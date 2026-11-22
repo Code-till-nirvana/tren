@@ -124,9 +124,7 @@ class _BgPainter extends CustomPainter {
     final center = Offset(size.width * 0.88, size.height * 0.08);
     final radius = size.longestSide * 1.15;
     for (var i = 0; i < 28; i++) {
-      final angle = -2.55 + i * 0.055;
-      final end = center + Offset(ui.lerpDouble(0, radius, 1)!, 0);
-      final p = Offset(center.dx + radius * ui.lerpDouble(0.78, 1.0, i / 27)!.toDouble() * ui.lerpDouble(-0.92, 0.92, i / 27)!, center.dy + radius * (i / 27) * 0.92);
+      final p = Offset(center.dx + radius * ui.lerpDouble(0.78, 1.0, i / 27)! * ui.lerpDouble(-0.92, 0.92, i / 27)!, center.dy + radius * (i / 27) * 0.92);
       final path = Path()
         ..moveTo(center.dx + short * 0.06, center.dy + short * 0.04)
         ..quadraticBezierTo(center.dx + short * 0.12, p.dy * 0.38, p.dx, p.dy);
