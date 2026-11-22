@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-const _channel = MethodChannel('gymmane/gallery');
+const _channel = MethodChannel('tren/gallery');
 
 Future<bool> saveImageToGallery(Uint8List png, String name) async {
   try {
