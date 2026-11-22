@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import io.flutter.plugin.common.MethodChannel
 
 object AppIconBridge {
-    const val CHANNEL = "gymmane/app_icon"
+    const val CHANNEL = "com.tren.app/icon"
     private const val DEFAULT = "default"
     private val NAMES = listOf(
         DEFAULT, "light", "sand", "graphite", "sage", "night",
