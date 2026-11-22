@@ -10,23 +10,20 @@ import 'glass.dart';
 import 'ui_kit.dart';
 
 String appIconName(String id) => switch (id) {
-      'light' => t.appIconLight,
-      'sand' => t.appIconSand,
-      'graphite' => t.appIconGraphite,
-      'sage' => t.appIconSage,
-      'night' => t.appIconNight,
-      'material' => t.appIconMaterial,
-      'medal' => t.appIconMedal,
-      'glass' => t.appIconGlass,
-      'stopwatch' => t.appIconStopwatch,
-      'marble' => t.appIconMarble,
+      'light' => 'Forge',
+      'sand' => 'Summit',
+      'graphite' => 'Surge',
+      'sage' => 'Aegis',
+      'night' => 'Ember',
+      'material' => 'Velocity',
+      'medal' => 'Pulse',
+      'glass' => 'Focus',
+      'stopwatch' => 'Tempo',
+      'marble' => 'Pillar',
       _ => t.appIconDefault,
     };
 
 void showAppIconSheet(BuildContext context) {
-  for (final s in AppIcon.styles) {
-    precacheImage(AssetImage(s.asset), context);
-  }
   showAppSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -45,7 +42,23 @@ class AppIconThumb extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(size * 0.24),
-      child: Image.asset(style.asset, width: size, height: size, fit: BoxFit.cover, gaplessPlayback: true),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [style.base, Color.lerp(style.base, style.accent, 0.28)!],
+          ),
+          border: Border.all(color: style.accent.withValues(alpha: 0.34)),
+        ),
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Center(
+            child: Icon(style.icon, size: size * 0.56, color: style.accent),
+          ),
+        ),
+      ),
     );
   }
 }
