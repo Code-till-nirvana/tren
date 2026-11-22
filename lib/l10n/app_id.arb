@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Tarik Setelan cepat ke bawah dan masuk dengan sekali ketuk, tanpa mencari aplikasinya",
   "qsTitle": "Ubin Setelan cepat",
   "qsToday": "Latihan hari ini",
-  "qsTodayHint": "Seperti stiker NFC: membuka yang dijadwalkan hari ini"
+  "qsTodayHint": "Seperti stiker NFC: membuka yang dijadwalkan hari ini",
+  "developedByAnadi": "Dikembangkan oleh Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
