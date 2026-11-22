@@ -2045,5 +2045,7 @@
   "qsTodayHint": "NFC ステッカーと同じく、今日の予定を開きます",
   "developedByAnadi": "開発者：アナディ・ラソール",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "TRENについて"
+  "aboutTren": "TRENについて",
+  "openSourceAttribution": "オープンソースの帰属表示",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
