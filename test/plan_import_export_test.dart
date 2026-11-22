@@ -93,7 +93,7 @@ void main() {
       fit.setPlannedSets(r.id, bench, const [PlannedSet(reps: 8, weightKg: 50)]);
       fit.assignRoutineToDay(3, r.id);
       final json = fit.exportPlanJson([r]);
-      expect(jsonDecode(json)['gymmane'], 'plan');
+      expect(jsonDecode(json)['tren'], 'plan');
       expect(fit.planSummaryText([r]), contains('Mixed'));
 
       fit.resetAllData();
