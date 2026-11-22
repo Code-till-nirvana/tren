@@ -2,7 +2,7 @@ part of 'fit_state.dart';
 
 const String kBgPhotoId = 'bg';
 
-const List<String> kHomeBlocks = ['weekdays', 'week', 'routines', 'activity', 'recommended', 'folders', 'recovery'];
+const List<String> kHomeBlocks = ['weekdays', 'week', 'routines', 'activity', 'folders', 'recovery'];
 
 mixin SettingsState on FitCore, ToolsState, LibraryState {
   String themePref = 'dark';
@@ -36,7 +36,6 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
   String bgPattern = 'dots';
   double bgDim = 0.55;
   bool showFocus = true;
-  bool showRecommended = true;
   bool showWeekStats = true;
   bool showRoutineRow = true;
   List<String> homeOrder = List.of(kHomeBlocks);
@@ -670,12 +669,6 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
       for (final id in order)
         if (kHomeBlocks.contains(id)) id,
     ];
-    _persist();
-    notifyListeners();
-  }
-
-  void toggleRecommended() {
-    showRecommended = !showRecommended;
     _persist();
     notifyListeners();
   }
