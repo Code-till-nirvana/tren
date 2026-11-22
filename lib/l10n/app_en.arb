@@ -3811,10 +3811,6 @@
   "noteFolderDeleteBody": "Notes are kept: they just leave the folder.",
   "planArchivedToast": "Plan archived",
   "suppArchivedToast": "Supplement archived",
-  "voiceSetting": "Workout voice",
-  "voiceSettingHint": "Says your next set and counts down the end of the rest, with the phone voice",
-  "voiceHello": "Voice on",
-  "voiceRest": "Rest {time}.",
   "@voiceRest": {
     "placeholders": {
       "time": {
@@ -3822,7 +3818,6 @@
       }
     }
   },
-  "voiceNext": "Next: {name}, {load}.",
   "@voiceNext": {
     "placeholders": {
       "name": {
@@ -3833,7 +3828,6 @@
       }
     }
   },
-  "voiceLoad": "{reps} reps at {weight}",
   "@voiceLoad": {
     "placeholders": {
       "reps": {
@@ -3844,7 +3838,6 @@
       }
     }
   },
-  "voiceReps": "{reps} reps",
   "@voiceReps": {
     "placeholders": {
       "reps": {
@@ -3852,7 +3845,6 @@
       }
     }
   },
-  "voiceGo": "Let's go!",
   "deloadSetting": "Deload week",
   "deloadOff": "Never",
   "deloadEvery": "Every {weeks} weeks",
@@ -3876,15 +3868,6 @@
     }
   },
   "deloadSkip": "Train as usual",
-  "voiceSheetTitle": "How the voice works",
-  "voicePointRest": "When you tick a set, it tells you the rest time and what comes next.",
-  "voicePointCount": "It counts 3, 2, 1 at the end of the rest and calls you back.",
-  "voicePointPhone": "It uses your phone's voice and plays over your music.",
-  "voiceTry": "Try the voice",
-  "voiceNoEngine": "Your phone has no voice engine turned on.",
-  "voiceNoLang": "Your language's voice is missing. Download it in your phone's voice settings.",
-  "voiceOpenSettings": "Voice settings",
-  "voiceMinutes": "{count, plural, =1{1 minute} other{{count} minutes}}",
   "@voiceMinutes": {
     "placeholders": {
       "count": {
@@ -3892,7 +3875,6 @@
       }
     }
   },
-  "voiceSeconds": "{count, plural, =1{1 second} other{{count} seconds}}",
   "@voiceSeconds": {
     "placeholders": {
       "count": {
@@ -3900,7 +3882,6 @@
       }
     }
   },
-  "voiceAnd": "and",
   "repRecordsTitle": "Best weight by reps",
   "suppUnitCapsule": "{n, plural, one{capsule} other{capsules}}",
   "@suppUnitCapsule": {
