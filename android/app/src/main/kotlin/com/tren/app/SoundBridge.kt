@@ -10,7 +10,7 @@ import android.provider.MediaStore
 import io.flutter.plugin.common.MethodChannel
 
 object SoundBridge {
-    const val CHANNEL = "gymmane/sounds"
+    const val CHANNEL = "tren/sounds"
     private var playing: Ringtone? = null
 
     fun attach(context: Context, channel: MethodChannel) {
