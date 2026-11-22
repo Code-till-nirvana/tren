@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Como o adesivo NFC: abre o que está planejado para hoje",
   "developedByAnadi": "Desenvolvido por Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "Sobre TREN"
+  "aboutTren": "Sobre TREN",
+  "openSourceAttribution": "Atribuição de código aberto",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
