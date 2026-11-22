@@ -361,7 +361,6 @@
   "importUnitBody": "این خروجی نگفته وزن‌ها با کدام واحد هستند.",
   "importNothing": "چیز جدیدی برای وارد کردن نیست",
   "importDone": "{n, plural, =1{{n} جلسه تمرین وارد شد} other{{n} جلسه تمرین وارد شد}}",
-  "aboutGymmane": "درباره Gymo",
   "yourProfile": "پروفایل تو",
   "autofills": "ماشین‌حساب‌ها را پر می‌کند",
   "nameLabel": "نام",
@@ -2045,5 +2044,6 @@
   "qsToday": "تمرین امروز",
   "qsTodayHint": "مثل برچسب NFC: آنچه امروز برنامه دارید را باز می‌کند",
   "developedByAnadi": "توسعه‌دهنده: آنادی راثور",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "درباره Gymo"
 }
