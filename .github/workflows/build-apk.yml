@@ -37,6 +37,9 @@ jobs:
       - name: Generate localizations
         run: flutter gen-l10n
 
+      - name: Generate Android launcher icons
+        run: dart run flutter_launcher_icons
+
       - name: Analyze Dart code
         run: flutter analyze --no-fatal-infos
 
