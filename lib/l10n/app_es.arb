@@ -2434,5 +2434,7 @@
   },
   "jumpSet": "Series alternas",
   "jumpSetHint": "Descansas también después de cada ejercicio encadenado y luego pasas al siguiente.",
-  "jumpSetLink": "Convertir en series alternas"
+  "jumpSetLink": "Convertir en series alternas",
+  "developedByAnadi": "Desarrollado por Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
