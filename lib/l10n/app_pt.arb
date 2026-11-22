@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Puxe as configurações rápidas e chegue com um toque, sem procurar o app",
   "qsTitle": "Blocos nas configurações rápidas",
   "qsToday": "Treino de hoje",
-  "qsTodayHint": "Como o adesivo NFC: abre o que está planejado para hoje"
+  "qsTodayHint": "Como o adesivo NFC: abre o que está planejado para hoje",
+  "developedByAnadi": "Desenvolvido por Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
