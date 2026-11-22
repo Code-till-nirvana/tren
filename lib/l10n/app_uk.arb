@@ -361,7 +361,6 @@
   "importUnitBody": "У цьому експорті не вказано одиницю ваги.",
   "importNothing": "Немає нових даних для імпорту",
   "importDone": "{n, plural, =1{{n} тренування імпортовано} other{{n} тренувань імпортовано}}",
-  "aboutGymmane": "Про TREN",
   "yourProfile": "ТВІЙ ПРОФІЛЬ",
   "autofills": "Автоматично заповнює калькулятори",
   "nameLabel": "ІМ’Я",
@@ -2045,5 +2044,6 @@
   "qsToday": "Тренування на сьогодні",
   "qsTodayHint": "Як NFC-наліпка: відкриває те, що заплановано на сьогодні",
   "developedByAnadi": "Розроблено Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Про TREN"
 }
