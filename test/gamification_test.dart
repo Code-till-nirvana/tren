@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/tren_app.dart';
-import 'package:gymmane/l10n/l10n.dart';
-import 'package:gymmane/models/workout.dart';
-import 'package:gymmane/services/local_store.dart';
-import 'package:gymmane/services/progress_reminder.dart';
-import 'package:gymmane/services/train_reminder.dart';
-import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/widgets/medal_shelf.dart';
+import 'package:tren/app/tren_app.dart';
+import 'package:tren/l10n/l10n.dart';
+import 'package:tren/models/workout.dart';
+import 'package:tren/services/local_store.dart';
+import 'package:tren/services/progress_reminder.dart';
+import 'package:tren/services/train_reminder.dart';
+import 'package:tren/state/fit_state.dart';
+import 'package:tren/widgets/medal_shelf.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
