@@ -2046,5 +2046,7 @@
   "qsSubtitle": "Abbassa le impostazioni rapide e ci arrivi con un tocco, senza cercare l’app",
   "qsTitle": "Riquadri nelle impostazioni rapide",
   "qsToday": "Allenamento di oggi",
-  "qsTodayHint": "Come l’adesivo NFC: apre quello che c’è oggi"
+  "qsTodayHint": "Come l’adesivo NFC: apre quello che c’è oggi",
+  "developedByAnadi": "Sviluppato da Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
