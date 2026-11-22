@@ -361,7 +361,6 @@
   "importUnitBody": "Questo export non dice in che unità sono i pesi.",
   "importNothing": "Niente di nuovo da importare",
   "importDone": "{n, plural, =1{{n} sessione importata} other{{n} sessioni importate}}",
-  "aboutGymmane": "Su TREN",
   "yourProfile": "IL TUO PROFILO",
   "autofills": "Compila in automatico le calcolatrici",
   "nameLabel": "NOME",
@@ -2048,5 +2047,6 @@
   "qsToday": "Allenamento di oggi",
   "qsTodayHint": "Come l’adesivo NFC: apre quello che c’è oggi",
   "developedByAnadi": "Sviluppato da Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Su TREN"
 }
