@@ -410,7 +410,6 @@
   "importUnitBody": "এই এক্সপোর্টে বলা নেই ওজন কোন এককে।",
   "importNothing": "ইমপোর্ট করার মতো নতুন কিছু নেই",
   "importDone": "{n, plural, one{{n}টি সেশন ইমপোর্ট হয়েছে} other{{n}টি সেশন ইমপোর্ট হয়েছে}}",
-  "aboutGymmane": "TREN সম্পর্কে",
   "yourProfile": "তোমার প্রোফাইল",
   "autofills": "ক্যালকুলেটর নিজে থেকে ভরে",
   "onbUnitsWhy": "ওজন, মাপ আর দূরত্বের জন্য। সেটিংসে যেকোনো সময় বদলাতে পারো।",
@@ -2045,5 +2044,6 @@
   "qsToday": "আজকের ওয়ার্কআউট",
   "qsTodayHint": "NFC স্টিকারের মতো: আজ যা ঠিক করা আছে তা খোলে",
   "developedByAnadi": "তৈরি করেছেন অনাদি রাঠোর",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "TREN সম্পর্কে"
 }
