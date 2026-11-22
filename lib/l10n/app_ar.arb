@@ -2045,5 +2045,7 @@
   "qsTodayHint": "مثل ملصق NFC: يفتح ما هو مقرر لليوم",
   "developedByAnadi": "طوّره أنادي راثور",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "حول TREN"
+  "aboutTren": "حول TREN",
+  "openSourceAttribution": "إسناد المصدر المفتوح",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
