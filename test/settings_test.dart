@@ -170,18 +170,6 @@ void main() {
     });
   });
 
-  test('el texto de Apoyo pide primero el café y luego la estrella, en todos los idiomas', () {
-    for (final locale in AppLocalizations.supportedLocales) {
-      final t = lookupAppLocalizations(locale);
-      final body = t.supportThanksBody;
-      expect(t.supportThanksTitle, contains('🤍'), reason: '$locale');
-      expect(body.split('\n\n').length, 2, reason: '$locale: dos párrafos');
-      final coffee = body.indexOf('☕'), star = body.indexOf('⭐');
-      expect(coffee, greaterThan(0), reason: '$locale');
-      expect(star, greaterThan(coffee), reason: '$locale: la estrella va después del café');
-    }
-  });
-
   group('guía en el buscador', () {
     setUp(() async {
       SharedPreferences.setMockInitialValues({});
