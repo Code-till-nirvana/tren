@@ -175,7 +175,6 @@ class MainActivity : FlutterActivity() {
         SoundBridge.attach(this, MethodChannel(messenger, SoundBridge.CHANNEL))
         AppIconBridge.attach(this, MethodChannel(messenger, AppIconBridge.CHANNEL))
         NfcBridge.attach(this, MethodChannel(messenger, NfcBridge.CHANNEL))
-        VoiceBridge.attach(this, MethodChannel(messenger, VoiceBridge.CHANNEL))
         QuickTiles.attach(this, MethodChannel(messenger, QuickTiles.CHANNEL))
     }
 
