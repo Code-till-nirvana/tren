@@ -118,7 +118,7 @@ class GymColors extends ThemeExtension<GymColors> {
     text: Color(0xFF242024),
     textSecondary: Color(0xFF625A5F),
     textTertiary: Color(0xFF8D8389),
-    ember: Color(0xFF783546),
+    ember: Color(0xFF59303A),
     emberDeep: Color(0xFF6F3342),
     onEmber: Color(0xFFFFFFFF),
     emberSoft: Color(0x19873F50),
