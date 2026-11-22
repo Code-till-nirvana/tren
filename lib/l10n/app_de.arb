@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Zieh die Schnelleinstellungen herunter und komm mit einem Tipp hin, ohne die App zu suchen",
   "qsTitle": "Kacheln in den Schnelleinstellungen",
   "qsToday": "Heutiges Training",
-  "qsTodayHint": "Wie der NFC-Sticker: öffnet, was heute ansteht"
+  "qsTodayHint": "Wie der NFC-Sticker: öffnet, was heute ansteht",
+  "developedByAnadi": "Entwickelt von Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
