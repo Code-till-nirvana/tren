@@ -1,4 +1,3 @@
-import 'package:gymmane/l10n/l10n.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/state/fit_state.dart';
