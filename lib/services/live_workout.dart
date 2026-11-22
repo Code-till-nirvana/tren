@@ -11,8 +11,8 @@ import 'host.dart';
 class LiveWorkout {
   LiveWorkout._();
 
-  static const _channel = MethodChannel('gymmane/live_activity');
-  static const _android = MethodChannel('gymmane/live');
+  static const _channel = MethodChannel('tren/live_activity');
+  static const _android = MethodChannel('tren/live');
   static bool _listening = false;
 
   static String _lastKey = '';
