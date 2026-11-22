@@ -50,6 +50,7 @@ flutter:
   generate: true
 
   assets:
+    - assets/icon/
     - assets/img/
     - assets/art/
     - assets/audio/
