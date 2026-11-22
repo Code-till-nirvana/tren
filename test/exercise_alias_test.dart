@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/catalog/exercise_aliases.dart';
-import 'package:gymmane/catalog/exercise_catalog.dart';
-import 'package:gymmane/models/exercise.dart';
-import 'package:gymmane/services/exercise_match.dart';
+import 'package:tren/catalog/exercise_aliases.dart';
+import 'package:tren/catalog/exercise_catalog.dart';
+import 'package:tren/models/exercise.dart';
+import 'package:tren/services/exercise_match.dart';
 
 const _hevyNames = {
   'Bench Press (Barbell)': 'Barbell Bench Press',
