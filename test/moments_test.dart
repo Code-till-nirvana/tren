@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/app/tren_app.dart';
-import 'package:gymmane/l10n/l10n.dart';
-import 'package:gymmane/services/local_store.dart';
-import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/widgets/file_thumb.dart';
+import 'package:tren/app/tren_app.dart';
+import 'package:tren/l10n/l10n.dart';
+import 'package:tren/services/local_store.dart';
+import 'package:tren/state/fit_state.dart';
+import 'package:tren/widgets/file_thumb.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
