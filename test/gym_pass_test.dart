@@ -101,7 +101,7 @@ void main() {
   });
 
   test('un pase con foto vale sin número y su foto viaja en la copia', () async {
-    final tmp = await Directory.systemTemp.createTemp('gymmane_pass');
+    final tmp = await Directory.systemTemp.createTemp('tren_pass');
     MediaStore.directory = tmp.path;
     addTearDown(() async {
       MediaStore.directory = null;
