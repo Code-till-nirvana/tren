@@ -77,13 +77,15 @@ class HomeCardsPanel extends StatelessWidget {
               Expanded(flex: 8, child: SizedBox(height: rows.length * 54.0 - 8, child: _HomeSketch(gc: gc))),
             ]),
           const SizedBox(height: 8),
-          Pressable(
-            scale: 0.97,
-            onTap: () {
-              HapticFeedback.selectionClick();
-              _showOrderSheet(context);
-            },
-            child: Container(
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(16),
+              onTap: () {
+                HapticFeedback.selectionClick();
+                _showOrderSheet(context);
+              },
+              child: Container(
               constraints: const BoxConstraints(minHeight: 46),
               padding: const EdgeInsetsDirectional.fromSTEB(14, 8, 12, 8),
               decoration: BoxDecoration(color: gc.bgRaised2, borderRadius: BorderRadius.circular(16)),
@@ -97,6 +99,7 @@ class HomeCardsPanel extends StatelessWidget {
                 const SizedBox(width: 6),
                 Icon(PhosphorIconsRegular.arrowsDownUp, size: 17, color: gc.textSecondary),
               ]),
+              ),
             ),
           ),
         ]),
