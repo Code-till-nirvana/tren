@@ -830,7 +830,6 @@ class SettingsScreen extends StatelessWidget {
         (t.weightStepSetting, PhosphorIconsRegular.barbell),
         (t.autoProgressSetting, PhosphorIconsRegular.trendUp),
         (t.deloadSetting, PhosphorIconsRegular.feather),
-        (t.voiceSetting, PhosphorIconsRegular.waveform),
         if (NfcTags.available) (t.nfcRow, PhosphorIconsRegular.contactlessPayment),
         if (QuickTiles.available) (t.qsRow, PhosphorIconsRegular.squaresFour),
         (t.autoAdvance, PhosphorIconsRegular.skipForward),
