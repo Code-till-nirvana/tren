@@ -3,20 +3,6 @@ part of 'fit_state.dart';
 typedef _Best = ({double score, double weight, double volume, List<(int, double)> front});
 
 mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineState {
-  List<Exercise> recommendedExercises(int n) {
-    final muscles = suggestedFocus.muscles;
-    final pool = kExercises.where((e) => e.kind != 'sport' && !noSuggest.contains(e.id) && !isArchived(e.id) && fitsHere(e));
-    final picks = [
-      for (final m in muscles) ...pool.where((e) => e.primary == m).take(1),
-    ];
-
-    for (final e in pool) {
-      if (picks.length >= n) break;
-      if (muscles.contains(e.primary) && !picks.contains(e)) picks.add(e);
-    }
-    return picks.take(n).toList();
-  }
-
   int get athleteLevel => 1 + totalSessions ~/ 10;
 
   int get sessionsToNextLevel => 10 - totalSessions % 10;
