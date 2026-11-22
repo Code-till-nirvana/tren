@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class GraphicsMode {
   GraphicsMode._();
 
-  static const _channel = MethodChannel('gymmane/graphics');
+  static const _channel = MethodChannel('tren/graphics');
 
   static bool available = false;
   static bool compat = false;
