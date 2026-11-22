@@ -361,7 +361,6 @@
   "importUnitBody": "このエクスポートには重量の単位が記載されていません。",
   "importNothing": "新しく読み込むものはありません",
   "importDone": "{n, plural, =1{{n}回のワークアウトを読み込み} other{{n}回のワークアウトを読み込み}}",
-  "aboutGymmane": "TRENについて",
   "yourProfile": "プロフィール",
   "autofills": "計算ツールに自動入力",
   "nameLabel": "名前",
@@ -2045,5 +2044,6 @@
   "qsToday": "今日のワークアウト",
   "qsTodayHint": "NFC ステッカーと同じく、今日の予定を開きます",
   "developedByAnadi": "開発者：アナディ・ラソール",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "TRENについて"
 }
