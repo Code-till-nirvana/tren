@@ -2,7 +2,7 @@ part of 'plan_pdf.dart';
 
 Future<Uint8List> buildReportPdf(RangeReport r, {ReportKind kind = ReportKind.summary, DateTime? now}) async {
   final at = now ?? DateTime.now();
-  final runner = await _loadImage('assets/img/runner.png');
+  final runner = await _loadImage('assets/icon/tren-logo-exact.png');
   final doc = _ReportDoc(runner, rtl: kRtlLanguages.contains(appLanguage));
   doc.layBlocks(reportBlocks(r, kind, now: at));
   final pages = await _rasterize(doc);
