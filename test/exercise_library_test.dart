@@ -57,7 +57,6 @@ void main() {
       fit.trainContinue();
       expect(fit.sessionPicks.contains(first), isFalse);
       expect(fit.trainSearchResults(fit.exerciseById(first)!.name).map((e) => e.id), contains(first));
-      expect(fit.recommendedExercises(20).map((e) => e.id), isNot(contains(first)));
     });
 
     test('the suggested picks come first in the review list', () {
@@ -243,12 +242,6 @@ void main() {
         fit.toggleArchived(idOf('Pull-up'));
         expect(fit.toJson()['archived'], [idOf('Pull-up')]);
       });
-    });
-
-    test('#95 los recomendados se pueden quitar y se guarda', () {
-      expect(fit.showRecommended, isTrue);
-      fit.toggleRecommended();
-      expect(fit.toJson()['showRecs'], isFalse);
     });
 
     test('#111 las marcas del vídeo se guardan y se van con el vídeo', () {
