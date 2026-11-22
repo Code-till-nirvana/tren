@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Giống nhãn NFC: mở những gì đã lên lịch hôm nay",
   "developedByAnadi": "Phát triển bởi Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "Giới thiệu TREN"
+  "aboutTren": "Giới thiệu TREN",
+  "openSourceAttribution": "Ghi nhận nguồn mở",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
