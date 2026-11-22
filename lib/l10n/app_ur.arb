@@ -2043,5 +2043,7 @@
   "qsSubtitle": "فوری ترتیبات نیچے کھینچیں اور ایپ ڈھونڈے بغیر ایک ٹیپ میں پہنچیں",
   "qsTitle": "فوری ترتیبات کی ٹائلیں",
   "qsToday": "آج کی ورزش",
-  "qsTodayHint": "NFC اسٹیکر کی طرح: آج جو طے ہے وہ کھولتا ہے"
+  "qsTodayHint": "NFC اسٹیکر کی طرح: آج جو طے ہے وہ کھولتا ہے",
+  "developedByAnadi": "تیار کردہ: انادی راٹھور",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
