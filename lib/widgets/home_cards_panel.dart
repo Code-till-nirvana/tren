@@ -14,7 +14,9 @@ class HomeCardsPanel extends StatelessWidget {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => AnimatedBuilder(
+    animation: fit,
+    builder: (context, _) {
     final gc = context.gc;
     final rows = <(String, bool, VoidCallback)>[
       (t.homeCardFocus, fit.showFocus, fit.toggleFocusCard),
@@ -38,13 +40,19 @@ class HomeCardsPanel extends StatelessWidget {
                 child: Column(children: [
                   for (final (i, (label, on, tap)) in rows.indexed) ...[
                     if (i > 0) const SizedBox(height: 8),
-                    Pressable(
-                      scale: 0.97,
-                      onTap: () {
-                        HapticFeedback.selectionClick();
-                        tap();
-                      },
-                      child: Container(
+                    Semantics(
+                      button: true,
+                      toggled: on,
+                      label: label,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(16),
+                          onTap: () {
+                            HapticFeedback.selectionClick();
+                            tap();
+                          },
+                          child: Container(
                         constraints: const BoxConstraints(minHeight: 46),
                         padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
                         decoration: BoxDecoration(color: gc.bgRaised2, borderRadius: BorderRadius.circular(16)),
@@ -58,6 +66,8 @@ class HomeCardsPanel extends StatelessWidget {
                           const SizedBox(width: 6),
                           TinySwitch(on: on),
                         ]),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -96,7 +106,8 @@ class HomeCardsPanel extends StatelessWidget {
         child: Text(t.homeCardsHint, style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textTertiary)),
       ),
     ]);
-  }
+    },
+  );
 }
 
 String _blockLabel(String id) => switch (id) {
