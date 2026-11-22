@@ -30,7 +30,18 @@ class ProfileAvatar extends StatelessWidget {
       child: Image(
         image: bytes != null ? MemoryImage(bytes) : defaultPhoto,
         fit: BoxFit.cover,
+        filterQuality: FilterQuality.high,
         gaplessPlayback: true,
+        errorBuilder: (context, error, stackTrace) => DecoratedBox(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFF632B42), Color(0xFF17171C)],
+            ),
+          ),
+          child: Icon(Icons.fitness_center, size: size * 0.46, color: Colors.white.withValues(alpha: 0.92)),
+        ),
       ),
     );
   }
