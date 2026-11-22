@@ -757,7 +757,6 @@
       }
     }
   },
-  "aboutGymmane": "About TREN",
   "yourProfile": "YOUR PROFILE",
   "autofills": "Autofills the calculators",
   "onbUnitsWhy": "For weights, measurements and distances. You can change it anytime in Settings.",
@@ -4468,5 +4467,6 @@
   },
   "seeAll": "See all",
   "developedByAnadi": "Developed by Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "About TREN"
 }
