@@ -282,7 +282,6 @@ class FitState extends FitCore
     _builtInExercises = null;
     bgDim = (data['bgDim'] as num?)?.toDouble() ?? 0.55;
     showFocus = data['showFocus'] as bool? ?? true;
-    showRecommended = data['showRecs'] as bool? ?? true;
     showWeekStats = data['showWeek'] as bool? ?? true;
     showRoutineRow = data['showRoutineRow'] as bool? ?? true;
     homeOrder = [...((data['homeOrder'] as List?) ?? const []).whereType<String>()];
@@ -576,7 +575,6 @@ class FitState extends FitCore
         'heatTone': heatTone,
         'bgDim': bgDim,
         'showFocus': showFocus,
-        'showRecs': showRecommended,
         'showWeek': showWeekStats,
         'showRoutineRow': showRoutineRow,
         if (homeOrder.isNotEmpty) 'homeOrder': homeOrder,
@@ -813,7 +811,6 @@ class FitState extends FitCore
     selectedMuscles.clear();
     profile = Profile();
     showFocus = true;
-    showRecommended = true;
     textSize = 'normal';
     calmMotion = false;
     fineOn = false;
