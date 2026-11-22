@@ -54,7 +54,6 @@ flutter:
     - assets/art/
     - assets/audio/
     - assets/badges/
-    - assets/icon/variants/
 
   shaders:
     - assets/shaders/medal.frag
