@@ -49,6 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
   final _scroll = ScrollController();
   final _pull = ValueNotifier<double>(0);
   late final AnimationController _back;
+  late final AnimationController _bannerMotion;
   double _from = 0;
   bool _armed = false;
   bool _opening = false;
@@ -59,11 +60,14 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
     super.initState();
     _back = AnimationController(vsync: this, duration: const Duration(milliseconds: 320))
       ..addListener(() => _pull.value = _from * (1 - Curves.easeOutCubic.transform(_back.value)));
+    _bannerMotion = AnimationController(vsync: this, duration: const Duration(seconds: 8))
+      ..repeat(reverse: true);
   }
 
   @override
   void dispose() {
     _back.dispose();
+    _bannerMotion.dispose();
     _scroll.dispose();
     _pull.dispose();
     super.dispose();
@@ -103,21 +107,6 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
     _back.forward(from: 0);
   }
 
-  Future<void> _pickBanner() async {
-    if (_busy) return;
-    final source = await pickPhotoSource(context);
-    if (source == null) return;
-    setState(() => _busy = true);
-    try {
-      final shot = await ImagePicker()
-          .pickImage(source: source, maxWidth: 1600, maxHeight: 900, imageQuality: 82);
-      if (shot == null) return;
-      fit.setProfileBanner(await shot.readAsBytes());
-    } catch (_) {
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
-  }
 
   Future<void> _snapshot() async {
     if (_busy) return;
@@ -160,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
             top: top,
             pull: _pull,
             reach: _reach,
-            onBanner: _pickBanner,
+            bannerMotion: _bannerMotion,
             onEdit: () => showProfileSheet(context),
           ),
         ),
@@ -714,7 +703,7 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
     required this.top,
     required this.pull,
     required this.reach,
-    required this.onBanner,
+    required this.bannerMotion,
     required this.onEdit,
   });
 
@@ -722,7 +711,7 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
   final double top;
   final ValueNotifier<double> pull;
   final double reach;
-  final VoidCallback onBanner;
+  final Animation<double> bannerMotion;
   final VoidCallback onEdit;
 
   static const _bar = 60.0;
@@ -743,7 +732,6 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     final range = maxExtent - minExtent;
     final shrunk = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
-    final bytes = fit.profileBanner;
     final p = fit.profile;
     final bannerBottom = math.max(minExtent, _banner - shrinkOffset);
     final fade = (1 - shrunk * 2).clamp(0.0, 1.0);
@@ -773,39 +761,52 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
                     : zoomed,
               );
             },
-            child: GestureDetector(
-              onTap: onBanner,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: gc.bgRaised,
-                      image: DecorationImage(
-                        image: bytes == null ? kDefaultBanner : MemoryImage(bytes),
+            child: AnimatedBuilder(
+              animation: bannerMotion,
+              builder: (context, _) {
+                final pulse = bannerMotion.value;
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Transform.scale(
+                      scale: 1.015 + 0.02 * pulse,
+                      child: Image.asset(
+                        'assets/img/tren_profile_banner.jpg',
                         fit: BoxFit.cover,
+                        filterQuality: FilterQuality.medium,
                       ),
                     ),
-                  ),
-                  IgnorePointer(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.black.withValues(alpha: 0.35),
-                            Colors.black.withValues(alpha: 0),
-                            gc.bg.withValues(alpha: 0.35 + 0.65 * shrunk),
-                            gc.bg,
-                          ],
-                          stops: const [0, 0.3, 0.72, 1],
+                    IgnorePointer(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.28),
+                              Colors.black.withValues(alpha: 0.02),
+                              gc.bg.withValues(alpha: 0.35 + 0.65 * shrunk),
+                              gc.bg,
+                            ],
+                            stops: const [0, 0.3, 0.72, 1],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    IgnorePointer(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: RadialGradient(
+                            center: Alignment(0.35 + 0.3 * pulse, 0.05),
+                            radius: 1.05,
+                            colors: const [Color(0x35B83D5A), Colors.transparent],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
