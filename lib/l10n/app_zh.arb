@@ -2045,5 +2045,7 @@
   "qsTodayHint": "和 NFC 贴纸一样：打开今天的安排",
   "developedByAnadi": "由 Anadi Rathore 开发",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "关于 TREN"
+  "aboutTren": "关于 TREN",
+  "openSourceAttribution": "开源归属",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
