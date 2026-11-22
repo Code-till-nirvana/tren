@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Trek Snelle instellingen omlaag en ga er met één tik heen, zonder de app te zoeken",
   "qsTitle": "Tegels in Snelle instellingen",
   "qsToday": "Training van vandaag",
-  "qsTodayHint": "Net als de NFC-sticker: opent wat er vandaag op het plan staat"
+  "qsTodayHint": "Net als de NFC-sticker: opent wat er vandaag op het plan staat",
+  "developedByAnadi": "Ontwikkeld door Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
