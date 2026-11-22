@@ -40,7 +40,6 @@ import '../widgets/entrance.dart';
 import '../widgets/file_thumb.dart';
 import '../widgets/glass.dart';
 import '../widgets/home_cards_panel.dart';
-import '../widgets/import_card.dart';
 import '../widgets/liquid_notch.dart';
 import '../widgets/photo_source_sheet.dart';
 import '../widgets/profile_avatar.dart';
@@ -53,7 +52,6 @@ import '../widgets/timer_panel.dart';
 import '../widgets/ui_kit.dart';
 import '../widgets/widget_showcase.dart';
 import 'profile_screen.dart';
-import 'strava_sheet.dart';
 
 import '../services/host.dart';
 import '../services/file_share.dart';
@@ -728,8 +726,6 @@ class SettingsScreen extends StatelessWidget {
         ];
       case 'data':
         return [
-          ImportCard(onTap: () => _openImportApps(context)),
-          const SizedBox(height: 12),
           _linkGroup(gc, [
               (PhosphorIconsRegular.fileCsv, t.exportCsv, () => _exportCsv(context)),
               (PhosphorIconsRegular.fileText, t.reportTitle, () => showReportSheet(context)),
