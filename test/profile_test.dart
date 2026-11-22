@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/models/workout.dart';
-import 'package:gymmane/screens/recap_screen.dart';
-import 'package:gymmane/services/local_store.dart';
-import 'package:gymmane/state/fit_state.dart';
+import 'package:tren/models/workout.dart';
+import 'package:tren/screens/recap_screen.dart';
+import 'package:tren/services/local_store.dart';
+import 'package:tren/state/fit_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
