@@ -410,7 +410,6 @@
   "importUnitBody": "Bản xuất này không cho biết mức tạ tính theo đơn vị nào.",
   "importNothing": "Không có gì mới để nhập",
   "importDone": "{n, plural, other{Đã nhập {n} buổi tập}}",
-  "aboutGymmane": "Giới thiệu TREN",
   "yourProfile": "HỒ SƠ CỦA BẠN",
   "autofills": "Tự điền vào các công cụ tính",
   "onbUnitsWhy": "Dùng cho mức tạ, số đo và quãng đường. Bạn có thể đổi bất cứ lúc nào trong Cài đặt.",
@@ -2045,5 +2044,6 @@
   "qsToday": "Buổi tập hôm nay",
   "qsTodayHint": "Giống nhãn NFC: mở những gì đã lên lịch hôm nay",
   "developedByAnadi": "Phát triển bởi Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Giới thiệu TREN"
 }
