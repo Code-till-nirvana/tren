@@ -10,7 +10,8 @@ class Store {
   Store._();
   static final Store instance = Store._();
 
-  static const _key = 'gymmane_v1';
+  static const _key = 'tren_v1';
+  static const _legacyKey = 'gymmane_v1';
   SharedPreferences? _prefs;
 
   Future<void> init() async {
@@ -18,7 +19,15 @@ class Store {
   }
 
   Map<String, dynamic> load() {
-    return decodeState(_prefs?.getString(_key));
+    final current = _prefs?.getString(_key);
+    if (current != null) return decodeState(current);
+    final legacy = _prefs?.getString(_legacyKey);
+    if (legacy != null) {
+      // One-time migration keeps existing TREN installs and workout history intact.
+      _prefs?.setString(_key, legacy);
+      return decodeState(legacy);
+    }
+    return {};
   }
 
   static Map<String, dynamic> decodeState(String? raw) {
@@ -31,9 +40,9 @@ class Store {
     }
   }
 
-  String? note(String key) => _prefs?.getString('gm_$key');
+  String? note(String key) => _prefs?.getString('tren_$key') ?? _prefs?.getString('gm_$key');
 
-  void setNote(String key, String value) => _prefs?.setString('gm_$key', value);
+  void setNote(String key, String value) => _prefs?.setString('tren_$key', value);
 
   Future<void> save(Map<String, dynamic> data, {Map<String, String> raw = const {}}) async {
     try {
