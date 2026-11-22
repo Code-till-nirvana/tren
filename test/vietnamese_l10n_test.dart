@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/l10n/app_localizations_vi.dart';
+import 'package:tren/l10n/app_localizations_vi.dart';
 
 void main() {
   final vi = AppLocalizationsVi();
