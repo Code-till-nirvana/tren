@@ -2043,5 +2043,7 @@
   "qsSubtitle": "下拉快捷设置，一点就到，不用找应用",
   "qsTitle": "快捷设置磁贴",
   "qsToday": "今天的训练",
-  "qsTodayHint": "和 NFC 贴纸一样：打开今天的安排"
+  "qsTodayHint": "和 NFC 贴纸一样：打开今天的安排",
+  "developedByAnadi": "由 Anadi Rathore 开发",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
