@@ -1189,50 +1189,8 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     restTotal = seconds;
     _armRest(seconds);
     session!.restSwitch = switchSides;
-    if (voiceCoach && switchSides) {
-      VoiceCoach.say(t.switchSides, intlLocale);
-    } else if (voiceCoach) {
-      final next = voiceNext();
-      VoiceCoach.say(next == null ? t.voiceRest(voiceDuration(seconds)) : '${t.voiceRest(voiceDuration(seconds))} $next', intlLocale);
-    }
     askAlarmPermission();
     notifyListeners();
-  }
-
-  String voiceDuration(int sec) {
-    final m = sec ~/ 60;
-    final s = sec % 60;
-    if (m == 0) return t.voiceSeconds(s);
-    if (s == 0) return t.voiceMinutes(m);
-    return '${t.voiceMinutes(m)} ${t.voiceAnd} ${t.voiceSeconds(s)}';
-  }
-
-  String? voiceNext() {
-    final s = session;
-    if (s == null || s.exercises.isEmpty) return null;
-    var i = s.currentIndex.clamp(0, s.exercises.length - 1);
-    var pending = s.exercises[i].sets.indexWhere((st) => !st.done);
-    if (pending < 0) {
-      final after = pendingAfter(i);
-      if (after == null) return null;
-      i = after;
-      pending = s.exercises[i].sets.indexWhere((st) => !st.done);
-      if (pending < 0) return null;
-    }
-    final ex = s.exercises[i];
-    final st = ex.sets[pending];
-    final name = t.catalogName(ex.id, ex.name);
-    final String load;
-    if (st.sec != null) {
-      load = voiceDuration(st.sec!);
-    } else if (st.km != null) {
-      load = fit.loggedSetLabel(st.logged);
-    } else if (isRepsOnly(ex.id) || st.weight <= 0) {
-      load = t.voiceReps(st.reps);
-    } else {
-      load = t.voiceLoad(st.reps, weightLabel(st.weight));
-    }
-    return t.voiceNext(name, load);
   }
 
   void _armRest(int seconds) {
@@ -1253,7 +1211,6 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
         restElapsed();
         return;
       }
-      if (voiceCoach && left <= 3) VoiceCoach.say('$left', intlLocale);
       clock.value++;
     });
   }
@@ -1264,7 +1221,6 @@ mixin WorkoutState on FitCore, SettingsState, LibraryState, PlacesState, StatsSt
     _restTimer?.cancel();
     s.clearRest();
     restDoneTick++;
-    if (voiceCoach) VoiceCoach.say(t.voiceGo, intlLocale);
     RestAlarm.instance.fireNow();
     _holdNextOnItsOwn();
     notifyListeners();
