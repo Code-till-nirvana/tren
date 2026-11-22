@@ -410,7 +410,6 @@
   "importUnitBody": "यह एक्सपोर्ट नहीं बताता कि वज़न किस इकाई में हैं।",
   "importNothing": "इंपोर्ट करने को कुछ नया नहीं",
   "importDone": "{n, plural, one{{n} सेशन इंपोर्ट हुआ} other{{n} सेशन इंपोर्ट हुए}}",
-  "aboutGymmane": "TREN के बारे में",
   "yourProfile": "तुम्हारी प्रोफ़ाइल",
   "autofills": "कैलकुलेटर अपने-आप भरता है",
   "onbUnitsWhy": "वज़न, माप और दूरी के लिए। सेटिंग्स में कभी भी बदल सकते हो।",
@@ -2045,5 +2044,6 @@
   "qsToday": "आज की वर्कआउट",
   "qsTodayHint": "NFC स्टिकर की तरह: आज जो तय है वह खुलता है",
   "developedByAnadi": "अनादि राठौर द्वारा विकसित",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "TREN के बारे में"
 }
