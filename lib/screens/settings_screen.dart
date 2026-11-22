@@ -728,24 +728,6 @@ class SettingsScreen extends StatelessWidget {
           const SizedBox(height: 22),
           const HomeCardsPanel(),
         ];
-      case 'beta':
-        return [
-          _card(gc, [
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                  ),
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () => fit.setRecoveryOn(!fit.recoveryOn),
-                    child: _prefRow(gc, PhosphorIconsRegular.thermometerSimple, t.recoveryTitle,
-                        TinySwitch(on: fit.recoveryOn),
-                        hint: t.recoverySettingHint,
-                        badge: BetaTag(t.sectionBeta, small: true)),
-                  ),
-
-          ]),
-
-        ];
       case 'widgets':
         return [
           _linkGroup(gc, [
@@ -824,7 +806,6 @@ class SettingsScreen extends StatelessWidget {
         'alerts' => t.sectionAlerts,
         'home' => t.sectionHome,
         'widgets' => t.sectionWidgets,
-        'beta' => t.sectionBeta,
         'data' => t.sectionData,
         'about' => t.aboutGymmane,
         _ => titleCase(t.support),
@@ -901,9 +882,6 @@ class SettingsScreen extends StatelessWidget {
           (t.addTodayWidget, PhosphorIconsRegular.checkCircle),
           (t.addWeekWidget, PhosphorIconsRegular.calendarCheck),
         ]),
-      _Category('beta', PhosphorIconsRegular.flask, _sectionTitle('beta'), [
-        (t.recoveryTitle, PhosphorIconsRegular.thermometerSimple),
-      ]),
       _Category('data', PhosphorIconsRegular.database, _sectionTitle('data'), [
         (t.exportCsv, PhosphorIconsRegular.fileCsv),
         (t.reportTitle, PhosphorIconsRegular.fileText),
@@ -2687,7 +2665,7 @@ class _SettingsHomeState extends State<_SettingsHome> {
                           children: [
                             for (final (g, label) in [
                               (const {'general', 'training', 'alerts'}, t.settingsGroupApp),
-                              (const {'home', 'widgets', 'beta'}, t.settingsGroupHome),
+                              (const {'home', 'widgets'}, t.settingsGroupHome),
                               (const {'data', 'support', 'about'}, t.settingsGroupData),
                             ]) ...[
                               Padding(
