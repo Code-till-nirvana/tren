@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../catalog/exercise_catalog.dart';
 import '../l10n/l10n.dart';
@@ -11,7 +10,6 @@ import '../widgets/entrance.dart';
 import '../widgets/ui_kit.dart';
 
 const kAppVersion = '2.4.0';
-const _kRepoUrl = 'https://github.com/Code-till-nirvana/tren';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key, this.embedded = false});
@@ -71,8 +69,6 @@ class AboutScreen extends StatelessWidget {
             Text(t.aboutBlurb,
                 textAlign: TextAlign.center,
                 style: AppTheme.f(12.5, weight: FontWeight.w500, color: gc.textTertiary, height: 1.6)),
-            const SizedBox(height: 20),
-            _credits(gc),
           ];
 
   Widget _sectionLabel(GymColors gc, String label) => Text(label.toUpperCase(),
@@ -188,75 +184,4 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
-  Widget _credits(GymColors gc) {
-    final rows = <(IconData, String, String, String, Color?)>[
-      (PhosphorIconsRegular.githubLogo, t.sourceCode, 'Code-till-nirvana/tren', _kRepoUrl, null),
-      (
-        PhosphorIconsRegular.info,
-        'Open-source attribution',
-        'Based on GymMane by InlitX',
-        'https://github.com/InlitX/GymMane',
-        null,
-      ),
-    ];
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: gc.bgRaised,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        children: [
-          for (int i = 0; i < rows.length; i++)
-            Semantics(
-              button: true,
-              link: true,
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => _open(rows[i].$4),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                  decoration: BoxDecoration(
-                    border: i < rows.length - 1
-                        ? Border(bottom: BorderSide(color: gc.border.withValues(alpha: 0.6)))
-                        : null,
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 14),
-                        child: SizedBox(
-                          width: 22,
-                          child: Icon(rows[i].$1, size: 19, color: rows[i].$5 ?? gc.textSecondary),
-                        ),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(rows[i].$2.toUpperCase(),
-                                style: AppTheme.f(10,
-                                    weight: FontWeight.w700, color: gc.textTertiary, letterSpacing: 1.3)),
-                            const SizedBox(height: 4),
-                            Text(rows[i].$3,
-                                style: AppTheme.f(15.5, weight: FontWeight.w700, color: gc.text)),
-                          ],
-                        ),
-                      ),
-                      Icon(PhosphorIconsRegular.arrowUpRight, size: 15, color: gc.textTertiary),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _open(String url) async {
-    try {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } catch (_) {}
-  }
 }
