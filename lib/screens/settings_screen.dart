@@ -55,11 +55,11 @@ import '../widgets/widget_showcase.dart';
 import 'profile_screen.dart';
 import 'strava_sheet.dart';
 
-const _kImportRequestUrl = 'https://github.com/InlitX/TREN/issues/new?labels=enhancement';
-
 import '../services/host.dart';
 import '../services/file_share.dart';
 import 'about_screen.dart';
+
+const _kImportRequestUrl = 'https://github.com/InlitX/TREN/issues/new?labels=enhancement';
 
 
 class SettingsScreen extends StatelessWidget {
