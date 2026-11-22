@@ -410,7 +410,6 @@
   "importUnitBody": "یہ ایکسپورٹ نہیں بتاتا کہ وزن کس اکائی میں ہیں۔",
   "importNothing": "امپورٹ کرنے کو کچھ نیا نہیں",
   "importDone": "{n, plural, one{{n} سیشن امپورٹ ہوا} other{{n} سیشن امپورٹ ہوئے}}",
-  "aboutGymmane": "TREN کے بارے میں",
   "yourProfile": "تمہارا پروفائل",
   "autofills": "کیلکولیٹرز خود بھرتا ہے",
   "onbUnitsWhy": "وزن، پیمائشوں اور فاصلوں کے لیے۔ ترتیبات میں کبھی بھی بدلا جا سکتا ہے۔",
@@ -2045,5 +2044,6 @@
   "qsToday": "آج کی ورزش",
   "qsTodayHint": "NFC اسٹیکر کی طرح: آج جو طے ہے وہ کھولتا ہے",
   "developedByAnadi": "تیار کردہ: انادی راٹھور",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "TREN کے بارے میں"
 }
