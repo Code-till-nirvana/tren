@@ -159,11 +159,6 @@ mixin ReportState on FitCore, ToolsState, LibraryState, SettingsState, TimelineS
     return sessions.where((s) => !s.day.isBefore(r.from) && s.day.isBefore(end));
   }
 
-  Iterable<DateTime> _reportDates(RangeReport r) sync* {
-    for (var d = r.from; !d.isAfter(r.to); d = shiftDays(d, 1)) {
-      yield d;
-    }
-  }
 
   Set<ReportSection> reportCsvSections(RangeReport r) {
     return {
