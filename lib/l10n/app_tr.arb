@@ -2045,5 +2045,7 @@
   "qsTodayHint": "NFC etiketi gibi: bugün planlananı açar",
   "developedByAnadi": "Geliştiren: Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "TREN hakkında"
+  "aboutTren": "TREN hakkında",
+  "openSourceAttribution": "Açık kaynak atfı",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
