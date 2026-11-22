@@ -361,7 +361,6 @@
   "importUnitBody": "Deze export vermeldt niet welke gewichtseenheid wordt gebruikt.",
   "importNothing": "Niets nieuws om te importeren",
   "importDone": "{n, plural, =1{{n} training geïmporteerd} other{{n} trainingen geïmporteerd}}",
-  "aboutGymmane": "Over TREN",
   "yourProfile": "JE PROFIEL",
   "autofills": "Vult de calculators automatisch in",
   "nameLabel": "NAAM",
@@ -2045,5 +2044,6 @@
   "qsToday": "Training van vandaag",
   "qsTodayHint": "Net als de NFC-sticker: opent wat er vandaag op het plan staat",
   "developedByAnadi": "Ontwikkeld door Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Over TREN"
 }
