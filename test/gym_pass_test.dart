@@ -7,14 +7,14 @@ import 'package:archive/archive.dart';
 import 'package:barcode/barcode.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/models/gym_pass.dart';
-import 'package:gymmane/services/backup_zip.dart';
-import 'package:gymmane/services/local_store.dart';
-import 'package:gymmane/services/media_store.dart';
-import 'package:gymmane/services/pass_scan.dart';
-import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/widgets/gym_pass_card.dart';
-import 'package:gymmane/widgets/photo_crop.dart';
+import 'package:tren/models/gym_pass.dart';
+import 'package:tren/services/backup_zip.dart';
+import 'package:tren/services/local_store.dart';
+import 'package:tren/services/media_store.dart';
+import 'package:tren/services/pass_scan.dart';
+import 'package:tren/state/fit_state.dart';
+import 'package:tren/widgets/gym_pass_card.dart';
+import 'package:tren/widgets/photo_crop.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Uint8List _qrPixels(String data, int side) {
