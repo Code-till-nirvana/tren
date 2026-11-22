@@ -410,7 +410,6 @@
   "importUnitBody": "Ekspor ini tidak menyebutkan satuan bebannya.",
   "importNothing": "Tidak ada yang baru untuk diimpor",
   "importDone": "{n, plural, other{{n} sesi diimpor}}",
-  "aboutGymmane": "Tentang TREN",
   "yourProfile": "PROFILMU",
   "autofills": "Mengisi kalkulator secara otomatis",
   "onbUnitsWhy": "Untuk beban, ukuran tubuh, dan jarak. Bisa diubah kapan saja di Pengaturan.",
@@ -2045,5 +2044,6 @@
   "qsToday": "Latihan hari ini",
   "qsTodayHint": "Seperti stiker NFC: membuka yang dijadwalkan hari ini",
   "developedByAnadi": "Dikembangkan oleh Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Tentang TREN"
 }
