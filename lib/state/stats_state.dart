@@ -598,6 +598,29 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
     return (active: active.round(), total: total.round(), sec: sec, own: false);
   }
 
+  String get energyUnit => 'kcal';
+
+  int energyOf(int kcal) => kcal;
+
+  int kcalFromShown(double shown) => shown.round();
+
+  int burnedOn(DateTime day) {
+    final key = _dayKey(day);
+    var cardio = 0;
+    var strength = 0;
+    for (final session in sessions.where((s) => _dayKey(s.day) == key)) {
+      for (final exercise in session.exercises) {
+        final estimate = cardioKcal(session, exercise);
+        if (estimate != null) {
+          cardio += estimate.active;
+        } else if (!isCardio(exercise.id) && exercise.sets.any((set) => set.counts)) {
+          strength += 140;
+        }
+      }
+    }
+    return cardio + strength;
+  }
+
   double? lastIncline(String id) {
     for (final s in sessions.reversed) {
       for (final e in s.exercises) {
