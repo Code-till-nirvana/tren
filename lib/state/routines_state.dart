@@ -240,6 +240,8 @@ mixin RoutinesState on FitCore, LibraryState {
 
   List<String> planIdsFor(DateTime day) => planMoves[_moveKey(day)] ?? planIdsOn(day.weekday);
 
+  bool isTrainingDay(DateTime day) => _sessionsOnDay(_dayKey(day)).isNotEmpty || routinesOn(day).isNotEmpty;
+
   bool movedOn(DateTime day) => planMoves.containsKey(_moveKey(day));
 
   Routine? routineById(String id) => _routine(id);
