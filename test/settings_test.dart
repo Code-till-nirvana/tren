@@ -215,5 +215,18 @@ void main() {
       expect(find('x'), isEmpty);
       setAppLanguage('en');
     });
+  
+  test('Gym Pass is off by default and its preference survives restart', () async {
+    expect(fit.passOn, isFalse);
+    fit.togglePass();
+    expect(fit.passOn, isTrue);
+    fit.persistNow();
+    fit.passOn = false;
+    fit.loadFromStore();
+    expect(fit.passOn, isTrue);
+    fit.togglePass();
+    expect(fit.passOn, isFalse);
+  });
+
   });
 }
