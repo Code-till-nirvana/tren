@@ -2045,5 +2045,7 @@
   "qsTodayHint": "مثل برچسب NFC: آنچه امروز برنامه دارید را باز می‌کند",
   "developedByAnadi": "توسعه‌دهنده: آنادی راثور",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "درباره Gymo"
+  "aboutTren": "درباره Gymo",
+  "openSourceAttribution": "انتساب متن‌باز",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
