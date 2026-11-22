@@ -764,7 +764,6 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
             child: AnimatedBuilder(
               animation: bannerMotion,
               builder: (context, _) {
-                final pulse = bannerMotion.value;
                 return Stack(
                   fit: StackFit.expand,
                   children: [
