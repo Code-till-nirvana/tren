@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Rozwiń szybkie ustawienia i wejdź jednym dotknięciem, bez szukania aplikacji",
   "qsTitle": "Kafelki w szybkich ustawieniach",
   "qsToday": "Dzisiejszy trening",
-  "qsTodayHint": "Jak naklejka NFC: otwiera to, co masz dziś zaplanowane"
+  "qsTodayHint": "Jak naklejka NFC: otwiera to, co masz dziś zaplanowane",
+  "developedByAnadi": "Opracowane przez Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
