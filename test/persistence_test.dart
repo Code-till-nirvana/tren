@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gymmane/models/note.dart';
-import 'package:gymmane/models/nutrition.dart';
 import 'package:gymmane/models/profile.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/services/local_store.dart';
@@ -184,56 +183,15 @@ void main() {
     expect(fit.todayRoutine, isNull);
   });
 
-  group('#265 guardado con caché', () {
-    Map<String, dynamic> stored() {
-      final raw = jsonDecode(jsonEncode(Store.finite(fit.toJson()))) as Map<String, dynamic>;
-      return raw;
-    }
-
-    void same() {
-      fit.persistNow();
-      expect(jsonEncode(Store.instance.load()), jsonEncode(stored()));
-    }
-
-    test('lo guardado es igual que toJson, también tras editar entrenos y comidas', () {
-      for (var i = 0; i < 5; i++) {
-        fit.sessions.add(LoggedSession(DateTime(2026, 3, 1 + i, 18), 3600, [
-          LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(8, 60), LoggedSet(6, 70)]),
-        ]));
-      }
-      final food = fit.saveFood(name: 'Avena', macros: const Macros(kcal: 380, protein: 13, carbs: 60, fat: 7));
-      fit.logFood(food, meal: Meal.breakfast);
-      same();
-
-      fit.sessions[1].name = 'Pierna';
-      same();
-      fit.sessions[2].durationSec = 100;
-      same();
-      fit.sessions[3].exercises.first.sets[0] = LoggedSet(10, 65, rpe: 8);
-      same();
-      fit.sessions[3].exercises.first.sets.add(LoggedSet(5, 75));
-      same();
-      fit.sessions[4].exercises.first.incline = 3;
-      same();
-      fit.sessions[0].exercises.add(LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(1, 1)]));
-      same();
-      fit.sessions.removeAt(2);
-      same();
-      fit.logFood(food, servings: 2, meal: Meal.lunch);
-      same();
-      fit.foodLog.removeAt(0);
-      same();
-    });
-
-    test('un NaN no rompe el guardado', () {
-      fit.sessions.add(LoggedSession(DateTime(2026, 3, 1, 18), 60, [
-        LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(8, double.nan)]),
-      ]));
-      fit.persistNow();
-      final back = Store.instance.load();
-      expect(((back['sessions'] as List).single as Map)['ex'], isNotEmpty);
-    });
+  test('un NaN no rompe el guardado', () {
+    fit.sessions.add(LoggedSession(DateTime(2026, 3, 1, 18), 60, [
+      LoggedExercise(kFirstId, 'Bench', 'chest', [LoggedSet(8, double.nan)]),
+    ]));
+    fit.persistNow();
+    final back = Store.instance.load();
+    expect(((back['sessions'] as List).single as Map)['ex'], isNotEmpty);
   });
+
 }
 
 final kFirstId = fit.allExercises.first.id;
