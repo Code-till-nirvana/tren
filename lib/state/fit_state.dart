@@ -1322,7 +1322,7 @@ class FitState extends FitCore
 
   String exportPlanJson(List<Routine> list, {bool withSchedule = true}) {
     return encodePlan({
-      'gymmane': 'plan',
+      'tren': 'plan',
       'v': 1,
       'unit': 'kg',
       'routines': [
