@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/l10n/l10n.dart';
-import 'package:gymmane/models/note.dart';
-import 'package:gymmane/screens/exercise_detail_screen.dart';
-import 'package:gymmane/screens/notes_screen.dart';
-import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/theme/app_theme.dart';
-import 'package:gymmane/widgets/note_kit.dart';
-import 'package:gymmane/widgets/ui_kit.dart';
+import 'package:tren/l10n/l10n.dart';
+import 'package:tren/models/note.dart';
+import 'package:tren/screens/exercise_detail_screen.dart';
+import 'package:tren/screens/notes_screen.dart';
+import 'package:tren/state/fit_state.dart';
+import 'package:tren/theme/app_theme.dart';
+import 'package:tren/widgets/note_kit.dart';
+import 'package:tren/widgets/ui_kit.dart';
 
 Widget _host(Widget Function() screen) => MaterialApp(
       theme: AppTheme.dark,
