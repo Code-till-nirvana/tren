@@ -117,7 +117,7 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
   bool lowEndAsked = false;
   bool startCountdown = true;
   bool gamification = true;
-  bool passOn = true;
+  bool passOn = false;
   bool logRpe = false;
   String effortScale = 'rpe';
   int? trainReminderMin;

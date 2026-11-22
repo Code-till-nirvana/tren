@@ -335,7 +335,7 @@ class FitState extends FitCore
     lowEndAsked = data['lowEndAsked'] as bool? ?? false;
     startCountdown = data['countdown'] as bool? ?? true;
     gamification = data['gamify'] as bool? ?? true;
-    passOn = data['pass'] as bool? ?? true;
+    passOn = data['pass'] as bool? ?? false;
     logRpe = data['rpe'] as bool? ?? false;
     effortScale = data['effort'] == 'rir' ? 'rir' : 'rpe';
     stepKg = _stepFrom(data['stepKg'], SettingsState.kgSteps, 2.5);
@@ -841,7 +841,7 @@ class FitState extends FitCore
     autoHold = false;
     startCountdown = true;
     gamification = true;
-    passOn = true;
+    passOn = false;
     logRpe = false;
     effortScale = 'rpe';
     stepKg = 2.5;
