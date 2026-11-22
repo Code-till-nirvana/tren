@@ -18,8 +18,8 @@ import android.provider.Settings
 import io.flutter.plugin.common.MethodChannel
 
 object NfcBridge {
-    const val CHANNEL = "gymmane/nfc"
-    private const val SCHEME = "gymmane"
+    const val CHANNEL = "tren/nfc"
+    private const val SCHEME = "tren"
     private const val HOST = "today"
     private const val ALIAS = "com.tren.app.NfcToday"
     private var channel: MethodChannel? = null
