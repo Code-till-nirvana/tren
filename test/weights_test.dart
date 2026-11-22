@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
-import 'package:gymmane/l10n/l10n.dart';
-import 'package:gymmane/services/local_store.dart';
-import 'package:gymmane/state/fit_state.dart';
-import 'package:gymmane/theme/app_theme.dart';
-import 'package:gymmane/widgets/ruler_picker.dart';
+import 'package:tren/l10n/l10n.dart';
+import 'package:tren/services/local_store.dart';
+import 'package:tren/state/fit_state.dart';
+import 'package:tren/theme/app_theme.dart';
+import 'package:tren/widgets/ruler_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
