@@ -28,8 +28,8 @@ void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     await Store.instance.init();
-    tmp = await Directory.systemTemp.createTemp('gymmane_rt');
-    src = await Directory.systemTemp.createTemp('gymmane_rt_src');
+    tmp = await Directory.systemTemp.createTemp('tren_rt');
+    src = await Directory.systemTemp.createTemp('tren_rt_src');
     MediaStore.directory = tmp.path;
     ProgressReminder.instance.enabled = false;
     TrainReminder.instance.enabled = false;
