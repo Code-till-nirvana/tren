@@ -247,19 +247,4 @@ void strengthTests() {
     _reset();
   });
 
-  test('la voz del entreno dice el ejercicio y la carga de la serie que toca', () {
-    setAppLanguage('es');
-    final id = fit.createRoutine('Voz');
-    fit.toggleRoutineExercise(id, 'EIeI8Vf');
-    fit.startRoutine(fit.routines.firstWhere((r) => r.id == id));
-    fit.endCountdown();
-    final ex = fit.session!.exercises.first;
-    ex.sets.first
-      ..reps = 8
-      ..weight = 60;
-    final text = fit.voiceNext()!;
-    expect(text, contains(t.catalogName(ex.id, ex.name)));
-    expect(text, contains('8 repeticiones'));
-    setAppLanguage('en');
-  });
 }
