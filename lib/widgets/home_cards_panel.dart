@@ -20,7 +20,6 @@ class HomeCardsPanel extends StatelessWidget {
       (t.homeCardFocus, fit.showFocus, fit.toggleFocusCard),
       (t.homeCardWeek, fit.showWeekStats, fit.toggleWeekStats),
       (t.homeCardRoutines, fit.showRoutineRow, fit.toggleRoutineRow),
-      (t.homeCardRecommended, fit.showRecommended, fit.toggleRecommended),
     ];
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       Container(
@@ -105,7 +104,6 @@ String _blockLabel(String id) => switch (id) {
       'week' => t.homeCardWeek,
       'routines' => t.homeCardRoutines,
       'activity' => titleCase(t.activityLabel),
-      'recommended' => t.homeCardRecommended,
       'folders' => t.homeOrderFolders,
       'recovery' => titleCase(t.recoveryTitle),
       _ => titleCase(t.homeOrderFolders),
@@ -266,15 +264,6 @@ class _HomeSketch extends StatelessWidget {
                 ),
             ])),
       ),
-      (
-        fit.showRecommended,
-        Row(children: [
-          for (var i = 0; i < 3; i++) ...[
-            if (i > 0) const SizedBox(width: 5),
-            Expanded(child: _box(30)),
-          ],
-        ]),
-      ),
     ];
     final extra = <String, (bool, Widget)>{
       'folders': (
@@ -308,7 +297,6 @@ class _HomeSketch extends StatelessWidget {
       'week': blocks[2],
       'routines': blocks[3],
       'activity': blocks[4],
-      'recommended': blocks[5],
       ...extra,
     };
     final shown = [
