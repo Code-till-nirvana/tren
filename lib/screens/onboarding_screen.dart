@@ -483,7 +483,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _in(0, Image.asset('assets/img/runner.png', height: 170, opacity: const AlwaysStoppedAnimation(0.9))),
+                  _in(0, Image.asset('assets/icon/tren-logo-exact.png', height: 170, opacity: const AlwaysStoppedAnimation(0.9))),
                   const SizedBox(height: 22),
                   _in(1, _label(gc, t.welcomeKicker)),
                   const SizedBox(height: 8),
@@ -537,7 +537,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               _in(
                 0,
                 Center(
-                  child: Image.asset('assets/img/runner.png',
+                  child: Image.asset('assets/icon/tren-logo-exact.png',
                       height: 196, opacity: const AlwaysStoppedAnimation(0.9)),
                 ),
               ),
