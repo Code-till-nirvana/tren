@@ -27,7 +27,7 @@ void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     await Store.instance.init();
-    tmp = await Directory.systemTemp.createTemp('gymmane_media');
+    tmp = await Directory.systemTemp.createTemp('tren_media');
     MediaStore.directory = tmp.path;
     ProgressReminder.instance.enabled = false;
     fit.resetAllData();
