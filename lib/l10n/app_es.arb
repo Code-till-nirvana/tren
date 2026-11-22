@@ -410,7 +410,6 @@
   "importUnitBody": "Esta exportación no dice en qué unidad están los pesos.",
   "importNothing": "Nada nuevo que importar",
   "importDone": "{n, plural, =1{{n} sesión importada} other{{n} sesiones importadas}}",
-  "aboutGymmane": "Sobre TREN",
   "yourProfile": "TU PERFIL",
   "autofills": "Rellena las calculadoras",
   "onbUnitsWhy": "Para pesos, medidas y distancias. Puedes cambiarlo cuando quieras en Ajustes.",
@@ -2436,5 +2435,6 @@
   "jumpSetHint": "Descansas también después de cada ejercicio encadenado y luego pasas al siguiente.",
   "jumpSetLink": "Convertir en series alternas",
   "developedByAnadi": "Desarrollado por Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "Sobre TREN"
 }
