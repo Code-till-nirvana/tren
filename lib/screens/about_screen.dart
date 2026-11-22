@@ -111,10 +111,10 @@ class AboutScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Developed by Anadi Rathore',
+                      Text(t.developedByAnadi,
                           style: AppTheme.f(14, weight: FontWeight.w800, color: gc.text)),
                       const SizedBox(height: 4),
-                      Text('GitHub · github.com/Te4Kettle',
+                      Text(t.githubProfileLabel,
                           style: AppTheme.f(12, weight: FontWeight.w600, color: gc.textSecondary)),
                     ],
                   ),
@@ -163,7 +163,7 @@ class AboutScreen extends StatelessWidget {
             bottom: 14,
             child: Opacity(
               opacity: 0.6,
-              child: Image.asset('assets/img/runner.png', fit: BoxFit.fitHeight),
+              child: Image.asset('assets/icon/tren-logo-exact.png', fit: BoxFit.contain, filterQuality: FilterQuality.high),
             ),
           ),
           Padding(
