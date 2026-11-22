@@ -2436,5 +2436,7 @@
   "jumpSetLink": "Convertir en series alternas",
   "developedByAnadi": "Desarrollado por Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "Sobre TREN"
+  "aboutTren": "Sobre TREN",
+  "openSourceAttribution": "Atribución de código abierto",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
