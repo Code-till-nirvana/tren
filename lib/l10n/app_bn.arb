@@ -2043,5 +2043,7 @@
   "qsSubtitle": "কুইক সেটিংস নিচে টানুন আর অ্যাপ না খুঁজেই এক ট্যাপে পৌঁছে যান",
   "qsTitle": "কুইক সেটিংস টাইল",
   "qsToday": "আজকের ওয়ার্কআউট",
-  "qsTodayHint": "NFC স্টিকারের মতো: আজ যা ঠিক করা আছে তা খোলে"
+  "qsTodayHint": "NFC স্টিকারের মতো: আজ যা ঠিক করা আছে তা খোলে",
+  "developedByAnadi": "তৈরি করেছেন অনাদি রাঠোর",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
