@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Как NFC-метка: открывает то, что запланировано на сегодня",
   "developedByAnadi": "Разработано Анадi Ратхором",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "О TREN"
+  "aboutTren": "О TREN",
+  "openSourceAttribution": "Указание авторства открытого ПО",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
