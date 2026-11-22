@@ -361,7 +361,6 @@
   "importUnitBody": "Bu dışa aktarma ağırlık birimini belirtmiyor.",
   "importNothing": "İçe aktarılacak yeni bir şey yok",
   "importDone": "{n, plural, =1{{n} antrenman içe aktarıldı} other{{n} antrenman içe aktarıldı}}",
-  "aboutGymmane": "TREN hakkında",
   "yourProfile": "PROFİLİN",
   "autofills": "Hesaplayıcılardaki bilgileri otomatik doldurur",
   "nameLabel": "AD",
@@ -2045,5 +2044,6 @@
   "qsToday": "Bugünün antrenmanı",
   "qsTodayHint": "NFC etiketi gibi: bugün planlananı açar",
   "developedByAnadi": "Geliştiren: Anadi Rathore",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "TREN hakkında"
 }
