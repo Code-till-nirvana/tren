@@ -36,7 +36,6 @@ import '../services/progress_reminder.dart';
 import '../services/plan_share.dart';
 import '../services/rest_alarm.dart';
 import '../services/train_reminder.dart';
-import '../services/voice_coach.dart';
 import '../services/workout_import.dart';
 
 part 'awards_state.dart';
@@ -317,7 +316,6 @@ class FitState extends FitCore
     showMiniBody = data['miniBody'] as bool? ?? true;
     askCheckIn = data['checkIn'] as bool? ?? true;
     muscleTune = data['mTune'] as bool? ?? true;
-    voiceCoach = data['voice'] as bool? ?? false;
     nfcTag = data['nfc'] as bool? ?? false;
     final every = (data['deload'] as num?)?.toInt() ?? 0;
     deloadEvery = SettingsState.deloadChoices.contains(every) ? every : 0;
@@ -597,7 +595,6 @@ class FitState extends FitCore
         if (!showMiniBody) 'miniBody': false,
         if (!askCheckIn) 'checkIn': false,
         if (!muscleTune) 'mTune': false,
-        if (voiceCoach) 'voice': true,
         if (nfcTag) 'nfc': true,
         if (deloadEvery > 0) 'deload': deloadEvery,
         if (deloadFrom != null) 'deloadFrom': deloadFrom!.toIso8601String(),
