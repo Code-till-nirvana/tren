@@ -15,12 +15,13 @@ import io.flutter.plugin.common.MethodChannel
 object QuickTiles {
     const val CHANNEL = "tren/qs"
     private const val PREFS = "tren_qs"
+    private const val LEGACY_PREFS = "gymmane_qs"
 
     fun attach(activity: Activity, ch: MethodChannel) {
         ch.setMethodCallHandler { call, result ->
             when (call.method) {
                 "update" -> {
-                    activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+                    prefs(activity).edit()
                         .putString("today", call.argument<String>("today") ?: "")
                         .putString("pass", call.argument<String>("pass") ?: "")
                         .putString("todayLabel", call.argument<String>("todayLabel") ?: "")
@@ -42,8 +43,17 @@ object QuickTiles {
         }
     }
 
+    private fun prefs(context: Context) = context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE).also { current ->
+        val legacy = context.applicationContext.getSharedPreferences(LEGACY_PREFS, Context.MODE_PRIVATE)
+        if (current.all.isEmpty() && legacy.all.isNotEmpty()) {
+            val editor = current.edit()
+            legacy.all.forEach { (key, value) -> if (value is String) editor.putString(key, value) }
+            editor.apply()
+        }
+    }
+
     fun text(context: Context, key: String): String =
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(key, "") ?: ""
+        prefs(context).getString(key, "") ?: ""
 
     private fun add(activity: Activity, tile: String, result: MethodChannel.Result) {
         if (Build.VERSION.SDK_INT < 33) {
