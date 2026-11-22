@@ -2045,5 +2045,7 @@
   "qsTodayHint": "Jak naklejka NFC: otwiera to, co masz dziś zaplanowane",
   "developedByAnadi": "Opracowane przez Anadi Rathore",
   "githubProfileLabel": "GitHub · github.com/Te4Kettle",
-  "aboutTren": "O TREN"
+  "aboutTren": "O TREN",
+  "openSourceAttribution": "Informacja o autorstwie open source",
+  "basedOnGymManeByInlitX": "Based on GymMane by InlitX"
 }
