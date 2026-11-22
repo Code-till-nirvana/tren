@@ -60,7 +60,6 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
   bool askCheckIn = true;
   bool muscleTune = true;
 
-  bool voiceCoach = false;
   bool nfcTag = false;
   int deloadEvery = 0;
   DateTime? deloadFrom;
@@ -94,13 +93,6 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
   void setNfcTag(bool on) {
     if (nfcTag == on) return;
     nfcTag = on;
-    _persist();
-    notifyListeners();
-  }
-
-  void toggleVoiceCoach() {
-    voiceCoach = !voiceCoach;
-    if (!voiceCoach) VoiceCoach.stop();
     _persist();
     notifyListeners();
   }
