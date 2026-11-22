@@ -727,11 +727,11 @@ class SettingsScreen extends StatelessWidget {
       case 'data':
         return [
           _linkGroup(gc, [
+              (PhosphorIconsRegular.arrowSquareIn, t.importFromApp, () => _openImportApps(context)),
               (PhosphorIconsRegular.fileCsv, t.exportCsv, () => _exportCsv(context)),
               (PhosphorIconsRegular.fileText, t.reportTitle, () => showReportSheet(context)),
               (PhosphorIconsRegular.fileZip, t.exportBackup, () => _exportBackup(context)),
               (PhosphorIconsRegular.downloadSimple, t.importBackup, () => _importBackup(context)),
-              (PhosphorIconsRegular.export, t.stravaRow, () => showStravaSheet(context)),
               (PhosphorIconsRegular.barbell, t.clearWorkouts, () => _clearWorkouts(context)),
               (PhosphorIconsRegular.trash, t.resetData, () => _resetAll(context)),
           ]),
@@ -840,7 +840,6 @@ class SettingsScreen extends StatelessWidget {
         (t.exportBackup, PhosphorIconsRegular.fileZip),
         (t.importBackup, PhosphorIconsRegular.downloadSimple),
         (t.importFromApp, PhosphorIconsRegular.arrowSquareIn),
-        (t.stravaRow, PhosphorIconsRegular.export),
         (t.clearWorkouts, PhosphorIconsRegular.barbell),
         (t.resetData, PhosphorIconsRegular.trash),
       ]),
