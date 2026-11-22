@@ -130,7 +130,7 @@ class FitState extends FitCore
         alarmSound = null;
         alarmSoundName = null;
       }
-      bgPattern = data['bg'] as String? ?? 'dots';
+      bgPattern = _backgroundFrom(data['bg']);
       heatTone = data['heatTone'] as String? ?? 'ember';
       _loadToggles(data);
       alarmAskedAt = (data['alarmAskedAt'] as num?)?.toInt();
@@ -221,6 +221,14 @@ class FitState extends FitCore
     final v = (raw as num?)?.toDouble();
     return v != null && allowed.contains(v) ? v : fallback;
   }
+
+  static String _backgroundFrom(Object? value) => switch (value) {
+        'none' => 'none',
+        'photo' => 'photo',
+        'contours' || 'grid' => 'contours',
+        'rays' => 'rays',
+        _ => 'flow',
+      };
 
   void _loadToggles(Map<String, dynamic> data) {
     demoSize = data['demo'] as String? ?? 'large';
@@ -903,7 +911,7 @@ class FitState extends FitCore
     miniRestSeconds = (map['miniRest'] as num?)?.toInt() ?? miniRestSeconds;
     changeRestSeconds = (map['changeRest'] as num?)?.toInt() ?? changeRestSeconds;
     sideRestSeconds = (map['sideRest'] as num?)?.toInt() ?? sideRestSeconds;
-    bgPattern = map['bg'] as String? ?? bgPattern;
+    bgPattern = _backgroundFrom(map['bg'] ?? bgPattern);
     heatTone = map['heatTone'] as String? ?? heatTone;
     _loadToggles(map);
     onboarded = map['onboarded'] as bool? ?? onboarded;
