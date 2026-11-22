@@ -5,7 +5,6 @@ import '../models/workout.dart';
 import '../services/health_metrics.dart';
 import '../state/fit_state.dart';
 import '../widgets/health_cards.dart';
-import '../widgets/ui_kit.dart';
 
 const kReportDetailDays = 92;
 
