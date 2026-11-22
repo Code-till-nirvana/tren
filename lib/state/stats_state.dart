@@ -612,7 +612,7 @@ mixin StatsState on FitCore, ToolsState, LibraryState, SettingsState, TimelineSt
       for (final exercise in session.exercises) {
         final estimate = cardioKcal(session, exercise);
         if (estimate != null) {
-          cardio += estimate.active;
+          cardio += estimate.total;
         } else if (!isCardio(exercise.id) && exercise.sets.any((set) => set.counts)) {
           strength += 140;
         }
