@@ -108,8 +108,11 @@ class FitState extends FitCore
     if (data['language'] == null) _adoptDeviceLanguage();
     if (data.isNotEmpty) {
       profile = Profile.fromJson((data['profile'] as Map?)?.cast<String, dynamic>() ?? {});
-      if (const {'Athlete', 'Atleta', 'Name'}.contains(profile.name)) {
+      if (const {'Athlete', 'Atleta', 'Name', 'InlitX'}.contains(profile.name)) {
         profile.name = kDefaultName;
+      }
+      if (profile.handle.toLowerCase() == 'inlitx') {
+        profile.handle = kDefaultHandle;
       }
 
       themePref = _themeFrom(data, fallback: 'dark');
