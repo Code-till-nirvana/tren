@@ -2043,5 +2043,7 @@
   "qsSubtitle": "Hızlı ayarları aşağı çek ve uygulamayı aramadan tek dokunuşla ulaş",
   "qsTitle": "Hızlı ayarlar kutucukları",
   "qsToday": "Bugünün antrenmanı",
-  "qsTodayHint": "NFC etiketi gibi: bugün planlananı açar"
+  "qsTodayHint": "NFC etiketi gibi: bugün planlananı açar",
+  "developedByAnadi": "Geliştiren: Anadi Rathore",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
