@@ -13,7 +13,7 @@ import kotlin.system.exitProcess
 
 object GraphicsMode {
     const val DISABLE_IMPELLER = "--enable-impeller=false"
-    private const val PREFS = "gymmane_graphics"
+    private const val PREFS = "tren_graphics"
     private const val KEY_MODE = "mode"
     private const val KEY_GPU = "gpu"
     private const val KEY_LAUNCH = "launchAt"
