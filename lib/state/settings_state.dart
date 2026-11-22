@@ -33,7 +33,7 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
 
   String? get alarmSoundPath => AlarmStore.pathFor(alarmSound);
 
-  String bgPattern = 'dots';
+  String bgPattern = 'flow';
   double bgDim = 0.55;
   bool showFocus = true;
   bool showWeekStats = true;
@@ -734,7 +734,7 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
     notifyListeners();
   }
 
-  static const bgPatterns = ['none', 'dots', 'grid', 'photo'];
+  static const bgPatterns = ['none', 'flow', 'contours', 'rays', 'photo'];
 
   void setBgPattern(String v) {
     if (!bgPatterns.contains(v)) return;
@@ -757,7 +757,7 @@ mixin SettingsState on FitCore, ToolsState, LibraryState {
 
   void clearBgPhoto() {
     clearExerciseMedia(kBgPhotoId);
-    if (bgPattern == 'photo') bgPattern = 'dots';
+    if (bgPattern == 'photo') bgPattern = 'flow';
     _persist();
     notifyListeners();
   }
