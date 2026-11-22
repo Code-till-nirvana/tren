@@ -428,7 +428,7 @@ class HomeScreen extends StatelessWidget {
               bottom: 76,
               child: Opacity(
                 opacity: 0.6,
-                child: Image.asset('assets/img/runner.png', fit: BoxFit.fitHeight),
+                child: Image.asset('assets/icon/tren-logo-exact.png', fit: BoxFit.fitHeight),
               ),
             ),
             Padding(
