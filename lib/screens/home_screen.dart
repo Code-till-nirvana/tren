@@ -145,7 +145,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   List<Widget> _homeBlocks(BuildContext context, GymColors gc, List<Routine> routines) {
-    final blocks = _blockMap(context, gc, routines, recommended);
+    final blocks = _blockMap(context, gc, routines);
     final out = <Widget>[];
     String? last;
     for (final id in fit.homeOrderShown) {
