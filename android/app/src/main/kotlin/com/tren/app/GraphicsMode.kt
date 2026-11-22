@@ -14,6 +14,7 @@ import kotlin.system.exitProcess
 object GraphicsMode {
     const val DISABLE_IMPELLER = "--enable-impeller=false"
     private const val PREFS = "tren_graphics"
+    private const val LEGACY_PREFS = "gymmane_graphics"
     private const val KEY_MODE = "mode"
     private const val KEY_GPU = "gpu"
     private const val KEY_LAUNCH = "launchAt"
@@ -87,7 +88,23 @@ object GraphicsMode {
     }
 
     private fun prefs(context: Context) =
-        context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+        context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE).also { current ->
+            val legacy = context.applicationContext.getSharedPreferences(LEGACY_PREFS, Context.MODE_PRIVATE)
+            if (current.all.isEmpty() && legacy.all.isNotEmpty()) {
+                val editor = current.edit()
+                legacy.all.forEach { (key, value) ->
+                    when (value) {
+                        is String -> editor.putString(key, value)
+                        is Boolean -> editor.putBoolean(key, value)
+                        is Int -> editor.putInt(key, value)
+                        is Long -> editor.putLong(key, value)
+                        is Float -> editor.putFloat(key, value)
+                        is Set<*> -> editor.putStringSet(key, value.filterIsInstance<String>().toSet())
+                    }
+                }
+                editor.apply()
+            }
+        }
 
     private fun renderer(): String {
         val display = EGL14.eglGetDisplay(EGL14.EGL_DEFAULT_DISPLAY)
