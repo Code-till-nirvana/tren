@@ -768,21 +768,19 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
                 return Stack(
                   fit: StackFit.expand,
                   children: [
-                    Transform.scale(
-                      scale: 1.07 + 0.035 * pulse,
-                      child: Transform.translate(
-                        offset: Offset(-22 + 44 * pulse, -6 + 12 * pulse),
-                        child: Image.asset(
-                          'assets/img/tren_profile_banner.jpg',
-                          fit: BoxFit.cover,
-                          filterQuality: FilterQuality.high,
-                          errorBuilder: (context, error, stackTrace) => const DecoratedBox(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
-                              ),
+                    ColoredBox(
+                      color: const Color(0xFF09090B),
+                      child: Image.asset(
+                        'assets/img/tren_profile_banner.jpg',
+                        fit: BoxFit.contain,
+                        alignment: Alignment.center,
+                        filterQuality: FilterQuality.high,
+                        errorBuilder: (context, error, stackTrace) => const DecoratedBox(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
                             ),
                           ),
                         ),
