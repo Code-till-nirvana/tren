@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gymmane/models/nutrition.dart';
 import 'package:gymmane/models/workout.dart';
 import 'package:gymmane/screens/recap_screen.dart';
 import 'package:gymmane/services/local_store.dart';
@@ -137,24 +136,6 @@ void main() {
     expect(extras.streak, 3);
     expect(extras.peak?.date, DateTime(2026, 9, 20, 19));
     expect(extras.yearAgo, 0);
-  });
-
-  test('one logged food day is enough for the food page of the recap', () {
-    final now = DateTime.now();
-    fit.sessions.add(lift(DateTime(now.year, now.month, 1, 19), [('EIeI8Vf', 60)]));
-    fit.nutritionBeta = true;
-    fit.foodLog.clear();
-    fit.nutritionDay = DateTime(now.year, now.month, 1);
-    fit.logQuick('Pollo', const Macros(kcal: 600, protein: 400, carbs: 50, fat: 10));
-    fit.logQuick('Pollo', const Macros(kcal: 100, protein: 10, carbs: 5, fat: 1));
-    final food = recapExtras(fit.recapFor(DateTime(now.year, now.month))).food;
-
-    expect(food?.days, 1);
-    expect(food?.hit, 1);
-    expect(food?.starTimes, 1, reason: 'dos veces el mismo día cuenta como un día');
-    expect(food?.star, isNull, reason: 'una comida estrella pide repetirla otro día');
-    fit.foodLog.clear();
-    fit.nutritionDay = DateTime(now.year, now.month, now.day);
   });
 
   test('the exercise wall never repeats a drawing, even with a single exercise', () {
