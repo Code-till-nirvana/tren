@@ -1692,9 +1692,10 @@ class SettingsScreen extends StatelessWidget {
 
   String _bgName(String pattern) => switch (pattern) {
         'none' => t.bgNone,
-        'grid' => t.bgGrid,
+        'contours' => 'Contours',
+        'rays' => 'Radial',
         'photo' => t.bgPhoto,
-        _ => t.bgDots,
+        _ => 'Flow',
       };
 
   void _editBackground(BuildContext context) {
@@ -1721,8 +1722,9 @@ class SettingsScreen extends StatelessWidget {
                   OptionGroup([
                     for (final (pattern, icon) in const [
                       ('none', PhosphorIconsRegular.square),
-                      ('dots', PhosphorIconsRegular.dotsNine),
-                      ('grid', PhosphorIconsRegular.gridFour),
+                      ('flow', PhosphorIconsRegular.waveSine),
+                      ('contours', PhosphorIconsRegular.waves),
+                      ('rays', PhosphorIconsRegular.sunHorizon),
                     ])
                       OptionItem(
                         _bgName(pattern),
