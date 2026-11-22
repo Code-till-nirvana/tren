@@ -2043,5 +2043,7 @@
   "qsSubtitle": "क्विक सेटिंग्स नीचे खींचें और ऐप ढूँढे बिना एक टैप में पहुँचें",
   "qsTitle": "क्विक सेटिंग्स टाइलें",
   "qsToday": "आज की वर्कआउट",
-  "qsTodayHint": "NFC स्टिकर की तरह: आज जो तय है वह खुलता है"
+  "qsTodayHint": "NFC स्टिकर की तरह: आज जो तय है वह खुलता है",
+  "developedByAnadi": "अनादि राठौर द्वारा विकसित",
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
 }
