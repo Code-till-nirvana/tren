@@ -361,7 +361,6 @@
   "importUnitBody": "لا يحدد هذا التصدير وحدة الأوزان.",
   "importNothing": "لا يوجد شيء جديد لاستيراده",
   "importDone": "{n, plural, =1{تم استيراد تمرين واحد} other{تم استيراد {n} تمارين}}",
-  "aboutGymmane": "حول TREN",
   "yourProfile": "ملفك الشخصي",
   "autofills": "يملأ الحاسبات تلقائيًا",
   "nameLabel": "الاسم",
@@ -2045,5 +2044,6 @@
   "qsToday": "تمرين اليوم",
   "qsTodayHint": "مثل ملصق NFC: يفتح ما هو مقرر لليوم",
   "developedByAnadi": "طوّره أنادي راثور",
-  "githubProfileLabel": "GitHub · github.com/Te4Kettle"
+  "githubProfileLabel": "GitHub · github.com/Te4Kettle",
+  "aboutTren": "حول TREN"
 }
