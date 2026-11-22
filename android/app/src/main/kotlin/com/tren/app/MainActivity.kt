@@ -40,7 +40,7 @@ class MainActivity : FlutterActivity() {
         super.configureFlutterEngine(flutterEngine)
         val messenger = flutterEngine.dartExecutor.binaryMessenger
 
-        MethodChannel(messenger, "gymmane/graphics").setMethodCallHandler { call, result ->
+        MethodChannel(messenger, "tren/graphics").setMethodCallHandler { call, result ->
             when (call.method) {
                 "state" -> result.success(
                     mapOf("compat" to GraphicsMode.compat(this), "detected" to GraphicsMode.detected(this)),
@@ -58,7 +58,7 @@ class MainActivity : FlutterActivity() {
             }
         }
 
-        MethodChannel(messenger, "gymmane/haptics").setMethodCallHandler { call, result ->
+        MethodChannel(messenger, "tren/haptics").setMethodCallHandler { call, result ->
             if (call.method != "buzz") {
                 result.notImplemented()
                 return@setMethodCallHandler
@@ -67,7 +67,7 @@ class MainActivity : FlutterActivity() {
             result.success(null)
         }
 
-        val incoming = MethodChannel(messenger, "gymmane/incoming")
+        val incoming = MethodChannel(messenger, "tren/incoming")
         incoming.setMethodCallHandler { call, result ->
             if (call.method != "take") {
                 result.notImplemented()
@@ -77,7 +77,7 @@ class MainActivity : FlutterActivity() {
         }
         incomingChannel = incoming
 
-        MethodChannel(messenger, "gymmane/gallery").setMethodCallHandler { call, result ->
+        MethodChannel(messenger, "tren/gallery").setMethodCallHandler { call, result ->
             if (call.method != "savePng") {
                 result.notImplemented()
                 return@setMethodCallHandler
@@ -95,7 +95,7 @@ class MainActivity : FlutterActivity() {
             }
         }
 
-        MethodChannel(messenger, "gymmane/screen").setMethodCallHandler { call, result ->
+        MethodChannel(messenger, "tren/screen").setMethodCallHandler { call, result ->
             val on = call.argument<Boolean>("on") ?: false
             when (call.method) {
                 "keepOn" -> {
@@ -124,9 +124,9 @@ class MainActivity : FlutterActivity() {
             }
         }
 
-        rotaryChannel = MethodChannel(messenger, "gymmane/rotary")
+        rotaryChannel = MethodChannel(messenger, "tren/rotary")
 
-        val open = MethodChannel(messenger, "gymmane/open")
+        val open = MethodChannel(messenger, "tren/open")
         open.setMethodCallHandler { call, result ->
             if (call.method != "take") {
                 result.notImplemented()
@@ -136,7 +136,7 @@ class MainActivity : FlutterActivity() {
         }
         openChannel = open
 
-        val live = MethodChannel(messenger, "gymmane/live")
+        val live = MethodChannel(messenger, "tren/live")
         live.setMethodCallHandler { call, result ->
             when (call.method) {
                 "update" -> {
@@ -153,7 +153,7 @@ class MainActivity : FlutterActivity() {
         }
         LiveNotifier.dart = live
 
-        MethodChannel(messenger, "gymmane/device").setMethodCallHandler { call, result ->
+        MethodChannel(messenger, "tren/device").setMethodCallHandler { call, result ->
             when (call.method) {
                 "pickSound" -> pickSound(call.argument<String>("current"), result)
                 "isLowEnd" -> {
