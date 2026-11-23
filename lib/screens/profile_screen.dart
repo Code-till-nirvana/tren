@@ -49,7 +49,6 @@ class _ProfileScreenState extends State<ProfileScreen> with TickerProviderStateM
   final _scroll = ScrollController();
   final _pull = ValueNotifier<double>(0);
   late final AnimationController _back;
-  late final AnimationController _bannerMotion;
   double _from = 0;
   bool _armed = false;
   bool _opening = false;
@@ -60,14 +59,11 @@ class _ProfileScreenState extends State<ProfileScreen> with TickerProviderStateM
     super.initState();
     _back = AnimationController(vsync: this, duration: const Duration(milliseconds: 320))
       ..addListener(() => _pull.value = _from * (1 - Curves.easeOutCubic.transform(_back.value)));
-    _bannerMotion = AnimationController(vsync: this, duration: const Duration(seconds: 8))
-      ..repeat(reverse: true);
   }
 
   @override
   void dispose() {
     _back.dispose();
-    _bannerMotion.dispose();
     _scroll.dispose();
     _pull.dispose();
     super.dispose();
@@ -149,7 +145,6 @@ class _ProfileScreenState extends State<ProfileScreen> with TickerProviderStateM
             top: top,
             pull: _pull,
             reach: _reach,
-            bannerMotion: _bannerMotion,
             onEdit: () => showProfileSheet(context),
           ),
         ),
@@ -703,7 +698,6 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
     required this.top,
     required this.pull,
     required this.reach,
-    required this.bannerMotion,
     required this.onEdit,
   });
 
@@ -711,7 +705,6 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
   final double top;
   final ValueNotifier<double> pull;
   final double reach;
-  final Animation<double> bannerMotion;
   final VoidCallback onEdit;
 
   static const _bar = 60.0;
@@ -751,43 +744,28 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
             valueListenable: pull,
             builder: (_, v, child) {
               final p = (v / reach).clamp(0.0, 1.0);
-              if (p <= 0) return Opacity(opacity: 1 - gone, child: child);
-              final sigma = 14 * p;
-              final zoomed = Transform.scale(scale: 1 + 0.35 * p, alignment: Alignment.topCenter, child: child);
               return Opacity(
                 opacity: ((1 - gone) * (1 - p)).clamp(0.0, 1.0),
-                child: blurEffects
-                    ? ImageFiltered(imageFilter: ui.ImageFilter.blur(sigmaX: sigma, sigmaY: sigma), child: zoomed)
-                    : zoomed,
+                child: child,
               );
             },
-            child: AnimatedBuilder(
-              animation: bannerMotion,
-              builder: (context, _) {
-                final pulse = bannerMotion.value;
-                return Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Transform.scale(
-                      scale: 1.07 + 0.035 * pulse,
-                      child: Transform.translate(
-                        offset: Offset(-22 + 44 * pulse, -6 + 12 * pulse),
-                        child: Image.asset(
-                          'assets/img/tren_profile_banner.jpg',
-                          fit: BoxFit.cover,
-                          filterQuality: FilterQuality.high,
-                          errorBuilder: (context, error, stackTrace) => const DecoratedBox(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
-                              ),
-                            ),
-                          ),
-                        ),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  'assets/img/tren_profile_banner.jpg',
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  errorBuilder: (context, error, stackTrace) => const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
                       ),
                     ),
+                  ),
+                ),
                     IgnorePointer(
                       child: DecoratedBox(
                         decoration: BoxDecoration(
@@ -809,7 +787,7 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           gradient: RadialGradient(
-                            center: Alignment(0.35 + 0.3 * pulse, 0.05),
+                            center: const Alignment(0.5, 0.05),
                             radius: 1.05,
                             colors: const [Color(0x35B83D5A), Colors.transparent],
                           ),
@@ -817,9 +795,7 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
                       ),
                     ),
                   ],
-                );
-              },
-            ),
+                ),
           ),
         ),
         if (bar > 0)
