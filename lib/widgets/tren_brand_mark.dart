@@ -8,7 +8,7 @@ class TrenBrandMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Opacity(
-        opacity: opacity.clamp(0, 1),
+        opacity: opacity.clamp(0.0, 1.0).toDouble(),
         child: const CustomPaint(
           size: Size.square(176),
           painter: _TrenBrandMarkPainter(),
