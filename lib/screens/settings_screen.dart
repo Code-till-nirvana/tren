@@ -27,11 +27,9 @@ import '../services/workout_import.dart';
 import '../state/fit_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
-import '../services/app_icon.dart';
 import '../services/nfc_tags.dart';
 import '../services/quick_tiles.dart';
 import 'help_topics.dart';
-import '../widgets/app_icon_sheet.dart';
 import '../widgets/nfc_sheet.dart';
 import '../widgets/quick_tiles_sheet.dart';
 import '../widgets/body_rulers.dart';
@@ -211,25 +209,6 @@ class SettingsScreen extends StatelessWidget {
                       ]),
                     ),
                   ),
-                  if (AppIcon.available)
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () => showAppIconSheet(context),
-                      child: _prefRow(
-                        gc,
-                        PhosphorIconsRegular.appWindow,
-                        t.appIcon,
-                        Row(mainAxisSize: MainAxisSize.min, children: [
-                          ValueListenableBuilder<String>(
-                            valueListenable: AppIcon.current,
-                            builder: (_, _, _) => AppIconThumb(AppIcon.style, size: 26),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(PhosphorIconsRegular.caretRight, size: 15, color: gc.textTertiary),
-                        ]),
-                      ),
-                    ),
-
             GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () => _performanceSheet(context),
@@ -782,7 +761,6 @@ class SettingsScreen extends StatelessWidget {
         (t.heatRangeSetting, PhosphorIconsRegular.calendarDots),
         (t.heatmapLabelsSetting, PhosphorIconsRegular.gridNine),
         (t.background, PhosphorIconsRegular.image),
-        if (AppIcon.available) (t.appIcon, PhosphorIconsRegular.appWindow),
         (t.perfSetting, PhosphorIconsRegular.lightning),
         (t.textSizeSetting, PhosphorIconsRegular.textAa),
       ]),
