@@ -9,6 +9,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../widgets/entrance.dart';
 import '../widgets/ui_kit.dart';
+import '../widgets/tren_brand_mark.dart';
 
 const kAppVersion = '2.4.0';
 
@@ -161,10 +162,7 @@ class AboutScreen extends StatelessWidget {
             right: 6,
             top: 14,
             bottom: 14,
-            child: Opacity(
-              opacity: 1,
-              child: Image.asset('assets/icon/tren-logo-exact.png', fit: BoxFit.contain, filterQuality: FilterQuality.high),
-            ),
+            child: const TrenBrandMark(),
           ),
           Padding(
             padding: const EdgeInsets.all(22),
