@@ -691,6 +691,21 @@ class _GrabberPainter extends CustomPainter {
   bool shouldRepaint(_GrabberPainter old) => old.t != t || old.color != color;
 }
 
+class _ProfileBannerFallback extends StatelessWidget {
+  const _ProfileBannerFallback();
+
+  @override
+  Widget build(BuildContext context) => const DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
+          ),
+        ),
+      );
+}
+
 class _ProfileHeader extends SliverPersistentHeaderDelegate {
   _ProfileHeader({
     required this.gc,
@@ -725,6 +740,7 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
     final range = maxExtent - minExtent;
     final shrunk = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
     final p = fit.profile;
+    final banner = fit.profileBanner;
     final bannerBottom = math.max(minExtent, _banner - shrinkOffset);
     final fade = (1 - shrunk * 2).clamp(0.0, 1.0);
     final avatarTop = bannerBottom - _avatar + 18;
@@ -751,20 +767,15 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  'assets/img/tren_profile_banner.jpg',
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                  errorBuilder: (context, error, stackTrace) => const DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Color(0xFF170D12), Color(0xFF5A1E34), Color(0xFF09090B)],
-                      ),
-                    ),
-                  ),
-                ),
+                if (banner != null)
+                  Image.memory(
+                    banner,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    errorBuilder: (context, error, stackTrace) => const _ProfileBannerFallback(),
+                  )
+                else
+                  const _ProfileBannerFallback(),
                     IgnorePointer(
                       child: DecoratedBox(
                         decoration: BoxDecoration(
