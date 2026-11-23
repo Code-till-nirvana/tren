@@ -21,6 +21,7 @@ import '../widgets/routine_folder.dart';
 import '../widgets/scroll_away.dart';
 import '../widgets/svg_icon.dart';
 import '../widgets/ui_kit.dart';
+import '../widgets/tren_brand_mark.dart';
 import 'progress_screen.dart';
 import 'routines_screen.dart';
 import 'start_sheet.dart';
@@ -426,10 +427,7 @@ class HomeScreen extends StatelessWidget {
               right: 4,
               top: 12,
               bottom: 76,
-              child: Opacity(
-                opacity: 0.6,
-                child: Image.asset('assets/icon/tren-logo-exact.png', fit: BoxFit.fitHeight),
-              ),
+              child: const TrenBrandMark(opacity: 0.6),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(22, 22, 22, 20),
