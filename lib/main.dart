@@ -10,7 +10,6 @@ import 'services/home_widget_bridge.dart';
 import 'services/live_workout.dart';
 import 'services/local_store.dart';
 import 'services/media_store.dart';
-import 'services/app_icon.dart';
 import 'services/nfc_tags.dart';
 import 'services/graphics_mode.dart';
 import 'services/rest_alarm.dart';
@@ -35,7 +34,6 @@ Future<void> main() async {
   await AlarmStore.init();
   await RestAlarm.instance.init();
   GraphicsMode.load();
-  AppIcon.load();
   fit.loadFromStore();
   NfcTags.load();
   fit.syncPhotoReminder();
