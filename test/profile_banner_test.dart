@@ -42,7 +42,7 @@ void main() {
       );
 
       fit.setProfileBanner(_png);
-      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
       expect(
         find.byWidgetPredicate(
           (widget) =>
