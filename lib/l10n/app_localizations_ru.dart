@@ -1458,7 +1458,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get importHint =>
-      'Выбери .zip (или старый .json), выгруженный из GymMane. Это заменит текущие данные вместе с медиа.';
+      'Выбери .zip (или старый .json), выгруженный из TREN. Это заменит текущие данные вместе с медиа.';
 
   @override
   String get import => 'Загрузить';
@@ -1514,7 +1514,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get aboutGymmane => 'О GymMane';
+  String get aboutTREN => 'О TREN';
 
   @override
   String get yourProfile => 'ТВОЙ ПРОФИЛЬ';
@@ -2307,7 +2307,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get aiIntro =>
-      'GymMane ни с каким ИИ не общается. Ты сам выгружаешь список упражнений, вставляешь его в тот ассистент, которым уже пользуешься, и приносишь ответ обратно. С телефона само ничего не уходит.';
+      'TREN ни с каким ИИ не общается. Ты сам выгружаешь список упражнений, вставляешь его в тот ассистент, которым уже пользуешься, и приносишь ответ обратно. С телефона само ничего не уходит.';
 
   @override
   String aiMissing(int n) {
@@ -2335,7 +2335,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get awardFirstStepName => 'Первый шаг';
 
   @override
-  String get awardFirstStepLine => 'Добро пожаловать в GymMane. Эта медаль — за счёт заведения.';
+  String get awardFirstStepLine => 'Добро пожаловать в TREN. Эта медаль — за счёт заведения.';
 
   @override
   String get awardFirstWorkoutName => 'Первая тренировка';
@@ -2939,14 +2939,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String shareMessage(String name) {
-    return '$name — открой файл в GymMane, чтобы добавить.';
+    return '$name — открой файл в TREN, чтобы добавить.';
   }
 
   @override
   String get importRoutines => 'Импорт программ';
 
   @override
-  String get importPasteHint => 'Вставь сюда программу: из GymMane, из ответа ИИ, в формате JSON или CSV.';
+  String get importPasteHint => 'Вставь сюда программу: из TREN, из ответа ИИ, в формате JSON или CSV.';
 
   @override
   String get pasteAction => 'Вставить';
@@ -2987,11 +2987,11 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get nothingToImport => 'Здесь нет ничего, что GymMane может импортировать';
+  String get nothingToImport => 'Здесь нет ничего, что TREN может импортировать';
 
   @override
   String get aiStepCopy =>
-      'Скопируй запрос. В нём твой список упражнений и формат, который понимает GymMane.';
+      'Скопируй запрос. В нём твой список упражнений и формат, который понимает TREN.';
 
   @override
   String get aiStepAsk => 'Вставь его в любой ИИ и скажи, что нужно: дни в неделю, цель, сколько недель.';
@@ -3140,7 +3140,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shareIntroBody =>
-      'Отправь её партнёру, другу или семье. Они получат небольшой файл, который открывается в GymMane и добавляет программу одним касанием, с подходами и весами.';
+      'Отправь её партнёру, другу или семье. Они получат небольшой файл, который открывается в TREN и добавляет программу одним касанием, с подходами и весами.';
 
   @override
   String get removedFromRoutine => 'Убрано из программы';
@@ -3297,7 +3297,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Читает только число шагов. Больше ничего не читает и ничего не пишет в Health Connect.';
 
   @override
-  String get stepsInfoLocal => 'Шаги остаются на телефоне. GymMane никогда не подключается к интернету.';
+  String get stepsInfoLocal => 'Шаги остаются на телефоне. TREN никогда не подключается к интернету.';
 
   @override
   String get stepsInfoOff => 'Можно отключить в любой момент в Настройках или в Health Connect.';
@@ -3670,7 +3670,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appIcon => 'Значок приложения';
 
   @override
-  String get appIconHint => 'Как GymMane выглядит на главном экране';
+  String get appIconHint => 'Как TREN выглядит на главном экране';
 
   @override
   String get appIconColors => 'Цвета';
@@ -4925,7 +4925,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      'Простой способ записывать еду, воду, белок и добавки рядом с тренировками. GymMane — прежде всего приложение для зала: питание здесь, чтобы всё было в одном месте, а не чтобы заменить приложение для диеты.';
+      'Простой способ записывать еду, воду, белок и добавки рядом с тренировками. TREN — прежде всего приложение для зала: питание здесь, чтобы всё было в одном месте, а не чтобы заменить приложение для диеты.';
 
   @override
   String get nutritionAboutScanTitle => 'Сканера нет и не будет';
@@ -4939,7 +4939,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'В приложении уже есть более 500 продуктов с фото. Можно добавлять свои, менять им фото и редактировать значения. Всё остаётся на твоём телефоне, как и всё остальное в GymMane.';
+      'В приложении уже есть более 500 продуктов с фото. Можно добавлять свои, менять им фото и редактировать значения. Всё остаётся на твоём телефоне, как и всё остальное в TREN.';
 
   @override
   String get nutritionAboutBetaTitle => 'Пока в бете';
@@ -5007,7 +5007,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Отметь приём в GymMane, когда примешь добавки.';
+  String get notifSuppTap => 'Отметь приём в TREN, когда примешь добавки.';
 
   @override
   String get suppNoneToday => 'Сегодня ничего принимать не нужно.';
@@ -5948,7 +5948,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ladderHint =>
-      'Расставьте шаги от лёгкого к трудному. Когда сделаете 3 подхода по 8 две тренировки подряд (5 в медленных), GymMane предложит следующий.';
+      'Расставьте шаги от лёгкого к трудному. Когда сделаете 3 подхода по 8 две тренировки подряд (5 в медленных), TREN предложит следующий.';
 
   @override
   String get ladderBuiltIn =>
@@ -6965,14 +6965,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get supportThanksBody =>
-      'GymMane бесплатен и всегда будет бесплатным, без рекламы и подвохов.\n\nЕсли он помогает тебе тренироваться, угости меня кофе — это поднимет мне настроение ☕\nА если не можешь, ничего страшного: звезда на GitHub тоже ⭐';
+      'TREN бесплатен и всегда будет бесплатным, без рекламы и подвохов.\n\nЕсли он помогает тебе тренироваться, угости меня кофе — это поднимет мне настроение ☕\nА если не можешь, ничего страшного: звезда на GitHub тоже ⭐';
 
   @override
   String get perfSetting => 'Производительность';
 
   @override
   String get perfSheetHint =>
-      'Сколько ресурсов телефона использует GymMane. Каждую часть можно изменить ниже.';
+      'Сколько ресурсов телефона использует TREN. Каждую часть можно изменить ниже.';
 
   @override
   String get perfLite => 'Экономный';
@@ -7551,7 +7551,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get autoProgressHint =>
-      'Когда ты начинаешь тренировку, GymMane заполняет следующий шаг для каждого упражнения. С «Добавлять повторы» ты добавляешь один повтор на подход до 12, потом вес растёт и ты снова начинаешь с 8. Каждое упражнение всё равно можно настроить на его странице.';
+      'Когда ты начинаешь тренировку, TREN заполняет следующий шаг для каждого упражнения. С «Добавлять повторы» ты добавляешь один повтор на подход до 12, потом вес растёт и ты снова начинаешь с 8. Каждое упражнение всё равно можно настроить на его странице.';
 
   @override
   String get noteFolders => 'Папки';
@@ -8102,7 +8102,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Для телефонов, где буквы выглядят сломанными. Размытие остаётся, некоторые эффекты упрощаются';
 
   @override
-  String get gfxRestartTitle => 'Перезапустить GymMane?';
+  String get gfxRestartTitle => 'Перезапустить TREN?';
 
   @override
   String get gfxRestartBody =>
@@ -8201,7 +8201,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wearSyncNow => 'Синхронизировать';
 
   @override
-  String get wearSyncHow => 'На телефоне включи Настройки › Часы Wear OS и открой GymMane на обоих.';
+  String get wearSyncHow => 'На телефоне включи Настройки › Часы Wear OS и открой TREN на обоих.';
 
   @override
   String get routinesOrder => 'Изменить порядок программ';
@@ -8268,11 +8268,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get webPhoneFolderHow =>
-      'Выбирается при установке сервера. Чтобы изменить, задай GYMMANE_SYNC в файле .env сервера и перезапусти его.';
+      'Выбирается при установке сервера. Чтобы изменить, задай TREN_SYNC в файле .env сервера и перезапусти его.';
 
   @override
   String get webPhoneOffHow =>
-      'Чтобы включить, убери GYMMANE_SYNC=off из файла .env сервера и перезапусти его.';
+      'Чтобы включить, убери TREN_SYNC=off из файла .env сервера и перезапусти его.';
 
   @override
   String webPhoneDevices(int n) {
@@ -8584,14 +8584,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get watchSubtitle => 'Программы на запястье, тренировки обратно на телефоне';
 
   @override
-  String get watchPoint1 => 'Установи GymMane на часы';
+  String get watchPoint1 => 'Установи TREN на часы';
 
   @override
   String get watchPoint1Body =>
       'Это то же приложение, что и на телефоне. Нажми, чтобы открыть инструкцию по установке.';
 
   @override
-  String get watchPoint2 => 'Открой GymMane на обоих';
+  String get watchPoint2 => 'Открой TREN на обоих';
 
   @override
   String get watchPoint2Body =>
@@ -8620,13 +8620,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get watchSearching => 'Ищу часы…';
 
   @override
-  String get watchSearchingHint => 'Открой GymMane на часах, если ещё не открыто.';
+  String get watchSearchingHint => 'Открой TREN на часах, если ещё не открыто.';
 
   @override
   String get watchBluetoothOff => 'Bluetooth выключен.';
 
   @override
-  String get watchNotFound => 'Часы не найдены. Открой на них GymMane и попробуй снова.';
+  String get watchNotFound => 'Часы не найдены. Открой на них TREN и попробуй снова.';
 
   @override
   String get watchNever => 'Ещё не синхронизировано.';
@@ -8702,7 +8702,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get qsManual =>
-      'Опустите панель быстрых настроек, нажмите на карандаш и перетащите плитку GymMane к своим.';
+      'Опустите панель быстрых настроек, нажмите на карандаш и перетащите плитку TREN к своим.';
 
   @override
   String get qsPassUse => 'Открывать из быстрых настроек';

@@ -1382,7 +1382,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get importHint =>
-      'Pilih cadangan .zip (atau .json lama) yang diekspor dari GymMane. Ini menggantikan datamu saat ini, termasuk media.';
+      'Pilih cadangan .zip (atau .json lama) yang diekspor dari TREN. Ini menggantikan datamu saat ini, termasuk media.';
 
   @override
   String get import => 'Impor';
@@ -1424,7 +1424,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get aboutGymmane => 'Tentang GymMane';
+  String get aboutTREN => 'Tentang TREN';
 
   @override
   String get yourProfile => 'PROFILMU';
@@ -2180,7 +2180,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get aiIntro =>
-      'GymMane tidak pernah berbicara dengan AI. Kamu mengambil daftar gerakanmu, menempelkannya ke asisten apa pun yang sudah kamu pakai, lalu membawa jawabannya kembali. Tidak ada yang keluar dari ponsel dengan sendirinya.';
+      'TREN tidak pernah berbicara dengan AI. Kamu mengambil daftar gerakanmu, menempelkannya ke asisten apa pun yang sudah kamu pakai, lalu membawa jawabannya kembali. Tidak ada yang keluar dari ponsel dengan sendirinya.';
 
   @override
   String aiMissing(int n) {
@@ -2201,7 +2201,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get awardFirstStepName => 'Langkah pertama';
 
   @override
-  String get awardFirstStepLine => 'Selamat datang di GymMane. Yang ini gratis.';
+  String get awardFirstStepLine => 'Selamat datang di TREN. Yang ini gratis.';
 
   @override
   String get awardFirstWorkoutName => 'Latihan pertama';
@@ -2797,7 +2797,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String shareMessage(String name) {
-    return '$name: buka file ini dengan GymMane untuk menambahkannya.';
+    return '$name: buka file ini dengan TREN untuk menambahkannya.';
   }
 
   @override
@@ -2805,7 +2805,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get importPasteHint =>
-      'Tempel rutinitas di sini: yang dibagikan dari GymMane, jawaban AI, JSON, atau CSV.';
+      'Tempel rutinitas di sini: yang dibagikan dari TREN, jawaban AI, JSON, atau CSV.';
 
   @override
   String get pasteAction => 'Tempel';
@@ -2832,10 +2832,10 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get nothingToImport => 'Tidak ada yang bisa diimpor GymMane di sini';
+  String get nothingToImport => 'Tidak ada yang bisa diimpor TREN di sini';
 
   @override
-  String get aiStepCopy => 'Salin permintaannya. Isinya daftar gerakanmu dan format yang dibaca GymMane.';
+  String get aiStepCopy => 'Salin permintaannya. Isinya daftar gerakanmu dan format yang dibaca TREN.';
 
   @override
   String get aiStepAsk =>
@@ -2985,7 +2985,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get shareIntroBody =>
-      'Kirim ke pasangan, teman, atau keluargamu. Mereka mendapat file kecil yang terbuka di GymMane dan menambahkannya dengan satu ketukan, lengkap dengan set dan bebannya.';
+      'Kirim ke pasangan, teman, atau keluargamu. Mereka mendapat file kecil yang terbuka di TREN dan menambahkannya dengan satu ketukan, lengkap dengan set dan bebannya.';
 
   @override
   String get removedFromRoutine => 'Dihapus dari rutinitas';
@@ -3135,7 +3135,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Hanya membaca jumlah langkahmu. Tidak pernah membaca yang lain atau menulis ke Health Connect.';
 
   @override
-  String get stepsInfoLocal => 'Langkahmu tetap di ponselmu. GymMane tidak pernah terhubung ke internet.';
+  String get stepsInfoLocal => 'Langkahmu tetap di ponselmu. TREN tidak pernah terhubung ke internet.';
 
   @override
   String get stepsInfoOff => 'Matikan kapan saja di Pengaturan atau di Health Connect.';
@@ -3493,7 +3493,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get appIcon => 'Ikon aplikasi';
 
   @override
-  String get appIconHint => 'Tampilan GymMane di layar utama';
+  String get appIconHint => 'Tampilan TREN di layar utama';
 
   @override
   String get appIconColors => 'Warna';
@@ -4684,7 +4684,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      'Cara sederhana mencatat makanan, air, protein, dan suplemen tepat di samping latihanmu. GymMane adalah aplikasi gym lebih dulu: Nutrisi ada supaya semuanya bisa di satu tempat, bukan untuk menggantikan aplikasi diet khusus.';
+      'Cara sederhana mencatat makanan, air, protein, dan suplemen tepat di samping latihanmu. TREN adalah aplikasi gym lebih dulu: Nutrisi ada supaya semuanya bisa di satu tempat, bukan untuk menggantikan aplikasi diet khusus.';
 
   @override
   String get nutritionAboutScanTitle => 'Tanpa pemindaian, selamanya';
@@ -4698,7 +4698,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'Lebih dari 500 makanan berfoto sudah ada di dalam aplikasi. Kamu bisa menambahkan punyamu, mengganti fotonya, dan mengedit nilainya. Semuanya tetap di ponselmu, seperti bagian lain GymMane.';
+      'Lebih dari 500 makanan berfoto sudah ada di dalam aplikasi. Kamu bisa menambahkan punyamu, mengganti fotonya, dan mengedit nilainya. Semuanya tetap di ponselmu, seperti bagian lain TREN.';
 
   @override
   String get nutritionAboutBetaTitle => 'Masih beta';
@@ -4759,7 +4759,7 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Centang di GymMane setelah kamu meminumnya.';
+  String get notifSuppTap => 'Centang di TREN setelah kamu meminumnya.';
 
   @override
   String get suppNoneToday => 'Tidak ada yang perlu diminum hari ini.';
@@ -5656,7 +5656,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get ladderHint =>
-      'Urutkan langkah dari yang termudah ke tersulit. Saat kamu melakukan 3 set 8 repetisi dua sesi berturut-turut (5 untuk yang lambat), GymMane menawarkan langkah berikutnya.';
+      'Urutkan langkah dari yang termudah ke tersulit. Saat kamu melakukan 3 set 8 repetisi dua sesi berturut-turut (5 untuk yang lambat), TREN menawarkan langkah berikutnya.';
 
   @override
   String get ladderBuiltIn =>
@@ -6622,14 +6622,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get supportThanksBody =>
-      'GymMane gratis dan akan selalu begitu, tanpa iklan dan tanpa ada yang disembunyikan.\n\nKalau aplikasi ini membantumu latihan, mentraktirku kopi bikin hariku senang ☕\nKalau tidak bisa, tidak apa-apa: bintang di GitHub juga sangat berarti ⭐';
+      'TREN gratis dan akan selalu begitu, tanpa iklan dan tanpa ada yang disembunyikan.\n\nKalau aplikasi ini membantumu latihan, mentraktirku kopi bikin hariku senang ☕\nKalau tidak bisa, tidak apa-apa: bintang di GitHub juga sangat berarti ⭐';
 
   @override
   String get perfSetting => 'Performa';
 
   @override
   String get perfSheetHint =>
-      'Seberapa banyak GymMane memakai ponselmu. Kamu bisa mengubah tiap bagian di bawah.';
+      'Seberapa banyak TREN memakai ponselmu. Kamu bisa mengubah tiap bagian di bawah.';
 
   @override
   String get perfLite => 'Hemat';
@@ -7165,7 +7165,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get autoProgressHint =>
-      'Saat kamu memulai latihan, GymMane mengisi langkah berikutnya untuk tiap gerakan. Dengan Tambah repetisi kamu menambah satu repetisi per set sampai 12, lalu beban naik dan kamu mulai lagi dari 8. Kamu tetap bisa menyesuaikan tiap gerakan di halamannya.';
+      'Saat kamu memulai latihan, TREN mengisi langkah berikutnya untuk tiap gerakan. Dengan Tambah repetisi kamu menambah satu repetisi per set sampai 12, lalu beban naik dan kamu mulai lagi dari 8. Kamu tetap bisa menyesuaikan tiap gerakan di halamannya.';
 
   @override
   String get noteFolders => 'Folder';
@@ -7648,7 +7648,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Untuk ponsel yang hurufnya tampak rusak. Blur tetap ada, beberapa efek jadi lebih sederhana';
 
   @override
-  String get gfxRestartTitle => 'Mulai ulang GymMane?';
+  String get gfxRestartTitle => 'Mulai ulang TREN?';
 
   @override
   String get gfxRestartBody =>
@@ -7744,7 +7744,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get wearSyncNow => 'Sinkronkan sekarang';
 
   @override
-  String get wearSyncHow => 'Di ponsel, aktifkan Pengaturan › Jam Wear OS dan buka GymMane di keduanya.';
+  String get wearSyncHow => 'Di ponsel, aktifkan Pengaturan › Jam Wear OS dan buka TREN di keduanya.';
 
   @override
   String get routinesOrder => 'Urutkan rutinitas';
@@ -7811,11 +7811,11 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get webPhoneFolderHow =>
-      'Dipilih saat memasang server. Untuk mengubahnya, atur GYMMANE_SYNC di file .env server lalu mulai ulang.';
+      'Dipilih saat memasang server. Untuk mengubahnya, atur TREN_SYNC di file .env server lalu mulai ulang.';
 
   @override
   String get webPhoneOffHow =>
-      'Untuk menyalakannya, hapus GYMMANE_SYNC=off dari file .env server lalu mulai ulang.';
+      'Untuk menyalakannya, hapus TREN_SYNC=off dari file .env server lalu mulai ulang.';
 
   @override
   String webPhoneDevices(int n) {
@@ -8125,13 +8125,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get watchSubtitle => 'Rutinitas di pergelangan, latihan kembali ke ponsel';
 
   @override
-  String get watchPoint1 => 'Pasang GymMane di jam';
+  String get watchPoint1 => 'Pasang TREN di jam';
 
   @override
   String get watchPoint1Body => 'Aplikasinya sama dengan di ponsel. Ketuk untuk melihat panduan pemasangan.';
 
   @override
-  String get watchPoint2 => 'Buka GymMane di keduanya';
+  String get watchPoint2 => 'Buka TREN di keduanya';
 
   @override
   String get watchPoint2Body =>
@@ -8159,13 +8159,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get watchSearching => 'Mencari jam…';
 
   @override
-  String get watchSearchingHint => 'Buka GymMane di jam jika belum terbuka.';
+  String get watchSearchingHint => 'Buka TREN di jam jika belum terbuka.';
 
   @override
   String get watchBluetoothOff => 'Bluetooth mati.';
 
   @override
-  String get watchNotFound => 'Jam tidak ditemukan. Buka GymMane di jam lalu coba lagi.';
+  String get watchNotFound => 'Jam tidak ditemukan. Buka TREN di jam lalu coba lagi.';
 
   @override
   String get watchNever => 'Belum disinkronkan.';
@@ -8242,7 +8242,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get qsManual =>
-      'Tarik Setelan cepat ke bawah, ketuk pensil, lalu seret ubin GymMane ke ubin milikmu.';
+      'Tarik Setelan cepat ke bawah, ketuk pensil, lalu seret ubin TREN ke ubin milikmu.';
 
   @override
   String get qsPassUse => 'Buka dari Setelan cepat';

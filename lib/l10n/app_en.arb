@@ -2001,12 +2001,6 @@
   },
   "mergedToast": "History merged",
   "glassSize": "Glass size",
-  "suppCreatine": "Creatine",
-  "suppVitaminD": "Vitamin D",
-  "suppOmega3": "Omega-3",
-  "suppMagnesium": "Magnesium",
-  "suppMultivitamin": "Multivitamin",
-  "suppCaffeine": "Caffeine",
   "servingLabel": "SERVING",
   "servingHint": "1 scoop · 30 g",
   "perServing": "PER SERVING",
@@ -2016,34 +2010,9 @@
   "cutoutKeep": "Whole photo",
   "nothingLogged": "Nothing logged yet.",
   "quickAdd": "Quick add",
-  "quickAddHint": "Just the numbers, without saving a food.",
   "quickAddName": "What was it? (optional)",
-  "loggedToast": "Added to {meal}",
-  "@loggedToast": {
-    "placeholders": {
-      "meal": {
-        "type": "String"
-      }
-    }
-  },
   "entryRemoved": "Removed",
   "goalsFromProfile": "Calculate from my profile",
-  "goalsFromProfileHint": "Calories from your profile, 1.8 g of protein and 35 ml of water per kg of bodyweight.",
-  "shakeEmpty": "Tap to pick your shake",
-  "shakeTapHint": "Tap: + {name}",
-  "@shakeTapHint": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "shakePick": "Your shake",
-  "shakePickHint": "Tap the shaker and it gets logged in one go.",
-  "carbsLetter": "C",
-  "fatLetter": "F",
-  "addBurnedLabel": "Add burned calories",
-  "addBurnedHint": "Your goal already counts your usual activity. Turn this on only if you set yourself as sedentary: it adds what each workout burns on top of resting.",
   "amountLabel": "Amount",
   "amountIn": "Amount ({unit})",
   "@amountIn": {
@@ -2057,7 +2026,6 @@
   "fiberLabel": "Fiber",
   "sugarLabel": "Sugar",
   "sodiumLabel": "Sodium",
-  "moreNutrients": "Fiber, sugar and sodium",
   "ofGoal": "of {goal} {unit}",
   "@ofGoal": {
     "placeholders": {
@@ -2134,25 +2102,14 @@
       }
     }
   },
-  "recipeItems": "{count, plural, one{1 food} other{{count} foods}}",
-  "@recipeItems": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "renameLabel": "Rename",
   "repeatFrom": "Repeat from",
-  "repeatNone": "Nothing logged for this meal on other days yet.",
   "restDayGoals": "Different goals on rest days",
   "trainingDays": "Training days",
   "restDays": "Rest days",
   "trainingDay": "Training day",
   "servingWeight": "GRAMS",
   "weekAverage": "This week",
-  "weekAvgEnergy": "Daily average",
-  "weekEnergyOnTarget": "Calories on target",
   "weekDaysOnTarget": "{met} of {days} days on target",
   "@weekDaysOnTarget": {
     "placeholders": {
@@ -2173,7 +2130,6 @@
     }
   },
   "weekNoData": "Nothing logged yet",
-  "weekOnTargetHint": "On target: calories within 10% of the goal and at least 90% of the protein.",
   "weightGoalLabel": "Goal weight",
   "weightGoalTitle": "Goal weight ({unit})",
   "@weightGoalTitle": {
@@ -2209,60 +2165,12 @@
       }
     }
   },
-  "aminoHis": "histidine",
-  "aminoIle": "isoleucine",
-  "aminoLeu": "leucine",
-  "aminoLys": "lysine",
-  "aminoSaa": "methionine",
-  "aminoAaa": "phenylalanine",
-  "aminoThr": "threonine",
-  "aminoTrp": "tryptophan",
-  "aminoVal": "valine",
-  "qualityComplete": "Complete",
-  "qualityAlmost": "Almost complete",
-  "qualityIncomplete": "Incomplete",
-  "qualityNoData": "No data yet",
-  "qualityNoDataHint": "Log foods from the database to see your amino acids.",
-  "qualityAllCovered": "All nine essential amino acids are covered.",
-  "qualityLimiting": "Short on {amino}. Pair it with foods rich in it.",
-  "@qualityLimiting": {
-    "placeholders": {
-      "amino": {
-        "type": "String"
-      }
-    }
-  },
-  "qualityCoverage": "Based on {pct}% of your protein: your own foods have no amino acid data.",
-  "@qualityCoverage": {
-    "placeholders": {
-      "pct": {
-        "type": "int"
-      }
-    }
-  },
-  "fatTypes": "Fat types",
-  "fatSaturated": "Saturated",
-  "fatMono": "Mono",
-  "fatPoly": "Poly",
-  "satLimitLine": "Saturated {grams} g of {limit} g max (10% of calories)",
-  "@satLimitLine": {
-    "placeholders": {
-      "grams": {
-        "type": "String"
-      },
-      "limit": {
-        "type": "int"
-      }
-    }
-  },
   "sugarSodium": "Sugar and sodium",
-  "shakeCard": "Protein shake",
   "trackersTitle": "Customize",
   "trackersHint": "Show only what you want to track.",
   "trackersDaily": "Daily summary",
   "trackersDetail": "In detail",
   "trackersCards": "Cards",
-  "prepTitle": "Meal prep",
   "prepNewShort": "New batch",
   "prepNew": "New batch",
   "prepEdit": "Edit batch",
@@ -2307,8 +2215,6 @@
   "prepFinished": "This batch is finished.",
   "approxValues": "Approximate",
   "editValues": "Edit values",
-  "editValuesHint": "Only changes this entry. To fix the food for next time, edit it from My foods.",
-  "editLibraryHint": "Saved as your own food, with the same photo",
   "per100Line": "{energy} per 100 {unit}",
   "@per100Line": {
     "placeholders": {
@@ -2355,11 +2261,7 @@
   "catDrink": "Drinks",
   "catSauce": "Sauces",
   "catSpice": "Spices",
-  "shelfEmpty": "Search a food or take a photo of yours: the ones you log most will show up here.",
   "repeatEntry": "Log again",
-  "notifSuppChannel": "Supplements",
-  "notifSuppChannelWhy": "Daily reminder to take your supplements",
-  "energySplit": "Where the calories come from",
   "typicalServing": "Typical serving",
   "cookedYieldLine": "Weighs {factor}× its raw weight",
   "@cookedYieldLine": {
@@ -2378,11 +2280,6 @@
     }
   },
   "useValue": "Use",
-  "suppRowHint": "Tap to mark · hold for details",
-  "suppPhoto": "Photo",
-  "suppDose": "Dose",
-  "suppDoseHint": "5 g, 2 capsules…",
-  "suppRemind": "Remind me",
   "fromPlan": "From {name}",
   "@fromPlan": {
     "placeholders": {
@@ -2393,16 +2290,6 @@
   },
   "logPlan": "Log",
   "planFromDay": "Copy this day",
-  "planNewHint": "Plan your days like your routines, then log a whole meal with one tap.",
-  "planLogDay": "Log the empty meals",
-  "planLogged": "{n, plural, one{1 food logged} other{{n} foods logged}}",
-  "@planLogged": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
   "planNoPlan": "No plan",
   "planWeekHint": "Tap a day to give it a plan.",
   "planDuplicate": "Duplicate",
@@ -2426,7 +2313,6 @@
       }
     }
   },
-  "planImportNone": "That file has no meal plans.",
   "planMoveUp": "Move up",
   "planMoveDown": "Move down",
   "cutoutEdit": "Touch up cutout",
@@ -2435,61 +2321,6 @@
   "cutoutRestore": "Restore",
   "cutoutReset": "Back to automatic",
   "cutoutByHand": "Cut out by hand",
-  "notifSuppTitleFor": "Time to take: {names}",
-  "@notifSuppTitleFor": {
-    "placeholders": {
-      "names": {
-        "type": "String"
-      }
-    }
-  },
-  "notifSuppTap": "Tick it off in TREN once you've taken it.",
-  "suppNoneToday": "Nothing to take today.",
-  "suppOtherDays": "Other days",
-  "suppEveryN": "{n, plural, one{Every day} other{Every {n} days}}",
-  "@suppEveryN": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppDaily": "Every day",
-  "suppFromDate": "from {date}",
-  "@suppFromDate": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "suppUntilDate": "until {date}",
-  "@suppUntilDate": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "suppSomeDays": "Some days",
-  "suppEveryShort": "Every X days",
-  "suppWhen": "When",
-  "suppEveryLead": "Every",
-  "suppEveryTail": "{n, plural, one{day} other{days}}",
-  "@suppEveryTail": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppStarts": "Starts",
-  "suppEnds": "Ends",
-  "suppTomorrow": "Tomorrow",
-  "suppPickDate": "Pick a date",
-  "suppNever": "Never",
-  "suppOneWeek": "In 1 week",
-  "suppOneMonth": "In 1 month",
   "planPickHint": "Pick the plan for this day, or make a new one.",
   "planSetForDay": "Plan set for {day}",
   "@planSetForDay": {
@@ -2506,28 +2337,10 @@
   "planEdit": "Edit plan",
   "planNameHint": "Plan name",
   "planDaysQuestion": "Which days?",
-  "planDaysHint": "On those days it shows up in Nutrition so you can log it in one tap.",
   "planDaysNone": "Pick at least one day, or it won't show up anywhere.",
-  "planNothingToLog": "Those meals are already logged",
   "planSave": "Save plan",
   "planToday": "Today's plan",
   "planLogRest": "Log the rest",
-  "suppHistory": "Last 14 days",
-  "suppTakenOf": "{n} of {total} taken",
-  "@suppTakenOf": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      },
-      "total": {
-        "type": "int"
-      }
-    }
-  },
-  "suppNoReminder": "No reminder",
-  "suppMarkTaken": "Mark as taken",
-  "suppUnmark": "Unmark",
-  "suppEdit": "Edit",
   "repeatWholeDay": "Repeat the whole day",
   "entryDay": "Day",
   "movedToDay": "Moved",
@@ -2615,12 +2428,6 @@
   "pdfPlanHint": "A clean sheet with your week and every routine, ready to print or send.",
   "pdfExport": "Export as PDF",
   "pdfFooter": "Free, open source and offline",
-  "shakeTag": "It’s a shake",
-  "shakeTagHint": "It shows up in Your shake",
-  "shakeNone": "Mark your shakes and only those show up here.",
-  "shakeMarkLabel": "MARK AS A SHAKE",
-  "shakeNew": "New shake",
-  "shakeUntag": "Not a shake",
   "pdfKicker": "TRAINING PLAN",
   "pdfStatDays": "DAYS / WEEK",
   "pdfStatMinutes": "MIN / WORKOUT",
@@ -2738,33 +2545,6 @@
       }
     }
   },
-  "leftAfterKcal": "You'll have {kcal} left",
-  "@leftAfterKcal": {
-    "placeholders": {
-      "kcal": {
-        "type": "String"
-      }
-    }
-  },
-  "leftAfterBoth": "You'll have {kcal} and {grams} g protein left",
-  "@leftAfterBoth": {
-    "placeholders": {
-      "kcal": {
-        "type": "String"
-      },
-      "grams": {
-        "type": "String"
-      }
-    }
-  },
-  "leftAfterOver": "{kcal} over your goal",
-  "@leftAfterOver": {
-    "placeholders": {
-      "kcal": {
-        "type": "String"
-      }
-    }
-  },
   "perDayUnit": "{unit} a day",
   "@perDayUnit": {
     "placeholders": {
@@ -2810,8 +2590,6 @@
   "trainAnyway": "Train anyway",
   "weekTab": "Week",
   "muscleSetsList": "Sets per muscle",
-  "fatTrans": "Trans",
-  "fatTypesHint": "Optional. Leave blank what the label doesn't say.",
   "sessionPhotos": "Workout photos",
   "sessionPhotosAdd": "Add photos",
   "sessionPhotosHint": "They're also kept in Your photos.",
@@ -3249,124 +3027,6 @@
   "reportChooseCsv": "Choose which CSV files to share.",
   "reportWeighIns": "Weigh-ins",
   "reportSessionDetails": "Workout session details",
-  "reportShareCsvBoth": "Export CSV (workouts and nutrition)",
-  "fastMinutes": "{n} min",
-  "@fastMinutes": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "fastHours": "{n} h",
-  "@fastHours": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "fastHoursMinutes": "{h} h {m} min",
-  "@fastHoursMinutes": {
-    "placeholders": {
-      "h": {
-        "type": "int"
-      },
-      "m": {
-        "type": "int"
-      }
-    }
-  },
-  "fastTracker": "Intermittent fasting",
-  "fastTitle": "Fasting {fast}:{eat}",
-  "@fastTitle": {
-    "placeholders": {
-      "fast": {
-        "type": "int"
-      },
-      "eat": {
-        "type": "int"
-      }
-    }
-  },
-  "fastOptions": "Fasting options",
-  "fastWindowOpen": "Eating window open",
-  "fastLeft": "Left",
-  "fastDoneLabel": "Goal reached",
-  "fastIdle": "Start it after your last meal",
-  "fastLast": "Last fast: {time}",
-  "@fastLast": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "fastStreak": "{n} in a row",
-  "@fastStreak": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "fastReached": "{time} past your goal",
-  "@fastReached": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "fastEndsAt": "Ends at {time}",
-  "@fastEndsAt": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "fastSince": "Since {time}",
-  "@fastSince": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "fastStartedAt": "When did you start fasting?",
-  "fastStart": "Start fast",
-  "fastEnd": "End fast",
-  "fastCancel": "Cancel this fast",
-  "fastPlan": "Fasting plan",
-  "fastPlanHint": "Hours fasting : hours to eat",
-  "fastThisWeek": "Last 7 days",
-  "fastCount": "Fasts",
-  "fastReachedCount": "Reached",
-  "fastAverage": "Average",
-  "fastHistory": "Recent fasts",
-  "notifFastLiveChannel": "Fasting in progress",
-  "notifFastLiveChannelWhy": "A quiet countdown while you fast.",
-  "notifFastChannel": "Fasting",
-  "notifFastChannelWhy": "Tells you when your fast is done.",
-  "notifFastLiveTitle": "Fasting",
-  "notifFastLiveBody": "Your eating window opens at {time}",
-  "@notifFastLiveBody": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "notifFastDoneTitle": "Fast done",
-  "notifFastDoneBody": "{n} hours. Your eating window is open.",
-  "@notifFastDoneBody": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
   "newExerciseHint": "Only the name is required. The rest helps, but you can add it later.",
   "perfSetting": "Performance",
   "perfSheetHint": "How much of your phone TREN uses. You can change each part below.",
@@ -3782,7 +3442,6 @@
   "noteFolderDelete": "Delete the folder?",
   "noteFolderDeleteBody": "Notes are kept: they just leave the folder.",
   "planArchivedToast": "Plan archived",
-  "suppArchivedToast": "Supplement archived",
   "@voiceRest": {
     "placeholders": {
       "time": {
@@ -3855,66 +3514,6 @@
     }
   },
   "repRecordsTitle": "Best weight by reps",
-  "suppUnitCapsule": "{n, plural, one{capsule} other{capsules}}",
-  "@suppUnitCapsule": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppUnitPill": "{n, plural, one{pill} other{pills}}",
-  "@suppUnitPill": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppUnitScoop": "{n, plural, one{scoop} other{scoops}}",
-  "@suppUnitScoop": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppUnitDrop": "{n, plural, one{drop} other{drops}}",
-  "@suppUnitDrop": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppUnitServing": "{n, plural, one{serving} other{servings}}",
-  "@suppUnitServing": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppUnitIu": "IU",
-  "suppLeft": "Left",
-  "suppLeftHint": "Optional",
-  "suppLeftFor": "{n, plural, one{Left for 1 day} other{Left for {n} days}}",
-  "@suppLeftFor": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppForDays": "{n, plural, one{1 day} other{{n} days}}",
-  "@suppForDays": {
-    "placeholders": {
-      "n": {
-        "type": "int"
-      }
-    }
-  },
-  "suppRanOut": "Ran out",
   "lightSession": "Light session",
   "lightSessionHint": "Saved in your history and stats, but it won't change your next targets.",
   "lightSessionNote": "Doesn't count for progression",
@@ -3957,7 +3556,6 @@
   "noteLinkInvalid": "That address doesn't look right",
   "changeRest": "Rest between exercises",
   "changeRestHint": "After the last set, before the next exercise",
-  "notifSuppTake": "Taken",
   "sideRest": "Rest between sides",
   "sideRestHint": "Per-side exercises: the first ✓ ends one side",
   "gfxCompat": "Compatible graphics",
@@ -3977,26 +3575,6 @@
       }
     }
   },
-  "fastAdd": "Add a past fast",
-  "fastAddTitle": "Add a fast",
-  "fastEditTitle": "Edit fast",
-  "fastStartRow": "Start",
-  "fastEndRow": "End",
-  "fastEndedAt": "When did you end it?",
-  "fastLasted": "Lasted {time}",
-  "@fastLasted": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
-  "fastErrFuture": "The end can't be later than now",
-  "fastErrOrder": "The end has to come after the start",
-  "fastErrShort": "A fast lasts at least 10 minutes",
-  "fastErrOverlap": "It overlaps another fast",
-  "fastSaved": "Fast saved",
-  "fastAdjust": "Adjust",
   "keepCounting": "Keep counting",
   "keepCountingHint": "It beeps at your time and keeps going until you stop it",
   "holdOvertime": "Extra time",
@@ -4126,14 +3704,6 @@
     }
   },
   "helpFastQ": "I forgot to end my fast",
-  "helpFastA": "End it and tap “{adjust}” on the notice, or tap the fast in the fasting sheet to change its times.",
-  "@helpFastA": {
-    "placeholders": {
-      "adjust": {
-        "type": "String"
-      }
-    }
-  },
   "helpGo": "Show me",
   "helpHomeOrderQ": "Can I change the order of Home?",
   "helpHomeOrderA": "Yes: Settings › {section} › “{row}”. Hold and drag the sections, or turn off the ones you don’t use.",
@@ -4195,15 +3765,6 @@
       }
     }
   },
-  "helpCleanQ": "How do I make the Nutrition screen cleaner?",
-  "helpCleanA": "In Nutrition, tap the sliders button at the top (“{button}”) and turn off whatever you don’t track.",
-  "@helpCleanA": {
-    "placeholders": {
-      "button": {
-        "type": "String"
-      }
-    }
-  },
   "alsoWorksMuscles": "Also works {muscles}",
   "@alsoWorksMuscles": {
     "placeholders": {
@@ -4212,21 +3773,8 @@
       }
     }
   },
-  "mineralsTracker": "Iron and potassium",
   "ironLabel": "Iron",
   "potassiumLabel": "Potassium",
-  "mineralsCoverage": "{known} of {total} foods today have iron and potassium",
-  "@mineralsCoverage": {
-    "placeholders": {
-      "known": {
-        "type": "int"
-      },
-      "total": {
-        "type": "int"
-      }
-    }
-  },
-  "mineralsHint": "Few foods in the list come with iron and potassium, so the total only counts the ones that do. Add them to your own foods or with the AI.",
   "qsRow": "Quick Settings tiles",
   "qsRowHint": "Today's workout or your gym pass, from the top panel",
   "qsTitle": "Quick Settings tiles",
@@ -4429,7 +3977,6 @@
   "reportDayByDay": "Day by day",
   "reportGoalsLabel": "Daily goal",
   "reportGoalsRest": "Goal on rest days",
-  "reportKcalOnTarget": "Days within 10 % of the calorie goal",
   "reportDailyTotals": "Daily totals",
   "reportDateCol": "DATE",
   "reportReadings": "{n, plural, one{1 reading} other{{n} readings}}",

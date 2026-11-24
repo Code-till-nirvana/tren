@@ -736,7 +736,13 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(_ProfileHeader old) => true;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) =>
+      ListenableBuilder(
+        listenable: fit,
+        builder: (context, _) => _buildHeader(context, shrinkOffset),
+      );
+
+  Widget _buildHeader(BuildContext context, double shrinkOffset) {
     final range = maxExtent - minExtent;
     final shrunk = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
     final p = fit.profile;
@@ -775,7 +781,12 @@ class _ProfileHeader extends SliverPersistentHeaderDelegate {
                     errorBuilder: (context, error, stackTrace) => const _ProfileBannerFallback(),
                   )
                 else
-                  const _ProfileBannerFallback(),
+                  Image(
+                    image: kDefaultBanner,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                    errorBuilder: (context, error, stackTrace) => const _ProfileBannerFallback(),
+                  ),
                     IgnorePointer(
                       child: DecoratedBox(
                         decoration: BoxDecoration(

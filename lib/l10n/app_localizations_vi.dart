@@ -1377,7 +1377,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get importHint =>
-      'Chọn bản sao lưu .zip (hoặc .json cũ hơn) đã xuất từ GymMane. Thao tác này thay thế dữ liệu hiện tại, kể cả ảnh và video.';
+      'Chọn bản sao lưu .zip (hoặc .json cũ hơn) đã xuất từ TREN. Thao tác này thay thế dữ liệu hiện tại, kể cả ảnh và video.';
 
   @override
   String get import => 'Nhập';
@@ -1419,7 +1419,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get aboutGymmane => 'Giới thiệu GymMane';
+  String get aboutTREN => 'Giới thiệu TREN';
 
   @override
   String get yourProfile => 'HỒ SƠ CỦA BẠN';
@@ -2181,7 +2181,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get aiIntro =>
-      'GymMane không bao giờ kết nối với AI. Bạn lấy danh sách bài tập ra, dán vào trợ lý mà bạn vẫn dùng, rồi mang câu trả lời của nó trở lại. Không gì tự rời khỏi điện thoại.';
+      'TREN không bao giờ kết nối với AI. Bạn lấy danh sách bài tập ra, dán vào trợ lý mà bạn vẫn dùng, rồi mang câu trả lời của nó trở lại. Không gì tự rời khỏi điện thoại.';
 
   @override
   String aiMissing(int n) {
@@ -2206,7 +2206,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get awardFirstStepName => 'Bước đầu tiên';
 
   @override
-  String get awardFirstStepLine => 'Chào mừng đến với GymMane. Huy chương này là quà tặng.';
+  String get awardFirstStepLine => 'Chào mừng đến với TREN. Huy chương này là quà tặng.';
 
   @override
   String get awardFirstWorkoutName => 'Buổi tập đầu tiên';
@@ -2800,7 +2800,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String shareMessage(String name) {
-    return '$name: mở tệp bằng GymMane để thêm vào.';
+    return '$name: mở tệp bằng TREN để thêm vào.';
   }
 
   @override
@@ -2808,7 +2808,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get importPasteHint =>
-      'Dán giáo án tập vào đây: giáo án được chia sẻ từ GymMane, câu trả lời của AI, JSON hoặc CSV.';
+      'Dán giáo án tập vào đây: giáo án được chia sẻ từ TREN, câu trả lời của AI, JSON hoặc CSV.';
 
   @override
   String get pasteAction => 'Dán';
@@ -2836,11 +2836,11 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get nothingToImport => 'Không có gì ở đây mà GymMane có thể nhập';
+  String get nothingToImport => 'Không có gì ở đây mà TREN có thể nhập';
 
   @override
   String get aiStepCopy =>
-      'Sao chép yêu cầu. Nó chứa danh sách bài tập của bạn và định dạng mà GymMane đọc được.';
+      'Sao chép yêu cầu. Nó chứa danh sách bài tập của bạn và định dạng mà TREN đọc được.';
 
   @override
   String get aiStepAsk =>
@@ -2990,7 +2990,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get shareIntroBody =>
-      'Gửi cho bạn tập, bạn bè hoặc gia đình. Họ sẽ nhận một tệp nhỏ mở được bằng GymMane và thêm vào chỉ với một lần chạm, kèm các hiệp và mức tạ.';
+      'Gửi cho bạn tập, bạn bè hoặc gia đình. Họ sẽ nhận một tệp nhỏ mở được bằng TREN và thêm vào chỉ với một lần chạm, kèm các hiệp và mức tạ.';
 
   @override
   String get removedFromRoutine => 'Đã gỡ khỏi giáo án tập';
@@ -3141,7 +3141,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get stepsInfoLocal =>
-      'Số bước chỉ nằm trên điện thoại của bạn. GymMane không bao giờ kết nối internet.';
+      'Số bước chỉ nằm trên điện thoại của bạn. TREN không bao giờ kết nối internet.';
 
   @override
   String get stepsInfoOff => 'Tắt bất cứ lúc nào trong Cài đặt hoặc trong Health Connect.';
@@ -3499,7 +3499,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get appIcon => 'Biểu tượng ứng dụng';
 
   @override
-  String get appIconHint => 'GymMane trông thế nào trên màn hình chính';
+  String get appIconHint => 'TREN trông thế nào trên màn hình chính';
 
   @override
   String get appIconColors => 'Màu sắc';
@@ -4689,7 +4689,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get nutritionAboutWhat =>
-      'Cách đơn giản để ghi bữa ăn, nước, đạm và thực phẩm bổ sung ngay cạnh các buổi tập. GymMane trước hết là ứng dụng tập gym: Dinh dưỡng có mặt để bạn giữ mọi thứ ở một chỗ, không phải để thay thế một ứng dụng ăn kiêng chuyên dụng.';
+      'Cách đơn giản để ghi bữa ăn, nước, đạm và thực phẩm bổ sung ngay cạnh các buổi tập. TREN trước hết là ứng dụng tập gym: Dinh dưỡng có mặt để bạn giữ mọi thứ ở một chỗ, không phải để thay thế một ứng dụng ăn kiêng chuyên dụng.';
 
   @override
   String get nutritionAboutScanTitle => 'Không bao giờ quét mã';
@@ -4703,7 +4703,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get nutritionAboutLocal =>
-      'Hơn 500 thực phẩm có ảnh đi kèm sẵn trong ứng dụng. Bạn có thể tự thêm, đổi ảnh và sửa giá trị của chúng. Tất cả đều nằm trên điện thoại của bạn, như phần còn lại của GymMane.';
+      'Hơn 500 thực phẩm có ảnh đi kèm sẵn trong ứng dụng. Bạn có thể tự thêm, đổi ảnh và sửa giá trị của chúng. Tất cả đều nằm trên điện thoại của bạn, như phần còn lại của TREN.';
 
   @override
   String get nutritionAboutBetaTitle => 'Vẫn đang beta';
@@ -4764,7 +4764,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get notifSuppTap => 'Đánh dấu trong GymMane sau khi bạn đã dùng.';
+  String get notifSuppTap => 'Đánh dấu trong TREN sau khi bạn đã dùng.';
 
   @override
   String get suppNoneToday => 'Hôm nay không cần dùng gì.';
@@ -5659,7 +5659,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get ladderHint =>
-      'Sắp xếp các bậc từ dễ nhất đến khó nhất. Khi bạn tập 3 hiệp 8 lần lặp hai buổi liên tiếp (5 với các bài chậm), GymMane sẽ đề xuất bậc tiếp theo.';
+      'Sắp xếp các bậc từ dễ nhất đến khó nhất. Khi bạn tập 3 hiệp 8 lần lặp hai buổi liên tiếp (5 với các bài chậm), TREN sẽ đề xuất bậc tiếp theo.';
 
   @override
   String get ladderBuiltIn =>
@@ -6625,14 +6625,14 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get supportThanksBody =>
-      'GymMane miễn phí và sẽ luôn như vậy, không quảng cáo và không có gì bị giấu.\n\nNếu ứng dụng giúp ích cho việc tập luyện của bạn, mời tôi một ly cà phê sẽ làm tôi vui cả ngày ☕\nCòn nếu không thể, đừng lo: một ngôi sao trên GitHub cũng vậy ⭐';
+      'TREN miễn phí và sẽ luôn như vậy, không quảng cáo và không có gì bị giấu.\n\nNếu ứng dụng giúp ích cho việc tập luyện của bạn, mời tôi một ly cà phê sẽ làm tôi vui cả ngày ☕\nCòn nếu không thể, đừng lo: một ngôi sao trên GitHub cũng vậy ⭐';
 
   @override
   String get perfSetting => 'Hiệu năng';
 
   @override
   String get perfSheetHint =>
-      'GymMane dùng bao nhiêu tài nguyên điện thoại. Bạn có thể thay đổi từng phần bên dưới.';
+      'TREN dùng bao nhiêu tài nguyên điện thoại. Bạn có thể thay đổi từng phần bên dưới.';
 
   @override
   String get perfLite => 'Tiết kiệm';
@@ -7173,7 +7173,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get autoProgressHint =>
-      'Khi bạn bắt đầu buổi tập, GymMane sẽ điền bước tiếp theo cho từng bài tập. Với Thêm lần lặp, bạn thêm một lần lặp mỗi hiệp cho đến 12, sau đó mức tạ tăng lên và bạn bắt đầu lại từ 8. Bạn vẫn có thể điều chỉnh từng bài tập trong trang của nó.';
+      'Khi bạn bắt đầu buổi tập, TREN sẽ điền bước tiếp theo cho từng bài tập. Với Thêm lần lặp, bạn thêm một lần lặp mỗi hiệp cho đến 12, sau đó mức tạ tăng lên và bạn bắt đầu lại từ 8. Bạn vẫn có thể điều chỉnh từng bài tập trong trang của nó.';
 
   @override
   String get noteFolders => 'Thư mục';
@@ -7657,7 +7657,7 @@ class AppLocalizationsVi extends AppLocalizations {
       'Cho những máy hiển thị chữ bị lỗi. Hiệu ứng mờ vẫn giữ, vài hiệu ứng sẽ đơn giản hơn';
 
   @override
-  String get gfxRestartTitle => 'Khởi động lại GymMane?';
+  String get gfxRestartTitle => 'Khởi động lại TREN?';
 
   @override
   String get gfxRestartBody =>
@@ -7752,7 +7752,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get wearSyncNow => 'Đồng bộ ngay';
 
   @override
-  String get wearSyncHow => 'Trên điện thoại, bật Cài đặt › Đồng hồ Wear OS và mở GymMane trên cả hai.';
+  String get wearSyncHow => 'Trên điện thoại, bật Cài đặt › Đồng hồ Wear OS và mở TREN trên cả hai.';
 
   @override
   String get routinesOrder => 'Sắp xếp giáo án';
@@ -7819,10 +7819,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get webPhoneFolderHow =>
-      'Được chọn khi cài máy chủ. Để đổi, đặt GYMMANE_SYNC trong tệp .env của máy chủ rồi khởi động lại.';
+      'Được chọn khi cài máy chủ. Để đổi, đặt TREN_SYNC trong tệp .env của máy chủ rồi khởi động lại.';
 
   @override
-  String get webPhoneOffHow => 'Để bật, xóa GYMMANE_SYNC=off khỏi tệp .env của máy chủ rồi khởi động lại.';
+  String get webPhoneOffHow => 'Để bật, xóa TREN_SYNC=off khỏi tệp .env của máy chủ rồi khởi động lại.';
 
   @override
   String webPhoneDevices(int n) {
@@ -8130,13 +8130,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get watchSubtitle => 'Giáo án trên cổ tay, buổi tập quay về điện thoại';
 
   @override
-  String get watchPoint1 => 'Cài GymMane lên đồng hồ';
+  String get watchPoint1 => 'Cài TREN lên đồng hồ';
 
   @override
   String get watchPoint1Body => 'Cùng một ứng dụng như trên điện thoại. Chạm để xem hướng dẫn cài.';
 
   @override
-  String get watchPoint2 => 'Mở GymMane trên cả hai';
+  String get watchPoint2 => 'Mở TREN trên cả hai';
 
   @override
   String get watchPoint2Body =>
@@ -8164,13 +8164,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get watchSearching => 'Đang tìm đồng hồ…';
 
   @override
-  String get watchSearchingHint => 'Mở GymMane trên đồng hồ nếu chưa mở.';
+  String get watchSearchingHint => 'Mở TREN trên đồng hồ nếu chưa mở.';
 
   @override
   String get watchBluetoothOff => 'Bluetooth đang tắt.';
 
   @override
-  String get watchNotFound => 'Không thấy đồng hồ. Mở GymMane trên đồng hồ rồi thử lại.';
+  String get watchNotFound => 'Không thấy đồng hồ. Mở TREN trên đồng hồ rồi thử lại.';
 
   @override
   String get watchNever => 'Chưa đồng bộ.';
@@ -8245,7 +8245,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get qsAdded => 'Đã thêm';
 
   @override
-  String get qsManual => 'Kéo Cài đặt nhanh xuống, chạm vào bút chì và kéo ô GymMane vào các ô của bạn.';
+  String get qsManual => 'Kéo Cài đặt nhanh xuống, chạm vào bút chì và kéo ô TREN vào các ô của bạn.';
 
   @override
   String get qsPassUse => 'Mở từ Cài đặt nhanh';
