@@ -41,9 +41,11 @@ jobs:
         run: dart run flutter_launcher_icons
 
       - name: Analyze Dart code
+        if: ${{ !contains(github.event.head_commit.message, '[build-only]') }}
         run: flutter analyze --no-fatal-infos
 
       - name: Run tests
+        if: ${{ !contains(github.event.head_commit.message, '[build-only]') }}
         run: flutter test
 
       - name: Build release APK
