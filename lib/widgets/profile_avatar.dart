@@ -8,7 +8,7 @@ const kDefaultBanner = AssetImage('assets/img/tren_profile_banner.png');
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key, this.size = 52});
 
-  static const defaultPhoto = AssetImage('assets/img/tren_default_avatar.jpg');
+  static const defaultPhoto = AssetImage('assets/img/tren_default_avatar.png');
 
   final double size;
 
